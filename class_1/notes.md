@@ -79,19 +79,19 @@ Now Linux terminal is ready.
 
 # 🐧 Basic Linux Commands
 
-📂 ls — List Files
+### 📂 ls — List Files
 ls
 
 Purpose:
 Shows files and folders in current directory.
 
-📂 ls -a — Show All Files
+### 📂 ls -a — Show All Files
 ls -a
 
 Purpose:
 Shows hidden files also (files starting with .).
 
-📂 ls -l — Detailed List
+### 📂 ls -l — Detailed List
 ls -l
 
 Purpose:
@@ -102,7 +102,7 @@ Shows detailed information:
 3. size
 4. date
 
-📁 mkdir — Make Directory
+### 📁 mkdir — Make Directory
 mkdir foldername
 
 Purpose:
@@ -111,7 +111,7 @@ Creates a new folder.
 Example:
 
 mkdir class1
-📁 cd — Change Directory
+### 📁 cd — Change Directory
 cd foldername
 
 Purpose:
@@ -122,7 +122,7 @@ Example:
 cd class1
 Go Back One Folder
 cd ..
-📍 pwd — Present Working Directory
+### 📍 pwd — Present Working Directory
 pwd
 
 Purpose:
@@ -137,13 +137,13 @@ clear
 Purpose:
 Clears terminal screen.
 
-🏠 cd ~ — Go Home Directory
+### 🏠 cd ~ — Go Home Directory
 cd ~
 
 Purpose:
 Takes user to home folder.
 
-🌍 cd / — Root Directory
+### 🌍 cd / — Root Directory
 cd /
 
 Purpose:
