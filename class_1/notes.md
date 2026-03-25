@@ -155,11 +155,13 @@ Moves to root directory (top level of Linux system).
 
 Students performed the following commands:
 
+```bash
 mkdir class1
 cd class1
 pwd
 ls
 clear
+```
 
 Goal:
 
