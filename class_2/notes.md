@@ -313,5 +313,3 @@ Hidden files
 Detailed list
 
 ---
-
-If you want, next I can also give you a **visual explanation (how to read `ls -l` permissions like `drwxr-xr-x`)** — that’s usually the next thing DevOps students struggle with.
