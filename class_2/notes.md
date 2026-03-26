@@ -119,10 +119,11 @@ Moves into another directory.
 
 Examples:
 
-cd class1
-cd ..
-cd ~
-cd /
+1. cd class1
+2. cd ..
+3. cd ~
+4. cd /
+4. cd -
 
 ## 📄 touch — Create File
 
@@ -244,10 +245,10 @@ stat filename
 Purpose:
 Shows detailed file information such as:
 
-File size
-Permissions
-Created date
-Modified date
+1. File size
+2. Permissions
+3. Created date
+4. Modified date
 
 Example:
 
