@@ -61,12 +61,14 @@ grep -n "program" name.txt
 
 Displays line numbers with results.
 
-Show Byte Offset
+### Show Byte Offset
+
 grep -b "program" name.txt
 
 Shows position of match in file.
 
-Pipe Example
+### Pipe Example
+
 cat name.txt | grep "helloworld"
 
 Filters output using pipe (|).
