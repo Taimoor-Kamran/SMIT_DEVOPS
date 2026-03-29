@@ -54,12 +54,12 @@ grep -l "helloworld" name.txt
 Count Matches
 grep -c "helloworld" name.txt
 
-Shows number of matches.
+### Shows number of matches.
 
 Show Line Numbers
 grep -n "program" name.txt
 
-### Displays line numbers with results.
+Displays line numbers with results.
 
 Show Byte Offset
 grep -b "program" name.txt
@@ -139,8 +139,8 @@ Displays file updates in real-time.
 
 ## 🔄 File Comparison
 
-diff
-diff file1 file2
+1. diff
+2. diff file1 file2
 
 Compares two files and shows differences.
 
