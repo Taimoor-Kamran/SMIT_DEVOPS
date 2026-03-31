@@ -16,7 +16,8 @@ chown user filename
 Purpose:
 Changes file ownership.
 
-chgrp — Change Group Ownership
+## chgrp — Change Group Ownership
+
 chgrp groupname filename
 
 Purpose:
