@@ -2,17 +2,17 @@
 
 ## Switch User & Root Access
 
-sudo su
-exit
-sudo su → switch to root user
-exit / Ctrl + D → exit from current user
+- sudo su
+- exit
+- sudo su → switch to root user
+- exit / Ctrl + D → exit from current user
 
 ## 🔹 User Information Files
 
-ls /etc/passwd
-cat /etc/passwd
-cat /etc/group
-cat /etc/gshadow
+1. ls /etc/passwd
+2. cat /etc/passwd
+3. cat /etc/group
+4. cat /etc/gshadow
 /etc/passwd → user details
 /etc/group → group details
 /etc/gshadow → group passwords
