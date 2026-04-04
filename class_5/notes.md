@@ -13,10 +13,11 @@
 2. cat /etc/passwd
 3. cat /etc/group
 4. cat /etc/gshadow
-/etc/passwd → user details
-/etc/group → group details
-/etc/gshadow → group passwords
-👤 Create & Manage Users
+5. /etc/passwd → user details
+6. /etc/group → group details
+7. /etc/gshadow → group passwords
+
+## 👤 Create & Manage Users
 
 ## 🔹 Add User
 
