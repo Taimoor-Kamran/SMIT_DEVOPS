@@ -113,4 +113,3 @@ sudo adduser mark
 
 - tail -3 /etc/passwd
 
-## 👉 Shows recently created users
