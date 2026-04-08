@@ -120,11 +120,14 @@ Ek .snap package → Har distro pe kaam karta hai
 
 ## SNAP vs APT
 
-APT	SNAP
-System libraries use karta hai	Sab dependencies bundle hoti hain
-Lightweight	Heavy but portable
-Break ho sakta hai	Stable & consistent
-📲 Famous SNAP Apps
+| APT | SNAP |
+|---------|---------|
+| System libraries use karta hai | Sab dependencies bundle hoti hain |
+| Lightweight | Heavy but portable |
+| Break ho sakta hai | Stable & consistent |
+
+## Famous SNAP Apps
+
 ```bash
 sudo snap install code --classic
 sudo snap install postman
