@@ -85,7 +85,7 @@ sudo apt list --installed | grep mysql
 dpkg -l | grep mysql
 ```
 
-###Cleanup
+### Cleanup
 
 ```bash
 sudo apt clean
