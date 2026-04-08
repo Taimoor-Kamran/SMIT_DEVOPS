@@ -92,7 +92,7 @@ sudo apt clean
 sudo apt autoclean
 ```
 
-## 📦 SNAP Package Manager
+## SNAP Package Manager
 ###  Problem Before SNAP
 
 Different Linux distros ke different package managers:
@@ -104,19 +104,22 @@ Different Linux distros ke different package managers:
 | Arch	| Pacman |
 | OpenSUSE	| Zypper |
 
-👉 Developer ko same software multiple formats mein banana padta tha
+Developer ko same software multiple formats mein banana padta tha
 
-✅ SNAP Solution
+## SNAP Solution
 
 Ek .snap package → Har distro pe kaam karta hai
 
-🔁 Works Everywhere
-Ubuntu ✅
-Fedora ✅
-Arch ✅
-Debian ✅
-OpenSUSE ✅
-⚙️ SNAP vs APT
+## Works Everywhere
+
+- Ubuntu 
+- Fedora 
+- Arch 
+- Debian 
+- OpenSUSE 
+
+## SNAP vs APT
+
 APT	SNAP
 System libraries use karta hai	Sab dependencies bundle hoti hain
 Lightweight	Heavy but portable
