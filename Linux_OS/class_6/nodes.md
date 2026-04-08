@@ -48,7 +48,7 @@
 
 # APT Package Manager (Debian/Ubuntu)
 
-## Update & Upgrade
+### Update & Upgrade
 
 ```bash
 sudo apt update
