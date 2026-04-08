@@ -1,5 +1,3 @@
----
-
 ##  What is Red Hat?
 
 **Red Hat Enterprise Linux (RHEL)** ek Linux distribution hai jo **enterprise-level environments** ke liye design kiya gaya hai.
@@ -8,7 +6,7 @@
 - Red Hat = Companies & Servers ke liye Linux OS  
 - Secure, stable aur paid support ke sath aata hai  
 
----
+
 
 ## Comparison
 
