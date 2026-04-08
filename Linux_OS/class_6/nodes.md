@@ -58,14 +58,17 @@ sudo apt list --upgradable
 sudo apt upgrade
 sudo apt full-upgrade
 sudo apt dist-upgrade
+```
 
 ### Install Packages
 
+```bash
 sudo apt install nodejs
 sudo apt install mysql-server
+```
 
 ### Remove Packages
-
+```bash
 sudo apt remove mysql-server
 sudo apt purge mysql*
 sudo apt autoremove
