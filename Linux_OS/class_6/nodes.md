@@ -99,6 +99,7 @@ Different Linux distros ke different package managers:
 👉 Developer ko same software multiple formats mein banana padta tha
 
 ```bash
+
 ✅ SNAP Solution
 
 Ek .snap package → Har distro pe kaam karta hai
