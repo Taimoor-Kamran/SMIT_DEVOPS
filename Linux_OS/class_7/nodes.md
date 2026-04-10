@@ -142,7 +142,8 @@ U → Interface is up
 G → Using a gateway
 Iface
 Network interface name (e.g., eth0)
-15. arp -a
+
+## 15. arp -a
 
 Displays ARP table (mapping of IP addresses to MAC addresses in local network).
 
