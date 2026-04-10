@@ -17,7 +17,7 @@ MULTICAST: Sends data to a specific group of devices
 3. LeoNet
 4. Zong / Jazz (Mobile Data)
 
-### Useful Command
+# Useful Command
 
 ## curl ifconfig.me
 
@@ -33,10 +33,11 @@ Shows your public IP address.
 
 Alternative to ip a (older command)
 
-Types of IP
-Local IP
-LAN IP
-Public IP
+### Types of IP
+
+- Local IP
+- LAN IP
+- Public IP
 
 ## 3. ping google.com
 
