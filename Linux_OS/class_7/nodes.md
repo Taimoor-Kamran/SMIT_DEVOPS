@@ -170,17 +170,22 @@ Displays ARP table (mapping of IP addresses to MAC addresses in local network).
 
 Combination of ping and traceroute.
 
-Installation
+### Installation
+
+```bash
 sudo apt update
 sudo apt install mtr-tiny
-Output Fields
-Host: Network devices (routers/gateways)
-Loss%: Packet loss
-Snt: Sent packets
-Last: Last response time
-Avg: Average latency
-Best: Best latency
-Wrst: Worst latency
-StDev: Latency variation
+```
+
+### Output Fields
+
+- Host: Network devices (routers/gateways)
+- Loss%: Packet loss
+- Snt: Sent packets
+- Last: Last response time
+- Avg: Average latency
+- Best: Best latency
+- Wrst: Worst latency
+- StDev: Latency variation
 
 Useful for diagnosing slow networks and packet loss.
