@@ -90,7 +90,8 @@ TXT Record: Stores text data (SPF, DKIM, verification, etc.)
 Difference: nslookup vs dig
 nslookup → Basic output (mainly IP)
 dig → Detailed DNS information
-10. curl google.com
+
+## 10. curl google.com
 
 Fetches website data in the terminal. Used for API testing and HTTP request checking.
 
