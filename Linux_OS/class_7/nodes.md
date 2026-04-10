@@ -45,14 +45,16 @@ ping google.com
 
 Check karta hai ke internet ya server reachable hai ya nahi.
 
-4. traceroute
+## 4. traceroute
+
 traceroute google.com
 
 Data packet ka path show karta hai.
 
 Har line = ek router (hop)
 time = latency (ms)
-5. netstat
+
+## 5. netstat
 netstat -tlun
 
 Open ports aur active connections check karne ke liye.
