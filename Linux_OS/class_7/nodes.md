@@ -23,7 +23,8 @@ Related Commands
 ip addr → Shows IP details
 ip link → Shows interface status (UP/DOWN)
 ip route → Shows routing table (network paths)
-2. ifconfig
+
+## 2. ifconfig
 
 Alternative to ip a (older command)
 
