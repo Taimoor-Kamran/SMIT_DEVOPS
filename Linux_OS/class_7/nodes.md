@@ -71,7 +71,7 @@ Options:
 hostname → Shows system name
 hostname -I → Shows system IP address
 
-8. nslookup google.com
+## 8. nslookup google.com
 
 Finds the IP address of a domain name.
 
