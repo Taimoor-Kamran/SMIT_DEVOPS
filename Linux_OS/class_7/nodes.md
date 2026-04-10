@@ -134,7 +134,9 @@ sudo systemctl enable ssh
 ### Get IP Address
 
 hostname -I
-Connect to Server
+
+### Connect to Server
+
 ssh user@ip
 
 SSH (Secure Shell): A secure method to access and control a remote system via terminal.
