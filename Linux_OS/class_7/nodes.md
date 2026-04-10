@@ -106,7 +106,9 @@ Copies files between systems.
 Example:
 
 scp file.txt user@ip:/home/
-13. SSH Setup (Local Server)
+
+## 13. SSH Setup (Local Server)
+
 Install SSH Server
 sudo apt update
 sudo apt install openssh-server -y
