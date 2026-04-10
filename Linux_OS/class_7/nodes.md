@@ -4,11 +4,13 @@
 
 Displays all network interfaces on the system along with their IP addresses.
 
-lo (loopback): Internal network interface (system communicating with itself)
-eth0: Main network interface (used for internet connection)
-Networking Terms
-BROADCAST: Sends data to all devices in the network
-MULTICAST: Sends data to a specific group of devices
+1. lo (loopback): Internal network interface (system communicating with itself)
+2. eth0: Main network interface (used for internet connection)
+
+### Networking Terms
+
+- BROADCAST: Sends data to all devices in the network
+- MULTICAST: Sends data to a specific group of devices
 
 ### ISP (Internet Service Providers)
 
