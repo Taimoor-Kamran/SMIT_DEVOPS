@@ -74,8 +74,8 @@ Options:
 
 ## 7. hostname / hostname -I
 
-hostname → Shows system name
-hostname -I → Shows system IP address
+1. hostname → Shows system name
+2. hostname -I → Shows system IP address
 
 ## 8. nslookup google.com
 
