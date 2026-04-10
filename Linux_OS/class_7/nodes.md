@@ -99,7 +99,7 @@ Fetches website data in the terminal. Used for API testing and HTTP request chec
 
 Downloads files from the internet.
 
-12. scp
+## 12. scp
 
 Copies files between systems.
 
