@@ -158,7 +158,7 @@ arp -a
 
 ARP table show karta hai (IP ↔ MAC mapping).
 
-15. mtr (My Traceroute)
+## 15. mtr (My Traceroute)
 
 Install:
 
