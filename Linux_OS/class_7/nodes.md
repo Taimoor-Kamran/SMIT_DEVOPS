@@ -1,183 +1,156 @@
 # Linux Networking Commands (Class Notes)
 
-## 1. IP Commands
+## 1. ip a
 
-ip a / ip addr
-System ke saare network interfaces aur unke IP addresses show karta hai.
+Displays all network interfaces on the system along with their IP addresses.
 
-lo → Internal loopback network (system khud se baat karta hai)
-eth0 → Main network interface (internet connection)
-
-Network Types:
-
-BROADCAST → Sab devices ko message
-MULTICAST → Selected group ko message
-
-ISP (Internet Service Provider):
-
+lo (loopback): Internal network interface (system communicating with itself)
+eth0: Main network interface (used for internet connection)
+Networking Terms
+BROADCAST: Sends data to all devices in the network
+MULTICAST: Sends data to a specific group of devices
+ISP (Internet Service Providers)
 PTCL
 StormFiber
 LeoNet
-Zong / Jazz
-
-Public IP check:
-
+Zong / Jazz (Mobile Data)
+Useful Command
 curl ifconfig.me
 
-Other IP Commands:
+Shows your public IP address.
 
-ip link   # Interfaces ON/OFF status
-ip route  # Routing table (internet ka rasta)
+Related Commands
+ip addr → Shows IP details
+ip link → Shows interface status (UP/DOWN)
+ip route → Shows routing table (network paths)
+2. ifconfig
 
-## 2. ifconfig
+Alternative to ip a (older command)
 
-ifconfig
-
-Ye command bhi ip a jaisa hi hai (older tool).
-
-IP Types:
-
+Types of IP
 Local IP
 LAN IP
 Public IP
+3. ping google.com
 
-## 3. ping
+Checks whether a server or internet connection is reachable.
 
-ping google.com
+4. traceroute google.com
 
-Check karta hai ke internet ya server reachable hai ya nahi.
+Shows the path a data packet takes to reach the destination.
 
-## 4. traceroute
+Each line represents a router (hop)
+time shows latency in milliseconds (ms)
+5. netstat -tlun
 
-traceroute google.com
+Displays open ports and active connections.
 
-Data packet ka path show karta hai.
+Options:
 
-Har line = ek router (hop)
-time = latency (ms)
+-t → TCP connections
+-u → UDP connections
+-l → Listening ports only
+-n → Numeric format (IP & port numbers)
+6. ss -tuln
 
-## 5. netstat
+Modern alternative to netstat (faster and more detailed)
 
-netstat -tlun
+Options:
 
-Open ports aur active connections check karne ke liye.
-
--t → TCP
--u → UDP
--l → Listening ports
+-t → TCP connections
+-u → UDP connections
+-l → Listening sockets
 -n → Numeric format
+7. hostname / hostname -I
+hostname → Shows system name
+hostname -I → Shows system IP address
+8. nslookup google.com
 
-## 6. ss (Modern alternative of netstat)
+Finds the IP address of a domain name.
 
-ss -tuln
--t → TCP
--u → UDP
--l → Listening ports
--n → Numeric format
+9. dig google.com
 
-## 7. hostname
+Provides detailed DNS information.
 
-hostname
-hostname -I
+DNS Records
+TTL (Time To Live): Time (in seconds) DNS data is cached
+A Record: IPv4 address
+AAAA Record: IPv6 address
+MX Record: Mail server (e.g., smtp.google.com)
+CNAME: Alias of a domain
+NS Record: Name servers responsible for DNS queries
+TXT Record: Stores text data (SPF, DKIM, verification, etc.)
+Difference: nslookup vs dig
+nslookup → Basic output (mainly IP)
+dig → Detailed DNS information
+10. curl google.com
 
-## 8. DNS Commands
+Fetches website data in the terminal. Used for API testing and HTTP request checking.
 
-nslookup
-nslookup google.com
+11. wget
 
-Sirf basic IP info deta hai.
+Downloads files from the internet.
 
-dig
-dig google.com
+12. scp
 
-Detailed DNS information show karta hai.
+Copies files between systems.
 
-DNS Records:
+Example:
 
-A → IPv4
-AAAA → IPv6
-MX → Mail server
-CNAME → Alias
-NS → Name servers
-TXT → Text info (SPF, DKIM)
-
-TTL (Time to Live): Kitni der tak DNS cache valid rahega.
-
-## 9. curl
-
-curl google.com
-
-Website ka data fetch karta hai (API testing ke liye useful).
-
-## 10. wget
-
-File download karne ke liye use hota hai.
-
-## 11. scp (Secure Copy)
 scp file.txt user@ip:/home/
-
-Ek system se dusre system me file copy karta hai.
-
-## 12. SSH Setup (Local Server)
+13. SSH Setup (Local Server)
+Install SSH Server
 sudo apt update
 sudo apt install openssh-server -y
-
-
+Manage SSH Service
 sudo systemctl status ssh
 sudo systemctl start ssh
 sudo systemctl enable ssh
-
-
+Get IP Address
 hostname -I
-
-Connect:
-
+Connect to Server
 ssh user@ip
 
-SSH ek secure tarika hai remote login ka.
+SSH (Secure Shell): A secure method to access and control a remote system via terminal.
 
-## 13. route
+14. route -n
 
-route -n
+Displays routing table.
 
-Routing table show karta hai.
+Fields Explanation
+Destination: Target network
+0.0.0.0: Default route (all networks)
+Gateway: Router used to reach external networks
+Genmask: Subnet mask
 
-Important Fields:
+Examples:
 
-Destination → Network target
-Gateway → Router
-Genmask → Subnet mask
-Iface → Interface name
+172.20.64.1 → Default gateway
+255.255.240.0 → Subnet mask
+Flags
+U → Interface is up
+G → Using a gateway
+Iface
+Network interface name (e.g., eth0)
+15. arp -a
 
-Common Values:
+Displays ARP table (mapping of IP addresses to MAC addresses in local network).
 
-0.0.0.0 → Default route
-172.x.x.x → Local network
+16. mtr (My Traceroute)
 
-## 14. arp
+Combination of ping and traceroute.
 
-arp -a
-
-ARP table show karta hai (IP ↔ MAC mapping).
-
-## 15. mtr (My Traceroute)
-
-Install:
-
+Installation
 sudo apt update
 sudo apt install mtr-tiny
+Output Fields
+Host: Network devices (routers/gateways)
+Loss%: Packet loss
+Snt: Sent packets
+Last: Last response time
+Avg: Average latency
+Best: Best latency
+Wrst: Worst latency
+StDev: Latency variation
 
-Run:
-
-mtr google.com
-
-Fields:
-
-Host → Routers
-Loss% → Packet loss
-Snt → Sent packets
-Last → Last latency
-Avg → Average latency
-Best → Best latency
-Wrst → Worst latency
-StDev → Variation
+Useful for diagnosing slow networks and packet loss.
