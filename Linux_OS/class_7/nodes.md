@@ -85,17 +85,17 @@ Finds the IP address of a domain name.
 
 Provides detailed DNS information.
 
-DNS Records
-TTL (Time To Live): Time (in seconds) DNS data is cached
-A Record: IPv4 address
-AAAA Record: IPv6 address
-MX Record: Mail server (e.g., smtp.google.com)
-CNAME: Alias of a domain
-NS Record: Name servers responsible for DNS queries
-TXT Record: Stores text data (SPF, DKIM, verification, etc.)
-Difference: nslookup vs dig
-nslookup → Basic output (mainly IP)
-dig → Detailed DNS information
+- DNS Records
+- TTL (Time To Live): Time (in seconds) DNS data is cached
+- A Record: IPv4 address
+- AAAA Record: IPv6 address
+- MX Record: Mail server (e.g., smtp.google.com)
+- CNAME: Alias of a domain
+- NS Record: Name servers responsible for DNS queries
+- TXT Record: Stores text data (SPF, DKIM, verification, etc.)
+- Difference: nslookup vs dig
+- nslookup → Basic output (mainly IP)
+- dig → Detailed DNS information
 
 ## 10. curl google.com
 
