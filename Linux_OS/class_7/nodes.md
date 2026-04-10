@@ -151,7 +151,9 @@ Common Values:
 
 0.0.0.0 → Default route
 172.x.x.x → Local network
-14. arp
+
+## 14. arp
+
 arp -a
 
 ARP table show karta hai (IP ↔ MAC mapping).
