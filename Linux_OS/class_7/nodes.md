@@ -28,7 +28,9 @@ Other IP Commands:
 
 ip link   # Interfaces ON/OFF status
 ip route  # Routing table (internet ka rasta)
-2. ifconfig
+
+## 2. ifconfig
+
 ifconfig
 
 Ye command bhi ip a jaisa hi hai (older tool).
