@@ -115,16 +115,19 @@ scp file.txt user@ip:/home/
 
 ## 13. SSH Setup (Local Server)
 
+### Install SSH Server
+
 ```bash
-Install SSH Server
 sudo apt update
 sudo apt install openssh-server -y
-Manage SSH Service
+```
+### Manage SSH Service
+
+```bash
 sudo systemctl status ssh
 sudo systemctl start ssh
 sudo systemctl enable ssh
 ```
-
 
 Get IP Address
 hostname -I
