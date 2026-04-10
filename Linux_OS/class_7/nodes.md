@@ -32,7 +32,8 @@ Types of IP
 Local IP
 LAN IP
 Public IP
-3. ping google.com
+
+## 3. ping google.com
 
 Checks whether a server or internet connection is reachable.
 
