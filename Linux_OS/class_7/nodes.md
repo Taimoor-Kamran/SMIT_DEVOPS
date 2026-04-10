@@ -102,11 +102,12 @@ TXT → Text info (SPF, DKIM)
 TTL (Time to Live): Kitni der tak DNS cache valid rahega.
 
 ## 9. curl
+
 curl google.com
 
 Website ka data fetch karta hai (API testing ke liye useful).
 
-10. wget
+## 10. wget
 
 File download karne ke liye use hota hai.
 
