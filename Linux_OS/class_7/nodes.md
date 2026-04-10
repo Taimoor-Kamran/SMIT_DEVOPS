@@ -134,7 +134,8 @@ ssh user@ip
 
 SSH ek secure tarika hai remote login ka.
 
-13. route
+## 13. route
+
 route -n
 
 Routing table show karta hai.
