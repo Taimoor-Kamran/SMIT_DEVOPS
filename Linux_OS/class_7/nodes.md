@@ -64,16 +64,22 @@ Open ports aur active connections check karne ke liye.
 -u → UDP
 -l → Listening ports
 -n → Numeric format
-6. ss (Modern alternative of netstat)
+
+## 6. ss (Modern alternative of netstat)
+
 ss -tuln
 -t → TCP
 -u → UDP
 -l → Listening ports
 -n → Numeric format
-7. hostname
+
+## 7. hostname
+
 hostname
 hostname -I
-8. DNS Commands
+
+## 8. DNS Commands
+
 nslookup
 nslookup google.com
 
@@ -95,7 +101,7 @@ TXT → Text info (SPF, DKIM)
 
 TTL (Time to Live): Kitni der tak DNS cache valid rahega.
 
-9. curl
+## 9. curl
 curl google.com
 
 Website ka data fetch karta hai (API testing ke liye useful).
