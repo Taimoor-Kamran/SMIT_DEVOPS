@@ -25,9 +25,9 @@ Shows your public IP address.
 
 ### Related Commands
 
-1. ip addr → Shows IP details
-2. ip link → Shows interface status (UP/DOWN)
-3. ip route → Shows routing table (network paths)
+- ip addr → Shows IP details
+- ip link → Shows interface status (UP/DOWN)
+- ip route → Shows routing table (network paths)
 
 ## 2. ifconfig
 
