@@ -56,10 +56,10 @@ Displays open ports and active connections.
 
 Options:
 
--t → TCP connections
--u → UDP connections
--l → Listening ports only
--n → Numeric format (IP & port numbers)
+- -t → TCP connections
+- -u → UDP connections
+- -l → Listening ports only
+- -n → Numeric format (IP & port numbers)
 
 6. ss -tuln
 
@@ -67,10 +67,10 @@ Modern alternative to netstat (faster and more detailed)
 
 Options:
 
--t → TCP connections
--u → UDP connections
--l → Listening sockets
--n → Numeric format
+- -t → TCP connections
+- -u → UDP connections
+- -l → Listening sockets
+- -n → Numeric format
 
 ## 7. hostname / hostname -I
 
