@@ -145,21 +145,22 @@ SSH (Secure Shell): A secure method to access and control a remote system via te
 
 Displays routing table.
 
-Fields Explanation
-Destination: Target network
-0.0.0.0: Default route (all networks)
-Gateway: Router used to reach external networks
-Genmask: Subnet mask
+### Fields Explanation
 
-Examples:
+- Destination: Target network
+- 0.0.0.0: Default route (all networks)
+- Gateway: Router used to reach external networks
+- Genmask: Subnet mask
 
-172.20.64.1 → Default gateway
-255.255.240.0 → Subnet mask
-Flags
-U → Interface is up
-G → Using a gateway
-Iface
-Network interface name (e.g., eth0)
+### Examples:
+
+- 172.20.64.1 → Default gateway
+- 255.255.240.0 → Subnet mask
+- Flags
+- U → Interface is up
+- G → Using a gateway
+- Iface
+- Network interface name (e.g., eth0)
 
 ## 15. arp -a
 
