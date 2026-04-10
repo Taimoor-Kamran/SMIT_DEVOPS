@@ -37,7 +37,7 @@ Public IP
 
 Checks whether a server or internet connection is reachable.
 
-4. traceroute google.com
+## 4. traceroute google.com
 
 Shows the path a data packet takes to reach the destination.
 
