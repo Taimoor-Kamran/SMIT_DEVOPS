@@ -131,7 +131,8 @@ sudo systemctl start ssh
 sudo systemctl enable ssh
 ```
 
-Get IP Address
+### Get IP Address
+
 hostname -I
 Connect to Server
 ssh user@ip
