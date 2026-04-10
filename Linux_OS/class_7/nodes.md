@@ -1,6 +1,6 @@
 # Linux Networking Commands (Class Notes)
 
-1. IP Commands
+## 1. IP Commands
 
 ip a / ip addr
 System ke saare network interfaces aur unke IP addresses show karta hai.
@@ -38,7 +38,9 @@ IP Types:
 Local IP
 LAN IP
 Public IP
-3. ping
+
+## 3. ping
+
 ping google.com
 
 Check karta hai ke internet ya server reachable hai ya nahi.
