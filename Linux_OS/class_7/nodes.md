@@ -75,7 +75,7 @@ hostname -I → Shows system IP address
 
 Finds the IP address of a domain name.
 
-9. dig google.com
+## 9. dig google.com
 
 Provides detailed DNS information.
 
