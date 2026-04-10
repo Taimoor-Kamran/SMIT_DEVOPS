@@ -95,7 +95,7 @@ dig → Detailed DNS information
 
 Fetches website data in the terminal. Used for API testing and HTTP request checking.
 
-11. wget
+## 11. wget
 
 Downloads files from the internet.
 
