@@ -116,7 +116,7 @@ scp file.txt user@ip:/home/
 
 Ek system se dusre system me file copy karta hai.
 
-12. SSH Setup (Local Server)
+## 12. SSH Setup (Local Server)
 sudo apt update
 sudo apt install openssh-server -y
 
