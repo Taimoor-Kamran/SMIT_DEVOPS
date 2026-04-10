@@ -9,11 +9,14 @@ eth0: Main network interface (used for internet connection)
 Networking Terms
 BROADCAST: Sends data to all devices in the network
 MULTICAST: Sends data to a specific group of devices
-ISP (Internet Service Providers)
-PTCL
-StormFiber
-LeoNet
-Zong / Jazz (Mobile Data)
+
+### ISP (Internet Service Providers)
+
+- PTCL
+- StormFiber
+- LeoNet
+- Zong / Jazz (Mobile Data)
+
 Useful Command
 curl ifconfig.me
 
