@@ -147,7 +147,7 @@ Network interface name (e.g., eth0)
 
 Displays ARP table (mapping of IP addresses to MAC addresses in local network).
 
-16. mtr (My Traceroute)
+## 16. mtr (My Traceroute)
 
 Combination of ping and traceroute.
 
