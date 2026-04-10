@@ -12,10 +12,10 @@ MULTICAST: Sends data to a specific group of devices
 
 ### ISP (Internet Service Providers)
 
-- PTCL
-- StormFiber
-- LeoNet
-- Zong / Jazz (Mobile Data)
+1. PTCL
+2. StormFiber
+3. LeoNet
+4. Zong / Jazz (Mobile Data)
 
 Useful Command
 curl ifconfig.me
