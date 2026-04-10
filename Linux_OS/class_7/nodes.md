@@ -55,6 +55,7 @@ Har line = ek router (hop)
 time = latency (ms)
 
 ## 5. netstat
+
 netstat -tlun
 
 Open ports aur active connections check karne ke liye.
