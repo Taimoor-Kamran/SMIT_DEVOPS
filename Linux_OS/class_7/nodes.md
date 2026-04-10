@@ -17,15 +17,17 @@ MULTICAST: Sends data to a specific group of devices
 3. LeoNet
 4. Zong / Jazz (Mobile Data)
 
-Useful Command
-curl ifconfig.me
+### Useful Command
+
+## curl ifconfig.me
 
 Shows your public IP address.
 
-Related Commands
-ip addr → Shows IP details
-ip link → Shows interface status (UP/DOWN)
-ip route → Shows routing table (network paths)
+### Related Commands
+
+1. ip addr → Shows IP details
+2. ip link → Shows interface status (UP/DOWN)
+3. ip route → Shows routing table (network paths)
 
 ## 2. ifconfig
 
