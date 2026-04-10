@@ -111,7 +111,7 @@ Website ka data fetch karta hai (API testing ke liye useful).
 
 File download karne ke liye use hota hai.
 
-11. scp (Secure Copy)
+## 11. scp (Secure Copy)
 scp file.txt user@ip:/home/
 
 Ek system se dusre system me file copy karta hai.
