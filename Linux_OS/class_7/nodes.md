@@ -123,7 +123,7 @@ ssh user@ip
 
 SSH (Secure Shell): A secure method to access and control a remote system via terminal.
 
-14. route -n
+## 14. route -n
 
 Displays routing table.
 
