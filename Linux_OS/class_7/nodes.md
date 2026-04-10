@@ -54,6 +54,7 @@ Options:
 -u → UDP connections
 -l → Listening ports only
 -n → Numeric format (IP & port numbers)
+
 6. ss -tuln
 
 Modern alternative to netstat (faster and more detailed)
