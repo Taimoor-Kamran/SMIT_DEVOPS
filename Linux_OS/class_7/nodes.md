@@ -43,7 +43,8 @@ Shows the path a data packet takes to reach the destination.
 
 Each line represents a router (hop)
 time shows latency in milliseconds (ms)
-5. netstat -tlun
+
+## 5. netstat -tlun
 
 Displays open ports and active connections.
 
