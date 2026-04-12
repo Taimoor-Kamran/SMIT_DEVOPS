@@ -179,11 +179,16 @@ ls H*
 
 Shows all files/directories starting with H
 
-? → Exactly One Character
+### ? → Exactly One Character
+
+```bash
 ls file?
+```
 
 Matches:
 
+```bash
 file1
 fileA
 fileX
+```
