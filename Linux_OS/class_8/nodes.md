@@ -24,11 +24,13 @@
 
 # Basic Concepts Covered
 
-- Comments  
+### Comments  
 
-'# This is a comment'
+"# This is a comment"
 
-- Variables  
+- Used to write notes in scripts.
+
+### Variables  
 - User Input  
 
 ---
@@ -38,7 +40,6 @@
 ```bash
 # This is a comment
 
-Used to write notes in scripts.
 
 Variables
 name="Taimoor"
