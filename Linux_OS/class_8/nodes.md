@@ -19,3 +19,31 @@
 
 ### 6. Z Shell (zsh)
 - Advanced shell with plugins, themes, and auto-completion.
+
+# Basic Concepts Covered
+
+- Comments  
+- Variables  
+- User Input  
+
+---
+
+# Comments
+
+# This is a comment
+
+Used to write notes in scripts.
+
+## Variables
+
+```bash
+name="Taimoor"
+echo $name
+## Output:
+Taimoor
+```
+
+## User Input
+
+read -p "Enter your name: " name
+echo "Hello $name"
