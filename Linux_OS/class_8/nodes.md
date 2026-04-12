@@ -162,12 +162,20 @@ ping -c 1 google.com || echo "Internet Down"
 
 ## Brace Expansion
 
+```bash
 echo file{1,2,3}
-Output:
+```
+### Output:
+
 file1 file2 file3
-Wildcards
-* → Any Number of Characters
+
+## Wildcards
+
+### * → Any Number of Characters
+
+```bash
 ls H*
+```
 
 Shows all files/directories starting with H
 
