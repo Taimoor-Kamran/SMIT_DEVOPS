@@ -114,3 +114,48 @@ ping -c 1 google.com || echo "Internet Down"
 ```bash
 [ 10 -gt 5 ] && echo "10 is greater"
 ```
+
+### File Test Operators
+
+| Operator | Meaning |
+| -------- | ------- |
+| -d | Directory exists |
+| -e | File or directory exists |
+| -f | Regular file |
+| -r | Readable |
+| -w | Writable |
+| -x | Executable |
+| -s | File size greater than 0 |
+Example:
+[ -f script.sh ] && echo "Regular File"
+String Operators
+Operator	Meaning
+=	Equal
+!=	Not Equal
+Example:
+[ "$name" = "Taimoor" ] && echo "Matched"
+Unary Operators
+Operator	Meaning
+-z	String is empty
+-n	String is not empty
+Example:
+[ -z "$name" ] && echo "Empty"
+[ -n "$name" ] && echo "Not Empty"
+Brace Expansion
+echo file{1,2,3}
+Output:
+file1 file2 file3
+Wildcards
+* → Any Number of Characters
+ls H*
+
+Shows all files/directories starting with H
+
+? → Exactly One Character
+ls file?
+
+Matches:
+
+file1
+fileA
+fileX
