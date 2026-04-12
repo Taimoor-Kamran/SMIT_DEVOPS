@@ -71,3 +71,9 @@ echo $?
 - $? stores the exit status of the last command.
 
 ## Logical AND (&&)
+
+Runs next command only if previous command is successful.
+
+```bash
+mkdir test && cd test && touch file.txt
+```
