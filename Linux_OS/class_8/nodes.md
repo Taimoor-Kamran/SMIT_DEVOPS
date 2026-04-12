@@ -108,3 +108,9 @@ ping -c 1 google.com || echo "Internet Down"
 | -lt | Less Than |
 | -ge | Greater Than or Equal |
 | -le | Less Than or Equal |
+
+### Example:
+
+```bash
+[ 10 -gt 5 ] && echo "10 is greater"
+```
