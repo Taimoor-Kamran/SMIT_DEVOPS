@@ -77,3 +77,10 @@ Runs next command only if previous command is successful.
 ```bash
 mkdir test && cd test && touch file.txt
 ```
+
+## Example:
+
+```bash
+[ -e script.sh ] && echo "File Exists"
+```
+
