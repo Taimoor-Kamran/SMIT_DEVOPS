@@ -154,8 +154,12 @@ ping -c 1 google.com || echo "Internet Down"
 | -n | String is not empty |
 
 ### Example:
+
+```bash
 [ -z "$name" ] && echo "Empty"
 [ -n "$name" ] && echo "Not Empty"
+```
+
 Brace Expansion
 echo file{1,2,3}
 Output:
