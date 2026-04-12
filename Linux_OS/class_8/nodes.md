@@ -25,6 +25,9 @@
 # Basic Concepts Covered
 
 - Comments  
+
+'# This is a comment'
+
 - Variables  
 - User Input  
 
