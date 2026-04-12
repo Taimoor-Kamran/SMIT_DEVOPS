@@ -61,3 +61,5 @@ echo "Hello $name"
 | 127 | Command Not Found |
 | 130 | Interrupted using `Ctrl + C` |
 | 255 | Out of Range / Severe Failure |
+
+## Check Exit Status
