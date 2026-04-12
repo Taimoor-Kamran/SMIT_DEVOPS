@@ -68,3 +68,6 @@ echo "Hello $name"
 ls
 echo $?
 ```
+- $? stores the exit status of the last command.
+
+## Logical AND (&&)
