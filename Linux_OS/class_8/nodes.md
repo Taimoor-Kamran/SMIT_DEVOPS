@@ -115,7 +115,7 @@ ping -c 1 google.com || echo "Internet Down"
 [ 10 -gt 5 ] && echo "10 is greater"
 ```
 
-### File Test Operators
+## File Test Operators
 
 | Operator | Meaning |
 | -------- | ------- |
@@ -126,6 +126,7 @@ ping -c 1 google.com || echo "Internet Down"
 | -w | Writable |
 | -x | Executable |
 | -s | File size greater than 0 |
+
 Example:
 [ -f script.sh ] && echo "Regular File"
 String Operators
