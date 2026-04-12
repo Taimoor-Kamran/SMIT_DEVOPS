@@ -1,19 +1,13 @@
-# Main Types of Shells (Commonly Used)
+# Shell Scripting
 
-## 1. Bourne Shell (sh)
-- Path: `/bin/sh`
+## Main Types of Shells (Commonly Used)
 
-## 2. Bash (Bourne Again Shell)
-- Path: `/bin/bash`
-
-## 3. C Shell (csh)
-- Uses C programming language style syntax.
-
-## 4. TCSH (TENEX C Shell)
-
-## 5. Korn Shell (ksh)
-
-## 6. Z Shell (zsh)
+### 1. Bourne Shell (sh)
+### 2. Bash (Bourne Again Shell)
+### 3. C Shell (csh)
+### 4. TCSH (TENEX C Shell)
+### 5. Korn Shell (ksh)
+### 6. Z Shell (zsh)
 
 ---
 
