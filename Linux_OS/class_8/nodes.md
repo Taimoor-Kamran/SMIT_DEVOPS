@@ -134,9 +134,11 @@ ping -c 1 google.com || echo "Internet Down"
 ```
 
 ## String Operators
-Operator	Meaning
-=	Equal
-!=	Not Equal
+
+| Operator | Meaning |
+| = | Equal |
+| != | Not Equal |
+
 Example:
 [ "$name" = "Taimoor" ] && echo "Matched"
 Unary Operators
