@@ -63,3 +63,8 @@ echo "Hello $name"
 | 255 | Out of Range / Severe Failure |
 
 ## Check Exit Status
+
+```bash
+ls
+echo $?
+```
