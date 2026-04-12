@@ -88,5 +88,10 @@ mkdir test && cd test && touch file.txt
 
 Runs second command if first command fails.
 
+```bash
 mkdir saylani || echo "Folder Already Exists"
+```
+
+```bash
 ping -c 1 google.com || echo "Internet Down"
+```
