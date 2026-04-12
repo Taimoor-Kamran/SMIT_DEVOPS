@@ -136,6 +136,7 @@ ping -c 1 google.com || echo "Internet Down"
 ## String Operators
 
 | Operator | Meaning |
+| -------- | ------- |
 | = | Equal |
 | != | Not Equal |
 
@@ -145,8 +146,10 @@ ping -c 1 google.com || echo "Internet Down"
 [ "$name" = "Taimoor" ] && echo "Matched"
 ```
 
-Unary Operators
-Operator	Meaning
+## Unary Operators
+
+| Operator | Meaning |
+
 -z	String is empty
 -n	String is not empty
 Example:
