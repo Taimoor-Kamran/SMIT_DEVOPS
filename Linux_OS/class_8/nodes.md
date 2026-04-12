@@ -150,8 +150,8 @@ ping -c 1 google.com || echo "Internet Down"
 
 | Operator | Meaning |
 | -------- | ------- |
--z	String is empty
--n	String is not empty
+| -z | String is empty |
+| -n | String is not empty |
 Example:
 [ -z "$name" ] && echo "Empty"
 [ -n "$name" ] && echo "Not Empty"
