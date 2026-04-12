@@ -84,3 +84,9 @@ mkdir test && cd test && touch file.txt
 [ -e script.sh ] && echo "File Exists"
 ```
 
+Logical OR (||)
+
+Runs second command if first command fails.
+
+mkdir saylani || echo "Folder Already Exists"
+ping -c 1 google.com || echo "Internet Down"
