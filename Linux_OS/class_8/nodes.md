@@ -7,7 +7,7 @@
 - Path: `/bin/bash`
 
 ## 3. C Shell (csh)
-- C programming language style shell syntax
+- Uses C programming language style syntax.
 
 ## 4. TCSH (TENEX C Shell)
 
@@ -19,9 +19,9 @@
 
 # Basic Concepts Covered
 
-- Comments
-- Variables
-- User Input
+- Comments  
+- Variables  
+- User Input  
 
 ---
 
@@ -34,7 +34,7 @@
 | 2 | Misuse of Command |
 | 126 | Command Found but Not Executable |
 | 127 | Command Not Found |
-| 130 | Ctrl + C |
+| 130 | Interrupted using `Ctrl + C` |
 | 255 | Out of Range / Severe Failure |
 
 ---
@@ -43,7 +43,6 @@
 
 ```bash
 [ Condition ] && [ Condition ] && Command
-
 Example:
 [ -e script.sh ] && [ 10 -eq 20 ] && echo "Success"
 Comparison Operators
@@ -57,47 +56,45 @@ Operator	Meaning
 -le	Less Than or Equal
 File Test Operators
 Operator	Meaning
--d	Directory Check
--e	File or Directory Exists
--f	Regular File
--r	Readable
--w	Writable
--x	Executable
--s	File Size Greater Than 0
+-d	Checks if it is a directory
+-e	Checks if file or directory exists
+-f	Checks if it is a regular file
+-r	Checks if readable
+-w	Checks if writable
+-x	Checks if executable
+-s	Checks if file size is greater than 0
 String Operators
 Operator	Meaning
 =	Equal
 !=	Not Equal
 Unary Operators
 Operator	Meaning
--z	Empty String
--n	Not Empty String
+-z	String is empty
+-n	String is not empty
 Logical OR (||)
 google.com || echo "Internet Down"
 mkdir saylani || echo "Folder Already Exists"
 Reserved Variable
 $?
-Stores last command exit status
+Stores the exit status of the last command.
 Brace Expansion
 echo file{1,2,3}
 Output:
 file1 file2 file3
 Wildcards
-* → Any Number of Characters
+* → Matches Any Number of Characters
 H*
 
-Shows all files/directories starting with H
+Shows all files and directories starting with H
 
 -d H*
 
 Shows directories starting with H
 
-? → Exactly One Character
+? → Matches Exactly One Character
 Example:
 file?
-
 Matches:
-
 file1
 fileA
 fileX
