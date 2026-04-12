@@ -99,3 +99,12 @@ ping -c 1 google.com || echo "Internet Down"
 ## Comparison Operators
 
 ### Numeric Operators
+
+| Operator | Meaning |
+| -------- | ------- |
+| -eq |	Equal |
+| -ne | Not Equal |
+| -gt | Greater Than |
+| -lt | Less Than |
+| -ge | Greater Than or Equal |
+| -le | Less Than or Equal |
