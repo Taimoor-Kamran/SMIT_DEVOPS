@@ -149,7 +149,7 @@ ping -c 1 google.com || echo "Internet Down"
 ## Unary Operators
 
 | Operator | Meaning |
-
+| -------- | ------- |
 -z	String is empty
 -n	String is not empty
 Example:
