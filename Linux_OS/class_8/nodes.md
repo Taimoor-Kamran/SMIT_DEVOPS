@@ -95,3 +95,5 @@ mkdir saylani || echo "Folder Already Exists"
 ```bash
 ping -c 1 google.com || echo "Internet Down"
 ```
+
+## Comparison Operators
