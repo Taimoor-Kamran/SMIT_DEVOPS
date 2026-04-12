@@ -129,8 +129,11 @@ ping -c 1 google.com || echo "Internet Down"
 
 ### Example:
 
+```bash
 [ -f script.sh ] && echo "Regular File"
-String Operators
+```
+
+## String Operators
 Operator	Meaning
 =	Equal
 !=	Not Equal
