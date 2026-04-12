@@ -153,7 +153,7 @@ ping -c 1 google.com || echo "Internet Down"
 | -z | String is empty |
 | -n | String is not empty |
 
-## Example:
+### Example:
 [ -z "$name" ] && echo "Empty"
 [ -n "$name" ] && echo "Not Empty"
 Brace Expansion
