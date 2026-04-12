@@ -160,7 +160,8 @@ ping -c 1 google.com || echo "Internet Down"
 [ -n "$name" ] && echo "Not Empty"
 ```
 
-Brace Expansion
+## Brace Expansion
+
 echo file{1,2,3}
 Output:
 file1 file2 file3
