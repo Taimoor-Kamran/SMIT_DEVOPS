@@ -36,7 +36,6 @@
 
 name="Taimoor"
 echo $name
-Taimoor
 
 ---
 
