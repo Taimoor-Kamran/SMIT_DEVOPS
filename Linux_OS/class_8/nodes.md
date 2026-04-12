@@ -84,7 +84,7 @@ mkdir test && cd test && touch file.txt
 [ -e script.sh ] && echo "File Exists"
 ```
 
-Logical OR (||)
+## Logical OR (||)
 
 Runs second command if first command fails.
 
