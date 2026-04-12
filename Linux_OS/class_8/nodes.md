@@ -127,7 +127,8 @@ ping -c 1 google.com || echo "Internet Down"
 | -x | Executable |
 | -s | File size greater than 0 |
 
-Example:
+### Example:
+
 [ -f script.sh ] && echo "Regular File"
 String Operators
 Operator	Meaning
