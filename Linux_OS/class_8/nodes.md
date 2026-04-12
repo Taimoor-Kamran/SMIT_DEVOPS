@@ -49,3 +49,15 @@ Taimoor
 read -p "Enter your name: " name
 echo "Hello $name"
 ```
+
+## Common Special Exit Values
+
+| Code | Meaning |
+|------|---------|
+| 0 | Success |
+| 1 | General Error / False |
+| 2 | Misuse of Command |
+| 126 | Command Found but Not Executable |
+| 127 | Command Not Found |
+| 130 | Interrupted using `Ctrl + C` |
+| 255 | Out of Range / Severe Failure |
