@@ -139,8 +139,12 @@ ping -c 1 google.com || echo "Internet Down"
 | = | Equal |
 | != | Not Equal |
 
-Example:
+### Example:
+
+```bash
 [ "$name" = "Taimoor" ] && echo "Matched"
+```
+
 Unary Operators
 Operator	Meaning
 -z	String is empty
