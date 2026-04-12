@@ -31,21 +31,19 @@
 - Used to write notes in scripts.
 
 ### Variables  
+
 - User Input  
+
+name="Taimoor"
+echo $name
+Taimoor
 
 ---
 
-# Comments
-
 ```bash
-# This is a comment
 
-
-Variables
 name="Taimoor"
-echo $name
 Output:
-Taimoor
 User Input
 read -p "Enter your name: " name
 echo "Hello $name"
