@@ -178,8 +178,13 @@ Bold text only.
 
 Italic text only.
 
+```html
 <i>Italic Text</i>
+```
+
+```html
 <em>
+```
 
 Emphasized text (usually italic).
 
