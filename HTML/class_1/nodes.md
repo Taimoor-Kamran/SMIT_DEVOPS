@@ -262,14 +262,14 @@ info@email.com
 
 ## Difference Between Similar Tags
 | Tag | Purpose |
-<strong>	Important text
-<b>	Bold only
-<em>	Emphasized text
-<i>	Italic only
-<blockquote>	Long quote
-<q>	Short quote
-<sup>	Upper text
-<sub>	Lower text
+| <strong> |	Important text |
+| <b> |	Bold only |
+| <em> |	Emphasized text |
+| <i> |	Italic only |
+| <blockquote> |	Long quote |
+| <q> |	Short quote |
+| <sup> |	Upper text |
+| <sub> |	Lower text |
 Example Full Page
 <html>
 <head>
