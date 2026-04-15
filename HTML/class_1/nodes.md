@@ -51,7 +51,7 @@ HTML stands for **HyperText Markup Language**. It is used to create the structur
 </body>
 ```
 
-Heading Tags
+## Heading Tags
 
 HTML provides 6 heading tags.
 
