@@ -275,6 +275,8 @@ info@email.com
 ```
 
 ## Example Full Page
+
+```html
 <html>
 <head>
    <title>HTML Practice</title>
@@ -296,3 +298,18 @@ info@email.com
 <hr>
 
 <blockquote>Success comes with practice.</blockquote>
+
+<p>Teacher said <q>Keep learning</q></p>
+
+<abbr title="Cascading Style Sheets">CSS</abbr>
+
+<p><dfn>HTML</dfn> is webpage language.</p>
+
+<address>
+Karachi, Pakistan
+</address>
+
+</body>
+</html>
+
+```
