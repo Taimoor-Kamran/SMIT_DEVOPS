@@ -23,9 +23,9 @@ HTML stands for **HyperText Markup Language**. It is used to create the structur
 <html> ... </html>
 ```
 <head>
-Contains metadata about the webpage.
-Includes title, styles, links, scripts, etc.
-Not shown directly on page.
+- Contains metadata about the webpage.
+- Includes title, styles, links, scripts, etc.
+- Not shown directly on page.
 <head>
    <title>Website Title</title>
 </head>
