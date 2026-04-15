@@ -169,8 +169,12 @@ Important text (usually bold).
 
 Bold text only.
 
+```html
 <b>Bold Text</b>
+```
+```html
 <i>
+```
 
 Italic text only.
 
