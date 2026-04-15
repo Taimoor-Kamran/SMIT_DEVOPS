@@ -261,8 +261,7 @@ info@email.com
 ```
 
 ## Difference Between Similar Tags
-| Tag | Purpose |
-| --- | ------- |
+Tag  Purpose 
 <strong>	Important text
 <b>	Bold only
 <em>	Emphasized text
