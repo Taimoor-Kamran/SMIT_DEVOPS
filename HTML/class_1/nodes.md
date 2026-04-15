@@ -5,6 +5,7 @@ HTML stands for **HyperText Markup Language**. It is used to create the structur
 
 ## Basic HTML Structure
 
+```html
 <html>
 <head>
     <title>My First Page</title>
@@ -13,6 +14,7 @@ HTML stands for **HyperText Markup Language**. It is used to create the structur
     Content goes here
 </body>
 </html>
+```
 
 <html>
 Root element of an HTML page.
