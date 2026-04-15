@@ -58,13 +58,17 @@ HTML provides 6 heading tags.
 ### <h1> to <h6>
 <h1> = Largest heading
 <h6> = Smallest heading
+
+```html
 <h1>Main Heading</h1>
 <h2>Sub Heading</h2>
 <h3>Section Heading</h3>
 <h4>Small Heading</h4>
 <h5>Smaller Heading</h5>
 <h6>Smallest Heading</h6>
-Paragraph Tag
+```
+
+## Paragraph Tag
 <p>
 
 Used to write paragraphs.
