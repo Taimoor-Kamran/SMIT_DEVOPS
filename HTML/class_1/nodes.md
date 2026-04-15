@@ -188,7 +188,11 @@ Italic text only.
 
 Emphasized text (usually italic).
 
+```html
 <em>Important Note</em>
+```
+
+
 Quotation Tags
 <blockquote>
 
