@@ -41,11 +41,16 @@ HTML stands for **HyperText Markup Language**. It is used to create the structur
 <title>My Website</title>
 ```
 
-<body>
-Contains all visible content of webpage.
+### <body>
+
+- Contains all visible content of webpage.
+
+```html
 <body>
    <h1>Hello World</h1>
 </body>
+```
+
 Heading Tags
 
 HTML provides 6 heading tags.
