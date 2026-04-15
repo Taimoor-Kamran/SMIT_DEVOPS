@@ -109,7 +109,9 @@ Output: x²
 
 Subscript text (lower text).
 
+```html
 H<sub>2</sub>O
+```
 
 Output: H₂O
 
