@@ -214,30 +214,45 @@ Used for short inline quotation.
 
 Output: He said “Hello”
 
-Short Forms / Definitions
+## Short Forms / Definitions
+
 <abbr>
 
 Abbreviation tag.
 
+```html
 <abbr title="HyperText Markup Language">HTML</abbr>
+```
 
 Hover on HTML to see full form.
 
+```html
 <cite>
+```
 
 Used for title of book, movie, article, etc.
 
+```html
 <cite>Harry Potter</cite>
+```
+
+```html
 <dfn>
+```
 
 Used when defining a term first time.
 
+```html
 <dfn>HTML</dfn> is a markup language.
-Contact Information
+```
+
+## Contact Information
+
 <address>
 
 Used for contact details.
 
+```
 <address>
 John Doe <br>
 Karachi, Pakistan <br>
