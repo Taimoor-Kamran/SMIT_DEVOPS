@@ -115,11 +115,13 @@ H<sub>2</sub>O
 
 Output: H₂O
 
-White Space in HTML
+## White Space in HTML
 
 Extra spaces are ignored by browser.
 
+```html
 <p>Hello     World</p>
+```
 
 Output: Hello World
 
