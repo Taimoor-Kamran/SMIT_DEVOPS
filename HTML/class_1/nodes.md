@@ -271,7 +271,8 @@ info@email.com
 | <q> |	Short quote |
 | <sup> |	Upper text |
 | <sub> |	Lower text |
-Example Full Page
+
+## Example Full Page
 <html>
 <head>
    <title>HTML Practice</title>
