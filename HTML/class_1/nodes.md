@@ -33,10 +33,14 @@ HTML stands for **HyperText Markup Language**. It is used to create the structur
 </head>
 ```
 
-<title>
-Sets the title of the webpage.
-Appears in browser tab.
+### <title>
+- Sets the title of the webpage.
+- Appears in browser tab.
+
+```html
 <title>My Website</title>
+```
+
 <body>
 Contains all visible content of webpage.
 <body>
