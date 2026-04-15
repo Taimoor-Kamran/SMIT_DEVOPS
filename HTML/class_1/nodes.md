@@ -258,6 +258,8 @@ John Doe <br>
 Karachi, Pakistan <br>
 info@email.com
 </address>
+```
+
 Difference Between Similar Tags
 Tag	Purpose
 <strong>	Important text
