@@ -69,7 +69,9 @@ HTML provides 6 heading tags.
 ```
 
 ## Paragraph Tag
+```html
 <p>
+```
 
 Used to write paragraphs.
 
