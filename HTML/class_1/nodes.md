@@ -91,15 +91,21 @@ Defines language of content.
 
 ## Text Formatting Tags
 
+```html
 <sup>
+```
 
 Superscript text (upper text).
 
+```html
 x<sup>2</sup>
+```
 
 Output: x²
 
+```html
 <sub>
+```
 
 Subscript text (lower text).
 
