@@ -192,20 +192,25 @@ Emphasized text (usually italic).
 <em>Important Note</em>
 ```
 
+## Quotation Tags
 
-Quotation Tags
 <blockquote>
 
 Used for long quotations.
 
+```html
 <blockquote>
 Learning never stops.
 </blockquote>
+```
+
 <q>
 
 Used for short inline quotation.
 
+```html
 <p>He said <q>Hello</q></p>
+```
 
 Output: He said “Hello”
 
