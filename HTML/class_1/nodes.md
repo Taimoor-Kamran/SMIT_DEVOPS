@@ -125,7 +125,7 @@ Extra spaces are ignored by browser.
 
 Output: Hello World
 
-To break line or spacing use tags like <br>
+To break line or spacing use tags like.<br>
 
 ```html
 <br>
