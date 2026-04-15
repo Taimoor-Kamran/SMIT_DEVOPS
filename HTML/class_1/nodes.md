@@ -261,6 +261,8 @@ info@email.com
 ```
 
 ## Difference Between Similar Tags
+
+```html
 Tag  Purpose 
 <strong>	Important text
 <b>	Bold only
@@ -270,6 +272,7 @@ Tag  Purpose
 <q>	Short quote
 <sup>	Upper text
 <sub>	Lower text
+```
 
 ## Example Full Page
 <html>
