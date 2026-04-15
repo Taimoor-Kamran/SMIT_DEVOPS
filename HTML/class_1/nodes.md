@@ -16,9 +16,9 @@ HTML stands for **HyperText Markup Language**. It is used to create the structur
 </html>
 ```
 
-<html>
-Root element of an HTML page.
-All HTML code is written inside this tag.
+### <html>
+- Root element of an HTML page.
+- All HTML code is written inside this tag.
 <html> ... </html>
 <head>
 Contains metadata about the webpage.
