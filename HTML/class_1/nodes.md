@@ -153,13 +153,19 @@ Horizontal line.
 
 Used to separate sections.
 
-Bold / Italic / Important Tags
+## Bold / Italic / Important Tags
+
 <strong>
 
 Important text (usually bold).
 
+```html
 <strong>Warning!</strong>
+```
+
+```html
 <b>
+```
 
 Bold text only.
 
