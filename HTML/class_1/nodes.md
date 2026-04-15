@@ -55,7 +55,9 @@ HTML stands for **HyperText Markup Language**. It is used to create the structur
 
 HTML provides 6 heading tags.
 
-<h1> to <h6>
+```html 
+<h1>```
+     to ```html<h6>```
 <h1> = Largest heading
 <h6> = Smallest heading
 <h1>Main Heading</h1>
