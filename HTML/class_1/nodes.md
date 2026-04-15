@@ -3,8 +3,6 @@
 ## Introduction to HTML
 HTML stands for **HyperText Markup Language**. It is used to create the structure of web pages. HTML uses **tags** to define elements like headings, paragraphs, images, links, tables, forms, etc.
 
----
-
 ## Basic HTML Structure
 
 ```html
