@@ -87,8 +87,10 @@ Defines language of content.
 
 <p lang="en-us">Paragraph in English</p>
 <p lang="ur">یہ اردو میں پیراگراف ہے</p>
-Helps search engines and screen readers.
-Text Formatting Tags
+- Helps search engines and screen readers.
+
+## Text Formatting Tags
+
 <sup>
 
 Superscript text (upper text).
