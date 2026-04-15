@@ -127,21 +127,29 @@ Output: Hello World
 
 To break line or spacing use tags like <br>.
 
+```html
 <br>
+```
 
 Line break tag.
 
+```html
 Hello <br> World
+```
 
 Output:
 Hello
 World
 
+```html
 <hr>
+```
 
 Horizontal line.
 
+```html
 <hr>
+```
 
 Used to separate sections.
 
