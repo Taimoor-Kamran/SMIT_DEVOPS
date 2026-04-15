@@ -260,8 +260,8 @@ info@email.com
 </address>
 ```
 
-Difference Between Similar Tags
-Tag	Purpose
+## Difference Between Similar Tags
+| Tag | Purpose |
 <strong>	Important text
 <b>	Bold only
 <em>	Emphasized text
