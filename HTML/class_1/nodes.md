@@ -76,8 +76,12 @@ HTML provides 6 heading tags.
 Used to write paragraphs.
 
 <p>This is a paragraph.</p>
-Language Attribute
+
+## Language Attribute
+
+```html
 lang
+```
 
 Defines language of content.
 
