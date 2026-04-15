@@ -252,7 +252,7 @@ Used when defining a term first time.
 
 Used for contact details.
 
-```
+```html
 <address>
 John Doe <br>
 Karachi, Pakistan <br>
