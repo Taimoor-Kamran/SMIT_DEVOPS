@@ -217,8 +217,10 @@ Used to display images.
 
 Used to set image size.
 
+```html
 <img src="pic.jpg" height="200" width="300">
-23. align
+```
+## align
 
 Used to align image (old method).
 
