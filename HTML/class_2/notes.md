@@ -190,6 +190,7 @@ Used to control where the link opens.
 ```
 
 Types:
+```html
 _blank → Opens in new tab
 _self → Opens in same tab
 20. tel
