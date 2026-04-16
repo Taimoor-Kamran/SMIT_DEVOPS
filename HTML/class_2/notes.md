@@ -47,11 +47,13 @@ Used for newly added text.
 
 Usually underlined.
 
-6. <del> - Deleted Text
+`<del>` - Deleted Text
 
 Used for removed text.
 
+```html
 <p>Price <del>1000</del></p>
+```
 
 Shows strike-through text.
 
