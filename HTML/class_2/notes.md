@@ -111,11 +111,14 @@ Used for bullet lists.
 
 Used to change bullet style.
 
+```html
 <ul style="list-style-type:square;">
   <li>Apple</li>
   <li>Mango</li>
 </ul>
+```
 Types:
+
 disc
 circle
 square
