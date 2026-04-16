@@ -47,7 +47,7 @@ Used for newly added text.
 
 Usually underlined.
 
-`<del>` - Deleted Text
+## `<del>` - Deleted Text
 
 Used for removed text.
 
@@ -57,7 +57,7 @@ Used for removed text.
 
 Shows strike-through text.
 
-7. <s> - No Longer Correct Text
+## `<s>` - No Longer Correct Text
 
 Used for outdated or incorrect text.
 
