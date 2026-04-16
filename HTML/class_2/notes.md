@@ -177,6 +177,7 @@ Used for navigation menus.
 
 Used to open email client.
 
+```html
 <a href="mailto:test@gmail.com">Email Us</a>
 19. target
 
