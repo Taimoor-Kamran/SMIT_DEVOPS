@@ -92,8 +92,11 @@ i → i,ii,iii
 
 Represents one item in a list.
 
+```html
 <li>Apple</li>
-11. <ul> - Unordered List
+```
+
+## `<ul>` - Unordered List
 
 Used for bullet lists.
 
