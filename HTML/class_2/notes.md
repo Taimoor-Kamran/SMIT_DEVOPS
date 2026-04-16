@@ -179,11 +179,16 @@ Used to open email client.
 
 ```html
 <a href="mailto:test@gmail.com">Email Us</a>
-19. target
+```
+
+## target
 
 Used to control where the link opens.
 
+```html
 <a href="https://google.com" target="_blank">Google</a>
+```
+
 Types:
 _blank → Opens in new tab
 _self → Opens in same tab
