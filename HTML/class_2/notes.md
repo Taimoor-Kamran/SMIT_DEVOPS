@@ -80,12 +80,15 @@ Used to change numbering style.
 ```
 
 Types:
+```html
 1 → 1,2,3
 A → A,B,C
 a → a,b,c
 I → I,II,III
 i → i,ii,iii
-10. <li> - List Item
+```
+
+## `<li>` - List Item
 
 Represents one item in a list.
 
