@@ -148,7 +148,10 @@ Represents the title or term.
 
 Represents the description.
 
+```html
 <dd>Used for webpage structure</dd>
+```
+
 Links
 16. <a> - Anchor Tag
 
