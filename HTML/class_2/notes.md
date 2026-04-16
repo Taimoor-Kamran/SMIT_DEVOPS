@@ -193,6 +193,8 @@ Types:
 ```html
 _blank → Opens in new tab
 _self → Opens in same tab
+```
+
 20. tel
 
 Used to make phone calls.
