@@ -19,13 +19,13 @@ Used for the title of a book, movie, article, or website.
 
 Usually displayed in italic text.
 
-```html
-<dfn> - Definition Term
-```
+## `<dfn>` - Definition Term
 
 Used when defining a term.
 
+```html
 <dfn>HTML</dfn> is a markup language.
+```
 4. <address> - Contact Information
 
 Used for author or company contact details.
