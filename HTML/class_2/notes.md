@@ -4,7 +4,9 @@
 
 Used to show the short form of a word.
 
+```html
 <abbr title="Hyper Text Markup Language">HTML</abbr>
+```
 
 Hovering the mouse shows the full form.
 
