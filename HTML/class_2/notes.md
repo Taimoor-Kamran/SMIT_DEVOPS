@@ -129,16 +129,22 @@ none
 
 Used for terms and descriptions.
 
+```html
 <dl>
   <dt>HTML</dt>
   <dd>Markup Language</dd>
 </dl>
-14. <dt> - Description Term
+```
+
+## `<dt>` - Description Term
 
 Represents the title or term.
 
+```html
 <dt>HTML</dt>
-15. <dd> - Description Data
+```
+
+## `<dd>` - Description Data
 
 Represents the description.
 
