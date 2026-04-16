@@ -100,11 +100,14 @@ Represents one item in a list.
 
 Used for bullet lists.
 
+```html
 <ul>
   <li>Apple</li>
   <li>Mango</li>
 </ul>
-12. <ul style="list-style-type:;">
+```
+
+## `<ul style="list-style-type:;">`
 
 Used to change bullet style.
 
