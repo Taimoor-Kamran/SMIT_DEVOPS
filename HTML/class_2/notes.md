@@ -57,7 +57,7 @@ Used for removed text.
 
 Shows strike-through text.
 
-## `<s>` - No Longer Correct Text
+<s> - No Longer Correct Text
 
 Used for outdated or incorrect text.
 
