@@ -72,10 +72,13 @@ Used for numbered lists.
 
 Used to change numbering style.
 
+```html
 <ol type="A">
   <li>HTML</li>
   <li>CSS</li>
 </ol>
+```
+
 Types:
 1 → 1,2,3
 A → A,B,C
