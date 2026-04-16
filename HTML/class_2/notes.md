@@ -229,9 +229,12 @@ Used to align image (old method).
 ```
 
 Types:
+
+```html
 left
 right
 top
 middle
+```
 
 Note: align is outdated. Use CSS instead.
