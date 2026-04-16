@@ -57,7 +57,7 @@ Used for removed text.
 
 Shows strike-through text.
 
-## <ol> - Ordered List
+## `<ol>` - Ordered List
 
 Used for numbered lists.
 
