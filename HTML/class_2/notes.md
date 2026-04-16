@@ -195,7 +195,7 @@ _blank → Opens in new tab
 _self → Opens in same tab
 ```
 
-20. tel
+## tel
 
 Used to make phone calls.
 
