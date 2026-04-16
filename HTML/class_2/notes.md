@@ -166,11 +166,14 @@ Used to create links.
 
 Used for navigation menus.
 
+```html
 <ul>
   <li><a href="#">Home</a></li>
   <li><a href="#">About</a></li>
 </ul>
-18. mailto
+```
+
+## mailto
 
 Used to open email client.
 
