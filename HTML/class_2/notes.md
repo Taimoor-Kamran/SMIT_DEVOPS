@@ -26,19 +26,24 @@ Used when defining a term.
 ```html
 <dfn>HTML</dfn> is a markup language.
 ```
-4. <address> - Contact Information
+## `<address>` - Contact Information
 
 Used for author or company contact details.
 
+```html
 <address>
 Karachi, Pakistan <br>
 info@example.com
 </address>
-5. <ins> - Inserted Text
+```
+
+## `<ins>` - Inserted Text
 
 Used for newly added text.
 
+```html
 <p>Price <ins>500</ins></p>
+```
 
 Usually underlined.
 
