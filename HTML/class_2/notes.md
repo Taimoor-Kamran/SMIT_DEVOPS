@@ -61,10 +61,12 @@ Shows strike-through text.
 
 Used for numbered lists.
 
+```html
 <ol>
   <li>Tea</li>
   <li>Coffee</li>
 </ol>
+```
 
 ## `<ol type="">`
 
