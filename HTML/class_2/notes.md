@@ -204,12 +204,16 @@ Used to make phone calls.
 ```
 
 Images
-21. <img>
+
+## `<img>`
 
 Used to display images.
 
+```html
 <img src="pic.jpg">
-22. height and width
+```
+
+## height and width
 
 Used to set image size.
 
