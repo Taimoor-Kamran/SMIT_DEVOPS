@@ -57,13 +57,7 @@ Used for removed text.
 
 Shows strike-through text.
 
-<s> - No Longer Correct Text
-
-Used for outdated or incorrect text.
-
-<p><s>1000</s> 500</p>
-Lists
-8. <ol> - Ordered List
+## <ol> - Ordered List
 
 Used for numbered lists.
 
