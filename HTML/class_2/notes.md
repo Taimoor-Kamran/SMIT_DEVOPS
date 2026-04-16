@@ -1,16 +1,15 @@
 # HTML Tags Covered in Today's Class
 
-## 1. `<abbr>` - Abbreviation
+## `<abbr>` - Abbreviation
 
 Used to show the short form of a word.
 
 ```html
 <abbr title="Hyper Text Markup Language">HTML</abbr>
 ```
-
 Hovering the mouse shows the full form.
 
-2. <cite> - Citation
+## `<cite>` - Citation
 
 Used for the title of a book, movie, article, or website.
 
