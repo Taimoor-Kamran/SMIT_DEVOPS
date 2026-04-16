@@ -199,7 +199,10 @@ _self → Opens in same tab
 
 Used to make phone calls.
 
+```html
 <a href="tel:+923001234567">Call Now</a>
+```
+
 Images
 21. <img>
 
