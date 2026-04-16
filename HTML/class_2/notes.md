@@ -13,11 +13,13 @@ Hovering the mouse shows the full form.
 
 Used for the title of a book, movie, article, or website.
 
+```html
 <cite>Harry Potter</cite>
+```
 
 Usually displayed in italic text.
 
-3. <dfn> - Definition Term
+<dfn> - Definition Term
 
 Used when defining a term.
 
