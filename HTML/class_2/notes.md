@@ -65,7 +65,8 @@ Used for numbered lists.
   <li>Tea</li>
   <li>Coffee</li>
 </ol>
-9. <ol type="">
+
+## `<ol type="">`
 
 Used to change numbering style.
 
