@@ -224,6 +224,7 @@ Used to set image size.
 
 Used to align image (old method).
 
+```html
 <img src="pic.jpg" align="right">
 Types:
 left
