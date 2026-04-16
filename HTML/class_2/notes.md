@@ -19,7 +19,9 @@ Used for the title of a book, movie, article, or website.
 
 Usually displayed in italic text.
 
+```html
 <dfn> - Definition Term
+```
 
 Used when defining a term.
 
