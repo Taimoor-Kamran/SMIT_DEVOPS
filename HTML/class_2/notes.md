@@ -161,7 +161,8 @@ Used to create links.
 ```html
 <a href="https://google.com">Google</a>
 ```
-17. <a> with Unordered List
+
+## `<a>` with Unordered List
 
 Used for navigation menus.
 
