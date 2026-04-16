@@ -153,7 +153,8 @@ Represents the description.
 ```
 
 Links
-16. <a> - Anchor Tag
+
+## `<a>` - Anchor Tag
 
 Used to create links.
 
