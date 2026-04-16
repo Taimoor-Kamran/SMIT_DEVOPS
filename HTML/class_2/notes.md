@@ -118,12 +118,14 @@ Used to change bullet style.
 </ul>
 ```
 Types:
-
+```html
 disc
 circle
 square
 none
-13. <dl> - Description List
+```
+
+##  `<dl>` - Description List
 
 Used for terms and descriptions.
 
