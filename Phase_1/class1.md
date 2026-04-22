@@ -360,7 +360,7 @@ After install completes:
 
 Now Ubuntu VM is ready.
 
-Step 9: Update Ubuntu
+## Update Ubuntu
 
 Open terminal inside VM:
 
