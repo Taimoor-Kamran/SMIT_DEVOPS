@@ -199,9 +199,9 @@ Fill details:
 
 Choose:
 
-Name: awskey
-Type: RSA
-Format: .pem
+- Name: awskey
+- Type: RSA
+- Format: .pem
 
 Download key file:
 
