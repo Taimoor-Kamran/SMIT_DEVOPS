@@ -283,8 +283,9 @@ Download:
 - Oracle VirtualBox
 - Ubuntu ISO file
 ## Install VirtualBox
-Download and install VirtualBox
-Open VirtualBox after installation.
+
+- Download and install VirtualBox
+- Open VirtualBox after installation.
 Step 2: Download Ubuntu ISO
 
 Download Ubuntu Desktop or Ubuntu Server ISO from Canonical.
