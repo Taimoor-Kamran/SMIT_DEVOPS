@@ -339,7 +339,7 @@ Ubuntu installer will open.
 
 Choose:
 
-Install Ubuntu
+- Install Ubuntu
 Language
 Keyboard layout
 Normal Installation
