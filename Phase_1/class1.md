@@ -155,8 +155,8 @@ ssh -i awskey.pem ubuntu@3.92.xx.xx
 
 10. Connect to Oracle VirtualBox Ubuntu VM
 
-First install Ubuntu VM in VirtualBox.
-Enable network adapter (Bridged or NAT).
+- First install Ubuntu VM in VirtualBox.
+- Enable network adapter (Bridged or NAT).
 
 Check VM IP:
 
