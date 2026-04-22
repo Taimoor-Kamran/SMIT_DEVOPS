@@ -167,6 +167,88 @@ hostname -I
 
 ## Connect to AWS EC2 Instance
 
+How to Create EC2 Instance in AWS & Connect Using SSH from Ubuntu
+
+Amazon EC2 is a cloud virtual server provided by AWS.
+You can create Ubuntu servers in the cloud and connect securely using SSH.
+
+Part 1: Create EC2 Instance in AWS
+Step 1: Login to AWS
+
+Open AWS Console and go to:
+
+EC2 Dashboard
+
+Step 2: Launch Instance
+
+Click:
+
+Launch Instance
+
+Step 3: Configure Instance
+
+Fill details:
+
+Name: Ubuntu-Server
+AMI: Ubuntu Server 24.04 LTS
+Instance Type: t2.micro (Free Tier eligible)
+Key Pair: Create new key pair
+Security Group: Allow SSH (Port 22)
+Step 4: Create Key Pair
+
+Choose:
+
+Name: awskey
+Type: RSA
+Format: .pem
+
+Download key file:
+
+awskey.pem
+
+Keep this file safe.
+
+Step 5: Launch Instance
+
+Click:
+
+Launch Instance
+
+After 1–2 minutes instance becomes running.
+
+Part 2: Get Public IP
+
+In EC2 dashboard copy:
+
+Public IPv4 address
+
+Example:
+
+3.92.xx.xx
+Part 3: Connect Using SSH from Ubuntu
+
+Move .pem file into Ubuntu.
+
+Step 1: Give Permission to Key
+chmod 400 awskey.pem
+Step 2: Connect to Server
+ssh -i awskey.pem ubuntu@3.92.xx.xx
+
+Example:
+
+ssh -i awskey.pem ubuntu@54.210.xx.xx
+Why Username is ubuntu?
+
+Because Ubuntu AMI default user is:
+
+ubuntu
+
+Other images:
+
+Amazon Linux → ec2-user
+CentOS → centos
+Debian → admin
+
 Move .pem key file to Ubuntu system.
 
 Give permission:
