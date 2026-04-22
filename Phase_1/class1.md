@@ -137,6 +137,7 @@ Move .pem key file to Ubuntu system.
 
 Give permission:
 
+```bash
 chmod 400 mykey.pem
 
 Connect:
