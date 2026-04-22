@@ -347,7 +347,7 @@ Choose:
 
 Example:
 
-Username: taimoor
+- Username: taimoor
 Password: ********
 Step 8: Finish Installation
 
