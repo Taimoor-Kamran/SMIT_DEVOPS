@@ -342,7 +342,7 @@ Choose:
 - Install Ubuntu
 - Language
 - Keyboard layout
-Normal Installation
+- Normal Installation
 Create username & password
 
 Example:
