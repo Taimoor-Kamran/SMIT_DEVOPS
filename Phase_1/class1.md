@@ -280,7 +280,7 @@ Oracle VirtualBox allows you to run Ubuntu as a virtual machine inside your comp
 
 Download:
 
-Oracle VirtualBox
+- Oracle VirtualBox
 Ubuntu ISO file
 Step 1: Install VirtualBox
 Download and install VirtualBox
