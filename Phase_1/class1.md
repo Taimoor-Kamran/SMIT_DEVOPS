@@ -259,7 +259,7 @@ ssh -i awskey.pem ubuntu@54.210.xx.xx
 
 Because Ubuntu AMI default user is:
 
-ubuntu
+- ubuntu
 
 Other images:
 
