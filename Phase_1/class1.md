@@ -127,8 +127,9 @@ ssh username@ip-address
 
 Example:
 
-```
+```bash
 ssh taimoor@172.20.69.211
+
 9. Connect to AWS EC2 Instance
 
 Move .pem key file to Ubuntu system.
