@@ -205,7 +205,9 @@ Choose:
 
 Download key file:
 
+```bash
 awskey.pem
+```
 
 Keep this file safe.
 
