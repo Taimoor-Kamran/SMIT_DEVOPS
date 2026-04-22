@@ -98,6 +98,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
 Press Enter for default location:
 
+```bash
 ~/.ssh/id_rsa
 
 Files created:
