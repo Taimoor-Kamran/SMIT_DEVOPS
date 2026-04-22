@@ -251,7 +251,10 @@ ssh -i awskey.pem ubuntu@3.92.xx.xx
 
 Example:
 
+```bash
 ssh -i awskey.pem ubuntu@54.210.xx.xx
+```
+
 Why Username is ubuntu?
 
 Because Ubuntu AMI default user is:
