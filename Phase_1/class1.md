@@ -340,8 +340,8 @@ Ubuntu installer will open.
 Choose:
 
 - Install Ubuntu
-Language
-Keyboard layout
+- Language
+- Keyboard layout
 Normal Installation
 Create username & password
 
