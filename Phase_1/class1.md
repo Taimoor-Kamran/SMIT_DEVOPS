@@ -104,8 +104,11 @@ Press Enter for default location:
 
 Files created:
 
+```bash
 ~/.ssh/id_rsa       # Private key
 ~/.ssh/id_rsa.pub   # Public key
+```
+
 8. Connect to Fake Ubuntu Server (Your Own System)
 
 If using WSL or another Ubuntu machine:
