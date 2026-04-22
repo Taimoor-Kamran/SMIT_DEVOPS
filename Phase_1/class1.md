@@ -176,9 +176,9 @@ hostname -I
 
 ### Login to AWS
 
-Open AWS Console and go to:
+- Open AWS Console and go to:
 
-EC2 Dashboard
+- EC2 Dashboard
 
 Step 2: Launch Instance
 
