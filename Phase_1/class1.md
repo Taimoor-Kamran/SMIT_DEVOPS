@@ -233,7 +233,9 @@ Example:
 
 Part 3: Connect Using SSH from Ubuntu
 
+```bash
 Move .pem file into Ubuntu.
+```
 
 Step 1: Give Permission to Key
 chmod 400 awskey.pem
