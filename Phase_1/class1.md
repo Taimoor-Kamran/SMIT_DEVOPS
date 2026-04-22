@@ -237,7 +237,7 @@ Part 3: Connect Using SSH from Ubuntu
 Move .pem file into Ubuntu.
 ```
 
-Step 1: Give Permission to Key
+### Give Permission to Key
 chmod 400 awskey.pem
 Step 2: Connect to Server
 ssh -i awskey.pem ubuntu@3.92.xx.xx
