@@ -314,7 +314,7 @@ Recommended:
 
 If your system has less RAM, use 2048 MB.
 
-Step 5: Create Virtual Hard Disk
+## Create Virtual Hard Disk
 
 Choose:
 
