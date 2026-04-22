@@ -160,6 +160,7 @@ ssh -i awskey.pem ubuntu@3.92.xx.xx
 
 Check VM IP:
 
+```bash
 hostname -I
 
 Connect from host machine:
