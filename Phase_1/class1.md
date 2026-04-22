@@ -355,8 +355,8 @@ Password: ********
 
 After install completes:
 
-Restart VM
-Remove ISO if asked
+- Restart VM
+- Remove ISO if asked
 
 Now Ubuntu VM is ready.
 
