@@ -343,7 +343,7 @@ Choose:
 - Language
 - Keyboard layout
 - Normal Installation
-Create username & password
+- Create username & password
 
 Example:
 
