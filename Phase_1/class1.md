@@ -244,7 +244,10 @@ chmod 400 awskey.pem
 ```
 
 ### Connect to Server
+
+```bash
 ssh -i awskey.pem ubuntu@3.92.xx.xx
+```
 
 Example:
 
