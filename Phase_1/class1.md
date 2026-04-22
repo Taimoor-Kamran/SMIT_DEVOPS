@@ -351,7 +351,7 @@ Example:
 Username: taimoor
 Password: ********
 ```
-Step 8: Finish Installation
+## Finish Installation
 
 After install completes:
 
