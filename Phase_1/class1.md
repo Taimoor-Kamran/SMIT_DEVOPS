@@ -263,9 +263,9 @@ ubuntu
 
 Other images:
 
-Amazon Linux → ec2-user
-CentOS → centos
-Debian → admin
+- Amazon Linux → ec2-user
+- CentOS → centos
+- Debian → admin
 
 Move .pem key file to Ubuntu system.
 
