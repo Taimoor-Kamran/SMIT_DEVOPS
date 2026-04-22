@@ -377,6 +377,8 @@ Example:
 
 From Windows PowerShell / WSL / Linux host:
 
+```bash
 ssh taimoor@192.168.1.25
+```
 
 Now your VM acts like a real Linux server.
