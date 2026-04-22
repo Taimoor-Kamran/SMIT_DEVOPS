@@ -133,7 +133,7 @@ Check status:
 sudo service ssh status
 ```
 
-Step 6: Get Ubuntu IP Address
+## Get Ubuntu IP Address
 hostname -I
 
 Example:
