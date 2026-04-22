@@ -180,13 +180,13 @@ hostname -I
 
 - EC2 Dashboard
 
-Step 2: Launch Instance
+### Launch Instance
 
 Click:
 
-Launch Instance
+- Launch Instance
 
-Step 3: Configure Instance
+### Configure Instance
 
 Fill details:
 
