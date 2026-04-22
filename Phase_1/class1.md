@@ -123,7 +123,9 @@ sudo apt install openssh-server -y
 
 Start SSH:
 
+```bash
 sudo service ssh start
+```
 
 Check status:
 
