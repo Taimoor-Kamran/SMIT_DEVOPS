@@ -149,6 +149,7 @@ Example:
 
 From same PC (PowerShell / CMD / another terminal):
 
+```bash
 ssh taimoor@172.20.69.211
 
 Now your Ubuntu acts like a real remote server.
