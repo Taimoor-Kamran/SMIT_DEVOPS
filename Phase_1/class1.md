@@ -255,7 +255,7 @@ Example:
 ssh -i awskey.pem ubuntu@54.210.xx.xx
 ```
 
-Why Username is ubuntu?
+### Why Username is ubuntu?
 
 Because Ubuntu AMI default user is:
 
@@ -267,25 +267,6 @@ Other images:
 - CentOS → centos
 - Debian → admin
 
-Move .pem key file to Ubuntu system.
-
-Give permission:
-
-```bash
-chmod 400 mykey.pem
-```
-
-Connect:
-
-```bash
-ssh -i mykey.pem ubuntu@public-ip
-```
-
-Example:
-
-```bash
-ssh -i awskey.pem ubuntu@3.92.xx.xx
-```
 
 10. Connect to Oracle VirtualBox Ubuntu VM
 
