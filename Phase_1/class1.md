@@ -215,15 +215,15 @@ Keep this file safe.
 
 Click:
 
-Launch Instance
+- Launch Instance
 
 After 1–2 minutes instance becomes running.
 
-Part 2: Get Public IP
+### Get Public IP
 
 In EC2 dashboard copy:
 
-Public IPv4 address
+- Public IPv4 address
 
 Example:
 
