@@ -268,7 +268,7 @@ Other images:
 - Debian → admin
 
 
-How to Setup Oracle VirtualBox Ubuntu VM Machine in Local System
+## How to Setup Oracle VirtualBox Ubuntu VM Machine in Local System
 
 Oracle VirtualBox allows you to run Ubuntu as a virtual machine inside your computer. It is useful for Linux practice, SSH labs, DevOps learning, and server setup.
 
