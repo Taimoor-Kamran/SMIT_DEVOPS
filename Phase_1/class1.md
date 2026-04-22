@@ -318,11 +318,12 @@ If your system has less RAM, use 2048 MB.
 
 Choose:
 
-Create Virtual Hard Disk Now
-VDI format
-Dynamically Allocated
-Size: 20 GB or more
-Step 6: Attach Ubuntu ISO
+- Create Virtual Hard Disk Now
+- VDI format
+- Dynamically Allocated
+- Size: 20 GB or more
+
+## Step 6: Attach Ubuntu ISO
 
 Go to VM Settings → Storage
 
