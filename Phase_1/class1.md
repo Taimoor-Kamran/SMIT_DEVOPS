@@ -113,6 +113,32 @@ Files created:
 
 If using WSL or another Ubuntu machine:
 
+Step 4: Update Ubuntu
+sudo apt update && sudo apt upgrade -y
+Step 5: Install SSH Server
+sudo apt install openssh-server -y
+
+Start SSH:
+
+sudo service ssh start
+
+Check status:
+
+sudo service ssh status
+Step 6: Get Ubuntu IP Address
+hostname -I
+
+Example:
+
+172.20.69.211
+Step 7: Connect to Fake Server via SSH
+
+From same PC (PowerShell / CMD / another terminal):
+
+ssh taimoor@172.20.69.211
+
+Now your Ubuntu acts like a real remote server.
+
 Check IP:
 
 ```bash
