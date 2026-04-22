@@ -100,6 +100,7 @@ Press Enter for default location:
 
 ```bash
 ~/.ssh/id_rsa
+```
 
 Files created:
 
