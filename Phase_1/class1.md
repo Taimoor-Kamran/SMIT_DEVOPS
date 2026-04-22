@@ -149,6 +149,7 @@ ssh -i mykey.pem ubuntu@public-ip
 
 Example:
 
+```bash
 ssh -i awskey.pem ubuntu@3.92.xx.xx
 10. Connect to Oracle VirtualBox Ubuntu VM
 
