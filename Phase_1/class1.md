@@ -115,7 +115,9 @@ If using WSL or another Ubuntu machine:
 
 Check IP:
 
+```bash
 hostname -I
+```
 
 Connect:
 
