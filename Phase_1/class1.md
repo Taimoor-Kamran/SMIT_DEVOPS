@@ -173,7 +173,8 @@ hostname -I
 - You can create Ubuntu servers in the cloud and connect securely using SSH.
 
 ## Create EC2 Instance in AWS
-Step 1: Login to AWS
+
+### Login to AWS
 
 Open AWS Console and go to:
 
