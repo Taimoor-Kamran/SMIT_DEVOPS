@@ -143,6 +143,7 @@ chmod 400 mykey.pem
 
 Connect:
 
+```
 ssh -i mykey.pem ubuntu@public-ip
 
 Example:
