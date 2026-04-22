@@ -145,6 +145,7 @@ Connect:
 
 ```bash
 ssh -i mykey.pem ubuntu@public-ip
+```
 
 Example:
 
