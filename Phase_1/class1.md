@@ -190,12 +190,12 @@ Click:
 
 Fill details:
 
-Name: Ubuntu-Server
-AMI: Ubuntu Server 24.04 LTS
-Instance Type: t2.micro (Free Tier eligible)
-Key Pair: Create new key pair
-Security Group: Allow SSH (Port 22)
-Step 4: Create Key Pair
+- Name: Ubuntu-Server
+- AMI: Ubuntu Server 24.04 LTS
+- Instance Type: t2.micro (Free Tier eligible)
+- Key Pair: Create new key pair
+- Security Group: Allow SSH (Port 22)
+- Step 4: Create Key Pair
 
 Choose:
 
