@@ -331,7 +331,7 @@ Under Optical Drive:
 
 Choose downloaded Ubuntu ISO file.
 
-Step 7: Start VM
+## Start VM
 
 Click Start
 
