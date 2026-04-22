@@ -275,7 +275,7 @@ Oracle VirtualBox allows you to run Ubuntu as a virtual machine inside your comp
 ### Requirements
 - Windows / Linux host system
 - Minimum 8 GB RAM recommended
-20 GB free disk space
+- 20 GB free disk space
 Internet connection
 
 Download:
