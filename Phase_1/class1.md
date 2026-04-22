@@ -304,6 +304,7 @@ Fill details:
 - Name: Ubuntu-VM
 - Type: Linux
 - Version: Ubuntu (64-bit)
+
 ## Allocate RAM & CPU
 
 Recommended:
