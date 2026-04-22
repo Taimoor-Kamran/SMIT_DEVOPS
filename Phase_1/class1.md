@@ -141,8 +141,10 @@ hostname -I
 
 Example:
 
-```
+```bash
 172.20.69.211
+```
+
 Step 7: Connect to Fake Server via SSH
 
 From same PC (PowerShell / CMD / another terminal):
