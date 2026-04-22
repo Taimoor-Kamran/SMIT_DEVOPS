@@ -360,21 +360,7 @@ After install completes:
 
 Now Ubuntu VM is ready.
 
-## Update Ubuntu
-
-Open terminal inside VM:
-
-- sudo apt update && sudo apt upgrade -y
-
-## Install SSH Server
-sudo apt install openssh-server -y
-sudo systemctl enable ssh
-sudo systemctl start ssh
-
-Check status:
-
-sudo systemctl status ssh
-Step 11: Get VM IP Address
+## Get VM IP Address
 
 Inside Ubuntu VM:
 
