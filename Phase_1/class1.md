@@ -165,7 +165,7 @@ Check IP:
 hostname -I
 ```
 
-9. Connect to AWS EC2 Instance
+## Connect to AWS EC2 Instance
 
 Move .pem key file to Ubuntu system.
 
