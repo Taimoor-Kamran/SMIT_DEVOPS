@@ -211,7 +211,7 @@ awskey.pem
 
 Keep this file safe.
 
-Step 5: Launch Instance
+### Launch Instance
 
 Click:
 
