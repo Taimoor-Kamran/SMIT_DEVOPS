@@ -347,8 +347,10 @@ Choose:
 
 Example:
 
-- Username: taimoor
+```bash
+Username: taimoor
 Password: ********
+```
 Step 8: Finish Installation
 
 After install completes:
