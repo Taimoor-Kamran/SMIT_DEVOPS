@@ -373,7 +373,7 @@ Example:
 ```bash
 192.168.1.25
 ```
-Step 12: Connect from Host System Using SSH
+## Connect from Host System Using SSH
 
 From Windows PowerShell / WSL / Linux host:
 
