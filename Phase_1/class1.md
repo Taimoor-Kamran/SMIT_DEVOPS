@@ -134,7 +134,10 @@ sudo service ssh status
 ```
 
 ## Get Ubuntu IP Address
+
+```bash
 hostname -I
+```
 
 Example:
 
