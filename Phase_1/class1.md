@@ -166,4 +166,6 @@ hostname -I
 
 Connect from host machine:
 
+```bash
 ssh username@vm-ip
+```
