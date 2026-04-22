@@ -162,6 +162,7 @@ Check VM IP:
 
 ```bash
 hostname -I
+```
 
 Connect from host machine:
 
