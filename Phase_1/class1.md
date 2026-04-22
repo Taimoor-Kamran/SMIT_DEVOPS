@@ -293,8 +293,9 @@ Download Ubuntu Desktop or Ubuntu Server ISO from Canonical.
 
 Recommended:
 
-Ubuntu 24.04 LTS
-Step 3: Create New Virtual Machine
+- Ubuntu 24.04 LTS
+
+## Create New Virtual Machine
 
 Open VirtualBox → Click New
 
