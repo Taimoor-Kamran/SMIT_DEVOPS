@@ -268,19 +268,117 @@ Other images:
 - Debian → admin
 
 
-10. Connect to Oracle VirtualBox Ubuntu VM
+How to Setup Oracle VirtualBox Ubuntu VM Machine in Local System
 
-- First install Ubuntu VM in VirtualBox.
-- Enable network adapter (Bridged or NAT).
+Oracle VirtualBox allows you to run Ubuntu as a virtual machine inside your computer. It is useful for Linux practice, SSH labs, DevOps learning, and server setup.
 
-Check VM IP:
+Requirements
+Windows / Linux host system
+Minimum 8 GB RAM recommended
+20 GB free disk space
+Internet connection
 
-```bash
+Download:
+
+Oracle VirtualBox
+Ubuntu ISO file
+Step 1: Install VirtualBox
+Download and install VirtualBox
+Open VirtualBox after installation.
+Step 2: Download Ubuntu ISO
+
+Download Ubuntu Desktop or Ubuntu Server ISO from Canonical.
+
+Recommended:
+
+Ubuntu 24.04 LTS
+Step 3: Create New Virtual Machine
+
+Open VirtualBox → Click New
+
+Fill details:
+
+Name: Ubuntu-VM
+Type: Linux
+Version: Ubuntu (64-bit)
+Step 4: Allocate RAM & CPU
+
+Recommended:
+
+RAM: 4096 MB (4 GB)
+CPU: 2 cores
+
+If your system has less RAM, use 2048 MB.
+
+Step 5: Create Virtual Hard Disk
+
+Choose:
+
+Create Virtual Hard Disk Now
+VDI format
+Dynamically Allocated
+Size: 20 GB or more
+Step 6: Attach Ubuntu ISO
+
+Go to VM Settings → Storage
+
+Under Optical Drive:
+
+Choose downloaded Ubuntu ISO file.
+
+Step 7: Start VM
+
+Click Start
+
+Ubuntu installer will open.
+
+Choose:
+
+Install Ubuntu
+Language
+Keyboard layout
+Normal Installation
+Create username & password
+
+Example:
+
+Username: taimoor
+Password: ********
+Step 8: Finish Installation
+
+After install completes:
+
+Restart VM
+Remove ISO if asked
+
+Now Ubuntu VM is ready.
+
+Step 9: Update Ubuntu
+
+Open terminal inside VM:
+
+sudo apt update && sudo apt upgrade -y
+Step 10: Install SSH Server
+sudo apt install openssh-server -y
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
+Check status:
+
+sudo systemctl status ssh
+Step 11: Get VM IP Address
+
+Inside Ubuntu VM:
+
 hostname -I
-```
 
-Connect from host machine:
+Example:
 
-```bash
-ssh username@vm-ip
-```
+192.168.1.25
+Step 12: Connect from Host System Using SSH
+
+From Windows PowerShell / WSL / Linux host:
+
+ssh taimoor@192.168.1.25
+
+Now your VM acts like a real Linux server.
