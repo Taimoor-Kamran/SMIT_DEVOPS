@@ -167,7 +167,7 @@ hostname -I
 
 ## Connect to AWS EC2 Instance
 
-How to Create EC2 Instance in AWS & Connect Using SSH from Ubuntu
+### How to Create EC2 Instance in AWS & Connect Using SSH from Ubuntu
 
 Amazon EC2 is a cloud virtual server provided by AWS.
 You can create Ubuntu servers in the cloud and connect securely using SSH.
