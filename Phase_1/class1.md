@@ -363,7 +363,7 @@ Now Ubuntu VM is ready.
 ## Get VM IP Address
 
 Inside Ubuntu VM:
-
+```bash
 hostname -I
 
 Example:
