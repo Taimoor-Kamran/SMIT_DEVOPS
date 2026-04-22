@@ -229,6 +229,8 @@ Example:
 
 ```bash
 3.92.xx.xx
+```
+
 Part 3: Connect Using SSH from Ubuntu
 
 Move .pem file into Ubuntu.
