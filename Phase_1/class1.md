@@ -364,8 +364,9 @@ Now Ubuntu VM is ready.
 
 Open terminal inside VM:
 
-sudo apt update && sudo apt upgrade -y
-Step 10: Install SSH Server
+- sudo apt update && sudo apt upgrade -y
+
+## Install SSH Server
 sudo apt install openssh-server -y
 sudo systemctl enable ssh
 sudo systemctl start ssh
