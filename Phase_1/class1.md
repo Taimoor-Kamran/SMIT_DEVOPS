@@ -131,6 +131,8 @@ Check status:
 
 ```bash
 sudo service ssh status
+```
+
 Step 6: Get Ubuntu IP Address
 hostname -I
 
