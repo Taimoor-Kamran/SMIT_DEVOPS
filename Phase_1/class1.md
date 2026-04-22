@@ -120,6 +120,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 Step 5: Install SSH Server
+
 sudo apt install openssh-server -y
 ```
 
