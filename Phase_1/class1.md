@@ -113,7 +113,8 @@ Files created:
 
 If using WSL or another Ubuntu machine:
 
-Step 4: Update Ubuntu
+## Update Ubuntu
+
 sudo apt update && sudo apt upgrade -y
 Step 5: Install SSH Server
 sudo apt install openssh-server -y
