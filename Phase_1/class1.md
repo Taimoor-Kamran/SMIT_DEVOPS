@@ -126,6 +126,7 @@ ssh username@ip-address
 ```
 
 Example:
+
 ```
 ssh taimoor@172.20.69.211
 9. Connect to AWS EC2 Instance
