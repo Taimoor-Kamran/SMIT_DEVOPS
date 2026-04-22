@@ -309,7 +309,7 @@ Fill details:
 
 Recommended:
 
-RAM: 4096 MB (4 GB)
+- RAM: 4096 MB (4 GB)
 CPU: 2 cores
 
 If your system has less RAM, use 2048 MB.
