@@ -236,3 +236,18 @@ mv oldname.txt newname.txt   # Rename file
 mv myfolder /home/taimoor/   # Move entire folder
 ```
 
+---
+
+### rm — Remove Files and Directories
+
+`rm` permanently deletes files or directories. There is no trash/recycle bin.
+
+```bash
+rm file.txt           # Delete a file
+rm -r myfolder        # Delete directory and all contents
+rm -f file.txt        # Force delete without prompt
+rm -rf myfolder       # Force delete directory (use with caution!)
+```
+
+> **Warning:** `rm -rf` is irreversible. Always double-check the path before running.
+
