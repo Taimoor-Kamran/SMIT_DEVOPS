@@ -284,3 +284,24 @@ Navigation inside `less`:
 | `n`        | Next search result |
 | `q`        | Quit |
 
+---
+
+### grep — Search Inside Files
+
+`grep` searches for a pattern inside files and prints matching lines.
+
+```bash
+grep "error" /var/log/syslog          # Find lines with "error"
+grep -i "error" /var/log/syslog       # Case-insensitive search
+grep -r "password" /etc/              # Search recursively in directory
+grep -n "failed" /var/log/auth.log    # Show line numbers
+grep -v "info" /var/log/syslog        # Show lines NOT matching
+grep "ERROR" *.log                    # Search in all .log files
+```
+
+Combine with `cat` or `less` using pipe `|`:
+
+```bash
+cat /var/log/syslog | grep "error"
+```
+
