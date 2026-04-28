@@ -372,3 +372,105 @@ grep -i "error" ~/devops-lab/app/logs/app.log
 grep -n "ERROR" ~/devops-lab/app/logs/app.log
 ```
 
+---
+
+## 7. Incident: App Cannot Find Config File
+
+### Problem
+
+The application crashed with this error:
+
+```
+ERROR: Config file not found at /etc/myapp/config.conf
+```
+
+The developer says the config file exists but the app still fails.
+
+### Investigation
+
+**Step 1:** Check if the file actually exists
+
+```bash
+ls /etc/myapp/
+```
+
+Output:
+
+```
+ls: cannot access '/etc/myapp/': No such file or directory
+```
+
+The directory does not exist at all.
+
+**Step 2:** Search where the config file really is
+
+```bash
+find / -name "config.conf" 2>/dev/null
+```
+
+Output:
+
+```
+/home/taimoor/myapp/config.conf
+```
+
+The file is in `/home/taimoor/myapp/` — not in `/etc/myapp/`.
+
+**Step 3:** Check what path the app is using
+
+```bash
+cat /home/taimoor/myapp/app.py | grep "config"
+```
+
+Output:
+
+```python
+config_path = "/etc/myapp/config.conf"   # Wrong path!
+```
+
+### Fix
+
+**Option A:** Move the config to the expected path
+
+```bash
+sudo mkdir -p /etc/myapp
+sudo cp /home/taimoor/myapp/config.conf /etc/myapp/config.conf
+```
+
+**Option B:** Fix the path in the application code
+
+```python
+config_path = "/home/taimoor/myapp/config.conf"   # Correct path
+```
+
+**Step 4:** Verify the fix
+
+```bash
+ls -l /etc/myapp/config.conf
+cat /etc/myapp/config.conf
+```
+
+Restart the app and confirm it starts successfully.
+
+### Lesson Learned
+
+> Always verify file paths using `ls`, `find`, and `cat` before assuming a file is missing.  
+> Wrong paths are one of the most common causes of application failures in production.
+
+---
+
+## Summary
+
+| Command | Purpose |
+|---------|---------|
+| `ls`    | List files and directories |
+| `cd`    | Navigate directories |
+| `pwd`   | Show current directory |
+| `cp`    | Copy files/directories |
+| `mv`    | Move or rename files |
+| `rm`    | Delete files/directories |
+| `cat`   | Display file contents |
+| `less`  | View large files page by page |
+| `grep`  | Search text inside files |
+| `chmod` | Change file permissions |
+| `find`  | Search for files by name |
