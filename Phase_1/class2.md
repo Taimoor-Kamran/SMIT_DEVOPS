@@ -66,3 +66,38 @@ Shortcut: `~` always refers to the current user's home directory.
 cd ~   # Go to your home directory
 ```
 
+---
+
+## 3. Paths in Linux
+
+### Absolute Path
+
+An absolute path starts from the root `/` and gives the full location.  
+It works from anywhere in the filesystem.
+
+```bash
+/home/taimoor/projects/app.py
+/etc/nginx/nginx.conf
+/var/log/syslog
+```
+
+### Relative Path
+
+A relative path is based on your current location.  
+It does not start with `/`.
+
+```bash
+projects/app.py       # If you are already in /home/taimoor
+../etc/nginx.conf     # Go one level up then into etc
+./script.sh           # Current directory
+```
+
+Key symbols:
+
+| Symbol | Meaning |
+|--------|---------|
+| `/`    | Root of filesystem |
+| `~`    | Current user's home |
+| `.`    | Current directory |
+| `..`   | Parent directory |
+
