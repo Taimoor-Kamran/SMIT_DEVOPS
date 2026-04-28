@@ -122,3 +122,43 @@ Each group has three permission types:
 | `x`    | Execute   | 1     |
 | `-`    | No permission | 0 |
 
+### Reading Permissions
+
+```bash
+ls -l
+```
+
+Output example:
+
+```
+-rwxr-xr--  1 taimoor devs  1024 Apr 28 10:00 script.sh
+```
+
+Breaking it down:
+
+```
+- rwx r-x r--
+│  │   │   │
+│  │   │   └── Others: read only
+│  │   └────── Group: read + execute
+│  └────────── Owner: read + write + execute
+└───────────── File type (- = file, d = directory)
+```
+
+### Changing Permissions with chmod
+
+```bash
+chmod 755 script.sh   # rwxr-xr-x  (numeric method)
+chmod +x script.sh    # Add execute permission (symbolic method)
+chmod u-w file.txt    # Remove write from owner
+```
+
+Common permission numbers:
+
+| Number | Permission | Use case |
+|--------|-----------|---------|
+| 777    | rwxrwxrwx | Full access (dangerous) |
+| 755    | rwxr-xr-x | Web files, scripts |
+| 644    | rw-r--r-- | Regular files |
+| 400    | r-------- | Private keys (.pem) |
+
