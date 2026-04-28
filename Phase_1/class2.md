@@ -458,19 +458,3 @@ Restart the app and confirm it starts successfully.
 > Wrong paths are one of the most common causes of application failures in production.
 
 ---
-
-## Summary
-
-| Command | Purpose |
-|---------|---------|
-| `ls`    | List files and directories |
-| `cd`    | Navigate directories |
-| `pwd`   | Show current directory |
-| `cp`    | Copy files/directories |
-| `mv`    | Move or rename files |
-| `rm`    | Delete files/directories |
-| `cat`   | Display file contents |
-| `less`  | View large files page by page |
-| `grep`  | Search text inside files |
-| `chmod` | Change file permissions |
-| `find`  | Search for files by name |
