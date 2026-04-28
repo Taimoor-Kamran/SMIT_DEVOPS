@@ -162,3 +162,20 @@ Common permission numbers:
 | 644    | rw-r--r-- | Regular files |
 | 400    | r-------- | Private keys (.pem) |
 
+---
+
+## 5. Core Commands
+
+### ls — List Directory Contents
+
+`ls` shows files and directories in the current location.
+
+```bash
+ls              # Basic list
+ls -l           # Long format with permissions, size, date
+ls -a           # Show hidden files (starting with .)
+ls -la          # Long format + hidden files
+ls -lh          # Human-readable file sizes
+ls /etc         # List a specific directory
+```
+
