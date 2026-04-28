@@ -251,3 +251,36 @@ rm -rf myfolder       # Force delete directory (use with caution!)
 
 > **Warning:** `rm -rf` is irreversible. Always double-check the path before running.
 
+---
+
+### cat — Concatenate and Display File Contents
+
+`cat` prints file contents to the terminal. Good for small files.
+
+```bash
+cat file.txt                  # Display file contents
+cat /etc/passwd               # View system users file
+cat file1.txt file2.txt       # Display multiple files
+cat file1.txt >> file2.txt    # Append file1 contents to file2
+```
+
+---
+
+### less — View Large Files Page by Page
+
+`less` opens a file for scrolling — better than `cat` for large files.
+
+```bash
+less /var/log/syslog    # Open large log file
+```
+
+Navigation inside `less`:
+
+| Key        | Action |
+|------------|--------|
+| `Space`    | Next page |
+| `b`        | Previous page |
+| `/keyword` | Search forward |
+| `n`        | Next search result |
+| `q`        | Quit |
+
