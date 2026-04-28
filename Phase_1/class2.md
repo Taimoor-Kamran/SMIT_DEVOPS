@@ -179,3 +179,35 @@ ls -lh          # Human-readable file sizes
 ls /etc         # List a specific directory
 ```
 
+---
+
+### cd — Change Directory
+
+`cd` is used to navigate between directories.
+
+```bash
+cd /etc             # Go to /etc (absolute path)
+cd projects         # Go into projects folder (relative path)
+cd ..               # Go one level up (parent directory)
+cd ~                # Go to home directory
+cd -                # Go back to previous directory
+```
+
+---
+
+### pwd — Print Working Directory
+
+`pwd` shows your current location in the filesystem.
+
+```bash
+pwd
+```
+
+Output:
+
+```
+/home/taimoor/projects
+```
+
+Always use `pwd` when you are lost in the terminal.
+
