@@ -44,3 +44,25 @@ Examples:
 /var/cache/            # Cached application data
 ```
 
+---
+
+### /home — User Home Directories
+
+`/home` contains personal directories for each user on the system.  
+Each user gets their own folder: `/home/username`.  
+Users store personal files, configs, and projects here.
+
+Examples:
+
+```bash
+/home/taimoor/          # Taimoor's home directory
+/home/taimoor/.bashrc   # User shell configuration
+/home/taimoor/projects/ # Personal project files
+```
+
+Shortcut: `~` always refers to the current user's home directory.
+
+```bash
+cd ~   # Go to your home directory
+```
+
