@@ -27,3 +27,20 @@ Examples:
 /etc/nginx/nginx.conf # Nginx web server config
 ```
 
+---
+
+### /var — Variable Data
+
+`/var` stores data that changes frequently during system operation.  
+Logs, caches, mail spools, and runtime data are kept here.  
+This is where you look when an application is misbehaving.
+
+Examples:
+
+```bash
+/var/log/syslog        # General system logs
+/var/log/auth.log      # Authentication logs
+/var/log/nginx/        # Nginx access and error logs
+/var/cache/            # Cached application data
+```
+
