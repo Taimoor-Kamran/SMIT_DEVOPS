@@ -101,3 +101,24 @@ Key symbols:
 | `.`    | Current directory |
 | `..`   | Parent directory |
 
+---
+
+## 4. File Permissions Basics
+
+Every file and directory in Linux has permissions assigned to three groups:
+
+| Group | Meaning |
+|-------|---------|
+| **Owner (u)** | The user who created the file |
+| **Group (g)** | Users in the same group |
+| **Others (o)** | Everyone else |
+
+Each group has three permission types:
+
+| Symbol | Permission | Value |
+|--------|-----------|-------|
+| `r`    | Read      | 4     |
+| `w`    | Write     | 2     |
+| `x`    | Execute   | 1     |
+| `-`    | No permission | 0 |
+
