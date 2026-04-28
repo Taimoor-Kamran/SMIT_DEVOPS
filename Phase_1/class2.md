@@ -211,3 +211,28 @@ Output:
 
 Always use `pwd` when you are lost in the terminal.
 
+---
+
+### cp — Copy Files and Directories
+
+`cp` copies files or directories from one place to another.
+
+```bash
+cp file.txt /tmp/            # Copy file to /tmp
+cp file.txt backup.txt       # Copy and rename
+cp -r myfolder /tmp/         # Copy entire directory (-r = recursive)
+cp -i file.txt /tmp/         # Prompt before overwrite
+```
+
+---
+
+### mv — Move or Rename Files
+
+`mv` moves files/directories OR renames them.
+
+```bash
+mv file.txt /tmp/            # Move file to /tmp
+mv oldname.txt newname.txt   # Rename file
+mv myfolder /home/taimoor/   # Move entire folder
+```
+
