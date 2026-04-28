@@ -305,3 +305,70 @@ Combine with `cat` or `less` using pipe `|`:
 cat /var/log/syslog | grep "error"
 ```
 
+---
+
+## 6. Lab: Hands-On Practice
+
+### Task 1: Create a Directory Structure
+
+```bash
+mkdir -p ~/devops-lab/app/config
+mkdir -p ~/devops-lab/app/logs
+mkdir -p ~/devops-lab/backup
+```
+
+Verify:
+
+```bash
+ls -R ~/devops-lab
+```
+
+### Task 2: Create and Copy Files
+
+```bash
+# Create a sample config file
+echo "APP_PORT=8080" > ~/devops-lab/app/config/app.conf
+echo "DB_HOST=localhost" >> ~/devops-lab/app/config/app.conf
+
+# View it
+cat ~/devops-lab/app/config/app.conf
+
+# Copy config to backup
+cp ~/devops-lab/app/config/app.conf ~/devops-lab/backup/
+```
+
+### Task 3: Move Files
+
+```bash
+# Create a temp log file
+echo "2024-04-28 INFO App started" > ~/devops-lab/app.log
+
+# Move it to logs directory
+mv ~/devops-lab/app.log ~/devops-lab/app/logs/
+
+# Confirm
+ls ~/devops-lab/app/logs/
+```
+
+### Task 4: Search Logs with grep
+
+```bash
+# Create a fake log file
+cat > ~/devops-lab/app/logs/app.log << EOF
+2024-04-28 INFO App started on port 8080
+2024-04-28 ERROR Cannot connect to database
+2024-04-28 INFO Request received from 192.168.1.1
+2024-04-28 ERROR Config file not found at /etc/app/config
+2024-04-28 INFO Health check passed
+EOF
+
+# Search for errors
+grep "ERROR" ~/devops-lab/app/logs/app.log
+
+# Search case-insensitively
+grep -i "error" ~/devops-lab/app/logs/app.log
+
+# Show line numbers
+grep -n "ERROR" ~/devops-lab/app/logs/app.log
+```
+
