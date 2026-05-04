@@ -436,3 +436,88 @@ sudo chmod -R 640 /opt/myapp/config/
 
 This way the app runs with minimal privileges and config files stay private.
 
+---
+
+## 7. Lab: Hands-On Practice
+
+### Task 1: Create Users and Groups
+
+```bash
+# Create a group for developers
+sudo groupadd devteam
+
+# Create two users and add to the group
+sudo useradd -m -s /bin/bash alice
+sudo useradd -m -s /bin/bash bob
+sudo passwd alice
+sudo passwd bob
+
+# Add both to devteam group
+sudo usermod -aG devteam alice
+sudo usermod -aG devteam bob
+
+# Verify
+groups alice
+groups bob
+cat /etc/group | grep devteam
+```
+
+### Task 2: Practice chmod
+
+```bash
+# Create test files
+mkdir ~/permission-lab
+touch ~/permission-lab/script.sh
+touch ~/permission-lab/data.txt
+touch ~/permission-lab/secret.key
+
+# Set permissions
+chmod 755 ~/permission-lab/script.sh    # Executable script
+chmod 644 ~/permission-lab/data.txt     # Normal file
+chmod 600 ~/permission-lab/secret.key   # Private file
+
+# Verify all at once
+ls -l ~/permission-lab/
+```
+
+### Task 3: Practice chown
+
+```bash
+# Create a shared directory
+sudo mkdir /opt/shared-project
+
+# Create a group for it
+sudo groupadd project-team
+sudo usermod -aG project-team alice
+sudo usermod -aG project-team bob
+
+# Set ownership to alice, group to project-team
+sudo chown alice:project-team /opt/shared-project
+sudo chmod 770 /opt/shared-project   # Owner+group full access, others none
+
+# Verify
+ls -ld /opt/shared-project
+```
+
+### Task 4: Test umask
+
+```bash
+# Check current umask
+umask
+
+# Create files with default umask
+touch ~/default-file.txt
+mkdir ~/default-dir
+
+# Check permissions
+ls -la ~/ | grep default
+
+# Change umask and create new files
+umask 077
+touch ~/private-file.txt
+mkdir ~/private-dir
+
+# Compare permissions
+ls -la ~/ | grep -E "default|private"
+```
+
