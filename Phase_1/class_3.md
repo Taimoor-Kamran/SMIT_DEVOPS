@@ -160,3 +160,47 @@ sudo groupdel devteam
 sudo groupmod -n newname oldname
 ```
 
+---
+
+## 3. chmod — Change File Permissions
+
+`chmod` controls who can read, write, or execute a file.
+
+### Two Ways to Use chmod
+
+#### Numeric (Octal) Method
+
+Each permission has a value:
+
+| Permission | Value |
+|-----------|-------|
+| `r` read  | 4     |
+| `w` write | 2     |
+| `x` execute | 1   |
+| `-` none  | 0     |
+
+Add them together for each group (owner, group, others):
+
+```
+chmod 754 file.txt
+```
+
+Breaking down `754`:
+
+| Who    | Value | Permission |
+|--------|-------|-----------|
+| Owner  | 7 (4+2+1) | rwx |
+| Group  | 5 (4+0+1) | r-x |
+| Others | 4 (4+0+0) | r-- |
+
+Common examples:
+
+```bash
+chmod 777 file.txt    # rwxrwxrwx — full access for everyone (avoid!)
+chmod 755 script.sh   # rwxr-xr-x — standard for scripts
+chmod 644 file.txt    # rw-r--r-- — standard for text files
+chmod 600 secret.txt  # rw------- — private, owner only
+chmod 400 key.pem     # r-------- — read-only, owner only (SSH keys)
+chmod 000 file.txt    # ---------- — no access for anyone
+```
+
