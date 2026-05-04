@@ -204,3 +204,36 @@ chmod 400 key.pem     # r-------- — read-only, owner only (SSH keys)
 chmod 000 file.txt    # ---------- — no access for anyone
 ```
 
+#### Symbolic Method
+
+More readable — uses letters instead of numbers.
+
+Symbols:
+
+| Who | Symbol |
+|-----|--------|
+| Owner (user) | `u` |
+| Group | `g` |
+| Others | `o` |
+| All three | `a` |
+
+Operators:
+
+| Operator | Meaning |
+|----------|---------|
+| `+` | Add permission |
+| `-` | Remove permission |
+| `=` | Set exact permission |
+
+Examples:
+
+```bash
+chmod +x script.sh          # Add execute for everyone
+chmod u+x script.sh         # Add execute for owner only
+chmod g-w file.txt          # Remove write from group
+chmod o-r secret.txt        # Remove read from others
+chmod a+r file.txt          # Add read for all (owner+group+others)
+chmod u=rwx,g=rx,o= file    # Set exact: owner=rwx, group=rx, others=none
+chmod -R 755 /var/www/html  # Apply recursively to all files in directory
+```
+
