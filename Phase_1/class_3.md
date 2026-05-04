@@ -344,3 +344,28 @@ source ~/.bashrc
 | `077` | 600 | 700 | Private — only owner can access |
 | `002` | 664 | 775 | Team collaboration |
 
+---
+
+## 6. File Ownership Models for Services
+
+When services like Nginx, MySQL, or Docker run on Linux, they do **not** run as root.  
+Each service gets its own **system user** for security isolation.  
+If a service is hacked, the attacker can only access what that service user owns.
+
+### Why Services Have Dedicated Users
+
+- Limits damage if the service is compromised
+- Files owned by the service user cannot be modified by other users
+- Follows the **principle of least privilege**
+
+### Common Service Users
+
+| Service | System User | Group | Files It Owns |
+|---------|------------|-------|--------------|
+| Nginx   | `www-data` | `www-data` | `/var/www/html`, `/etc/nginx` |
+| Apache  | `www-data` | `www-data` | `/var/www/html` |
+| MySQL   | `mysql`    | `mysql`    | `/var/lib/mysql` |
+| PostgreSQL | `postgres` | `postgres` | `/var/lib/postgresql` |
+| Docker  | `root` (daemon) | `docker` | `/var/lib/docker` |
+| SSH     | `sshd`     | `nogroup`  | `/var/run/sshd` |
+
