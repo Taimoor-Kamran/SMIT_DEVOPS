@@ -219,3 +219,63 @@ SIGTERM → gives process time to clean up (close files, flush logs)
 SIGKILL → instant death, no cleanup, can leave corrupted data
 ```
 
+---
+
+## 6. kill, killall, pkill — Sending Signals to Processes
+
+### kill — Send Signal by PID
+
+```bash
+kill PID               # Default: sends SIGTERM (15) — graceful stop
+kill -15 PID           # Explicit SIGTERM
+kill -9 PID            # SIGKILL — force kill (last resort)
+kill -1 PID            # SIGHUP — reload config
+kill -SIGTERM PID      # Same as kill -15 (name form)
+```
+
+**Step-by-step example:**
+
+```bash
+# Step 1: Find the PID of nginx
+ps aux | grep nginx
+
+# Output:
+# nginx   1234  0.0  0.1  12000 1400 ?  S  10:00  nginx: master
+
+# Step 2: Try graceful stop first
+kill -15 1234
+
+# Step 3: If it doesn't stop, force kill
+kill -9 1234
+```
+
+### killall — Kill by Process Name
+
+```bash
+killall nginx           # Send SIGTERM to all nginx processes
+killall -9 python       # Force kill all python processes
+killall -HUP nginx      # Reload nginx config (SIGHUP)
+```
+
+### pkill — Kill by Pattern Match
+
+```bash
+pkill nginx             # Kill processes matching name "nginx"
+pkill -u taimoor        # Kill all processes owned by taimoor
+pkill -9 myapp          # Force kill processes matching "myapp"
+pkill -f "python app"   # Match against full command line
+```
+
+### View All Available Signal Numbers
+
+```bash
+kill -l
+```
+
+Output:
+
+```
+ 1) SIGHUP   2) SIGINT   3) SIGQUIT  9) SIGKILL  15) SIGTERM
+19) SIGSTOP 18) SIGCONT ...
+```
+
