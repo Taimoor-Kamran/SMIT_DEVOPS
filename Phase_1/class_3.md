@@ -120,3 +120,43 @@ groups                  # Your groups
 groups username         # Another user's groups
 ```
 
+### Group Management Commands
+
+**Create a group:**
+
+```bash
+sudo groupadd devteam
+sudo groupadd -g 1500 devteam     # Create with specific GID
+```
+
+**Add a user to a group:**
+
+```bash
+sudo usermod -aG devteam taimoor     # -a = append, -G = secondary group
+sudo usermod -aG docker taimoor      # Add to docker group
+```
+
+> **Important:** After adding a user to a group, the user must log out and log back in for changes to take effect. Or run:
+
+```bash
+newgrp devteam
+```
+
+**Remove a user from a group:**
+
+```bash
+sudo gpasswd -d taimoor devteam
+```
+
+**Delete a group:**
+
+```bash
+sudo groupdel devteam
+```
+
+**Rename a group:**
+
+```bash
+sudo groupmod -n newname oldname
+```
+
