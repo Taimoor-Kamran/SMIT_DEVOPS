@@ -177,3 +177,66 @@ drwxr-x--- 2 myapp myapp 4096 Apr 28 myapp /var/lib/myapp
 > Directories the service only reads → owned by `root`, group `myapp`  
 > Directories the service writes to → owned by `myapp:myapp`
 
+---
+
+## 5. Set Secure Permissions on Each Directory
+
+Different directories need different permission levels based on what the service does with them.
+
+### Permission Plan
+
+```bash
+# App binaries — root owned, everyone can read/execute, no one can write
+sudo chmod 755 /opt/myapp
+
+# Config — root owned, only owner+group can access (no others)
+sudo chmod 750 /etc/myapp
+
+# Logs — service user owns, group can read (for log shipping tools), no others
+sudo chmod 750 /var/log/myapp
+
+# PID/socket — service user owns, private
+sudo chmod 750 /var/run/myapp
+
+# Data — service user owns, private
+sudo chmod 750 /var/lib/myapp
+```
+
+### Permission Breakdown
+
+| Directory | chmod | Owner Perms | Group Perms | Others |
+|-----------|-------|------------|------------|--------|
+| `/opt/myapp` | 755 | rwx | r-x | r-x |
+| `/etc/myapp` | 750 | rwx | r-x | --- |
+| `/var/log/myapp` | 750 | rwx | r-x | --- |
+| `/var/run/myapp` | 750 | rwx | r-x | --- |
+| `/var/lib/myapp` | 750 | rwx | r-x | --- |
+
+### Why 750 and Not 777?
+
+```
+750 = rwxr-x---
+```
+
+- `rwx` → owner (service user) can read, write, execute
+- `r-x` → group can read and enter the directory
+- `---` → others (everyone else) get nothing
+
+Using `777` would let any user on the system read your logs and config — a security risk in production.
+
+### Set Config File Permissions
+
+Config files inside `/etc/myapp` need tighter control:
+
+```bash
+sudo chmod 640 /etc/myapp/app.conf
+```
+
+```
+640 = rw-r-----
+```
+
+- Owner (root): can read and write
+- Group (myapp): can only read — service reads its own config
+- Others: no access
+
