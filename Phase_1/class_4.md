@@ -556,3 +556,38 @@ sudo -u nobody cat /etc/webapp/config.conf
 # Output: Permission denied
 ```
 
+---
+
+## Summary
+
+### Full Setup Checklist for a Service
+
+```
+[ ] Create a dedicated group for the service
+[ ] Create a system user with -r and -s /usr/sbin/nologin
+[ ] Create required directories (/opt, /etc, /var/log, /var/lib)
+[ ] Assign ownership: root owns app+config, service owns logs+data
+[ ] Set permissions: 755 for app, 750 for everything else
+[ ] Config files: chmod 640 (root writes, service reads, others blocked)
+[ ] Test write access with: sudo -u serviceuser touch /var/log/app/test.log
+[ ] Never use chmod 777 in production
+```
+
+### Quick Reference — Permission Rules for Services
+
+| Directory | Owner | Group | chmod | Why |
+|-----------|-------|-------|-------|-----|
+| `/opt/appname` | root | root | 755 | Service should not modify own binaries |
+| `/etc/appname` | root | appname | 750 | Only service group can read config |
+| `/etc/appname/*.conf` | root | appname | 640 | Files: no execute needed |
+| `/var/log/appname` | appname | appname | 750 | Service must write logs |
+| `/var/run/appname` | appname | appname | 750 | PID and socket files |
+| `/var/lib/appname` | appname | appname | 750 | Persistent data |
+
+### Golden Rules
+
+> 1. **Never run services as root.** Use a dedicated system user.  
+> 2. **Never use chmod 777.** Fix ownership instead.  
+> 3. **Least privilege always.** Give only the permissions a service actually needs.  
+> 4. **Test before restarting.** Use `sudo -u serviceuser` to verify access.  
+> 5. **Config files are sensitive.** Always use `640`, never `644` or `777`.
