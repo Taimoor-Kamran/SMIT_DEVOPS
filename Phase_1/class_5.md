@@ -279,3 +279,71 @@ Output:
 19) SIGSTOP 18) SIGCONT ...
 ```
 
+---
+
+## 7. Resource Monitoring — CPU
+
+### Check CPU Info
+
+```bash
+lscpu                        # CPU architecture, cores, speed
+nproc                        # Number of CPU cores available
+cat /proc/cpuinfo            # Detailed CPU information
+```
+
+Example `lscpu` output:
+
+```
+Architecture:  x86_64
+CPU(s):        4
+Thread(s) per core: 2
+Core(s) per socket: 2
+Model name: Intel Core i5-8250U @ 1.60GHz
+```
+
+### Monitor CPU Usage in Real Time
+
+```bash
+top                           # Live view — press P to sort by CPU
+htop                          # Visual live view
+mpstat 1                      # CPU usage per second (install sysstat)
+mpstat -P ALL 1               # Show per-core CPU usage
+```
+
+### Check CPU Load Average
+
+```bash
+uptime
+```
+
+Output:
+
+```
+10:05:01 up 2 days, load average: 0.25, 0.40, 0.35
+```
+
+The three numbers are load averages over **1 minute, 5 minutes, 15 minutes**.
+
+**How to read load average:**
+
+| Load vs Cores | Meaning |
+|--------------|---------|
+| Load < number of cores | System is healthy |
+| Load = number of cores | System is fully loaded |
+| Load > number of cores | System is overloaded — processes are queuing |
+
+Example: if you have 4 cores and load average is `6.5` — the CPU is overloaded.
+
+```bash
+# Quick check: load average vs CPU count
+echo "CPU cores: $(nproc)"
+uptime
+```
+
+### Find the Most CPU-Hungry Process
+
+```bash
+ps aux --sort=-%cpu | head -10      # Top 10 by CPU
+top -b -n 1 | head -20             # One-shot top output
+```
+
