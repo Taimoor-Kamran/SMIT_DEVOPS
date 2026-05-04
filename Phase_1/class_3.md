@@ -369,3 +369,70 @@ If a service is hacked, the attacker can only access what that service user owns
 | Docker  | `root` (daemon) | `docker` | `/var/lib/docker` |
 | SSH     | `sshd`     | `nogroup`  | `/var/run/sshd` |
 
+### Real-World Example: Nginx Web Server
+
+When Nginx serves a website, it reads files from `/var/www/html`.  
+Those files must be owned by `www-data` or be readable by it.
+
+**Set correct ownership for Nginx:**
+
+```bash
+sudo chown -R www-data:www-data /var/www/html
+sudo chmod -R 755 /var/www/html
+```
+
+**Verify:**
+
+```bash
+ls -la /var/www/html
+```
+
+Output:
+
+```
+drwxr-xr-x 2 www-data www-data 4096 Apr 28 10:00 .
+-rw-r--r-- 1 www-data www-data 1234 Apr 28 10:00 index.html
+```
+
+**What happens if ownership is wrong:**
+
+```bash
+# If files are owned by root and Nginx (www-data) cannot read them:
+# Browser gets: 403 Forbidden
+```
+
+### Real-World Example: MySQL Database
+
+MySQL stores data in `/var/lib/mysql` owned by the `mysql` user.
+
+```bash
+ls -la /var/lib/mysql
+```
+
+Output:
+
+```
+drwx------ 6 mysql mysql 4096 Apr 28 10:00 mysql
+```
+
+Permission `700` means only the `mysql` user can access the data directory.  
+This prevents any other user or service from reading raw database files.
+
+### Real-World Example: Application Deployment
+
+When deploying an app, create a dedicated system user for it:
+
+```bash
+# Create a system user (no home, no login shell)
+sudo useradd -r -s /usr/sbin/nologin myapp
+
+# Give it ownership of the app files
+sudo chown -R myapp:myapp /opt/myapp
+
+# Set permissions
+sudo chmod -R 750 /opt/myapp
+sudo chmod -R 640 /opt/myapp/config/
+```
+
+This way the app runs with minimal privileges and config files stay private.
+
