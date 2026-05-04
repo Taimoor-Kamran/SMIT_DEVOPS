@@ -452,3 +452,85 @@ watch -n 5 uptime                    # Load average every 5 seconds
 echo "=== CPU ===" && uptime && echo "=== MEMORY ===" && free -h && echo "=== TOP PROCESSES ===" && ps aux --sort=-%cpu | head -6
 ```
 
+---
+
+## 10. Lab: Hands-On Practice
+
+### Task 1: Explore Running Processes
+
+```bash
+# See all processes
+ps aux
+
+# Count how many processes are running
+ps aux | wc -l
+
+# Find nginx process (if running)
+ps aux | grep nginx
+
+# Sort all processes by CPU
+ps aux --sort=-%cpu | head -10
+
+# Sort all processes by memory
+ps aux --sort=-%mem | head -10
+```
+
+### Task 2: Use top and htop
+
+```bash
+# Open top
+top
+# Inside top: press P (CPU sort), M (memory sort), q (quit)
+
+# One-shot output from top (no interactive mode)
+top -b -n 1 | head -25
+
+# Install and open htop
+sudo apt install htop -y
+htop
+# Inside htop: press F5 (tree view), F3 (search), F10 (quit)
+```
+
+### Task 3: Start a Process and Kill It
+
+```bash
+# Start a background sleep process
+sleep 999 &
+
+# Find its PID
+ps aux | grep sleep
+
+# Send SIGTERM first (graceful)
+kill -15 <PID>
+
+# Confirm it is gone
+ps aux | grep sleep
+
+# Start again and force kill it
+sleep 999 &
+ps aux | grep sleep
+kill -9 <PID>
+
+# Verify
+ps aux | grep sleep
+```
+
+### Task 4: Monitor System Resources
+
+```bash
+# Check CPU info
+lscpu | grep -E "CPU\(s\)|Model name|Core"
+
+# Check load average
+uptime
+
+# Check memory
+free -h
+
+# Watch memory refresh every 2 seconds (Ctrl+C to stop)
+watch -n 2 free -h
+
+# Check swap
+swapon --show
+```
+
