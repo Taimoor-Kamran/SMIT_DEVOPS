@@ -37,3 +37,44 @@ www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
 - `x` means password is stored in `/etc/shadow`
 - `/usr/sbin/nologin` means the user cannot log in interactively (service account)
 
+### User Management Commands
+
+**Create a new user:**
+
+```bash
+sudo useradd username              # Basic user creation
+sudo useradd -m username           # Create with home directory
+sudo useradd -m -s /bin/bash username   # Set shell to bash
+sudo useradd -m -u 1500 username   # Assign a specific UID
+```
+
+**Set or change password:**
+
+```bash
+sudo passwd username
+```
+
+**Modify an existing user:**
+
+```bash
+sudo usermod -s /bin/bash username     # Change shell
+sudo usermod -d /new/home username     # Change home directory
+sudo usermod -l newname oldname        # Rename user
+sudo usermod -aG sudo username         # Add user to sudo group
+```
+
+**Delete a user:**
+
+```bash
+sudo userdel username          # Delete user only
+sudo userdel -r username       # Delete user + home directory
+```
+
+**Check who you are:**
+
+```bash
+whoami          # Print current username
+id              # Show UID, GID and group memberships
+id username     # Check another user's info
+```
+
