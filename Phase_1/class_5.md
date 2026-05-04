@@ -407,3 +407,48 @@ free -h | grep Swap         # Quick swap usage check
 If swap is heavily used, your system is running out of RAM.  
 High swap usage = performance degradation.
 
+---
+
+## 9. Other Useful Monitoring Tools
+
+### vmstat — Virtual Memory Statistics
+
+```bash
+vmstat 1 5           # Print 5 reports, one every second
+```
+
+Output:
+
+```
+procs  memory          swap    io    system   cpu
+r  b   swpd  free  buff  cache  si  so  bi  bo  in  cs  us  sy  id  wa
+1  0      0  2048  1024  26000   0   0   5  10 200 300   5   1  93   1
+```
+
+Key columns:
+
+| Column | Meaning |
+|--------|---------|
+| `r` | Processes waiting for CPU (runqueue) |
+| `b` | Processes blocked waiting on I/O |
+| `si / so` | Swap in / swap out (bad if non-zero) |
+| `us` | User CPU % |
+| `sy` | System/kernel CPU % |
+| `id` | Idle CPU % |
+| `wa` | CPU waiting on I/O (high = disk bottleneck) |
+
+### watch — Run Any Command Repeatedly
+
+```bash
+watch -n 2 free -h                   # Memory every 2 seconds
+watch -n 1 'ps aux --sort=-%cpu | head -10'   # Top CPU processes every 1s
+watch -n 5 uptime                    # Load average every 5 seconds
+```
+
+### Combining Tools for Quick Diagnosis
+
+```bash
+# One-line system health snapshot
+echo "=== CPU ===" && uptime && echo "=== MEMORY ===" && free -h && echo "=== TOP PROCESSES ===" && ps aux --sort=-%cpu | head -6
+```
+
