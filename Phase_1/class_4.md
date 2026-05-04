@@ -298,3 +298,26 @@ chmod +x setup-service.sh
 sudo bash setup-service.sh
 ```
 
+---
+
+## 7. Incident: Permission Denied for Service Writing Logs
+
+### Problem
+
+The `myapp` service starts but immediately crashes.  
+Checking the system journal shows:
+
+```bash
+sudo journalctl -u myapp --no-pager
+```
+
+Output:
+
+```
+May 05 10:00:01 server myapp[1234]: FATAL: cannot open log file for writing
+May 05 10:00:01 server myapp[1234]: open /var/log/myapp/app.log: permission denied
+May 05 10:00:01 server systemd[1]: myapp.service: Main process exited, code=exited
+```
+
+The service cannot write its logs. Let us investigate and fix it securely.
+
