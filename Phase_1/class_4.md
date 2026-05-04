@@ -130,3 +130,50 @@ sudo mkdir -p /var/lib/myapp
 | `/var/run/appname` | PID/sockets | Temporary — cleared on reboot |
 | `/var/lib/appname` | Persistent data | Survives reboots |
 
+---
+
+## 4. Assign Directory Ownership
+
+After creating the directories, assign ownership to the correct user and group.  
+The service user must own the directories it needs to write to.
+
+### Assign Ownership with chown
+
+```bash
+# App binaries — owned by root (service should not modify its own binaries)
+sudo chown root:root /opt/myapp
+
+# Config — owned by root, readable by service group
+sudo chown root:myapp /etc/myapp
+
+# Logs — service must write here
+sudo chown myapp:myapp /var/log/myapp
+
+# PID/socket files — service creates these at runtime
+sudo chown myapp:myapp /var/run/myapp
+
+# Data files — service reads and writes
+sudo chown myapp:myapp /var/lib/myapp
+```
+
+### Verify Ownership
+
+```bash
+ls -ld /opt/myapp /etc/myapp /var/log/myapp /var/run/myapp /var/lib/myapp
+```
+
+Expected output:
+
+```
+drwxr-xr-x 2 root  root  4096 Apr 28 myapp /opt/myapp
+drwxr-x--- 2 root  myapp 4096 Apr 28 myapp /etc/myapp
+drwxr-x--- 2 myapp myapp 4096 Apr 28 myapp /var/log/myapp
+drwxr-x--- 2 myapp myapp 4096 Apr 28 myapp /var/run/myapp
+drwxr-x--- 2 myapp myapp 4096 Apr 28 myapp /var/lib/myapp
+```
+
+**Rule of thumb:**
+
+> Directories the service only reads → owned by `root`, group `myapp`  
+> Directories the service writes to → owned by `myapp:myapp`
+
