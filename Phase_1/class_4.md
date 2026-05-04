@@ -321,3 +321,70 @@ May 05 10:00:01 server systemd[1]: myapp.service: Main process exited, code=exit
 
 The service cannot write its logs. Let us investigate and fix it securely.
 
+### Investigation
+
+**Step 1: Check what user the service runs as**
+
+```bash
+sudo systemctl show myapp -p User
+```
+
+Output:
+
+```
+User=myapp
+```
+
+The service runs as `myapp`. Now check if that user can write to the log directory.
+
+**Step 2: Check ownership and permissions of the log directory**
+
+```bash
+ls -ld /var/log/myapp
+```
+
+Output:
+
+```
+drwxr-xr-x 2 root root 4096 May 05 10:00 /var/log/myapp
+```
+
+Found the problem — the directory is owned by `root:root`.  
+The `myapp` service user has no write permission here (`r-x` for others at best, but in this case `root` group).
+
+**Step 3: Check if the log file exists and who owns it**
+
+```bash
+ls -la /var/log/myapp/
+```
+
+Output:
+
+```
+total 8
+drwxr-xr-x 2 root root 4096 May 05 10:00 .
+drwxr-xr-x 8 root root 4096 May 05 10:00 ..
+```
+
+No log file yet — the service cannot even create it because it does not own the directory.
+
+**Step 4: Confirm which user the process tries to run as**
+
+```bash
+ps aux | grep myapp
+```
+
+Or switch to the service user and test:
+
+```bash
+sudo -u myapp touch /var/log/myapp/test.log
+```
+
+Output:
+
+```
+touch: cannot touch '/var/log/myapp/test.log': Permission denied
+```
+
+This confirms the service user `myapp` cannot write to that directory.
+
