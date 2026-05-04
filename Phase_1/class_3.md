@@ -283,3 +283,64 @@ Output:
 | `chmod` | Permissions (read/write/execute) | Owner or root |
 | `chown` | Ownership (who the owner is) | Root only |
 
+---
+
+## 5. umask — Default Permission Mask
+
+`umask` defines the **default permissions removed** when a new file or directory is created.  
+It acts as a filter — it subtracts permissions from the maximum default.
+
+### Default Maximum Permissions
+
+| Type | Max permissions |
+|------|----------------|
+| File | 666 (rw-rw-rw-) — no execute by default |
+| Directory | 777 (rwxrwxrwx) |
+
+### How umask Works
+
+```
+Final permission = Maximum permission - umask
+```
+
+Example with `umask 022` (most common default):
+
+| | Files | Directories |
+|--|-------|------------|
+| Max | 666 | 777 |
+| umask | 022 | 022 |
+| Result | **644** (rw-r--r--) | **755** (rwxr-xr-x) |
+
+### Check Current umask
+
+```bash
+umask         # Shows current umask (e.g. 0022)
+umask -S      # Shows in symbolic format (e.g. u=rwx,g=rx,o=rx)
+```
+
+### Set umask Temporarily
+
+```bash
+umask 027     # New files: 640, New dirs: 750
+umask 077     # New files: 600, New dirs: 700 (private)
+umask 022     # Default — restore standard umask
+```
+
+### Set umask Permanently
+
+Add to `~/.bashrc` or `~/.profile`:
+
+```bash
+echo "umask 027" >> ~/.bashrc
+source ~/.bashrc
+```
+
+### Common umask Values
+
+| umask | File result | Dir result | Use case |
+|-------|------------|-----------|---------|
+| `022` | 644 | 755 | Standard (most systems) |
+| `027` | 640 | 750 | Secure — group can read, others blocked |
+| `077` | 600 | 700 | Private — only owner can access |
+| `002` | 664 | 775 | Team collaboration |
+
