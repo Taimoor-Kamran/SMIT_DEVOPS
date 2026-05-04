@@ -347,3 +347,63 @@ ps aux --sort=-%cpu | head -10      # Top 10 by CPU
 top -b -n 1 | head -20             # One-shot top output
 ```
 
+---
+
+## 8. Resource Monitoring — Memory
+
+### Check Memory Usage
+
+```bash
+free -h                      # Human-readable memory summary
+free -m                      # Show in megabytes
+cat /proc/meminfo            # Detailed memory info from kernel
+```
+
+### Reading free -h Output
+
+```bash
+free -h
+```
+
+Output:
+
+```
+              total        used        free      shared  buff/cache   available
+Mem:           7.7G        3.1G        2.0G        150M        2.6G        4.2G
+Swap:          2.0G          0B        2.0G
+```
+
+| Column | Meaning |
+|--------|---------|
+| `total` | Total physical RAM |
+| `used` | RAM in active use |
+| `free` | Completely unused RAM |
+| `buff/cache` | RAM used for disk caching (can be reclaimed) |
+| `available` | RAM truly available for new processes |
+| `Swap` | Disk space used as overflow when RAM is full |
+
+**Important:** Always look at `available`, not `free`.  
+`buff/cache` memory is automatically freed when a process needs RAM.
+
+### Find the Most Memory-Hungry Process
+
+```bash
+ps aux --sort=-%mem | head -10       # Top 10 by memory
+```
+
+### Monitor Memory in Real Time
+
+```bash
+watch -n 2 free -h          # Refresh free output every 2 seconds
+```
+
+### Check Swap Usage
+
+```bash
+swapon --show               # Show swap devices
+free -h | grep Swap         # Quick swap usage check
+```
+
+If swap is heavily used, your system is running out of RAM.  
+High swap usage = performance degradation.
+
