@@ -78,3 +78,45 @@ id              # Show UID, GID and group memberships
 id username     # Check another user's info
 ```
 
+---
+
+## 2. Groups in Linux
+
+A **group** is a collection of users that share the same access permissions.  
+Every user belongs to a **primary group** (same name as user by default) and can belong to multiple **secondary groups**.  
+Each group has a unique **GID (Group ID)**.
+
+### Types of Groups
+
+| Type | Purpose |
+|------|---------|
+| **Primary group** | Default group for new files created by the user |
+| **Secondary groups** | Extra groups for shared access (e.g., `sudo`, `docker`) |
+
+### View All Groups
+
+```bash
+cat /etc/group
+```
+
+Each line format:
+
+```
+groupname:x:GID:member1,member2
+```
+
+Example:
+
+```
+sudo:x:27:taimoor
+docker:x:999:taimoor,deploy
+www-data:x:33:
+```
+
+**Check groups for a user:**
+
+```bash
+groups                  # Your groups
+groups username         # Another user's groups
+```
+
