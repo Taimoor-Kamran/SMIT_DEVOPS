@@ -453,3 +453,24 @@ sudo systemctl status myapp
 
 Service is now running and writing logs successfully.
 
+### Incident Summary
+
+| Step | What we did |
+|------|------------|
+| 1 | Found the error in journal logs |
+| 2 | Checked who owns `/var/log/myapp` |
+| 3 | Found it was owned by `root` not `myapp` |
+| 4 | Confirmed with `sudo -u myapp touch` test |
+| 5 | Fixed with `chown myapp:myapp` |
+| 6 | Set `chmod 750` — NOT 777 |
+| 7 | Verified, restarted service |
+
+### Common Permission Mistakes and Fixes
+
+| Mistake | Symptom | Wrong Fix | Correct Fix |
+|---------|---------|-----------|------------|
+| Directory owned by root | `permission denied` on write | `chmod 777` | `chown service:service /dir` |
+| Log file owned by root | Service can't append logs | `chmod 666` on file | `chown service:service /var/log/app/` |
+| Config not readable | App crashes on startup | `chmod 644` exposing secrets | `chown root:service` + `chmod 640` |
+| Wrong user in service file | Process runs as wrong user | Run as root | Set `User=` in systemd unit file |
+
