@@ -534,3 +534,44 @@ watch -n 2 free -h
 swapon --show
 ```
 
+---
+
+## Summary
+
+### Commands Reference
+
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `ps aux` | Snapshot of all processes | `ps aux \| grep nginx` |
+| `ps --sort` | Sort processes | `ps aux --sort=-%cpu` |
+| `top` | Live process monitor | `top` |
+| `htop` | Visual live monitor | `htop` |
+| `kill` | Send signal by PID | `kill -15 1234` |
+| `killall` | Send signal by name | `killall nginx` |
+| `pkill` | Kill by pattern | `pkill -f "python app"` |
+| `kill -l` | List all signals | `kill -l` |
+| `lscpu` | CPU info | `lscpu` |
+| `nproc` | Number of CPU cores | `nproc` |
+| `uptime` | Load average | `uptime` |
+| `free -h` | Memory usage | `free -h` |
+| `vmstat` | CPU + memory stats | `vmstat 1 5` |
+| `watch` | Repeat any command | `watch -n 2 free -h` |
+
+### Signal Quick Reference
+
+| Signal | Number | When to Use |
+|--------|--------|------------|
+| SIGTERM | 15 | Always try this first — graceful stop |
+| SIGKILL | 9 | Last resort — process won't stop |
+| SIGHUP | 1 | Reload service config without restart |
+| SIGSTOP | 19 | Pause a process temporarily |
+| SIGCONT | 18 | Resume a paused process |
+
+### Key Rules to Remember
+
+> 1. **`ps aux`** gives a snapshot. **`top`/`htop`** give live view.  
+> 2. **Always try `kill -15` before `kill -9`** — give the process time to clean up.  
+> 3. **Load average > number of cores** means the system is overloaded.  
+> 4. **Check `available` memory**, not `free` — cache is reclaimable.  
+> 5. **High `wa` in top** means the CPU is waiting on slow disk I/O.  
+> 6. **High swap usage** means you are running out of RAM — time to scale up.
