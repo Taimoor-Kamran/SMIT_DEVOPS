@@ -237,3 +237,49 @@ chmod u=rwx,g=rx,o= file    # Set exact: owner=rwx, group=rx, others=none
 chmod -R 755 /var/www/html  # Apply recursively to all files in directory
 ```
 
+---
+
+## 4. chown — Change File Ownership
+
+`chown` changes who owns a file or directory.  
+Only root can change file ownership.
+
+### Syntax
+
+```bash
+chown owner file
+chown owner:group file
+chown :group file          # Change group only
+```
+
+### Examples
+
+```bash
+sudo chown taimoor file.txt              # Change owner to taimoor
+sudo chown taimoor:devteam file.txt      # Change owner and group
+sudo chown :devteam file.txt             # Change group only
+sudo chown -R nginx:nginx /var/www/html  # Change recursively (entire directory)
+sudo chown -R www-data:www-data /var/www # Set web server ownership
+```
+
+### Check Current Ownership
+
+```bash
+ls -l file.txt
+```
+
+Output:
+
+```
+-rw-r--r-- 1 taimoor devteam 1024 Apr 28 10:00 file.txt
+              ^^^^^^^  ^^^^^^^
+              owner    group
+```
+
+### chown vs chmod — What is the Difference?
+
+| Command | Changes | Who Can Run |
+|---------|---------|-------------|
+| `chmod` | Permissions (read/write/execute) | Owner or root |
+| `chown` | Ownership (who the owner is) | Root only |
+
