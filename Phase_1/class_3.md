@@ -521,3 +521,38 @@ mkdir ~/private-dir
 ls -la ~/ | grep -E "default|private"
 ```
 
+---
+
+## Summary
+
+### Commands Reference
+
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `useradd` | Create a new user | `sudo useradd -m alice` |
+| `usermod` | Modify a user | `sudo usermod -aG sudo alice` |
+| `userdel` | Delete a user | `sudo userdel -r alice` |
+| `passwd` | Set password | `sudo passwd alice` |
+| `groupadd` | Create a group | `sudo groupadd devteam` |
+| `groupdel` | Delete a group | `sudo groupdel devteam` |
+| `gpasswd -d` | Remove user from group | `sudo gpasswd -d alice devteam` |
+| `whoami` | Print current user | `whoami` |
+| `id` | Show UID/GID/groups | `id alice` |
+| `groups` | Show user's groups | `groups alice` |
+| `chmod` | Change permissions | `chmod 755 file` |
+| `chown` | Change ownership | `sudo chown alice:devteam file` |
+| `umask` | Show/set default permissions | `umask 027` |
+| `ls -l` | View permissions | `ls -l /etc/nginx` |
+
+### Key Concepts
+
+| Concept | Remember |
+|---------|---------|
+| UID 0 | Always root — full power |
+| System users | UIDs 1–999, no login shell (`/usr/sbin/nologin`) |
+| Primary group | Created automatically with the user |
+| Secondary groups | Added manually with `usermod -aG` |
+| chmod 777 | Dangerous — never use in production |
+| chown | Only root can change file ownership |
+| umask 022 | Standard default — files 644, dirs 755 |
+| Service users | Always give services their own dedicated user |
