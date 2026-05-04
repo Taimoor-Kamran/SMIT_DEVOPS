@@ -194,3 +194,28 @@ htop
 | Need scriptable output | Need interactive visual view |
 | Quick one-time check | Diagnosing CPU/memory issues |
 
+---
+
+## 5. Signals — Communicating with Processes
+
+A **signal** is a message sent to a process to tell it to do something.  
+Signals are the way Linux controls running processes — pause, stop, restart, terminate.
+
+### Most Important Signals
+
+| Signal | Number | Name | Meaning |
+|--------|--------|------|---------|
+| SIGTERM | 15 | Terminate | Politely ask process to stop (can be caught) |
+| SIGKILL | 9 | Kill | Force-kill immediately (cannot be ignored) |
+| SIGHUP | 1 | Hangup | Reload config without restarting |
+| SIGSTOP | 19 | Stop | Pause the process |
+| SIGCONT | 18 | Continue | Resume a paused process |
+| SIGINT | 2 | Interrupt | Same as pressing Ctrl+C |
+
+### Rule: Always Try SIGTERM Before SIGKILL
+
+```
+SIGTERM → gives process time to clean up (close files, flush logs)
+SIGKILL → instant death, no cleanup, can leave corrupted data
+```
+
