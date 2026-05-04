@@ -93,3 +93,40 @@ sudo -u myapp bash
 # Output: This account is currently not available.
 ```
 
+---
+
+## 3. Create and Organize the Service Directory Structure
+
+After creating the service user, set up the directories the service needs.  
+Each directory has a different purpose and needs different permissions.
+
+### Common Directory Layout for a Service
+
+```
+/opt/myapp/          → Application files (binaries, code)
+/etc/myapp/          → Configuration files
+/var/log/myapp/      → Log files (service writes here)
+/var/run/myapp/      → PID files and sockets
+/var/lib/myapp/      → Data files (databases, state)
+```
+
+### Create All Directories
+
+```bash
+sudo mkdir -p /opt/myapp
+sudo mkdir -p /etc/myapp
+sudo mkdir -p /var/log/myapp
+sudo mkdir -p /var/run/myapp
+sudo mkdir -p /var/lib/myapp
+```
+
+**Why use these standard paths?**
+
+| Path | Standard Use | Reason |
+|------|-------------|--------|
+| `/opt/appname` | App binaries | Isolated from system binaries |
+| `/etc/appname` | Config files | Standard config location on Linux |
+| `/var/log/appname` | Logs | Survives reboots, easy to rotate |
+| `/var/run/appname` | PID/sockets | Temporary — cleared on reboot |
+| `/var/lib/appname` | Persistent data | Survives reboots |
+
