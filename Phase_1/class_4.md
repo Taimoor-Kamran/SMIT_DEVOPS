@@ -388,3 +388,68 @@ touch: cannot touch '/var/log/myapp/test.log': Permission denied
 
 This confirms the service user `myapp` cannot write to that directory.
 
+### Root Cause
+
+The log directory `/var/log/myapp` was created but ownership was never transferred to the service user.  
+It stayed owned by `root` — so `myapp` has no write access.
+
+### The Wrong Fix — Do NOT Do This
+
+Many people solve permission denied errors by doing:
+
+```bash
+sudo chmod 777 /var/log/myapp    # WRONG — dangerous!
+```
+
+This gives every user on the system full read and write access to the logs.  
+Log files can contain sensitive data: API keys, passwords, internal IPs.  
+`chmod 777` is never acceptable in production.
+
+### The Correct Secure Fix
+
+**Fix the ownership — give the log directory to the service user:**
+
+```bash
+sudo chown myapp:myapp /var/log/myapp
+```
+
+**Set secure permissions — only the service user and its group:**
+
+```bash
+sudo chmod 750 /var/log/myapp
+```
+
+**Verify the fix:**
+
+```bash
+ls -ld /var/log/myapp
+```
+
+Output:
+
+```
+drwxr-x--- 2 myapp myapp 4096 May 05 10:05 /var/log/myapp
+```
+
+**Test as the service user:**
+
+```bash
+sudo -u myapp touch /var/log/myapp/test.log
+ls -la /var/log/myapp/
+```
+
+Output:
+
+```
+-rw-r--r-- 1 myapp myapp 0 May 05 10:05 test.log
+```
+
+Write works. Now restart the service:
+
+```bash
+sudo systemctl restart myapp
+sudo systemctl status myapp
+```
+
+Service is now running and writing logs successfully.
+
