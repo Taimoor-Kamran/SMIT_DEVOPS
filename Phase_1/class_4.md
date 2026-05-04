@@ -240,3 +240,61 @@ sudo chmod 640 /etc/myapp/app.conf
 - Group (myapp): can only read — service reads its own config
 - Others: no access
 
+---
+
+## 6. Complete Setup Script — All Steps Together
+
+This is a full real-world example of setting up a service user from scratch:
+
+```bash
+#!/bin/bash
+# Full secure service setup for "myapp"
+
+APP_NAME="myapp"
+
+# 1. Create group and service user
+sudo groupadd $APP_NAME
+sudo useradd \
+  -r \
+  -s /usr/sbin/nologin \
+  -M \
+  -d /opt/$APP_NAME \
+  -g $APP_NAME \
+  -c "$APP_NAME service account" \
+  $APP_NAME
+
+# 2. Create all required directories
+sudo mkdir -p /opt/$APP_NAME
+sudo mkdir -p /etc/$APP_NAME
+sudo mkdir -p /var/log/$APP_NAME
+sudo mkdir -p /var/run/$APP_NAME
+sudo mkdir -p /var/lib/$APP_NAME
+
+# 3. Assign ownership
+sudo chown root:root     /opt/$APP_NAME
+sudo chown root:$APP_NAME /etc/$APP_NAME
+sudo chown $APP_NAME:$APP_NAME /var/log/$APP_NAME
+sudo chown $APP_NAME:$APP_NAME /var/run/$APP_NAME
+sudo chown $APP_NAME:$APP_NAME /var/lib/$APP_NAME
+
+# 4. Set permissions
+sudo chmod 755 /opt/$APP_NAME
+sudo chmod 750 /etc/$APP_NAME
+sudo chmod 750 /var/log/$APP_NAME
+sudo chmod 750 /var/run/$APP_NAME
+sudo chmod 750 /var/lib/$APP_NAME
+
+# 5. Verify everything
+echo "--- User Info ---"
+id $APP_NAME
+echo "--- Directory Ownership & Permissions ---"
+ls -ld /opt/$APP_NAME /etc/$APP_NAME /var/log/$APP_NAME /var/run/$APP_NAME /var/lib/$APP_NAME
+```
+
+Run the script:
+
+```bash
+chmod +x setup-service.sh
+sudo bash setup-service.sh
+```
+
