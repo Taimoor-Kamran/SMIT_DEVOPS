@@ -142,3 +142,55 @@ top -b -n 1 | head -20   # Show top 20 lines of output
 top -u taimoor           # Show only processes for a specific user
 ```
 
+---
+
+## 4. htop — Improved Interactive Process Viewer
+
+`htop` is an enhanced version of `top` with a visual interface, colors, and mouse support.  
+It is not installed by default — install it first:
+
+```bash
+sudo apt install htop -y    # Ubuntu/Debian
+sudo yum install htop -y    # CentOS/RHEL
+```
+
+Run it:
+
+```bash
+htop
+```
+
+### What htop Shows Better Than top
+
+| Feature | top | htop |
+|---------|-----|------|
+| CPU bars per core | Text only | Color bars |
+| Memory bar | Text only | Color bar |
+| Mouse support | No | Yes |
+| Scroll processes | No | Yes |
+| Tree view | No | Yes (F5) |
+| Kill process | Enter PID manually | Select + F9 |
+| Search process | No | F3 |
+
+### htop Keyboard Shortcuts
+
+| Key | Action |
+|-----|--------|
+| `F2` | Setup / configuration |
+| `F3` | Search for a process by name |
+| `F4` | Filter processes |
+| `F5` | Toggle tree view (shows parent-child) |
+| `F6` | Sort by column |
+| `F9` | Send signal / kill selected process |
+| `F10` | Quit |
+| `Space` | Tag/select a process |
+| `u` | Filter by user |
+
+### htop vs top — When to Use Which
+
+| Use `top` when | Use `htop` when |
+|---------------|----------------|
+| Server has no extra packages | htop is installed |
+| Need scriptable output | Need interactive visual view |
+| Quick one-time check | Diagnosing CPU/memory issues |
+
