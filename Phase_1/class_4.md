@@ -474,3 +474,85 @@ Service is now running and writing logs successfully.
 | Config not readable | App crashes on startup | `chmod 644` exposing secrets | `chown root:service` + `chmod 640` |
 | Wrong user in service file | Process runs as wrong user | Run as root | Set `User=` in systemd unit file |
 
+---
+
+## 8. Lab: Hands-On Practice
+
+### Task 1: Create a Service User for a Web App
+
+```bash
+# Create group
+sudo groupadd webapp
+
+# Create service user
+sudo useradd -r -s /usr/sbin/nologin -M -g webapp -c "webapp service" webapp
+
+# Verify
+id webapp
+grep webapp /etc/passwd
+```
+
+### Task 2: Set Up Directory Structure
+
+```bash
+# Create directories
+sudo mkdir -p /opt/webapp
+sudo mkdir -p /etc/webapp
+sudo mkdir -p /var/log/webapp
+sudo mkdir -p /var/lib/webapp
+
+# Assign ownership
+sudo chown root:root /opt/webapp
+sudo chown root:webapp /etc/webapp
+sudo chown webapp:webapp /var/log/webapp
+sudo chown webapp:webapp /var/lib/webapp
+
+# Set permissions
+sudo chmod 755 /opt/webapp
+sudo chmod 750 /etc/webapp
+sudo chmod 750 /var/log/webapp
+sudo chmod 750 /var/lib/webapp
+
+# Verify all at once
+ls -ld /opt/webapp /etc/webapp /var/log/webapp /var/lib/webapp
+```
+
+### Task 3: Reproduce the Incident and Fix It
+
+```bash
+# Step 1: Break it on purpose — set wrong ownership
+sudo chown root:root /var/log/webapp
+
+# Step 2: Try writing as service user — it will fail
+sudo -u webapp touch /var/log/webapp/test.log
+
+# Step 3: Fix it correctly
+sudo chown webapp:webapp /var/log/webapp
+sudo chmod 750 /var/log/webapp
+
+# Step 4: Test again — it works now
+sudo -u webapp touch /var/log/webapp/test.log
+ls -la /var/log/webapp/
+```
+
+### Task 4: Harden a Config File
+
+```bash
+# Create a config file with a "secret"
+sudo bash -c 'echo "DB_PASSWORD=supersecret123" > /etc/webapp/config.conf'
+
+# Set ownership — root writes, webapp group reads only
+sudo chown root:webapp /etc/webapp/config.conf
+sudo chmod 640 /etc/webapp/config.conf
+
+# Verify
+ls -l /etc/webapp/config.conf
+
+# Test — webapp user can read it
+sudo -u webapp cat /etc/webapp/config.conf
+
+# Test — another random user cannot
+sudo -u nobody cat /etc/webapp/config.conf
+# Output: Permission denied
+```
+
