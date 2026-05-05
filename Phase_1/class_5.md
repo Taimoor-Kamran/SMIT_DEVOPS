@@ -142,3 +142,26 @@ top
 # 5. Press k → type the PID of a yes process → press Enter → type 9 → kill it
 ```
 
+---
+
+## 3. htop — Better Version of top
+
+```bash
+# If not installed:
+sudo apt install htop
+
+htop
+```
+
+### top vs htop Comparison
+
+```
+top                              htop
+─────────────────────────────────────────────────────
+Keyboard only                    Mouse also works
+Text only                        Colors + visual bars
+Kill one by one                  Select multiple then kill together
+Fixed columns                    Columns are customizable
+Available on every system        Needs to be installed
+```
+
