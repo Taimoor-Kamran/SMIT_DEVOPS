@@ -51,3 +51,25 @@ STAT    → Current state of the process (R/S/Z/T)
 COMMAND → Which program is running
 ```
 
+### STAT Column — Process States
+
+```
+R = Running       (currently using the CPU right now)
+S = Sleeping      (waiting for something, doing nothing)
+Z = Zombie        (finished but parent has not cleaned it up yet)
+T = Stopped       (paused / frozen)
+```
+
+### Useful ps Commands
+
+```bash
+# Find a specific process by name
+ps aux | grep yes
+
+# Tree format showing parent-child relationships
+ps axjf
+
+# Extract just the PIDs (useful in scripts)
+ps aux | grep yes | awk '{print $2}'
+```
+
