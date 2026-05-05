@@ -60,6 +60,55 @@ Z = Zombie        (finished but parent has not cleaned it up yet)
 T = Stopped       (paused / frozen)
 ```
 
+### STAT Column — Combined Codes (What You Actually See in Output)
+
+When you run `ps aux`, the STAT column often shows two or three characters together.  
+The first letter is the main state, the extra letters give more detail.
+
+**Extra letters and what they mean:**
+
+```
+s  → session leader (the main process that started a group)
++  → foreground process (running in your active terminal)
+l  → multi-threaded (has multiple threads running)
+<  → high priority (getting more CPU time than normal)
+N  → low priority / nice (being polite, giving way to others)
+```
+
+**Real examples you will see in `ps aux` output:**
+
+```
+Ss   → Sleeping + session leader
+       Example: sshd, systemd — waiting but they are the boss of their group
+
+S+   → Sleeping + foreground process
+       Example: sleep 1000 (you ran it in your terminal without &)
+
+R    → Running
+       Example: yes > /dev/null — actively eating CPU
+
+R+   → Running + foreground
+       Example: ps aux itself — it is running right now in your terminal
+
+Ssl  → Sleeping + session leader + multi-threaded
+       Example: NetworkManager, Docker daemon
+
+S<s  → Sleeping + high priority + session leader
+       Example: kernel helper processes
+```
+
+**Quick way to read any STAT code:**
+
+```
+Take the first letter  → main state  (R/S/Z/T)
+Take the rest          → extra flags (s/+/l/<)
+
+Example:  Ssl
+          S  → Sleeping
+          s  → session leader
+          l  → multi-threaded
+```
+
 ### Useful ps Commands
 
 ```bash
