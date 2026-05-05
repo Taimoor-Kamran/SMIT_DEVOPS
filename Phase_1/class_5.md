@@ -18,3 +18,36 @@ yes > /dev/null &    # one more CPU eater
 - `yes > /dev/null` prints "y" forever and throws output away — it maxes out a CPU core
 - `&` at the end sends the process to the background so your terminal stays free
 
+---
+
+## 1. ps — Process Snapshot
+
+### Basic Commands
+
+```bash
+# See only your own session's processes
+ps
+
+# See ALL processes from ALL users — full detail
+ps aux
+```
+
+Sample output of `ps aux`:
+
+```
+USER    PID  %CPU %MEM    VSZ   RSS  STAT  COMMAND
+root      1   0.0  0.1  12345  1234  Ss    /sbin/init
+student 1234 99.0  0.0   1234   456  R     yes
+```
+
+### Column Meanings
+
+```
+USER    → Who started the process
+PID     → Process ID (unique number the OS assigns)
+%CPU    → How much CPU it is consuming
+%MEM    → How much RAM it is consuming
+STAT    → Current state of the process (R/S/Z/T)
+COMMAND → Which program is running
+```
+
