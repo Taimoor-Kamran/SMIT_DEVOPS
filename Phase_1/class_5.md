@@ -264,3 +264,75 @@ The process CAN ignore it!          Cannot be ignored — ever
 Use for: normal shutdown            Use for: frozen / stuck process
 ```
 
+### SIGSTOP / SIGCONT — Pause and Resume
+
+```bash
+# Pause a process — it stops using CPU but stays alive
+kill -19 1234
+kill -SIGSTOP 1234
+
+# Check top now → STAT column shows "T" (stopped)
+
+# Resume it
+kill -18 1234
+kill -SIGCONT 1234
+```
+
+---
+
+## Full Live Demo — Step by Step
+
+### Step 1: Create the CPU Load
+
+```bash
+yes > /dev/null &
+yes > /dev/null &
+echo "Last background PID: $!"
+```
+
+### Step 2: Check with ps
+
+```bash
+ps aux | grep yes
+```
+
+### Step 3: Watch in top
+
+```bash
+top
+# Press P → yes processes appear at the top
+# Watch %CPU → near 100% per core
+```
+
+### Step 4: Watch in htop
+
+```bash
+htop
+# CPU bars turn red — fully loaded
+# Press / → type "yes" → search
+```
+
+### Step 5: Try All the Signals
+
+```bash
+# Note the PIDs first
+ps aux | grep yes
+
+# Pause one — watch CPU drop in top
+kill -SIGSTOP [PID1]
+# In top: STAT column shows "T", CPU usage drops
+
+# Resume it
+kill -SIGCONT [PID1]
+# CPU usage jumps back up
+
+# Politely terminate one
+kill -15 [PID1]
+
+# Force kill the other
+kill -9 [PID2]
+
+# Clean up everything remaining
+pkill yes
+```
+
