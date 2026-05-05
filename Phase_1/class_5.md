@@ -200,3 +200,27 @@ htop
 # 4. yes process disappears from the list
 ```
 
+---
+
+## 4. Signals & kill
+
+### What is a Signal?
+
+A signal is a message the OS sends to a process to give it an instruction.
+
+```
+Process is running → We send a signal → Process reacts to it
+```
+
+### Most Important Signals
+
+```
+Signal      Number    Meaning
+─────────────────────────────────────────────────────────
+SIGTERM       15      "Please stop" — polite request
+SIGKILL        9      "DIE NOW — no mercy, no cleanup"  ← force
+SIGSTOP       19      "Pause / freeze"
+SIGCONT       18      "Resume / continue"
+SIGHUP         1      "Reload your config file"
+```
+
