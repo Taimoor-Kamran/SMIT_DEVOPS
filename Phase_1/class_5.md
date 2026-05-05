@@ -224,3 +224,43 @@ SIGCONT       18      "Resume / continue"
 SIGHUP         1      "Reload your config file"
 ```
 
+### kill Commands — Practical Usage
+
+```bash
+# First find the PID
+ps aux | grep yes
+
+# Send SIGTERM — polite stop (process cleans up then exits)
+kill 1234
+kill -15 1234        # same thing
+kill -SIGTERM 1234   # same thing
+
+# If the process ignores SIGTERM — force kill with SIGKILL
+kill -9 1234
+kill -SIGKILL 1234
+
+# Kill all processes matching a name at once
+pkill yes
+
+# Kill by exact name
+killall yes
+```
+
+### SIGTERM vs SIGKILL — The Key Difference
+
+```
+SIGTERM (-15):                      SIGKILL (-9):
+──────────────────                  ─────────────────
+OS asks the process to stop         OS kills the process directly
+                                    without asking
+
+The process CAN:                    The process gets:
+✓ Close open files properly         ✗ No chance to do anything
+✓ Save data before exiting          ✗ Data may be lost or corrupted
+✓ Release locks and connections     ✗ Files may be left in bad state
+
+The process CAN ignore it!          Cannot be ignored — ever
+
+Use for: normal shutdown            Use for: frozen / stuck process
+```
+
