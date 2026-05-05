@@ -165,3 +165,38 @@ Fixed columns                    Columns are customizable
 Available on every system        Needs to be installed
 ```
 
+### htop Screen Layout
+
+```
+  1  [||||||||||||||||100%]    CPU bar — red means danger, fully loaded
+  2  [|||||||          45%]
+Mem  [|||||||||        60%]    Memory bar
+Swp  [|                 2%]    Swap bar — should stay near 0
+
+  PID  USER     NI  VIRT  RES  CPU%  MEM%  COMMAND
+ 1234  student   0  1234  456  99.0   0.1  yes
+```
+
+### htop Keyboard Shortcuts
+
+```
+F3 or /    → Search process by name
+F5         → Tree view — shows parent and child processes
+F6         → Choose which column to sort by
+F9         → Kill menu — choose which signal to send
+F10        → Quit
+Space      → Select a process (can select multiple)
+u          → Filter by username
+```
+
+### Live Demo
+
+```bash
+htop
+
+# 1. Press "/" → type "yes" → press Enter
+# 2. The yes processes get highlighted
+# 3. Press F9 → select SIGKILL → press Enter
+# 4. yes process disappears from the list
+```
+
