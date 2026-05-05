@@ -118,3 +118,27 @@ On a 4-core system:
   id = idle — the higher this is, the healthier the system
 ```
 
+### Keyboard Shortcuts Inside top
+
+```
+q         → Quit
+k         → Kill a process (it will ask for PID then signal)
+r         → Renice — change priority of a process
+M         → Sort by Memory usage
+P         → Sort by CPU usage (default)
+1         → Show each CPU core separately
+h         → Help screen
+```
+
+### Live Demo Sequence
+
+```bash
+# 1. Open top
+top
+
+# 2. Press P → sorts by CPU — yes process jumps to the top
+# 3. Press M → sorts by memory usage
+# 4. Press 1 → see each CPU core individually
+# 5. Press k → type the PID of a yes process → press Enter → type 9 → kill it
+```
+
