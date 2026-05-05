@@ -73,3 +73,48 @@ ps axjf
 ps aux | grep yes | awk '{print $2}'
 ```
 
+---
+
+## 2. top — Live Process Monitor
+
+```bash
+top
+```
+
+### Screen Breakdown
+
+```
+top - 10:30:01 up 2:15, 2 users, load average: 1.98, 1.45, 0.89
+Tasks: 120 total,   3 running, 117 sleeping
+%Cpu(s): 98.2 us,  0.8 sy,  0.0 ni,  0.5 id
+MiB Mem:   3900 total,   300 free,  2100 used
+MiB Swap:  2048 total,  2000 free,    48 used
+```
+
+### Load Average Explained
+
+```
+Load Average: 1.98, 1.45, 0.89
+              ↑     ↑     ↑
+           1 min  5 min  15 min
+
+On a 1-core system:
+  1.0 = fully loaded (acceptable)
+  2.0 = overloaded — processes are queuing up!
+
+On a 4-core system:
+  4.0 = fully loaded
+  8.0 = overloaded
+```
+
+### CPU Breakdown Explained
+
+```
+%Cpu(s): 98.2 us,  0.8 sy,  0.0 ni,  0.5 id
+
+  us = user processes (our programs eating CPU)
+  sy = system/kernel work
+  ni = nice (low priority processes)
+  id = idle — the higher this is, the healthier the system
+```
+
