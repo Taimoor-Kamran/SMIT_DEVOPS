@@ -175,33 +175,7 @@ yes > /dev/null &
 yes > /dev/null &
 ```
 
-### Method 2 — stress-ng (Professional Load Testing Tool)
-
-```bash
-# Install
-sudo apt install stress-ng
-
-# Simulate 2 CPU workers for 30 seconds
-stress-ng --cpu 2 --timeout 30s
-
-# Simulate CPU + memory load together
-stress-ng --cpu 2 --vm 1 --vm-bytes 512M --timeout 30s
-
-# Simulate disk I/O load
-stress-ng --io 2 --timeout 30s
-```
-
-**stress-ng flags explained:**
-
-| Flag | Meaning |
-|------|---------|
-| `--cpu 2` | Spawn 2 CPU-intensive workers |
-| `--vm 1` | Spawn 1 memory stress worker |
-| `--vm-bytes 512M` | Each vm worker uses 512 MB |
-| `--io 2` | Spawn 2 I/O workers |
-| `--timeout 30s` | Run for 30 seconds then stop automatically |
-
-### Method 3 — Memory Load with dd
+### Method 2 — Memory Load with dd
 
 ```bash
 # Write 1GB of data to /tmp to simulate disk I/O
