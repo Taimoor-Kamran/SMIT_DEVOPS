@@ -97,3 +97,48 @@ Swap:         2.0G    50M     1.9G
 | `used` | RAM currently allocated to processes |
 | `available` | What new programs can actually use right now |
 | `Swap used` | If this keeps growing, RAM is full — serious warning sign |
+
+---
+
+## 3. Identifying Heavy Processes
+
+Once you know the system is stressed, you need to find *what* is causing it.
+
+### Sort by CPU Usage
+
+```bash
+# Show all processes — heaviest CPU consumer at the top
+ps aux --sort=-%cpu | head -15
+```
+
+Output:
+
+```
+USER     PID   %CPU %MEM  COMMAND
+student  3421  99.2  0.0   yes
+student  3422  98.8  0.0   yes
+root      856   1.2  0.5   mysqld
+root        1   0.0  0.1   systemd
+```
+
+### Sort by Memory Usage
+
+```bash
+# Show all processes — biggest memory consumer at the top
+ps aux --sort=-%mem | head -15
+```
+
+### Use top for a Live View
+
+```bash
+top   # opens a live dashboard — updates automatically every few seconds
+```
+
+Useful keys inside top:
+
+```
+P   → sort by CPU (the worst offender jumps to the top)
+M   → sort by memory usage
+k   → kill a process (asks for the PID, then the signal)
+q   → quit top
+```
