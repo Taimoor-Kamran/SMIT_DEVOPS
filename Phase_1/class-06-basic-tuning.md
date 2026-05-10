@@ -142,3 +142,33 @@ M   → sort by memory usage
 k   → kill a process (asks for the PID, then the signal)
 q   → quit top
 ```
+
+---
+
+## 4. Simulating Load — Creating a Test Environment
+
+Before you can practise identifying problems, you need to create some. The simplest way is with `yes`.
+
+```bash
+# yes prints "y" forever — piped to /dev/null so output is thrown away
+# The result: one process eating 100% of a CPU core
+yes > /dev/null &
+
+# Start three to saturate multiple cores at once
+yes > /dev/null &
+yes > /dev/null &
+yes > /dev/null &
+```
+
+The `&` at the end sends the process to the background so your terminal stays free.
+
+```bash
+# Confirm the load jumped up
+uptime
+
+# See the yes processes at the top, eating nearly 100% each
+ps aux --sort=-%cpu | head -10
+
+# Clean up everything when you are done
+pkill yes
+```
