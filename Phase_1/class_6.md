@@ -364,23 +364,7 @@ top
 ps aux --sort=-%cpu | head -10
 ```
 
-### Task 2: Identify the Heaviest Process
-
-```bash
-# Start a stress test
-stress-ng --cpu 2 --timeout 60s &
-
-# Now find which PIDs are causing the load
-ps aux --sort=-%cpu | head -10
-
-# Get just the PID of the top CPU consumer
-ps aux --sort=-%cpu | awk 'NR==2 {print $2}'
-
-# Check that PID's details
-cat /proc/[PID]/status | grep -E "Name|VmRSS|VmSize"
-```
-
-### Task 3: Adjust Process Priority with renice
+### Task 2: Adjust Process Priority with renice
 
 ```bash
 # Start two yes processes
@@ -404,7 +388,7 @@ top
 ps -o pid,ni,comm -p [PID_A] [PID_B]
 ```
 
-### Task 4: Terminate Processes Safely
+### Task 3: Terminate Processes Safely
 
 ```bash
 # First list all yes processes
@@ -428,7 +412,7 @@ pkill yes
 ps aux | grep yes
 ```
 
-### Task 5: Safe Service Restart
+### Task 4: Safe Service Restart
 
 ```bash
 # Install nginx if not present
