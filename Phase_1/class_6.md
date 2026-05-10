@@ -5,7 +5,6 @@
 ## 1. What is Basic Tuning?
 
 **Tuning** means adjusting a running Linux system so it uses CPU, memory, and disk as efficiently as possible.
-
 Basic tuning does not require rewriting code or changing hardware — it means:
 
 - Identifying which processes consume too many resources
@@ -15,7 +14,7 @@ Basic tuning does not require rewriting code or changing hardware — it means:
 ### Why Tuning Matters
 
 | Without Tuning | With Tuning |
-| --- | --- |
+|----------------|-------------|
 | One runaway process can freeze the whole system | Resources are distributed fairly |
 | Admins react to crashes after they happen | Problems are caught before impact |
 | No idea what is eating CPU or memory | Clear visibility into every process |
@@ -41,9 +40,9 @@ Output:
                                         1 min  5 min  15 min
 ```
 
-> **What does load average mean?**
-> It shows how busy your system has been over the last 1 minute, 5 minutes, and 15 minutes.
-> Think of it like a queue at a shop — the number tells you how many customers are waiting.
+**What does load average mean?**
+It shows how busy your system has been over the last 1 minute, 5 minutes, and 15 minutes.
+Think of it like a queue at a shop — the number tells you how many customers are waiting.
 
 **How to interpret it:**
 
@@ -61,7 +60,7 @@ Number of CPU cores = how much load is "normal"
 Rule: if load average > number of CPU cores, the system is stressed
 ```
 
-**Check how many CPU cores your machine has:**
+Check how many CPU cores your machine has:
 
 ```bash
 nproc
@@ -73,15 +72,13 @@ Output:
 4
 ```
 
----
-
 ### CPU Usage Breakdown
 
 ```bash
 top
 ```
 
-When you run `top`, look at the header line at the top:
+When you run top, look at the header line at the top:
 
 ```
 %Cpu(s): 89.3 us,  3.2 sy,  0.0 ni,  7.0 id,  0.5 wa
@@ -90,7 +87,7 @@ When you run `top`, look at the header line at the top:
 ```
 
 | Field | What it means | Healthy value |
-| --- | --- | --- |
+|-------|--------------|---------------|
 | `us` | CPU used by your programs | Depends on workload |
 | `sy` | CPU used by Linux itself (the kernel) | Should be less than 5% |
 | `ni` | CPU used by low-priority programs | Varies |
@@ -100,8 +97,6 @@ When you run `top`, look at the header line at the top:
 > **Golden rule:**
 > - If `id` (idle) is near 0% → your CPU is completely maxed out
 > - If `wa` is high → the problem is your disk or network, not CPU
-
----
 
 ### Memory Usage
 
@@ -118,7 +113,7 @@ Swap:         2.0G    50M     1.9G
 ```
 
 | Field | What it means |
-| --- | --- |
+|-------|--------------|
 | `total` | Total RAM installed in your machine |
 | `used` | RAM currently being used |
 | `available` | RAM that new programs can actually use |
@@ -132,7 +127,7 @@ Swap:         2.0G    50M     1.9G
 
 ## 3. Identifying Heavy Processes
 
-A **process** is any running program. Sometimes one process eats too much CPU or memory and slows everything down. Here is how to find it.
+A process is any running program. Sometimes one process eats too much CPU or memory and slows everything down. Here is how to find it.
 
 ### Method 1 — Find the Top CPU Users
 
@@ -155,8 +150,6 @@ root        1   0.0  0.1   systemd
 > PID = Process ID. Every running program gets a unique number.
 > You use this number to control the process (change its priority, stop it, etc.)
 
----
-
 ### Method 2 — Find the Top Memory Users
 
 ```bash
@@ -164,15 +157,13 @@ root        1   0.0  0.1   systemd
 ps aux --sort=-%mem | head -15
 ```
 
----
-
 ### Method 3 — Watch Processes Live with top
 
 ```bash
 top
 ```
 
-Once `top` is open, you can use these keys:
+Once top is open, you can use these keys:
 
 ```
 P  → Sort by CPU usage    (heaviest process jumps to top)
@@ -191,13 +182,13 @@ We use a command called `yes` to do this safely.
 > **What does `yes > /dev/null &` mean?**
 >
 > | Part | What it does |
-> | --- | --- |
+> |------|-------------|
 > | `yes` | A program that prints the letter "y" forever, as fast as possible |
 > | `>` | Sends the output somewhere (instead of showing it on screen) |
 > | `/dev/null` | A trash bin — anything sent here is thrown away immediately |
 > | `&` | Runs the command in the background so your terminal stays usable |
 >
-> **Together:** this command burns 100% of one CPU core without printing anything.
+> Together: this command burns 100% of one CPU core without printing anything.
 
 ```bash
 # Burn 100% of one CPU core
@@ -228,11 +219,9 @@ Nice Value Range: -20 to +19
 
 > **Easy way to remember:**
 > Think of it like a queue at a shop.
-> - Nice value -20 = you push to the front of the line
-> - Nice value 0 = you wait your turn like everyone else
-> - Nice value +19 = you let everyone else go first
-
----
+> - Nice value **-20** = you push to the front of the line
+> - Nice value **0** = you wait your turn like everyone else
+> - Nice value **+19** = you let everyone else go first
 
 ### Why Nice Values Matter
 
@@ -241,8 +230,6 @@ If a background job is consuming CPU and slowing down your web server:
 1. Increase the background job's nice value → it becomes "polite" and gives way
 2. The web server gets CPU time first → it runs smoothly again
 3. The background job still finishes — just a bit slower
-
----
 
 ### Start a New Process with a Custom Nice Value
 
@@ -253,8 +240,6 @@ nice -n 10 yes > /dev/null &
 # Start a process with the lowest possible priority (nice = 19)
 nice -n 19 yes > /dev/null &
 ```
-
----
 
 ### Change the Priority of a Process Already Running (renice)
 
@@ -273,8 +258,6 @@ sudo renice -5 -p 3421
 > - Only root (admin) can set a negative nice value (below 0)
 > - Any user can make their own process nicer (increase the nice value)
 
----
-
 ### Verify the Nice Value Changed
 
 ```bash
@@ -285,12 +268,10 @@ ps aux | grep yes
 top
 ```
 
----
-
 ### Nice Value Comparison Table
 
 | Situation | Nice Value | Effect |
-| --- | --- | --- |
+|-----------|-----------|--------|
 | Web server, database | -5 to 0 | Gets CPU before other processes |
 | Normal user apps | 0 | Default — fair share of CPU |
 | Background backup job | +10 | Yields CPU to more important work |
@@ -311,11 +292,10 @@ Step 3: Send SIGKILL (-9)     → force kill, no cleanup
 ```
 
 > **What are SIGTERM and SIGKILL?**
->
-> Linux communicates with processes using **signals** — these are like messages you send to a running program.
+> Linux communicates with processes using signals — these are like messages you send to a running program.
 >
 > | Signal | Number | What it does |
-> | --- | --- | --- |
+> |--------|--------|-------------|
 > | SIGTERM | 15 | Politely asks the process to stop. The process can save files and clean up first. |
 > | SIGKILL | 9 | Forces the OS to immediately destroy the process. No saving, no cleanup. |
 
@@ -329,9 +309,7 @@ SIGTERM allows the process to:        SIGKILL forces the OS to:
 ✓ Release file locks                  ✗ Locks remain — next start may fail
 ```
 
-> **Rule: Always try SIGTERM first. Only use SIGKILL if SIGTERM does not work.**
-
----
+> **Rule:** Always try SIGTERM first. Only use SIGKILL if SIGTERM does not work.
 
 ### Terminate a Process Safely — Step by Step
 
@@ -354,8 +332,6 @@ kill -9 <PID>
 
 > Replace `<PID>` with the actual process ID number you found in Step 1.
 
----
-
 ### Terminate by Name (Easier)
 
 ```bash
@@ -369,8 +345,6 @@ pkill -9 bad_process
 killall bad_process
 killall -9 bad_process
 ```
-
----
 
 ### Restart a Service Safely (systemd)
 
@@ -392,8 +366,6 @@ sudo systemctl start nginx
 sudo systemctl status nginx
 ```
 
----
-
 ### Reload Config Without a Full Restart
 
 Some services can reload their settings without fully stopping. This means zero downtime.
@@ -403,7 +375,7 @@ Some services can reload their settings without fully stopping. This means zero 
 sudo systemctl reload nginx
 ```
 
-You can also send a signal called **SIGHUP** directly to a process:
+You can also send a signal called SIGHUP directly to a process:
 
 ```bash
 # SIGHUP — what is it?
@@ -441,8 +413,6 @@ top
 ps aux --sort=-%cpu | head -10
 ```
 
----
-
 ### Task 2: Adjust Process Priority with renice
 
 ```bash
@@ -469,8 +439,6 @@ top
 ps -o pid,ni,comm -p $PID_A $PID_B
 ```
 
----
-
 ### Task 3: Terminate Processes Safely
 
 ```bash
@@ -494,8 +462,6 @@ pkill yes
 # Confirm none are left
 ps aux | grep yes
 ```
-
----
 
 ### Task 4: Safe Service Restart
 
@@ -535,8 +501,6 @@ ALERT: CPU usage on web-server-01 is at 98% for the last 5 minutes
 
 Your job: find the cause, isolate it, and restore the system.
 
----
-
 ### Step 1: Get Immediate Situational Awareness
 
 ```bash
@@ -563,8 +527,6 @@ Top header:
 
 `id` is 0.1% — the CPU is completely saturated.
 
----
-
 ### Step 2: Identify the Runaway Process
 
 ```bash
@@ -586,11 +548,9 @@ Found it: `data_processor.py` is consuming 197% CPU (using 2 full cores).
 > **Why does it show 197%?**
 > On a multi-core system, one process can use more than 100% CPU — it just means it is using more than one core.
 
----
-
 ### Step 3: Gather Information Before Killing
 
-> **Do not kill it yet.** First understand what it is and why it is misbehaving.
+Do not kill it yet. First understand what it is and why it is misbehaving.
 
 ```bash
 # How long has it been running?
@@ -641,8 +601,6 @@ Output:
 
 The process is stuck retrying forever because the database it connects to went offline.
 
----
-
 ### Step 4: Isolate — Lower Its Priority First
 
 Before killing it, lower its priority. This reduces the damage while you confirm your plan.
@@ -662,8 +620,6 @@ Top header now:
 ```
 
 Idle jumped from 0.1% to 34.1%. The web server is responding again.
-
----
 
 ### Step 5: Terminate the Runaway Process Safely
 
@@ -693,8 +649,6 @@ ps aux | grep 8821
 # No output = process is gone
 ```
 
----
-
 ### Step 6: Verify System Recovery
 
 ```bash
@@ -722,8 +676,6 @@ HTTP/1.1 200 OK
 ```
 
 Web server is responding normally.
-
----
 
 ### Step 7: Root Cause and Fix
 
@@ -755,7 +707,7 @@ for attempt in range(MAX_RETRIES):
         time.sleep(10 * (2 ** attempt))   # wait longer each time (exponential backoff)
 ```
 
-**Restart the job manually once the database is back online:**
+Restart the job manually once the database is back online:
 
 ```bash
 # nc = netcat — a tool to test if a network port is reachable
@@ -769,12 +721,10 @@ nc -zv db-server 5432
 sudo -u deploy python3 /opt/scripts/data_processor.py
 ```
 
----
-
 ### Incident Summary
 
 | Step | What we did | Command used |
-| --- | --- | --- |
+|------|------------|--------------|
 | 1 | Checked load average | `uptime` |
 | 2 | Found CPU at 98%, idle near zero | `top` |
 | 3 | Identified the runaway process | `ps aux --sort=-%cpu` |
@@ -786,12 +736,10 @@ sudo -u deploy python3 /opt/scripts/data_processor.py
 | 9 | Verified system recovered | `uptime`, `curl` |
 | 10 | Fixed the code | Added retry limit |
 
----
-
 ### Common Runaway Process Scenarios
 
 | Symptom | Likely cause | What to do first |
-| --- | --- | --- |
+|---------|-------------|-----------------|
 | CPU 100%, `id` near 0 | Infinite loop or stuck process | `ps aux --sort=-%cpu` then renice and kill |
 | Load average much higher than core count | Too many processes piled up | Find and kill the heaviest ones |
 | Memory keeps growing over time | Memory leak in a long-running process | `ps aux --sort=-%mem \| head -10` |
@@ -804,40 +752,35 @@ sudo -u deploy python3 /opt/scripts/data_processor.py
 
 ### Tuning Workflow Checklist
 
-Use this checklist every time you suspect a performance problem:
-
 ```
-[ ] Check load average:  uptime             — compare the number to nproc (your core count)
-[ ] Check CPU breakdown: top                — look at "id" (idle should be above 10%)
-[ ] Check memory:        free -h            — watch for growing swap usage
-[ ] Find top consumers:  ps aux --sort=-%cpu | head -10
-[ ] Investigate first:   check how long the process has been running, check logs, check crontab
-[ ] Isolate the problem: sudo renice +19 -p <PID>   — reduce impact before you kill it
-[ ] Terminate safely:    SIGTERM first, wait 5 seconds, then SIGKILL only if needed
-[ ] Use systemctl:       never kill service processes directly — use systemctl restart
-[ ] Verify recovery:     uptime, systemctl status, curl to test the web server
-[ ] Fix root cause:      do not just kill the process and walk away
+[ ] Check load average: uptime — compare to nproc (core count)
+[ ] Check CPU breakdown: top — look at "id" (idle should be > 10%)
+[ ] Check memory: free -h — watch for growing swap usage
+[ ] Find top consumers: ps aux --sort=-%cpu | head -10
+[ ] Investigate before acting: check PID runtime, logs, crontab
+[ ] Isolate first: sudo renice +19 -p [PID] — reduce impact while investigating
+[ ] Terminate safely: SIGTERM first, wait, then SIGKILL only if needed
+[ ] Use systemctl for services — never kill service processes directly
+[ ] Verify recovery: uptime, systemctl status, curl / smoke test
+[ ] Fix root cause — do not just kill the process and walk away
 ```
-
----
 
 ### Quick Reference — Tuning Commands
 
-| What you want to do | Command |
-| --- | --- |
+| Goal | Command |
+|------|---------|
 | Check load average | `uptime` |
-| Find processes using the most CPU | `ps aux --sort=-%cpu \| head -10` |
-| Find processes using the most memory | `ps aux --sort=-%mem \| head -10` |
-| Watch processes live | `top` |
-| Simulate CPU load for testing | `yes > /dev/null &` |
-| Lower a process priority | `sudo renice +15 -p <PID>` |
-| Raise a process priority | `sudo renice -5 -p <PID>` |
-| Politely stop a process | `kill -15 <PID>` |
-| Force stop a process | `kill -9 <PID>` |
-| Safely restart a service | `sudo systemctl restart <service>` |
-| Reload config without downtime | `sudo systemctl reload <service>` |
-
----
+| Count CPU cores | `nproc` |
+| Find CPU hogs | `ps aux --sort=-%cpu \| head -10` |
+| Find memory hogs | `ps aux --sort=-%mem \| head -10` |
+| Live monitoring | `top` or `htop` |
+| Simulate CPU load | `yes > /dev/null &` |
+| Lower process priority | `sudo renice +15 -p [PID]` |
+| Raise process priority | `sudo renice -5 -p [PID]` |
+| Politely stop a process | `kill -15 [PID]` |
+| Force stop a process | `kill -9 [PID]` |
+| Restart a service safely | `sudo systemctl restart [service]` |
+| Reload config (no downtime) | `sudo systemctl reload [service]` |
 
 ### Golden Rules for Basic Tuning
 
@@ -845,4 +788,4 @@ Use this checklist every time you suspect a performance problem:
 > 2. **Isolate before you kill.** Use `renice +19` to reduce impact while you investigate.
 > 3. **SIGTERM before SIGKILL.** Always give the process a chance to clean up.
 > 4. **Use systemctl for services.** Never `kill -9` a service process — use `systemctl restart`.
-> 5. **Fix the root cause.** Killing the process stops the bleeding — fixing the code prevents the next incident.
+> 5. **Fix the root cause.** Killing the process stops the bleeding — fixing the root cause stops it from happening again.
