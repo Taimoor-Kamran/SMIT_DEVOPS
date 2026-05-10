@@ -676,7 +676,10 @@ for attempt in range(MAX_RETRIES):
 **Restart the job manually once the database is back online:**
 
 ```bash
-# Confirm database is reachable first
+# nc = netcat — a tool to test if a network port is reachable
+# -z = just check if the port is open, don't send data
+# -v = show the result clearly
+# 5432 = the default port for PostgreSQL (our database)
 nc -zv db-server 5432
 # Output: Connection to db-server 5432 port [tcp/postgresql] succeeded!
 
