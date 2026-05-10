@@ -381,17 +381,17 @@ PID_B=$!
 echo "PID_B: $PID_B"
 
 # Make PID_A high priority
-sudo renice -10 -p [PID_A]
+sudo renice -10 -p $PID_A
 
 # Make PID_B low priority
-sudo renice +15 -p [PID_B]
+sudo renice +15 -p $PID_B
 
 # Watch the difference in top
 top
 # Press P → you will see PID_A gets more CPU time than PID_B
 
 # Verify nice values
-ps -o pid,ni,comm -p [PID_A] [PID_B]
+ps -o pid,ni,comm -p $PID_A $PID_B
 ```
 
 ### Task 3: Terminate Processes Safely
@@ -401,15 +401,15 @@ ps -o pid,ni,comm -p [PID_A] [PID_B]
 ps aux | grep yes
 
 # Step 1: Politely terminate one
-kill -15 [PID_A]
+kill -15 $PID_A
 
 # Wait and verify it is gone
 sleep 2
-ps aux | grep [PID_A]
+ps aux | grep $PID_A
 # Should show nothing (or only the grep command itself)
 
 # Step 2: Force kill the other (simulating a stuck process)
-kill -9 [PID_B]
+kill -9 $PID_B
 
 # Clean up everything remaining
 pkill yes
