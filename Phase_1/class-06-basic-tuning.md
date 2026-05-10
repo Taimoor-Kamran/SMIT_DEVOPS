@@ -681,3 +681,48 @@ sudo -u deploy python3 /opt/scripts/data_processor.py
 | Memory keeps growing | Memory leak in a long-running process | `ps --sort=-%mem`, check `/proc/PID/status` |
 | High `wa` in top | Excessive disk I/O | Use `iotop` to find the offender |
 | Service suddenly becomes slow | CPU stolen by another process | `renice +19` the offender |
+
+---
+
+## Summary
+
+### Tuning Workflow Checklist
+
+```
+[ ] Check load:     uptime — compare the number to nproc (core count)
+[ ] Check CPU:      top — is idle (id) close to 0%?
+[ ] Check memory:   free -h — is swap usage growing?
+[ ] Find the cause: ps aux --sort=-%cpu | head -10
+[ ] Investigate:    check runtime, logs, and crontab before acting
+[ ] Isolate:        sudo renice +19 -p [PID] — reduce impact while you dig deeper
+[ ] Terminate:      SIGTERM first, wait, then SIGKILL only if ignored
+[ ] Services:       use systemctl — never kill service processes directly
+[ ] Verify:         uptime + curl -I http://localhost after recovery
+[ ] Fix root cause: don't just kill the process and walk away
+```
+
+### Quick Reference — Tuning Commands
+
+| Goal | Command |
+|------|---------|
+| Check load average | `uptime` |
+| Count CPU cores | `nproc` |
+| Find CPU hogs | `ps aux --sort=-%cpu \| head -10` |
+| Find memory hogs | `ps aux --sort=-%mem \| head -10` |
+| Live process monitor | `top` |
+| Simulate CPU load | `yes > /dev/null &` |
+| Lower process priority | `sudo renice +15 -p [PID]` |
+| Raise process priority | `sudo renice -5 -p [PID]` |
+| Politely stop a process | `kill -15 [PID]` |
+| Force stop a process | `kill -9 [PID]` |
+| Restart a service safely | `sudo systemctl restart [service]` |
+| Reload config (no downtime) | `sudo systemctl reload [service]` |
+| See open files for a process | `lsof -p [PID]` |
+
+### Golden Rules
+
+> 1. **Measure before you act.** Use `top`, `ps`, and `uptime` to understand the problem first.
+> 2. **Isolate before you kill.** Use `renice +19` to reduce the impact while you investigate.
+> 3. **SIGTERM before SIGKILL.** Always give the process a chance to clean up.
+> 4. **Use systemctl for services.** Never use `kill -9` on a service process — use `systemctl restart`.
+> 5. **Fix the root cause.** Killing the process stops the bleeding — fixing the root cause stops it from happening again.
