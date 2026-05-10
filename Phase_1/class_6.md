@@ -175,16 +175,6 @@ yes > /dev/null &
 yes > /dev/null &
 ```
 
-### Verify the Load You Created
-
-```bash
-# Check load average jumped up
-uptime
-
-# See the processes you just created
-ps aux --sort=-%cpu | head -10
-```
-
 ---
 
 ## 5. Nice Values — Process Priority
