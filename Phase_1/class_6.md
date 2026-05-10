@@ -368,11 +368,13 @@ ps aux --sort=-%cpu | head -10
 
 ```bash
 # Start two yes processes
-yes > /dev/null &   # save the PID — let's call it PID_A
-echo "PID_A: $!"
+yes > /dev/null &
+PID_A=$!
+echo "PID_A: $PID_A"
 
-yes > /dev/null &   # save the PID — let's call it PID_B
-echo "PID_B: $!"
+yes > /dev/null &
+PID_B=$!
+echo "PID_B: $PID_B"
 
 # Make PID_A high priority
 sudo renice -10 -p [PID_A]
