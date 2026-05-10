@@ -412,3 +412,272 @@ sudo systemctl restart nginx
 # Quick check — active means it is running correctly
 sudo systemctl is-active nginx
 ```
+
+---
+
+## 9. Incident: High CPU From a Runaway Process
+
+### Scenario
+
+It is 2:00 AM. Your monitoring fires an alert:
+
+```
+ALERT: web-server-01
+  CPU usage:     98% for the last 5 minutes
+  Load average:  7.8 on a 4-core system  (healthy max = 4.0)
+  Response time: spiked from 120ms to 8000ms
+```
+
+Your job: find the cause, reduce the impact, stop it safely, and restore the service.
+
+---
+
+### Step 1: Get the Situation Picture
+
+```bash
+# Check load average — how stressed is the system right now?
+uptime
+```
+
+Output:
+
+```
+02:15:33 up 14 days, 2:10, 1 user, load average: 7.82, 6.91, 5.43
+```
+
+Load is nearly double the 4-core safe limit. Something serious is wrong.
+
+```bash
+# Check CPU breakdown in top
+top
+```
+
+Header:
+
+```
+%Cpu(s): 98.7 us,  0.8 sy,  0.0 ni,  0.1 id
+```
+
+`id` is 0.1% — the CPU has almost no breathing room.
+
+---
+
+### Step 2: Find the Runaway Process
+
+```bash
+# Sort by CPU — the worst offender appears at the top
+ps aux --sort=-%cpu | head -10
+```
+
+Output:
+
+```
+USER      PID   %CPU %MEM  COMMAND
+deploy   8821  197.2  1.2  python3 data_processor.py
+www-data  412    1.1  0.8  nginx: worker process
+mysql    1023    0.9  3.4  mysqld
+```
+
+Found it: `data_processor.py` is consuming 197% CPU — it is using two full cores.
+
+---
+
+### Step 3: Investigate Before You Act
+
+Do not kill it yet. First understand what it is and why it is running.
+
+```bash
+# How long has this process been running?
+ps -p 8821 -o pid,etime,cmd
+```
+
+Output:
+
+```
+  PID     ELAPSED  CMD
+ 8821    02:47:13  python3 data_processor.py
+```
+
+Nearly 3 hours — far longer than a nightly job should take.
+
+```bash
+# What files does it have open? (two ways — pick whichever is easier to read)
+ls -la /proc/8821/fd | head -20   # raw list of file descriptors
+lsof -p 8821                      # friendlier output — shows filenames and types
+```
+
+```bash
+# Is this a scheduled job? Check the crontab for the deploy user
+sudo crontab -u deploy -l
+```
+
+Output:
+
+```
+0 23 * * * /opt/scripts/data_processor.py
+```
+
+A nightly job that started at 23:00 and never finished.
+
+```bash
+# Read the logs — what has it been doing for 3 hours?
+sudo journalctl --since "2 hours ago" | grep data_processor
+```
+
+Output:
+
+```
+02:00:01 web-server-01 python3[8821]: WARNING: retry attempt 1847 — connection timeout
+02:00:04 web-server-01 python3[8821]: WARNING: retry attempt 1848 — connection timeout
+```
+
+The script is stuck in an infinite retry loop. The remote database went offline and the script has no maximum retry limit — it just keeps trying forever.
+
+---
+
+### Step 4: Isolate — Reduce the Impact Before Killing
+
+Lower the priority first. This frees up CPU for nginx without stopping the process yet, giving you time to confirm your plan.
+
+```bash
+# Drop to the lowest possible priority — nginx gets CPU, the script barely runs
+sudo renice +19 -p 8821
+```
+
+```bash
+# Check that it helped
+top
+```
+
+Header now:
+
+```
+%Cpu(s): 61.4 us,  2.1 sy,  2.3 ni, 34.1 id
+```
+
+Idle jumped from 0.1% to 34.1%. The web server can breathe again.
+
+---
+
+### Step 5: Terminate Safely
+
+```bash
+# Try SIGTERM first — give the process a chance to stop cleanly
+sudo kill -15 8821
+
+# Wait a few seconds, then check if it stopped
+sleep 5
+ps aux | grep 8821
+```
+
+Output:
+
+```
+deploy   8821  98.2  1.2  python3 data_processor.py
+```
+
+Still running — it is stuck in the retry loop and ignoring SIGTERM.
+
+```bash
+# Escalate to SIGKILL — no choice now
+sudo kill -9 8821
+
+# Confirm it is gone
+ps aux | grep 8821     # should return no results
+```
+
+---
+
+### Step 6: Verify Recovery
+
+```bash
+# Check that load average is dropping
+uptime
+```
+
+Output (2 minutes later):
+
+```
+02:20:01 up 14 days, 2:15, 1 user, load average: 1.12, 3.45, 4.87
+```
+
+The 1-minute average is already in the healthy range.
+
+```bash
+# Confirm nginx is still serving traffic correctly
+sudo systemctl status nginx
+curl -I http://localhost
+```
+
+Output:
+
+```
+HTTP/1.1 200 OK
+```
+
+Website is back to normal.
+
+---
+
+### Step 7: Fix the Root Cause
+
+**Root cause:** the script had no retry limit. When the database went offline, it looped forever consuming two CPU cores.
+
+```python
+# Before — retries with no exit condition
+while True:
+    try:
+        connect_to_database()
+        break
+    except ConnectionError:
+        time.sleep(10)
+        continue          # loops forever
+
+# After — max 5 retries, waits longer each time, then fails loudly
+MAX_RETRIES = 5
+for attempt in range(MAX_RETRIES):
+    try:
+        connect_to_database()
+        break
+    except ConnectionError:
+        if attempt == MAX_RETRIES - 1:
+            raise                              # give up and raise an error
+        time.sleep(10 * (2 ** attempt))        # wait 10s, 20s, 40s, 80s...
+```
+
+```bash
+# Confirm the database is back online before re-running the job
+nc -zv db-server 5432
+
+# Re-run the job manually as the correct user
+sudo -u deploy python3 /opt/scripts/data_processor.py
+```
+
+---
+
+### Incident Summary
+
+| Step | What Was Done | Command Used |
+|------|--------------|--------------|
+| 1 | Confirmed high load | `uptime` |
+| 2 | Confirmed CPU saturated | `top` |
+| 3 | Found the runaway process | `ps aux --sort=-%cpu` |
+| 4 | Checked how long it had been running | `ps -p 8821 -o pid,etime,cmd` |
+| 5 | Read the logs to find root cause | `journalctl` |
+| 6 | Isolated with renice to buy time | `sudo renice +19 -p 8821` |
+| 7 | Tried SIGTERM — it was ignored | `sudo kill -15 8821` |
+| 8 | Escalated to SIGKILL | `sudo kill -9 8821` |
+| 9 | Verified system recovered | `uptime`, `curl -I http://localhost` |
+| 10 | Fixed the code — added retry limit | Code change deployed |
+
+---
+
+### Common Runaway Process Scenarios
+
+| Symptom | Likely Cause | First Step |
+|---------|-------------|------------|
+| CPU 100%, `id` near 0 | Infinite loop or spinning process | `ps --sort=-%cpu`, renice, then kill |
+| Load average >> core count | Too many processes piling up | Look for zombie or blocked processes |
+| Memory keeps growing | Memory leak in a long-running process | `ps --sort=-%mem`, check `/proc/PID/status` |
+| High `wa` in top | Excessive disk I/O | Use `iotop` to find the offender |
+| Service suddenly becomes slow | CPU stolen by another process | `renice +19` the offender |
