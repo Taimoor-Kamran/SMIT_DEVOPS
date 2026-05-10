@@ -306,3 +306,109 @@ sudo systemctl status nginx
 # Reload config without stopping — zero downtime (only if the service supports it)
 sudo systemctl reload nginx
 ```
+
+---
+
+## 8. Lab: Hands-On Practice
+
+### Task 1: Simulate Load and Watch the System React
+
+```bash
+# Step 1: Record the baseline load average before you do anything
+uptime
+
+# Step 2: Start 3 CPU-eating background processes
+yes > /dev/null &
+yes > /dev/null &
+yes > /dev/null &
+
+# Step 3: Check if load average went up
+uptime
+
+# Step 4: Watch them live in top — press P to sort by CPU
+top
+
+# Step 5: Confirm with ps
+ps aux --sort=-%cpu | head -10
+
+# Step 6: Clean up all yes processes when done
+pkill yes
+```
+
+### Task 2: Adjust Process Priority with renice
+
+```bash
+# Start the first process and save its PID straight away
+yes > /dev/null &
+PID_A=$!                   # $! always holds the PID of the last background job
+echo "PID_A: $PID_A"
+
+# Start the second process and save its PID
+yes > /dev/null &
+PID_B=$!
+echo "PID_B: $PID_B"
+
+# Give PID_A high priority (greedier — gets more CPU)
+sudo renice -10 -p $PID_A
+
+# Give PID_B low priority (more polite — gives way to others)
+sudo renice +15 -p $PID_B
+
+# Open top and press P — PID_A should receive more CPU than PID_B
+top
+
+# Verify the nice values actually changed
+ps -o pid,ni,comm -p $PID_A $PID_B
+
+# Clean up
+pkill yes
+```
+
+### Task 3: Terminate Processes Safely
+
+```bash
+# Start two processes and save their PIDs
+yes > /dev/null &
+PID_A=$!
+
+yes > /dev/null &
+PID_B=$!
+
+# Politely terminate PID_A with SIGTERM
+kill -15 $PID_A
+
+# Wait, then confirm it is gone
+sleep 2
+ps aux | grep $PID_A         # should return nothing (or only the grep line itself)
+
+# Force kill PID_B to simulate a stuck process
+kill -9 $PID_B
+
+# Remove any remaining yes processes
+pkill yes
+
+# Final check — confirm none are left
+ps aux | grep yes
+```
+
+### Task 4: Safe Service Restart
+
+```bash
+# Install nginx if it is not already on the system
+sudo apt install nginx
+
+# Start the service
+sudo systemctl start nginx
+
+# Confirm it is running
+sudo systemctl status nginx
+
+# Reload config without dropping connections (zero downtime)
+sudo systemctl reload nginx
+
+# Full restart
+sudo systemctl restart nginx
+
+# Quick check — active means it is running correctly
+sudo systemctl is-active nginx
+```
