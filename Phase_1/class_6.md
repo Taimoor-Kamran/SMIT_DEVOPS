@@ -175,13 +175,6 @@ yes > /dev/null &
 yes > /dev/null &
 ```
 
-### Method 2 — Memory Load with dd
-
-```bash
-# Write 1GB of data to /tmp to simulate disk I/O
-dd if=/dev/zero of=/tmp/testfile bs=1M count=1024 status=progress
-```
-
 ### Verify the Load You Created
 
 ```bash
