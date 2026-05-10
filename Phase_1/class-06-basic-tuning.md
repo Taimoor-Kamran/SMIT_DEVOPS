@@ -172,3 +172,64 @@ ps aux --sort=-%cpu | head -10
 # Clean up everything when you are done
 pkill yes
 ```
+
+---
+
+## 5. Nice Values — Adjusting Process Priority
+
+### What Is a Nice Value?
+
+Every process has a **nice value** that tells the OS how much CPU priority to give it.
+
+```
+Range:   -20  ←────────────── 0 ──────────────→  +19
+          ↑                   ↑                    ↑
+      greediest            default            most polite
+   (gets CPU first)     (normal apps)    (gives way to others)
+```
+
+Think of it like a queue — a lower nice value means you get served before everyone else.
+
+### When to Use Nice Values
+
+| Situation | Nice Value | Effect |
+|-----------|-----------|--------|
+| Web server, database | -5 to 0 | Gets CPU before other processes |
+| Normal user apps | 0 | Default — fair share |
+| Background backup job | +10 | Gives way to important work |
+| Low-priority batch job | +19 | Only runs when CPU is completely idle |
+
+### Start a New Process with a Set Priority
+
+```bash
+# Start yes at low priority (nice = 10 — more polite than default)
+nice -n 10 yes > /dev/null &
+
+# Start yes at the lowest possible priority
+nice -n 19 yes > /dev/null &
+```
+
+### Change the Priority of an Already Running Process
+
+```bash
+# Find the PID of the process you want to adjust
+ps aux | grep yes
+
+# Make it more polite — give way to other processes (higher number = lower priority)
+sudo renice +15 -p 3421
+
+# Make it greedier — get more CPU time (lower number = higher priority)
+sudo renice -5 -p 3421
+```
+
+> **Note:** Only root can set negative nice values (below 0). Any regular user can make their own processes nicer by raising the nice value.
+
+### Verify the Change Worked
+
+```bash
+# The NI column shows the current nice value
+ps aux | grep yes
+
+# Or open top and look at the NI column next to each process
+top
+```
