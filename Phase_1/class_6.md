@@ -165,7 +165,11 @@ Before you can practice identifying and fixing heavy processes, you need to crea
 ### Method 1 — CPU Load with yes
 
 ```bash
-# Eat 100% of one CPU core
+# What does this command mean?
+# yes        → a program that prints "y" forever, as fast as possible
+# /dev/null  → a trash bin — anything sent here is thrown away
+# &          → runs in the background so your terminal stays free
+# Together: this burns 100% of one CPU core
 yes > /dev/null &
 
 # Eat multiple cores (4 processes = 4 cores saturated)
