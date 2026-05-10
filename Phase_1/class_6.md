@@ -336,9 +336,12 @@ Some services can reload their configuration without stopping (zero downtime):
 # Reload nginx config — no dropped connections
 sudo systemctl reload nginx
 
-# Send SIGHUP to a process (many daemons treat this as "reload config")
-kill -1 [PID]
-kill -SIGHUP [PID]
+# SIGHUP — what is it?
+# HUP = "hang up". Most programs use it to reload their config file.
+# It does NOT stop the process — just tells it to re-read its settings.
+# Example: nginx reloads nginx.conf without dropping any connections.
+kill -1 $PID
+kill -SIGHUP $PID
 ```
 
 ---
