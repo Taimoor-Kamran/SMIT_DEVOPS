@@ -156,37 +156,6 @@ k     → Kill a process (asks for PID, then signal number)
 q     → Quit
 ```
 
-### Method 4 — pidstat (Per-Process Statistics Over Time)
-
-```bash
-# Install if not present
-sudo apt install sysstat
-
-# Watch CPU usage per process, updating every 2 seconds
-pidstat 2
-```
-
-Output:
-
-```
-10:50:01  UID    PID   %usr  %system  %CPU  Command
-10:50:03    0   3421  99.00     0.00 99.00  yes
-10:50:03    0   3422  98.50     0.00 98.50  yes
-```
-
-### Method 5 — Finding the PID of a Specific Process
-
-```bash
-# By name
-pgrep nginx
-
-# By name with full info
-pgrep -a nginx
-
-# Or with ps
-ps aux | grep nginx
-```
-
 ---
 
 ## 4. Simulating Load (For Testing and Learning)
