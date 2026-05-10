@@ -723,7 +723,7 @@ sudo -u deploy python3 /opt/scripts/data_processor.py
 | Find CPU hogs | `ps aux --sort=-%cpu \| head -10` |
 | Find memory hogs | `ps aux --sort=-%mem \| head -10` |
 | Live monitoring | `top` or `htop` |
-| Simulate CPU load | `stress-ng --cpu 2 --timeout 30s` |
+| Simulate CPU load | `yes > /dev/null &` |
 | Lower process priority | `sudo renice +15 -p [PID]` |
 | Raise process priority | `sudo renice -5 -p [PID]` |
 | Politely stop a process | `kill -15 [PID]` |
