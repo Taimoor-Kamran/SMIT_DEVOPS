@@ -524,8 +524,12 @@ Output:
 It has been running for nearly 3 hours — far longer than expected.
 
 ```bash
-# What files does it have open?
+# /proc is a special Linux folder with live info about every running process.
+# /proc/8821/fd shows all files that process 8821 currently has open.
 ls -la /proc/8821/fd | head -20
+
+# Easier to read alternative:
+lsof -p 8821
 ```
 
 ```bash
