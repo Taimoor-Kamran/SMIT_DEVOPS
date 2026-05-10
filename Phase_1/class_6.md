@@ -708,8 +708,8 @@ sudo -u deploy python3 /opt/scripts/data_processor.py
 |---------|-------------|--------------|
 | CPU 100%, `id` near 0 | Infinite loop or spinning process | `ps --sort=-%cpu`, then renice and kill |
 | Load average >> core count | Too many processes piled up | Find zombie or blocked processes |
-| Memory keeps growing | Memory leak in long-running process | `ps --sort=-%mem`, check VmRSS in `/proc/PID/status` |
-| High `wa` in top | Process doing excessive disk I/O | `iotop` to find I/O offender |
+| Memory keeps growing | Memory leak in long-running process | `ps aux --sort=-%mem \| head -10` |
+| High `wa` in top | Process doing excessive disk I/O | Check `wa` column in top — if high, disk is the bottleneck |
 | Service becomes slow suddenly | CPU stolen by noisy neighbor process | `renice` the offender to +19 |
 
 ---
