@@ -233,3 +233,76 @@ ps aux | grep yes
 # Or open top and look at the NI column next to each process
 top
 ```
+
+---
+
+## 6. Safely Terminating Processes
+
+### The Rule: Always Try SIGTERM First
+
+```
+Step 1: Send SIGTERM (-15)    →  "Please stop cleanly"
+         ↓ wait a few seconds
+Step 2: Is the process gone?  →  yes = done
+         ↓ still running?
+Step 3: Send SIGKILL (-9)     →  "Stop now — no choice"
+```
+
+### Why the Order Matters
+
+| | SIGTERM (-15) | SIGKILL (-9) |
+|---|---|---|
+| How it works | Asks the process to stop | Forces the OS to kill it immediately |
+| Process can save open files | Yes | No — data may be lost |
+| Process can close DB connections | Yes | No — connections left hanging |
+| Process can release file locks | Yes | No — locks may remain |
+| Process can ignore it | Yes | Never — cannot be ignored |
+| **When to use** | **Always try this first** | **Only if SIGTERM is ignored** |
+
+### Commands
+
+```bash
+# Step 1: Find the PID of the process
+ps aux | grep bad_process
+
+# Step 2: Polite request to stop
+kill -15 [PID]
+
+# Step 3: Wait a few seconds, then check
+sleep 5
+ps aux | grep [PID]
+
+# Step 4: Force kill only if it is still running
+kill -9 [PID]
+```
+
+```bash
+# Kill all processes with a given name (polite)
+pkill bad_process
+
+# Force kill all processes with a given name
+pkill -9 bad_process
+```
+
+---
+
+## 7. Restarting Services Safely with systemctl
+
+For services managed by systemd (nginx, mysql, sshd, etc.) — **never kill the process directly in production**. Use `systemctl` instead. It sends the right signals, waits for the process to stop, then starts it again cleanly.
+
+```bash
+# Safe restart — systemd sends SIGTERM, waits, then starts fresh
+sudo systemctl restart nginx
+
+# Stop only (does not start again)
+sudo systemctl stop nginx
+
+# Start only
+sudo systemctl start nginx
+
+# Check if the service came back up correctly
+sudo systemctl status nginx
+
+# Reload config without stopping — zero downtime (only if the service supports it)
+sudo systemctl reload nginx
+```
