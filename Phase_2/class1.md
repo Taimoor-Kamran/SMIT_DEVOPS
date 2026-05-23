@@ -70,3 +70,46 @@ git pull  ←──────────────────  Gets new co
 
 > **Remember:** You can work entirely on your local repo without a remote.
 > A remote is only needed when you want to back up your work or share it with others.
+
+---
+
+## 3. Git Fundamentals
+
+### git init — Start a New Repository
+
+`git init` turns any folder on your computer into a Git repository.
+Run it once at the start of a new project.
+
+```bash
+# Step 1: Create a new project folder
+mkdir my-project
+
+# Step 2: Go into it
+cd my-project
+
+# Step 3: Tell Git to start tracking this folder
+git init
+```
+
+Output:
+
+```
+Initialized empty Git repository in /home/student/my-project/.git/
+```
+
+Git creates a hidden `.git` folder inside your project. That folder contains your entire history.
+
+```bash
+# See the hidden .git folder
+ls -la
+```
+
+Output:
+
+```
+drwxr-xr-x  3 student student 4096 May 10 10:00 .
+drwxr-xr-x 12 student student 4096 May 10 10:00 ..
+drwxr-xr-x  7 student student 4096 May 10 10:00 .git
+```
+
+> **Important:** Never delete the `.git` folder. Deleting it removes your entire project history.
