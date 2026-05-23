@@ -351,3 +351,97 @@ a3f2c91 broke the login page
 > | Safe to use when others have your code | Yes | No — breaks everyone else's copy |
 > | Creates a new commit | Yes | No |
 > | **When to use** | **Almost always** | Only on private, un-shared branches |
+
+---
+
+## 4. Lab: Hands-On Practice
+
+### Task 1: Create a Repository and Make Your First Commit
+
+```bash
+# Step 1: Create a new folder for your project
+mkdir git-practice
+cd git-practice
+
+# Step 2: Initialise Git
+git init
+
+# Step 3: Tell Git who you are (only needed once per machine)
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+# Step 4: Create a file
+echo "Hello, Git!" > readme.txt
+
+# Step 5: Check what Git sees
+git status
+# You will see readme.txt listed as an untracked file
+
+# Step 6: Stage it
+git add readme.txt
+
+# Step 7: Check status again — it is now staged
+git status
+
+# Step 8: Commit it
+git commit -m "Initial commit — add readme"
+
+# Step 9: View your first commit in the log
+git log --oneline
+```
+
+### Task 2: Build a Commit History
+
+```bash
+# Make a second change and commit it
+echo "Line 2: learning Git" >> readme.txt
+git add readme.txt
+git commit -m "Add second line to readme"
+
+# Make a third change and commit it
+echo "Line 3: this is fun" >> readme.txt
+git add readme.txt
+git commit -m "Add third line to readme"
+
+# View your full history — you should see 3 commits
+git log --oneline
+```
+
+Output:
+
+```
+c7d8e9f Add third line to readme
+b5c6d7e Add second line to readme
+a3f2c91 Initial commit — add readme
+```
+
+```bash
+# See exactly what changed in your second commit (use your actual hash)
+git show b5c6d7e
+```
+
+### Task 3: Revert a Change
+
+```bash
+# Step 1: Look at your history and note the hash of the third commit
+git log --oneline
+
+# Step 2: Revert that commit (replace with your actual hash)
+git revert c7d8e9f --no-edit
+
+# Step 3: Confirm the revert commit was added
+git log --oneline
+# You should now see 4 commits — the revert is at the top
+
+# Step 4: Check the file — line 3 should be gone
+cat readme.txt
+```
+
+Expected output of `cat readme.txt`:
+
+```
+Hello, Git!
+Line 2: learning Git
+```
+
+Line 3 is gone — but your history is intact. The revert commit proves what happened and when.
