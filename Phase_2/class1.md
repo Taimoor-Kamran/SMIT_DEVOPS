@@ -628,3 +628,59 @@ git reset --hard HEAD~1
 
 > **Golden rule:** If you think you have lost commits in Git, check `git reflog` before panicking.
 > Git almost never truly deletes your work — it just becomes temporarily hidden.
+
+---
+
+## Summary
+
+### The Git Workflow — Every Time
+
+```
+1. Make changes to your files
+2. git status          → see what changed
+3. git add .           → stage the files you want to save
+4. git commit -m "..."  → save the snapshot with a clear message
+5. git log --oneline   → confirm it was saved
+```
+
+### Quick Reference — All Commands Covered
+
+| Goal | Command |
+|------|---------|
+| Start a new Git repo | `git init` |
+| Check what has changed | `git status` |
+| Stage one file | `git add filename` |
+| Stage everything | `git add .` |
+| Save a snapshot | `git commit -m "message"` |
+| View commit history | `git log --oneline` |
+| See what a commit changed | `git show <hash>` |
+| Safely undo a commit | `git revert <hash> --no-edit` |
+| View every action you ever took | `git reflog` |
+| Move HEAD (soft — keep staged) | `git reset --soft HEAD~1` |
+| Move HEAD (mixed — unstage) | `git reset HEAD~1` |
+| Move HEAD (hard — delete changes) | `git reset --hard HEAD~1` |
+| Send commits to GitHub | `git push` |
+| Get commits from GitHub | `git pull` |
+| Copy a remote repo locally | `git clone <url>` |
+
+### Checklist — What You Learned This Class
+
+```
+[ ] Understand what Git is and why it is used
+[ ] Know the difference between a local and remote repository
+[ ] Initialise a new repo with git init
+[ ] Stage files with git add
+[ ] Save snapshots with git commit -m
+[ ] Read commit history with git log --oneline
+[ ] Safely undo a commit with git revert
+[ ] Recover lost commits using git reflog
+[ ] Understand the three modes of git reset (soft / mixed / hard)
+```
+
+### Golden Rules
+
+> 1. **Commit often.** Small, frequent commits are easier to understand and easier to undo.
+> 2. **Write clear commit messages.** Your future self will thank you.
+> 3. **Use `git revert` to undo — not `git reset --hard`.** Revert is always safe.
+> 4. **Check `git status` before every commit.** Know exactly what you are saving.
+> 5. **If you think work is lost — run `git reflog` first.** Git rarely deletes anything.
