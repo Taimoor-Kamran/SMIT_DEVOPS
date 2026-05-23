@@ -113,3 +113,103 @@ drwxr-xr-x  7 student student 4096 May 10 10:00 .git
 ```
 
 > **Important:** Never delete the `.git` folder. Deleting it removes your entire project history.
+
+---
+
+### git add — Stage Your Changes
+
+Before Git saves a snapshot, you have to tell it **which files** to include in that snapshot.
+This is called **staging**.
+
+```
+Working Directory         Staging Area          Repository
+(files you edited)   →   (files ready to       (saved snapshots
+                          be committed)          = commits)
+        git add                  git commit
+```
+
+```bash
+# Stage one specific file
+git add index.html
+
+# Stage multiple files
+git add index.html app.py
+
+# Stage everything in the current folder
+git add .
+```
+
+> **Why does staging exist?**
+> Imagine you changed 5 files but only want to save 3 of them in this commit.
+> Staging lets you choose exactly what goes into each snapshot.
+
+Check what is staged and what is not:
+
+```bash
+git status
+```
+
+Output:
+
+```
+On branch main
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   index.html      ← staged — will be included in next commit
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+        modified:   app.py          ← changed but NOT staged yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        notes.txt                   ← Git has never seen this file before
+```
+
+**Reading git status:**
+
+| Status | Meaning |
+|--------|---------|
+| `Changes to be committed` | Staged — will be saved in the next commit |
+| `Changes not staged` | Modified but not staged — will NOT be in the next commit |
+| `Untracked files` | New files Git has never tracked before |
+
+---
+
+### git commit — Save a Snapshot
+
+Once your files are staged, `git commit` saves them as a permanent snapshot in your history.
+
+```bash
+# Commit with a message describing what you did
+git commit -m "Add homepage and navigation bar"
+```
+
+Output:
+
+```
+[main a3f2c91] Add homepage and navigation bar
+ 1 file changed, 24 insertions(+)
+ create mode 100644 index.html
+```
+
+> **What makes a good commit message?**
+>
+> | Bad message | Good message |
+> |------------|-------------|
+> | `fix` | `Fix login button not responding on mobile` |
+> | `update` | `Update nginx config to enable gzip compression` |
+> | `changes` | `Add user registration form with validation` |
+>
+> Write it like you are telling a colleague what you did and why.
+
+**The two-step process every time:**
+
+```bash
+# Step 1: Stage the files you want to save
+git add .
+
+# Step 2: Save the snapshot with a message
+git commit -m "Your message here"
+```
