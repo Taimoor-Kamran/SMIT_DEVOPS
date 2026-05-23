@@ -280,3 +280,74 @@ git show a3f2c91
 ```
 
 Output shows the commit details and every line that was added (`+`) or removed (`-`).
+
+---
+
+### git revert — Undo a Commit Safely
+
+`git revert` is the **safe** way to undo a commit that has already been saved.
+
+It does not delete the bad commit — instead it creates a **new commit** that undoes the changes.
+Your history stays complete and honest.
+
+```
+Before revert:
+  commit 3 — broke the login page   ← you want to undo this
+  commit 2 — add user profile page
+  commit 1 — initial commit
+
+After git revert:
+  commit 4 — Revert "broke the login page"   ← new commit that undoes commit 3
+  commit 3 — broke the login page            ← still in history (safe, honest)
+  commit 2 — add user profile page
+  commit 1 — initial commit
+```
+
+```bash
+# Step 1: Find the hash of the commit you want to undo
+git log --oneline
+```
+
+Output:
+
+```
+a3f2c91 broke the login page      ← you want to undo this one
+9b1c2d3 add user profile page
+4e5f6a7 initial commit
+```
+
+```bash
+# Step 2: Revert it — use the first 7 characters of its hash
+git revert a3f2c91
+```
+
+Git opens a text editor showing a default message like `Revert "broke the login page"`.
+Save and close the editor to confirm.
+
+```bash
+# If you want to skip the editor and use the default message automatically
+git revert a3f2c91 --no-edit
+```
+
+```bash
+# Step 3: Verify the revert was added to your history
+git log --oneline
+```
+
+Output:
+
+```
+f1a2b3c Revert "broke the login page"   ← new commit undoing the damage
+a3f2c91 broke the login page
+9b1c2d3 add user profile page
+4e5f6a7 initial commit
+```
+
+> **git revert vs deleting the commit — what is the difference?**
+>
+> | | `git revert` | Deleting/rewriting history |
+> |---|---|---|
+> | History preserved | Yes — old commit stays | No — history is rewritten |
+> | Safe to use when others have your code | Yes | No — breaks everyone else's copy |
+> | Creates a new commit | Yes | No |
+> | **When to use** | **Almost always** | Only on private, un-shared branches |
