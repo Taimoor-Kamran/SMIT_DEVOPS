@@ -445,3 +445,186 @@ Line 2: learning Git
 ```
 
 Line 3 is gone — but your history is intact. The revert commit proves what happened and when.
+
+---
+
+## 5. Incident: Lost/Overwritten Changes — Recover with reflog and reset
+
+### Scenario
+
+A student is practicing Git. They run a `git reset --hard` command they found online trying to undo some work. Their terminal shows:
+
+```
+HEAD is now at a3f2c91 Initial commit — add readme
+```
+
+They check the log:
+
+```bash
+git log --oneline
+```
+
+Output:
+
+```
+a3f2c91 Initial commit — add readme
+```
+
+**Two commits have vanished.** The work from the last two commits is gone — or so it seems.
+
+---
+
+### What Happened?
+
+`git reset --hard` moves the branch pointer backwards in history and **deletes all uncommitted changes**.
+
+```
+Before reset:
+  c7d8e9f Add third line     ← HEAD was here
+  b5c6d7e Add second line
+  a3f2c91 Initial commit
+
+After git reset --hard a3f2c91:
+  a3f2c91 Initial commit     ← HEAD is now here
+  (b5c6d7e and c7d8e9f are no longer reachable through git log)
+```
+
+The commits are not actually deleted yet — Git keeps them for 30 days before cleaning them up. You can get them back using **reflog**.
+
+---
+
+### What is git reflog?
+
+`git reflog` is Git's **safety net**. It records every single thing you do to your repository — every commit, every reset, every checkout — even actions that changed or moved HEAD.
+
+> Think of `git log` as your project history.
+> Think of `git reflog` as your *personal action history* — every move you made.
+
+```bash
+git reflog
+```
+
+Output:
+
+```
+a3f2c91 HEAD@{0}: reset: moving to a3f2c91      ← the reset that caused the problem
+c7d8e9f HEAD@{1}: commit: Add third line         ← your lost commit is here!
+b5c6d7e HEAD@{2}: commit: Add second line        ← and this one too
+a3f2c91 HEAD@{3}: commit (initial): Initial commit
+```
+
+The lost commits are still there — Git never actually deleted them. You can see their hashes.
+
+---
+
+### Step-by-Step Recovery
+
+**Step 1: Find the commit you want to recover**
+
+```bash
+git reflog
+# Look for the commit just before the reset
+# In this example: c7d8e9f — "Add third line"
+```
+
+**Step 2: Recover by resetting back to that commit**
+
+```bash
+# This moves HEAD forward again to your lost commit
+git reset --hard c7d8e9f
+```
+
+Output:
+
+```
+HEAD is now at c7d8e9f Add third line
+```
+
+**Step 3: Verify your work is back**
+
+```bash
+git log --oneline
+```
+
+Output:
+
+```
+c7d8e9f Add third line      ← recovered
+b5c6d7e Add second line     ← recovered
+a3f2c91 Initial commit
+```
+
+```bash
+cat readme.txt
+```
+
+Output:
+
+```
+Hello, Git!
+Line 2: learning Git
+Line 3: this is fun
+```
+
+All your work is back.
+
+---
+
+### Understanding git reset — Three Modes
+
+`git reset` has three different modes. Knowing the difference prevents accidents.
+
+```bash
+# Mode 1: --soft
+# Moves HEAD back but keeps your changes staged (ready to re-commit)
+git reset --soft HEAD~1
+
+# Mode 2: --mixed (this is the DEFAULT if you type nothing)
+# Moves HEAD back and unstages your changes (files still changed on disk)
+git reset HEAD~1
+
+# Mode 3: --hard   ← THE DANGEROUS ONE
+# Moves HEAD back AND deletes all changes from your files
+# This is what caused the incident above
+git reset --hard HEAD~1
+```
+
+> **What does `HEAD~1` mean?**
+> - `HEAD` = your current position (the latest commit)
+> - `HEAD~1` = one commit before HEAD
+> - `HEAD~3` = three commits before HEAD
+
+| Mode | Moves HEAD | Unstages files | Deletes file changes |
+|------|-----------|---------------|---------------------|
+| `--soft` | Yes | No | No |
+| `--mixed` (default) | Yes | Yes | No |
+| `--hard` | Yes | Yes | **Yes — destructive** |
+
+> **Rule:** If you are not sure which mode to use, avoid `--hard`.
+> Use `git revert` instead — it is always safe.
+
+---
+
+### Incident Summary
+
+| Step | What happened | Command used |
+|------|--------------|-------------|
+| 1 | Student ran `git reset --hard` — two commits seemed lost | `git reset --hard a3f2c91` |
+| 2 | Checked log — only 1 commit visible | `git log --oneline` |
+| 3 | Opened reflog — found the lost commit hashes | `git reflog` |
+| 4 | Reset back to the lost commit | `git reset --hard c7d8e9f` |
+| 5 | Verified all work restored | `git log --oneline`, `cat readme.txt` |
+
+---
+
+### When to Use reflog
+
+| Situation | How reflog helps |
+|-----------|-----------------|
+| Ran `git reset --hard` by mistake | Find the old HEAD in reflog and reset back to it |
+| Deleted a branch with unmerged commits | Find the branch tip in reflog and recreate the branch |
+| Committed to the wrong branch | Find the commit in reflog and cherry-pick it |
+| Lost work after a bad merge | Use reflog to find the pre-merge state |
+
+> **Golden rule:** If you think you have lost commits in Git, check `git reflog` before panicking.
+> Git almost never truly deletes your work — it just becomes temporarily hidden.
