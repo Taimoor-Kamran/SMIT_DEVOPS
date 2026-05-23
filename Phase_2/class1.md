@@ -213,3 +213,70 @@ git add .
 # Step 2: Save the snapshot with a message
 git commit -m "Your message here"
 ```
+
+---
+
+### git log — View Your Commit History
+
+`git log` shows you every commit that has been made, from newest to oldest.
+
+```bash
+git log
+```
+
+Output:
+
+```
+commit a3f2c91d8e4b5f6c7d8e9f0a1b2c3d4e5f6a7b8   ← commit hash (unique ID)
+Author: Taimoor <taimoor@example.com>
+Date:   Sat May 10 10:30:00 2025 +0500
+
+    Add homepage and navigation bar                ← your commit message
+
+commit 9b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9
+Author: Taimoor <taimoor@example.com>
+Date:   Sat May 10 10:15:00 2025 +0500
+
+    Initial commit — add project structure
+```
+
+> **What is a commit hash?**
+> Every commit gets a unique ID — a long string of letters and numbers called a **hash**.
+> You use the first 7 characters of this hash to refer to a specific commit.
+> Example: `a3f2c91` refers to the commit above.
+
+**Cleaner one-line view:**
+
+```bash
+# Show each commit on a single line — easier to read
+git log --oneline
+```
+
+Output:
+
+```
+a3f2c91 Add homepage and navigation bar
+9b1c2d3 Initial commit — add project structure
+```
+
+**Useful git log options:**
+
+```bash
+# Show last 5 commits only
+git log --oneline -5
+
+# Show which files changed in each commit
+git log --oneline --stat
+
+# Show a visual graph (useful when working with branches)
+git log --oneline --graph --all
+```
+
+**See exactly what changed in a specific commit:**
+
+```bash
+# Replace with any commit hash from your log
+git show a3f2c91
+```
+
+Output shows the commit details and every line that was added (`+`) or removed (`-`).
