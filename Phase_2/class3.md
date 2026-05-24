@@ -202,3 +202,5 @@ After merging, delete the branch from GitHub with **"Delete branch"** — keeps 
 5. Set **"Required approvals"** to `1`
 6. Enable **"Require status checks to pass"** (if you have CI set up)
 7. Click **"Save changes"**
+
+**What to observe:** Try pushing directly to `main` — GitHub will now block it. Try merging a PR without approval — the merge button will be greyed out.
