@@ -210,3 +210,7 @@ git branch -d feature/contact-page
 **Goal:** Practice the full branch lifecycle — create, commit, merge, delete.
 
 **Step 1 — Create and switch to a new branch:**
+
+```bash
+git switch -c feature/about-page
+```
