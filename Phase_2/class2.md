@@ -39,3 +39,5 @@ main branch (always working, always live):
 # Create a new branch called feature/contact-page
 git branch feature/contact-page
 ```
+
+> This creates the branch but does NOT move you to it. You are still on `main`.
