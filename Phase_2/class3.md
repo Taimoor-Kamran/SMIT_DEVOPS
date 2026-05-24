@@ -212,3 +212,7 @@ After merging, delete the branch from GitHub with **"Delete branch"** — keeps 
 ### What Happened
 
 Two developers, Ali and Sara, both edited the same file on separate branches at the same time.
+
+- **Ali** changed line 5 of `app.py` to: `timeout = 30`
+- **Sara** changed line 5 of `app.py` to: `timeout = 60`
+- Sara's PR merged first. When Ali tries to merge, Git cannot decide which value is correct — this is a **merge conflict**.
