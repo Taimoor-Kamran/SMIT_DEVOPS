@@ -351,3 +351,7 @@ feature/login:             D' ── E'                ← login work is now on 
 ### Lesson Learned
 
 Always run `git branch` before starting work — confirm you are on the right branch before your first commit.
+
+---
+
+## 8. Quick Reference
