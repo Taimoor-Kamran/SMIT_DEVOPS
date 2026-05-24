@@ -135,3 +135,7 @@ Code change → DEV → SIT → UAT → PROD
 | **Broken OK?** | Yes | Sometimes | Rarely | Never |
 | **Deploy speed** | Fast | Moderate | Slow | Very controlled |
 | **Rollback needed?** | No | Rarely | Rarely | Yes — always planned |
+
+---
+
+## 4. Lab
