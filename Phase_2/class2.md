@@ -317,3 +317,5 @@ e7f1a2b Add login validation       ← accidental commit (was meant for feature 
 c4d3b9a Add login form             ← accidental commit (was meant for feature branch)
 9a2c1d0 Fix homepage layout        ← this is the last clean commit on main
 ```
+
+**Step 2 — Create the correct feature branch from the last clean commit:**
