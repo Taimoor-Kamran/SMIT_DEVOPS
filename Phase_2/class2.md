@@ -120,6 +120,10 @@ Trunk-Based (short branches — easy to merge):
                   br1        br2              (each branch lives < 1 day)
 ```
 
+---
+
+## 5. Feature Flags (Concept)
+
 > `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
 
 ---
