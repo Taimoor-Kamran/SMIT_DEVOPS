@@ -90,3 +90,8 @@ Code change → DEV → SIT → UAT → PROD
 ```
 
 ### DEV — Development Environment
+
+- **Who uses it:** Developers only
+- **Purpose:** Where developers build and test their own code
+- **Data:** Fake/dummy data — no real users, no real money
+- **Broken often?** Yes — that is fine here, it is a sandbox
