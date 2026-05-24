@@ -232,3 +232,7 @@ git branch -d feature/about-page         # clean up the branch
 ```
 
 **What to check:** Run `git log --oneline` — you should see the "Add about page" commit now on main.
+
+---
+
+### Task 2 — Simulate a Feature Toggle Config
