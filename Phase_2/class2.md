@@ -216,3 +216,9 @@ git switch -c feature/about-page
 ```
 
 **Step 2 — Create a file and commit it on the branch:**
+
+```bash
+echo "About page content" > about.html   # create a new file
+git add about.html
+git commit -m "Add about page"
+```
