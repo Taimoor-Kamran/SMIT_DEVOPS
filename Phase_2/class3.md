@@ -222,3 +222,12 @@ Additionally, Ali's branch had a broken import — so when the CI pipeline runs 
 ### Part 1 — What a Merge Conflict Looks Like
 
 When Git cannot auto-merge, it marks the conflict inside the file:
+
+```python
+# app.py — Git inserts conflict markers
+<<<<<<< HEAD (your branch — Ali's version)
+timeout = 30
+=======
+timeout = 60
+>>>>>>> main (Sara's version — already merged)
+```
