@@ -274,3 +274,5 @@ python3 app.py        # Output: Loading dark theme
 ---
 
 ## 7. Incident — Wrong Branch, Fix with Rebase
+
+### What Happened
