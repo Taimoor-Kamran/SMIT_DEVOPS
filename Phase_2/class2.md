@@ -247,3 +247,5 @@ FEATURES = {
     "dark_mode": False    # OFF — users see the normal (light) theme
 }
 ```
+
+**Step 2 — Write the app logic that reads the flag:**
