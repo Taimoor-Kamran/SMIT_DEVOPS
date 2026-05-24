@@ -111,3 +111,8 @@ Code change → DEV → SIT → UAT → PROD
 - **Gate:** Business must sign off ("accept") before code can go to PROD
 
 ### PROD — Production
+
+- **Who uses it:** Real users — the public
+- **Purpose:** The live application that real customers interact with
+- **Data:** Real data — real users, real money, real consequences
+- **Changes here?** Only with full approval, tested pipeline, and rollback plan ready
