@@ -204,3 +204,7 @@ After merging, delete the branch from GitHub with **"Delete branch"** — keeps 
 7. Click **"Save changes"**
 
 **What to observe:** Try pushing directly to `main` — GitHub will now block it. Try merging a PR without approval — the merge button will be greyed out.
+
+---
+
+## 5. Incident — Merge Conflict + Failed Validation
