@@ -104,3 +104,8 @@ Code change → DEV → SIT → UAT → PROD
 - **Example:** Does the login page correctly talk to the database? Does it send the right email?
 
 ### UAT — User Acceptance Testing
+
+- **Who uses it:** Business stakeholders, product managers, sometimes real customers
+- **Purpose:** "Does this feature do what the business asked for?" — not just technical testing
+- **Data:** Near-production data (anonymised real data)
+- **Gate:** Business must sign off ("accept") before code can go to PROD
