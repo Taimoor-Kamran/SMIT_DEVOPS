@@ -324,3 +324,5 @@ c4d3b9a Add login form             ← accidental commit (was meant for feature 
 # Create the feature branch pointing at the last clean commit (9a2c1d0)
 git branch feature/login 9a2c1d0
 ```
+
+**Step 3 — Move the accidental commits off main using rebase:**
