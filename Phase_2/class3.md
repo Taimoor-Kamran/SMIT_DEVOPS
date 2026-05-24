@@ -11,3 +11,5 @@ It is not a Git command — it is a feature provided by platforms like **GitHub*
 ### Real-World Example
 
 Imagine you are working at a company. You have finished building a new user login page on your branch `feature/login`.
+
+You do NOT push directly to `main`. Instead, you open a Pull Request.
