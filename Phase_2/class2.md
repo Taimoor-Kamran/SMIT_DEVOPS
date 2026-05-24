@@ -128,6 +128,33 @@ A **feature flag** (also called a feature toggle) is an `if/else` condition in y
 
 You merge the new feature into `main` while it is hidden behind the flag. When you are ready to release it, you flip the flag to ON — no deployment needed.
 
+### Real-World Example
+
+Your team has built a new checkout page. It is merged into `main` but not shown to users yet.
+
+```python
+# config.py — one file controls what is ON and OFF
+FEATURES = {
+    "new_checkout_page": False    # OFF — users see the old page
+}
+```
+
+```python
+# app.py — the flag controls which page loads
+if FEATURES["new_checkout_page"]:
+    show_new_checkout()
+else:
+    show_old_checkout()           # users see this while flag is OFF
+```
+
+When your team is ready to release:
+
+```python
+FEATURES = {
+    "new_checkout_page": True     # flip to ON — all users now see the new page
+}
+```
+
 > `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
 
 ---
