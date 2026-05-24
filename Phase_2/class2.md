@@ -81,6 +81,10 @@ Output:
 git branch -d feature/contact-page
 ```
 
+---
+
+## 4. Trunk-Based Development
+
 > `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
 
 ---
