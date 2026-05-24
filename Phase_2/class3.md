@@ -159,3 +159,7 @@ git commit -m "Add new section to README"
 git push -u origin feature/update-readme
 # -u sets the upstream so future pushes only need: git push
 ```
+
+**Step 3 — Open the PR on GitHub:**
+
+After pushing, GitHub shows a banner: **"feature/update-readme had recent pushes — Compare & pull request"**.
