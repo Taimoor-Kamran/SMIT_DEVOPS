@@ -157,6 +157,15 @@ FEATURES = {
 
 > No new commit needed. No deployment needed. Just change one value in a config file.
 
+### Why Feature Flags and Trunk-Based Development Go Together
+
+| Problem | Solution |
+|---------|---------|
+| Feature is not ready but code must go to main | Hide it behind a flag set to `False` |
+| Need to release instantly without a deploy | Flip the flag to `True` |
+| Something breaks in production | Flip the flag back to `False` — instant rollback |
+| Want to test with only 10% of users | Set flag per-user, not globally |
+
 > `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
 
 ---
