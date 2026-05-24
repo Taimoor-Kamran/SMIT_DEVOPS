@@ -200,3 +200,7 @@ Fast-forward
 # Step 3: Delete the feature branch — it has been merged, no longer needed
 git branch -d feature/contact-page
 ```
+
+---
+
+## 6. Lab
