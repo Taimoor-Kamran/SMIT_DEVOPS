@@ -35,3 +35,7 @@ Developer                    Platform (GitHub)             Reviewer
     |                              |<-- approve --------------- |
     |                              |-- merge to main            |
 ```
+
+---
+
+## 2. Code Review
