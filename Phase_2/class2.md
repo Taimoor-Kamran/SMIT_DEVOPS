@@ -355,3 +355,6 @@ Always run `git branch` before starting work — confirm you are on the right br
 ---
 
 ## 8. Quick Reference
+
+| Command | What it does |
+|---------|-------------|
