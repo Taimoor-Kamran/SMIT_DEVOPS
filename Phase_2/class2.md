@@ -88,3 +88,10 @@ git branch -d feature/contact-page
 ## 3. Merging a Branch into Main
 
 **Merging** means taking the commits from your feature branch and combining them into `main`.
+
+### Step-by-Step: Merge a Feature Branch
+
+```bash
+# Step 1: Go back to main first — you always merge INTO the branch you are on
+git switch main
+```
