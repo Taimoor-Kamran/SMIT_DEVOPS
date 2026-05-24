@@ -63,3 +63,7 @@ When you finish reviewing a PR on GitHub, you choose one of three outcomes:
 | **Approve** | Code looks good — ready to merge |
 | **Request Changes** | Found issues — the developer must fix before merging |
 | **Comment** | Left notes or questions, but did not block the merge |
+
+### Branch Protection Rules
+
+Most teams set **branch protection rules** on `main` to enforce quality before any merge happens.
