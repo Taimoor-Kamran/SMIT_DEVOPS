@@ -180,3 +180,7 @@ Checks:
   ✓ unit-tests    — all 14 tests passed
   ✗ build         — failed: missing dependency   ← must fix before merge
 ```
+
+**Step 5 — Merge the PR (once approved and all checks pass):**
+
+On the PR page, click the green **"Merge pull request"** button, then **"Confirm merge"**.
