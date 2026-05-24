@@ -270,3 +270,7 @@ python3 app.py        # Output: Loading dark theme
 ```
 
 > You changed behaviour without touching app.py at all — that is the power of feature flags.
+
+---
+
+## 7. Incident — Wrong Branch, Fix with Rebase
