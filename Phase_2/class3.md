@@ -263,3 +263,7 @@ timeout = 60
 git add app.py                              # mark conflict as resolved
 git commit -m "Resolve merge conflict: use timeout=60 (agreed with Sara)"
 ```
+
+### Part 3 — Fix the Failed CI Validation
+
+After resolving the conflict, Ali pushes the branch. The CI pipeline runs and shows:
