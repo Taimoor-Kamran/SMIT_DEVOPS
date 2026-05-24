@@ -155,6 +155,8 @@ FEATURES = {
 }
 ```
 
+> No new commit needed. No deployment needed. Just change one value in a config file.
+
 > `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
 
 ---
