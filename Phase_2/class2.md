@@ -124,6 +124,10 @@ Trunk-Based (short branches — easy to merge):
 
 ## 5. Feature Flags (Concept)
 
+A **feature flag** (also called a feature toggle) is an `if/else` condition in your code that turns a feature ON or OFF — without deploying new code.
+
+You merge the new feature into `main` while it is hidden behind the flag. When you are ready to release it, you flip the flag to ON — no deployment needed.
+
 > `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
 
 ---
