@@ -245,3 +245,5 @@ The three markers mean:
 git switch feature/ali-timeout    # make sure you are on your branch
 git pull origin main              # bring in Sara's merged changes
 ```
+
+Git will say: `CONFLICT (content): Merge conflict in app.py — Automatic merge failed; fix conflicts and then commit the result.`
