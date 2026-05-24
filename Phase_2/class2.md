@@ -98,6 +98,12 @@ git branch -d feature/contact-page
 | How often code reaches main | Rarely | Many times per day |
 | Used by | Older teams | Google, Facebook, Netflix |
 
+### Why Trunk-Based Development Works
+
+The longer a branch lives, the harder it is to merge. When developers work on separate branches for weeks, the branches drift apart — and merging becomes painful.
+
+Trunk-based development solves this by keeping everyone close to the same codebase at all times.
+
 > `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
 
 ---
