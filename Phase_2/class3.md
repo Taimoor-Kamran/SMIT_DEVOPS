@@ -39,3 +39,5 @@ Developer                    Platform (GitHub)             Reviewer
 ---
 
 ## 2. Code Review
+
+**Code review** is the process where a teammate reads your code before it is merged — looking for bugs, security issues, unclear logic, or anything that does not follow team standards.
