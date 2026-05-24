@@ -15,3 +15,16 @@ Imagine your team's website is live and working. You need to add a new "Contact 
 Without branches, you would edit the live code directly — and if something breaks, the whole website goes down.
 
 With branches, you create a separate `feature/contact-page` branch, build the page there, test it, and only merge it into the live code when it is perfect.
+
+### How Branches Look in Git
+
+```
+main branch (always working, always live):
+  A ── B ── C ──────────────── G   ← main stays safe
+              \              /
+               D ── E ── F         ← feature branch (your changes)
+```
+
+- `A B C` = commits already on main (live code)
+- `D E F` = your new commits on the feature branch
+- `G` = the merge commit — your work joins main
