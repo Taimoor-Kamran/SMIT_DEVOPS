@@ -28,3 +28,7 @@ main branch (always working, always live):
 - `A B C` = commits already on main (live code)
 - `D E F` = your new commits on the feature branch
 - `G` = the merge commit — your work joins main
+
+---
+
+## 2. Git Branch Commands
