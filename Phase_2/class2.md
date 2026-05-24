@@ -319,3 +319,8 @@ c4d3b9a Add login form             ← accidental commit (was meant for feature 
 ```
 
 **Step 2 — Create the correct feature branch from the last clean commit:**
+
+```bash
+# Create the feature branch pointing at the last clean commit (9a2c1d0)
+git branch feature/login 9a2c1d0
+```
