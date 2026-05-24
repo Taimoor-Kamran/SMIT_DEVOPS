@@ -347,3 +347,7 @@ git reset --hard 9a2c1d0          # move main back to the last clean commit
 main:          A ── B ── C                         ← clean, no accidental commits
 feature/login:             D' ── E'                ← login work is now on the right branch
 ```
+
+### Lesson Learned
+
+Always run `git branch` before starting work — confirm you are on the right branch before your first commit.
