@@ -73,3 +73,7 @@ Common rules:
 - All automated checks (CI pipeline) must pass
 - Direct pushes to `main` are blocked — everything must go through a PR
 - Conversation threads must be resolved before merge
+
+---
+
+## 3. Environment Promotion — DEV → SIT → UAT → PROD
