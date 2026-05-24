@@ -290,3 +290,12 @@ main: A ── B ── C ── D ── E    ← D and E were meant for featur
 **Rebase** moves your commits from one branch and replays them on top of another branch.
 
 Think of it like cutting and pasting your commits to a different starting point.
+
+```
+Before rebase:
+  main:          A ── B ── C
+  feature/login:            D ── E    ← started from C, but we need it on main at C
+
+After rebase (feature/login rebased onto latest main):
+  main:          A ── B ── C ── D' ── E'   ← D and E replayed on top of C
+```
