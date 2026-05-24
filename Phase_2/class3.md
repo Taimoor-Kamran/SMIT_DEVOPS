@@ -298,3 +298,7 @@ The PR is now unblocked. The reviewer approves and it merges to `main`.
 - Always run `git pull origin main` on your branch before opening a PR — catch conflicts early, while they are small
 - Read CI failure logs carefully — errors always point to a specific file and line number
 - A failed CI check is not a crisis — it is the system working correctly to protect main
+
+---
+
+## 6. Quick Reference
