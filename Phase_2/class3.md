@@ -218,3 +218,7 @@ Two developers, Ali and Sara, both edited the same file on separate branches at 
 - Sara's PR merged first. When Ali tries to merge, Git cannot decide which value is correct — this is a **merge conflict**.
 
 Additionally, Ali's branch had a broken import — so when the CI pipeline runs after the conflict, the build check also fails.
+
+### Part 1 — What a Merge Conflict Looks Like
+
+When Git cannot auto-merge, it marks the conflict inside the file:
