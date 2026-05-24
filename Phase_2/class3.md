@@ -109,3 +109,5 @@ Code change → DEV → SIT → UAT → PROD
 - **Purpose:** "Does this feature do what the business asked for?" — not just technical testing
 - **Data:** Near-production data (anonymised real data)
 - **Gate:** Business must sign off ("accept") before code can go to PROD
+
+### PROD — Production
