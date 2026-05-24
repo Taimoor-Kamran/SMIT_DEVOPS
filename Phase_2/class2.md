@@ -59,3 +59,17 @@ Switched to branch 'feature/contact-page'
 # Shortcut — create AND switch in one command
 git switch -c feature/contact-page
 ```
+
+### List All Branches
+
+```bash
+# Show all branches — the one with * is where you currently are
+git branch
+```
+
+Output:
+
+```
+* feature/contact-page    ← you are here
+  main
+```
