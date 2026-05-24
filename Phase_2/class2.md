@@ -284,3 +284,5 @@ They made two commits directly on `main` by accident:
 ```
 main: A ── B ── C ── D ── E    ← D and E were meant for feature/login
 ```
+
+### What is Rebase?
