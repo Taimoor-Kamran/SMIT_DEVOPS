@@ -278,3 +278,5 @@ python3 app.py        # Output: Loading dark theme
 ### What Happened
 
 A developer meant to work on `feature/login` but forgot to switch branches.
+
+They made two commits directly on `main` by accident:
