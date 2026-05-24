@@ -190,3 +190,5 @@ After merging, delete the branch from GitHub with **"Delete branch"** — keeps 
 ---
 
 ### Task 2 — Simulate Branch Protection with Merge Policies
+
+**Goal:** Configure your GitHub repo to require a reviewer approval before any PR can be merged.
