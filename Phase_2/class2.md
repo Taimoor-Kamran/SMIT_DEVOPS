@@ -363,3 +363,4 @@ Always run `git branch` before starting work — confirm you are on the right br
 | `git switch -c feature/x` | Create AND switch in one step |
 | `git branch` | List all branches (shows which you are on) |
 | `git merge feature/x` | Merge feature branch into current branch |
+| `git branch -d feature/x` | Delete a merged branch |
