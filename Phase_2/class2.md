@@ -86,3 +86,5 @@ git branch -d feature/contact-page
 ---
 
 ## 3. Merging a Branch into Main
+
+**Merging** means taking the commits from your feature branch and combining them into `main`.
