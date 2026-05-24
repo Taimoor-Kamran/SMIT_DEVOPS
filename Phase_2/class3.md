@@ -290,3 +290,11 @@ Pushing triggers the CI pipeline again automatically. This time:
 ✓ build — passed
 ✓ unit-tests — passed (12/12)
 ```
+
+The PR is now unblocked. The reviewer approves and it merges to `main`.
+
+### Lessons Learned
+
+- Always run `git pull origin main` on your branch before opening a PR — catch conflicts early, while they are small
+- Read CI failure logs carefully — errors always point to a specific file and line number
+- A failed CI check is not a crisis — it is the system working correctly to protect main
