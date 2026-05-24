@@ -34,3 +34,8 @@ main branch (always working, always live):
 ## 2. Git Branch Commands
 
 ### Create a Branch
+
+```bash
+# Create a new branch called feature/contact-page
+git branch feature/contact-page
+```
