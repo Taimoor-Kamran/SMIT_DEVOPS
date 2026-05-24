@@ -340,3 +340,10 @@ git reset --hard 9a2c1d0          # move main back to the last clean commit
 ```
 
 > `--hard` wipes those commits from main completely. The commits are safe — they are now on `feature/login`.
+
+### Result After the Fix
+
+```
+main:          A ── B ── C                         ← clean, no accidental commits
+feature/login:             D' ── E'                ← login work is now on the right branch
+```
