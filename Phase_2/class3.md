@@ -231,3 +231,8 @@ timeout = 30
 timeout = 60
 >>>>>>> main (Sara's version — already merged)
 ```
+
+The three markers mean:
+- `<<<<<<< HEAD` — everything below is YOUR version
+- `=======` — divides the two versions
+- `>>>>>>> main` — everything above this is the OTHER version (from main)
