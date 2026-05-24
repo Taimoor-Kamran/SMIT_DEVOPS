@@ -192,3 +192,13 @@ After merging, delete the branch from GitHub with **"Delete branch"** — keeps 
 ### Task 2 — Simulate Branch Protection with Merge Policies
 
 **Goal:** Configure your GitHub repo to require a reviewer approval before any PR can be merged.
+
+**Steps on GitHub (Settings → Branches):**
+
+1. Go to your repo → **Settings** → **Branches**
+2. Click **"Add branch ruleset"**
+3. Under **"Branch name pattern"** enter: `main`
+4. Enable **"Require a pull request before merging"**
+5. Set **"Required approvals"** to `1`
+6. Enable **"Require status checks to pass"** (if you have CI set up)
+7. Click **"Save changes"**
