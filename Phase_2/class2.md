@@ -48,3 +48,9 @@ git branch feature/contact-page
 # Move to your new branch
 git switch feature/contact-page
 ```
+
+Output:
+
+```
+Switched to branch 'feature/contact-page'
+```
