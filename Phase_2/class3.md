@@ -116,3 +116,12 @@ Code change → DEV → SIT → UAT → PROD
 - **Purpose:** The live application that real customers interact with
 - **Data:** Real data — real users, real money, real consequences
 - **Changes here?** Only with full approval, tested pipeline, and rollback plan ready
+
+### Putting It All Together — A Real Story
+
+> You are a developer at a bank. You build a new "Transfer Money" feature.
+>
+> 1. **DEV** — You write the code and test it yourself on dummy accounts.
+> 2. **SIT** — QA tests that the transfer correctly deducts from Account A and adds to Account B, emails both parties, and logs the transaction.
+> 3. **UAT** — The bank manager clicks through the feature on test accounts and says "yes, this matches what we asked for."
+> 4. **PROD** — The feature goes live. Real customers can now transfer real money.
