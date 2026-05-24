@@ -141,3 +141,5 @@ Code change → DEV → SIT → UAT → PROD
 ## 4. Lab
 
 ### Task 1 — Open a Pull Request on GitHub
+
+**Goal:** Push a branch, open a PR, and walk through the review flow.
