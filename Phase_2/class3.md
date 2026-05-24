@@ -251,3 +251,8 @@ Git will say: `CONFLICT (content): Merge conflict in app.py — Automatic merge 
 **Step 2 — Open the conflicted file and fix it manually:**
 
 Open `app.py` in a text editor and decide which value is correct. After talking to Sara, Ali learns 60 seconds is the agreed value. Edit the file to remove the markers and keep the right value:
+
+```python
+# app.py — after resolving (delete ALL the marker lines, keep only the final value)
+timeout = 60
+```
