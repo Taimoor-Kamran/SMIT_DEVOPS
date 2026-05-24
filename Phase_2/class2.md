@@ -54,3 +54,8 @@ Output:
 ```
 Switched to branch 'feature/contact-page'
 ```
+
+```bash
+# Shortcut — create AND switch in one command
+git switch -c feature/contact-page
+```
