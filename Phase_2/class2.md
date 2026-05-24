@@ -288,3 +288,5 @@ main: A ── B ── C ── D ── E    ← D and E were meant for featur
 ### What is Rebase?
 
 **Rebase** moves your commits from one branch and replays them on top of another branch.
+
+Think of it like cutting and pasting your commits to a different starting point.
