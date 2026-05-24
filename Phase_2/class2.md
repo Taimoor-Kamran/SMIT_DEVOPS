@@ -338,3 +338,5 @@ git rebase main                   # replay the commits on top of current main
 git switch main                   # go back to main
 git reset --hard 9a2c1d0          # move main back to the last clean commit
 ```
+
+> `--hard` wipes those commits from main completely. The commits are safe — they are now on `feature/login`.
