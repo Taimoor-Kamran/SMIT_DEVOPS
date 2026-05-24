@@ -280,3 +280,7 @@ python3 app.py        # Output: Loading dark theme
 A developer meant to work on `feature/login` but forgot to switch branches.
 
 They made two commits directly on `main` by accident:
+
+```
+main: A ── B ── C ── D ── E    ← D and E were meant for feature/login
+```
