@@ -249,3 +249,13 @@ FEATURES = {
 ```
 
 **Step 2 — Write the app logic that reads the flag:**
+
+```python
+# app.py
+from config import FEATURES
+
+if FEATURES["dark_mode"]:
+    print("Loading dark theme")    # runs when flag is True
+else:
+    print("Loading light theme")   # runs when flag is False
+```
