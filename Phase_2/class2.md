@@ -80,3 +80,9 @@ Output:
 # Delete a branch you no longer need
 git branch -d feature/contact-page
 ```
+
+> `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
+
+---
+
+## 3. Merging a Branch into Main
