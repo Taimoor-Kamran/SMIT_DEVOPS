@@ -240,3 +240,10 @@ git branch -d feature/about-page         # clean up the branch
 **Goal:** See how a feature flag controls which code runs — without changing the app logic.
 
 **Step 1 — Create a config file with the flag set to OFF:**
+
+```python
+# config.py
+FEATURES = {
+    "dark_mode": False    # OFF — users see the normal (light) theme
+}
+```
