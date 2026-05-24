@@ -104,6 +104,22 @@ The longer a branch lives, the harder it is to merge. When developers work on se
 
 Trunk-based development solves this by keeping everyone close to the same codebase at all times.
 
+### What It Looks Like
+
+```
+Traditional (long branches — hard to merge):
+
+  main:    A ──────────────────────────── merge (painful!)
+                \                       /
+  feature:       B ── C ── D ── E ── F     (2 weeks of work)
+
+Trunk-Based (short branches — easy to merge):
+
+  main:    A ── B ── C ── D ── E ── F ── G   (small, frequent commits)
+                  \  /      \  /
+                  br1        br2              (each branch lives < 1 day)
+```
+
 > `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
 
 ---
