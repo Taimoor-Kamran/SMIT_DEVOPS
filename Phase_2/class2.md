@@ -333,3 +333,8 @@ git rebase main                   # replay the commits on top of current main
 ```
 
 **Step 4 — Remove the accidental commits from main:**
+
+```bash
+git switch main                   # go back to main
+git reset --hard 9a2c1d0          # move main back to the last clean commit
+```
