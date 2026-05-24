@@ -152,3 +152,10 @@ echo "## New Section" >> README.md       # make a small change
 git add README.md
 git commit -m "Add new section to README"
 ```
+
+**Step 2 — Push the branch to GitHub:**
+
+```bash
+git push -u origin feature/update-readme
+# -u sets the upstream so future pushes only need: git push
+```
