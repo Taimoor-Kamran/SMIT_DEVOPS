@@ -238,3 +238,5 @@ git branch -d feature/about-page         # clean up the branch
 ### Task 2 — Simulate a Feature Toggle Config
 
 **Goal:** See how a feature flag controls which code runs — without changing the app logic.
+
+**Step 1 — Create a config file with the flag set to OFF:**
