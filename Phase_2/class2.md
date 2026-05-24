@@ -73,3 +73,10 @@ Output:
 * feature/contact-page    ← you are here
   main
 ```
+
+### Delete a Branch (After Merging)
+
+```bash
+# Delete a branch you no longer need
+git branch -d feature/contact-page
+```
