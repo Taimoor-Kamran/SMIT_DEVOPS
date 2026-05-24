@@ -79,3 +79,5 @@ Common rules:
 ## 3. Environment Promotion — DEV → SIT → UAT → PROD
 
 In professional software teams, code does not go straight from a developer's laptop to production (live users).
+
+It travels through a series of **environments** — each one a copy of the application, used for a different purpose.
