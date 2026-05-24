@@ -102,3 +102,5 @@ Code change → DEV → SIT → UAT → PROD
 - **Purpose:** Test that all pieces of the system work together — not just individual features
 - **Data:** Fake data but more realistic than DEV
 - **Example:** Does the login page correctly talk to the database? Does it send the right email?
+
+### UAT — User Acceptance Testing
