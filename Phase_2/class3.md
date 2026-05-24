@@ -302,3 +302,19 @@ The PR is now unblocked. The reviewer approves and it merges to `main`.
 ---
 
 ## 6. Quick Reference
+
+| Concept / Command | What it means |
+|---|---|
+| Pull Request (PR) | Formal request to merge a branch — enables review before merge |
+| Code Review | Teammate reads your code looking for bugs, security issues, clarity |
+| Branch Protection | Rules on `main` that block direct pushes and require approvals |
+| `git push -u origin branch` | Push branch to GitHub and set upstream tracking |
+| `git pull origin main` | Pull latest main changes into your current branch |
+| Merge Conflict | Two people changed the same lines — Git cannot auto-decide |
+| `<<<<<<< HEAD` | Start of YOUR version in a conflict |
+| `>>>>>>> main` | End of the OTHER version in a conflict |
+| CI Pipeline | Automated checks (tests, lint, build) that run on every PR |
+| DEV | Developer's sandbox — breakage is fine |
+| SIT | QA testing — integration testing across all components |
+| UAT | Business sign-off — does it match the requirements? |
+| PROD | Live — real users, real data, no mistakes allowed |
