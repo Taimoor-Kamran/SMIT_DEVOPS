@@ -110,3 +110,8 @@ Fast-forward
  1 file changed, 20 insertions(+)
  create mode 100644 contact.html
 ```
+
+```bash
+# Step 3: Delete the feature branch — it has been merged, no longer needed
+git branch -d feature/contact-page
+```
