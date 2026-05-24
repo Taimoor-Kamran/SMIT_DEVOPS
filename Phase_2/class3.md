@@ -163,3 +163,9 @@ git push -u origin feature/update-readme
 **Step 3 — Open the PR on GitHub:**
 
 After pushing, GitHub shows a banner: **"feature/update-readme had recent pushes — Compare & pull request"**.
+
+Click that button, then fill in:
+- **Title:** `Add new section to README`
+- **Description:** What you changed and why (e.g., "Added a Getting Started section for new developers")
+- **Reviewers:** Add a teammate's GitHub username
+- Click **"Create Pull Request"**
