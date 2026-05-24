@@ -236,3 +236,12 @@ The three markers mean:
 - `<<<<<<< HEAD` — everything below is YOUR version
 - `=======` — divides the two versions
 - `>>>>>>> main` — everything above this is the OTHER version (from main)
+
+### Part 2 — Resolving the Conflict
+
+**Step 1 — Pull the latest main into your branch:**
+
+```bash
+git switch feature/ali-timeout    # make sure you are on your branch
+git pull origin main              # bring in Sara's merged changes
+```
