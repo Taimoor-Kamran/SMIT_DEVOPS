@@ -43,3 +43,13 @@ Developer                    Platform (GitHub)             Reviewer
 **Code review** is the process where a teammate reads your code before it is merged — looking for bugs, security issues, unclear logic, or anything that does not follow team standards.
 
 > Think of it like proofreading an essay before submitting — a second pair of eyes catches things you missed.
+
+### What a Reviewer Looks For
+
+| Category | Example |
+|----------|---------|
+| **Correctness** | Does the code do what it says it does? |
+| **Security** | Is user input validated? Any SQL injection risk? |
+| **Readability** | Are variable names clear? Is logic easy to follow? |
+| **Tests** | Does new code have tests covering it? |
+| **Standards** | Does it follow the team's style guide? |
