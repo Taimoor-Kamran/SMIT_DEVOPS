@@ -309,3 +309,11 @@ After rebase (feature/login rebased onto latest main):
 ```bash
 git log --oneline    # look for the last good commit before your accidental work
 ```
+
+Output:
+
+```
+e7f1a2b Add login validation       ← accidental commit (was meant for feature branch)
+c4d3b9a Add login form             ← accidental commit (was meant for feature branch)
+9a2c1d0 Fix homepage layout        ← this is the last clean commit on main
+```
