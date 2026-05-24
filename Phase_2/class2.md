@@ -100,3 +100,13 @@ git switch main
 # Step 2: Merge your feature branch into main
 git merge feature/contact-page
 ```
+
+Output:
+
+```
+Updating 9b1c2d3..a3f2c91
+Fast-forward
+ contact.html | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+ create mode 100644 contact.html
+```
