@@ -268,3 +268,5 @@ python3 app.py        # Output: Loading light theme
 # Now open config.py and change False to True, then run again:
 python3 app.py        # Output: Loading dark theme
 ```
+
+> You changed behaviour without touching app.py at all — that is the power of feature flags.
