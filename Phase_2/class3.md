@@ -208,3 +208,7 @@ After merging, delete the branch from GitHub with **"Delete branch"** — keeps 
 ---
 
 ## 5. Incident — Merge Conflict + Failed Validation
+
+### What Happened
+
+Two developers, Ali and Sara, both edited the same file on separate branches at the same time.
