@@ -184,3 +184,9 @@ Checks:
 **Step 5 — Merge the PR (once approved and all checks pass):**
 
 On the PR page, click the green **"Merge pull request"** button, then **"Confirm merge"**.
+
+After merging, delete the branch from GitHub with **"Delete branch"** — keeps the repository tidy.
+
+---
+
+### Task 2 — Simulate Branch Protection with Merge Policies
