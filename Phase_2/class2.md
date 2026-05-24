@@ -89,6 +89,15 @@ git branch -d feature/contact-page
 
 > The word **trunk** is just another name for the `main` branch — the single source of truth for your project.
 
+### Traditional Branching vs Trunk-Based Development
+
+| | Traditional Branching | Trunk-Based Development |
+|---|---|---|
+| Branch life | Days or weeks | Hours or 1–2 days max |
+| Merge conflicts | Frequent and large | Rare and small |
+| How often code reaches main | Rarely | Many times per day |
+| Used by | Older teams | Google, Facebook, Netflix |
+
 > `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
 
 ---
