@@ -19,3 +19,19 @@ A PR creates a page where your teammates can:
 - Leave comments and ask questions
 - Approve or request changes
 - Let automated checks (tests, linters) run before anything is merged
+
+### The Full PR Lifecycle
+
+```
+Developer                    Platform (GitHub)             Reviewer
+    |                              |                           |
+    |-- push branch -------------> |                           |
+    |-- open PR ------------------> |                           |
+    |                              |-- notify reviewers ------> |
+    |                              |<-- review comments ------- |
+    |<-- fix requested changes --- |                           |
+    |-- push new commits --------> |                           |
+    |                              |-- run checks (CI) -------> |
+    |                              |<-- approve --------------- |
+    |                              |-- merge to main            |
+```
