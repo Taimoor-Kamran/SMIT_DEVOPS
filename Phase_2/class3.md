@@ -169,3 +169,7 @@ Click that button, then fill in:
 - **Description:** What you changed and why (e.g., "Added a Getting Started section for new developers")
 - **Reviewers:** Add a teammate's GitHub username
 - Click **"Create Pull Request"**
+
+**Step 4 — Check the automated checks (CI):**
+
+GitHub will run checks automatically (if configured). You will see green ticks or red crosses next to each check.
