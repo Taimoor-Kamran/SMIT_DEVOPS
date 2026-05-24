@@ -87,6 +87,8 @@ git branch -d feature/contact-page
 
 **Trunk-based development** is a workflow where every developer commits directly to `main` (the trunk) — or uses very short-lived branches that merge back within a day or two.
 
+> The word **trunk** is just another name for the `main` branch — the single source of truth for your project.
+
 > `-d` only deletes if the branch has already been merged. Use `-D` (capital D) to force delete an unmerged branch.
 
 ---
