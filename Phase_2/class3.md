@@ -256,3 +256,10 @@ Open `app.py` in a text editor and decide which value is correct. After talking 
 # app.py — after resolving (delete ALL the marker lines, keep only the final value)
 timeout = 60
 ```
+
+**Step 3 — Stage the resolved file and commit:**
+
+```bash
+git add app.py                              # mark conflict as resolved
+git commit -m "Resolve merge conflict: use timeout=60 (agreed with Sara)"
+```
