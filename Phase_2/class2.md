@@ -206,3 +206,5 @@ git branch -d feature/contact-page
 ## 6. Lab
 
 ### Task 1 — Create a Feature Branch and Merge It
+
+**Goal:** Practice the full branch lifecycle — create, commit, merge, delete.
