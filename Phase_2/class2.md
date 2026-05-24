@@ -359,3 +359,4 @@ Always run `git branch` before starting work — confirm you are on the right br
 | Command | What it does |
 |---------|-------------|
 | `git branch feature/x` | Create branch (stay where you are) |
+| `git switch feature/x` | Move to that branch |
