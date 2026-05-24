@@ -301,3 +301,5 @@ After rebase (feature/login rebased onto latest main):
 ```
 
 > `D'` and `E'` have the same changes as `D` and `E` but they are new commits with new IDs.
+
+### How to Fix It — Step by Step
