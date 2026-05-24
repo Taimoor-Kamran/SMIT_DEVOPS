@@ -81,3 +81,10 @@ Common rules:
 In professional software teams, code does not go straight from a developer's laptop to production (live users).
 
 It travels through a series of **environments** — each one a copy of the application, used for a different purpose.
+
+```
+Code change → DEV → SIT → UAT → PROD
+                ↑     ↑     ↑      ↑
+           Developer  QA  Business  Real users
+             tests   test  sign-off
+```
