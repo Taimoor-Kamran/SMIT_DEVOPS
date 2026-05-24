@@ -663,24 +663,3 @@ git reset --hard HEAD~1
 | Get commits from GitHub | `git pull` |
 | Copy a remote repo locally | `git clone <url>` |
 
-### Checklist — What You Learned This Class
-
-```
-[ ] Understand what Git is and why it is used
-[ ] Know the difference between a local and remote repository
-[ ] Initialise a new repo with git init
-[ ] Stage files with git add
-[ ] Save snapshots with git commit -m
-[ ] Read commit history with git log --oneline
-[ ] Safely undo a commit with git revert
-[ ] Recover lost commits using git reflog
-[ ] Understand the three modes of git reset (soft / mixed / hard)
-```
-
-### Golden Rules
-
-> 1. **Commit often.** Small, frequent commits are easier to understand and easier to undo.
-> 2. **Write clear commit messages.** Your future self will thank you.
-> 3. **Use `git revert` to undo — not `git reset --hard`.** Revert is always safe.
-> 4. **Check `git status` before every commit.** Know exactly what you are saving.
-> 5. **If you think work is lost — run `git reflog` first.** Git rarely deletes anything.
