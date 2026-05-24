@@ -331,3 +331,5 @@ git branch feature/login 9a2c1d0
 git switch feature/login          # go to the new feature branch
 git rebase main                   # replay the commits on top of current main
 ```
+
+**Step 4 — Remove the accidental commits from main:**
