@@ -224,3 +224,9 @@ git commit -m "Add about page"
 ```
 
 **Step 3 — Switch back to main and merge:**
+
+```bash
+git switch main                          # go to main first
+git merge feature/about-page             # bring in the feature branch work
+git branch -d feature/about-page         # clean up the branch
+```
