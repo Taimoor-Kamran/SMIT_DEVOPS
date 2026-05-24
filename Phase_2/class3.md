@@ -139,3 +139,5 @@ Code change → DEV → SIT → UAT → PROD
 ---
 
 ## 4. Lab
+
+### Task 1 — Open a Pull Request on GitHub
