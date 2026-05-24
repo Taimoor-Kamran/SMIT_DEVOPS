@@ -216,3 +216,5 @@ Two developers, Ali and Sara, both edited the same file on separate branches at 
 - **Ali** changed line 5 of `app.py` to: `timeout = 30`
 - **Sara** changed line 5 of `app.py` to: `timeout = 60`
 - Sara's PR merged first. When Ali tries to merge, Git cannot decide which value is correct — this is a **merge conflict**.
+
+Additionally, Ali's branch had a broken import — so when the CI pipeline runs after the conflict, the build check also fails.
