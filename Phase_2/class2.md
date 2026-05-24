@@ -41,3 +41,10 @@ git branch feature/contact-page
 ```
 
 > This creates the branch but does NOT move you to it. You are still on `main`.
+
+### Switch to a Branch
+
+```bash
+# Move to your new branch
+git switch feature/contact-page
+```
