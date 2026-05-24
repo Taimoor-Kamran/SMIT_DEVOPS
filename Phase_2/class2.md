@@ -204,3 +204,5 @@ git branch -d feature/contact-page
 ---
 
 ## 6. Lab
+
+### Task 1 — Create a Feature Branch and Merge It
