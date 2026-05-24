@@ -53,3 +53,7 @@ Developer                    Platform (GitHub)             Reviewer
 | **Readability** | Are variable names clear? Is logic easy to follow? |
 | **Tests** | Does new code have tests covering it? |
 | **Standards** | Does it follow the team's style guide? |
+
+### Review Actions on GitHub
+
+When you finish reviewing a PR on GitHub, you choose one of three outcomes:
