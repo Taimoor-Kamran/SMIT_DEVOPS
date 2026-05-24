@@ -173,3 +173,10 @@ Click that button, then fill in:
 **Step 4 — Check the automated checks (CI):**
 
 GitHub will run checks automatically (if configured). You will see green ticks or red crosses next to each check.
+
+```
+Checks:
+  ✓ lint          — no formatting errors
+  ✓ unit-tests    — all 14 tests passed
+  ✗ build         — failed: missing dependency   ← must fix before merge
+```
