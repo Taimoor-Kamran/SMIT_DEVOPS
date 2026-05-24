@@ -13,3 +13,9 @@ It is not a Git command — it is a feature provided by platforms like **GitHub*
 Imagine you are working at a company. You have finished building a new user login page on your branch `feature/login`.
 
 You do NOT push directly to `main`. Instead, you open a Pull Request.
+
+A PR creates a page where your teammates can:
+- See exactly which lines of code you changed
+- Leave comments and ask questions
+- Approve or request changes
+- Let automated checks (tests, linters) run before anything is merged
