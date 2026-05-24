@@ -259,3 +259,5 @@ if FEATURES["dark_mode"]:
 else:
     print("Loading light theme")   # runs when flag is False
 ```
+
+**Step 3 — Run the script, then flip the flag and run again:**
