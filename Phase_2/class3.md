@@ -97,3 +97,8 @@ Code change → DEV → SIT → UAT → PROD
 - **Broken often?** Yes — that is fine here, it is a sandbox
 
 ### SIT — System Integration Testing
+
+- **Who uses it:** QA (Quality Assurance) testers
+- **Purpose:** Test that all pieces of the system work together — not just individual features
+- **Data:** Fake data but more realistic than DEV
+- **Example:** Does the login page correctly talk to the database? Does it send the right email?
