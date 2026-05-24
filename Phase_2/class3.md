@@ -282,3 +282,11 @@ git add requirements.txt
 git commit -m "Fix: add missing requests dependency"
 git push
 ```
+
+Pushing triggers the CI pipeline again automatically. This time:
+
+```
+✓ lint — passed
+✓ build — passed
+✓ unit-tests — passed (12/12)
+```
