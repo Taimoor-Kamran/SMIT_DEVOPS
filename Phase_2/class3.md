@@ -125,3 +125,13 @@ Code change → DEV → SIT → UAT → PROD
 > 2. **SIT** — QA tests that the transfer correctly deducts from Account A and adds to Account B, emails both parties, and logs the transaction.
 > 3. **UAT** — The bank manager clicks through the feature on test accounts and says "yes, this matches what we asked for."
 > 4. **PROD** — The feature goes live. Real customers can now transfer real money.
+
+### Environment Comparison Table
+
+| | DEV | SIT | UAT | PROD |
+|---|---|---|---|---|
+| **Who tests** | Developer | QA team | Business / Client | Real users |
+| **Data** | Dummy | Fake but realistic | Near-real | Real |
+| **Broken OK?** | Yes | Sometimes | Rarely | Never |
+| **Deploy speed** | Fast | Moderate | Slow | Very controlled |
+| **Rollback needed?** | No | Rarely | Rarely | Yes — always planned |
