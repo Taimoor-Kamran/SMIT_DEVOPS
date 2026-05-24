@@ -365,3 +365,4 @@ Always run `git branch` before starting work — confirm you are on the right br
 | `git merge feature/x` | Merge feature branch into current branch |
 | `git branch -d feature/x` | Delete a merged branch |
 | `git rebase main` | Replay your branch commits on top of main |
+| `git reset --hard <hash>` | Move a branch pointer back to a specific commit |
