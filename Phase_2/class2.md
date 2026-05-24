@@ -299,3 +299,5 @@ Before rebase:
 After rebase (feature/login rebased onto latest main):
   main:          A ── B ── C ── D' ── E'   ← D and E replayed on top of C
 ```
+
+> `D'` and `E'` have the same changes as `D` and `E` but they are new commits with new IDs.
