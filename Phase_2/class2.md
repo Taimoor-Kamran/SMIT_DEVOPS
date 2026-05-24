@@ -95,3 +95,8 @@ git branch -d feature/contact-page
 # Step 1: Go back to main first — you always merge INTO the branch you are on
 git switch main
 ```
+
+```bash
+# Step 2: Merge your feature branch into main
+git merge feature/contact-page
+```
