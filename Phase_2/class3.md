@@ -95,3 +95,5 @@ Code change → DEV → SIT → UAT → PROD
 - **Purpose:** Where developers build and test their own code
 - **Data:** Fake/dummy data — no real users, no real money
 - **Broken often?** Yes — that is fine here, it is a sandbox
+
+### SIT — System Integration Testing
