@@ -88,3 +88,5 @@ Code change → DEV → SIT → UAT → PROD
            Developer  QA  Business  Real users
              tests   test  sign-off
 ```
+
+### DEV — Development Environment
