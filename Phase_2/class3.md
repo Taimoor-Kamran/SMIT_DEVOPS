@@ -67,3 +67,9 @@ When you finish reviewing a PR on GitHub, you choose one of three outcomes:
 ### Branch Protection Rules
 
 Most teams set **branch protection rules** on `main` to enforce quality before any merge happens.
+
+Common rules:
+- At least 1 reviewer must approve before merging
+- All automated checks (CI pipeline) must pass
+- Direct pushes to `main` are blocked — everything must go through a PR
+- Conversation threads must be resolved before merge
