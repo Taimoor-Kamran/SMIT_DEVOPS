@@ -222,3 +222,5 @@ echo "About page content" > about.html   # create a new file
 git add about.html
 git commit -m "Add about page"
 ```
+
+**Step 3 — Switch back to main and merge:**
