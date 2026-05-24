@@ -143,3 +143,12 @@ Code change → DEV → SIT → UAT → PROD
 ### Task 1 — Open a Pull Request on GitHub
 
 **Goal:** Push a branch, open a PR, and walk through the review flow.
+
+**Step 1 — Create a branch and make a change:**
+
+```bash
+git switch -c feature/update-readme      # create and switch to new branch
+echo "## New Section" >> README.md       # make a small change
+git add README.md
+git commit -m "Add new section to README"
+```
