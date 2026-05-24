@@ -305,3 +305,7 @@ After rebase (feature/login rebased onto latest main):
 ### How to Fix It — Step by Step
 
 **Step 1 — Find the commit where you accidentally started working on main:**
+
+```bash
+git log --oneline    # look for the last good commit before your accidental work
+```
