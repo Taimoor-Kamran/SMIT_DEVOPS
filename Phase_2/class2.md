@@ -326,3 +326,8 @@ git branch feature/login 9a2c1d0
 ```
 
 **Step 3 — Move the accidental commits off main using rebase:**
+
+```bash
+git switch feature/login          # go to the new feature branch
+git rebase main                   # replay the commits on top of current main
+```
