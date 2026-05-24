@@ -273,3 +273,12 @@ After resolving the conflict, Ali pushes the branch. The CI pipeline runs and sh
 ✗ build — FAILED
   Error: ModuleNotFoundError: No module named 'requests'
 ```
+
+Ali forgot to add `requests` to `requirements.txt`. Fix:
+
+```bash
+echo "requests==2.31.0" >> requirements.txt   # add the missing dependency
+git add requirements.txt
+git commit -m "Fix: add missing requests dependency"
+git push
+```
