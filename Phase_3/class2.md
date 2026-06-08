@@ -113,3 +113,42 @@ chmod +x service.sh
 ./service.sh start     # starts nginx
 ./service.sh stop      # stops nginx
 ```
+
+### Version 2 — Script with Status Check and restart
+
+**File: service_v2.sh**
+```bash
+#!/bin/bash
+set -e
+
+SERVICE="nginx"
+
+case "$1" in
+    start)
+        echo "Starting $SERVICE..."
+        sudo systemctl start $SERVICE
+        sudo systemctl status $SERVICE --no-pager
+        ;;
+    stop)
+        echo "Stopping $SERVICE..."
+        sudo systemctl stop $SERVICE
+        echo "$SERVICE has been stopped."
+        ;;
+    restart)
+        echo "Restarting $SERVICE..."
+        sudo systemctl restart $SERVICE
+        sudo systemctl status $SERVICE --no-pager
+        ;;
+    status)
+        sudo systemctl status $SERVICE --no-pager
+        ;;
+    *)
+        echo "Usage: ./service_v2.sh [start|stop|restart|status]"
+        exit 1
+        ;;
+esac
+```
+
+> **What is `case`?**
+> `case` is like `if/elif/else` but cleaner when you have many options.
+> Each option ends with `;;` and the whole block ends with `esac` (case spelled backwards).
