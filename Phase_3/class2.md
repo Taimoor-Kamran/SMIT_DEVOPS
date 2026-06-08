@@ -290,3 +290,12 @@ tail -f app.log | grep -E "ERROR|WARN"
 ---
 
 ## Complete Script: Start, Stop and Tail Logs
+
+This is the full production-style script that combines everything:
+- accepts service name and action as arguments
+- starts, stops, restarts, or checks status
+- has a `logs` action to tail the service log live
+- validates all inputs
+- uses exit codes correctly
+
+**File: manage.sh**
