@@ -267,3 +267,5 @@ echo "All done!"
 ```
 
 ---
+
+## Putting It All Together
