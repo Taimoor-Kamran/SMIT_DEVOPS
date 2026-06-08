@@ -253,3 +253,19 @@ tail -n 50 file.log         # show last 50 lines
 tail -f file.log            # follow: live stream new lines as they appear
 tail -f -n 100 file.log     # start from last 100 lines, then follow live
 ```
+
+### Tailing Real Service Logs
+
+```bash
+# nginx web server logs
+sudo tail -f /var/log/nginx/access.log    # every HTTP request in real time
+sudo tail -f /var/log/nginx/error.log     # errors only
+
+# mysql database logs
+sudo tail -f /var/log/mysql/error.log
+
+# systemd journal logs for any service
+sudo journalctl -u nginx -f               # -f means follow (same as tail -f)
+sudo journalctl -u nginx -n 50            # show last 50 lines
+sudo journalctl -u nginx --since "1 hour ago"
+```
