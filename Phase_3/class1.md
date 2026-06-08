@@ -11,3 +11,5 @@
 6. [Quick Reference](#quick-reference)
 
 ---
+
+## What is Bash Scripting?
