@@ -187,3 +187,41 @@ Or from the PR page:
 > fix a real code problem — it only helps with random/flaky failures.
 
 ---
+
+## Merge Policies & Branch Protection
+
+**Branch protection rules** are settings you put on the `main` branch so that
+nobody (not even you) can merge broken or unreviewed code.
+
+### How to enable branch protection on GitHub
+1. Go to your repo → **Settings** → **Branches**
+2. Click **"Add branch protection rule"**
+3. Set **Branch name pattern** to `main`
+4. Enable these options:
+
+| Setting | What it does |
+|---------|-------------|
+| Require a pull request before merging | No one can push directly to main |
+| Require status checks to pass | All CI checks must be green before merge |
+| Require branches to be up to date | Your branch must have the latest main code |
+| Require approvals (1 or 2) | Someone else must review and approve your PR |
+| Do not allow bypassing the above settings | Even admins must follow the rules |
+
+5. Click **"Save changes"**
+
+### What happens when rules are in place?
+```
+Developer pushes to main directly
+   ↓
+GitHub BLOCKS it — "Push rejected: branch is protected"
+
+Developer opens a PR with failing checks
+   ↓
+GitHub BLOCKS merge — "Required status checks have not passed"
+
+Developer opens a PR, checks pass, gets approval
+   ↓
+GitHub ALLOWS merge ✅
+```
+
+---
