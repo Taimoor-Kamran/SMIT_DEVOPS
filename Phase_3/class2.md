@@ -244,3 +244,12 @@ The `tail` command shows you the **last few lines** of a file.
 The `-f` flag means **follow** — it keeps watching and prints new lines as they are added in real time.
 
 This is how DevOps engineers monitor a running service live.
+
+### Basic tail Commands
+
+```bash
+tail file.log               # show last 10 lines (default)
+tail -n 50 file.log         # show last 50 lines
+tail -f file.log            # follow: live stream new lines as they appear
+tail -f -n 100 file.log     # start from last 100 lines, then follow live
+```
