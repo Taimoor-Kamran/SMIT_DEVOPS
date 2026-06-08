@@ -206,3 +206,18 @@ echo "Done. Exit code: $?"
 ---
 
 ## What are Logs?
+
+**Logs** are text files where a service writes a record of everything it does — every request, every error, every event — with a timestamp.
+
+Think of logs as a **diary** that a service keeps for itself.
+When something breaks, the log is the first place you look to understand what went wrong.
+
+### Where are log files stored?
+
+| Service | Log file location |
+|---------|------------------|
+| nginx | `/var/log/nginx/access.log` and `/var/log/nginx/error.log` |
+| mysql | `/var/log/mysql/error.log` |
+| ssh | `/var/log/auth.log` |
+| systemd (all services) | `journalctl -u service-name` |
+| your custom app | wherever your app writes — e.g. `./logs/app.log` |
