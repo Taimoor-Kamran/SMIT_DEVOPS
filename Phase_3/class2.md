@@ -330,4 +330,51 @@ usage() {
 if [ -z "$SERVICE" ] || [ -z "$ACTION" ]; then
     usage
 fi
+
+# ─── Main logic ───────────────────────────────────────────────
+case "$ACTION" in
+    start)
+        echo "► Starting $SERVICE..."
+        sudo systemctl start "$SERVICE"
+        echo "✅ $SERVICE is now running."
+        sudo systemctl status "$SERVICE" --no-pager -l
+        ;;
+
+    stop)
+        echo "■ Stopping $SERVICE..."
+        sudo systemctl stop "$SERVICE"
+        echo "⛔ $SERVICE has been stopped."
+        ;;
+
+    restart)
+        echo "↺ Restarting $SERVICE..."
+        sudo systemctl restart "$SERVICE"
+        echo "✅ $SERVICE restarted successfully."
+        sudo systemctl status "$SERVICE" --no-pager -l
+        ;;
+
+    status)
+        echo "ℹ Status of $SERVICE:"
+        sudo systemctl status "$SERVICE" --no-pager -l
+        ;;
+
+    logs)
+        LOG_FILE="$LOG_DIR/$SERVICE/$SERVICE.log"
+        echo "📋 Tailing logs for $SERVICE..."
+        echo "   (Press Ctrl+C to stop)"
+        echo ""
+        if [ -f "$LOG_FILE" ]; then
+            tail -f "$LOG_FILE"
+        else
+            echo "Log file not found at $LOG_FILE"
+            echo "Falling back to journalctl..."
+            sudo journalctl -u "$SERVICE" -f -n 50
+        fi
+        ;;
+
+    *)
+        echo "❌ Unknown action: $ACTION"
+        usage
+        ;;
+esac
 ```
