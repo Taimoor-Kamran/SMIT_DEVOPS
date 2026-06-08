@@ -186,3 +186,5 @@ echo "Hello, $1!"
 > `-z` means "is this string empty?" — we will cover `exit 1` in the next section.
 
 ---
+
+## Exit Codes
