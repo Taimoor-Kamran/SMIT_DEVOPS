@@ -79,3 +79,6 @@ Output looks like this:
 ---
 
 ## Writing a Start/Stop Script
+
+Instead of typing `systemctl start nginx` and `systemctl stop nginx` manually every time,
+we write a script that accepts a command like `start`, `stop`, `restart`, or `status` as an argument.
