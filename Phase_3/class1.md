@@ -318,3 +318,46 @@ fi
 chmod +x backup.sh
 ./backup.sh /home/taimoor/projects
 ```
+
+---
+
+## Quick Reference
+
+### Variables Cheat Sheet
+
+| Task | Code |
+|------|------|
+| Create a variable | `name="Taimoor"` |
+| Read a variable | `echo $name` |
+| Variable from command | `today=$(date)` |
+| Readonly variable | `readonly PI=3.14` |
+| Export to environment | `export PORT=8080` |
+| Check if empty | `[ -z "$var" ]` |
+| Check if not empty | `[ -n "$var" ]` |
+
+### Arguments Cheat Sheet
+
+| Variable | Value |
+|----------|-------|
+| `$0` | Script name |
+| `$1` to `$9` | Positional arguments |
+| `$@` | All arguments |
+| `$#` | Number of arguments |
+
+### Exit Codes Cheat Sheet
+
+| Code | Meaning |
+|------|---------|
+| `0` | Success |
+| `1` | General error |
+| `127` | Command not found |
+| `$?` | Exit code of last command |
+| `exit 0` | Manually exit with success |
+| `exit 1` | Manually exit with error |
+| `set -e` | Auto-exit on any error |
+| `cmd1 && cmd2` | Run cmd2 only if cmd1 succeeds |
+| `cmd1 \|\| cmd2` | Run cmd2 only if cmd1 fails |
+
+---
+
+*End of Class 1 — Phase 3*
