@@ -244,3 +244,26 @@ npm test && ./deploy.sh
 # Show error message if directory creation fails
 mkdir /protected-dir || echo "Could not create directory — permission denied"
 ```
+
+### set -e — Stop Script on Any Error
+
+Add `set -e` at the top of your script to make it **stop immediately** if any command fails.
+This is a best practice in DevOps scripts to avoid silently ignoring errors.
+
+```bash
+#!/bin/bash
+set -e              # exit immediately if any command fails
+
+echo "Step 1: Installing dependencies..."
+npm install         # if this fails, script stops here
+
+echo "Step 2: Running tests..."
+npm test            # if this fails, script stops here
+
+echo "Step 3: Deploying..."
+./deploy.sh
+
+echo "All done!"
+```
+
+---
