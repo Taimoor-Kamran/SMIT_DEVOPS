@@ -116,3 +116,16 @@ echo $DATABASE_URL
 ./greet.sh Taimoor        # "Taimoor" is the argument
 ./greet.sh Ahmed          # "Ahmed" is the argument — same script, different result
 ```
+
+### Special Argument Variables
+
+Bash gives you built-in variables to read the arguments inside your script:
+
+| Variable | Meaning |
+|----------|---------|
+| `$0` | Name of the script itself |
+| `$1` | First argument |
+| `$2` | Second argument |
+| `$3` | Third argument |
+| `$@` | All arguments as separate words |
+| `$#` | Total number of arguments passed |
