@@ -353,4 +353,24 @@ You do NOT need to manually trigger it.
 Push fix → GitHub detects new commit → CI re-runs → All checks pass ✅ → PR ready to merge
 ```
 
+### Lessons Learned from this Incident
+
+1. **Always pull latest main before starting work** — reduces conflict chance
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b feature/your-new-branch
+   ```
+
+2. **Keep branches short-lived** — the longer your branch lives, the more conflicts accumulate
+
+3. **Run checks locally before pushing** — saves time
+   ```bash
+   npm test && npm run lint   # run this before every push
+   ```
+
+4. **Read the error before re-running** — re-running a real failure wastes time
+
+5. **Commit small and often** — smaller changes = smaller conflicts
+
 ---
