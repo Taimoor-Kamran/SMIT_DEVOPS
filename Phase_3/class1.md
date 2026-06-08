@@ -15,3 +15,4 @@
 ## What is Bash Scripting?
 
 **Bash** stands for **Bourne Again SHell**.
+It is the default terminal language on Linux and macOS.
