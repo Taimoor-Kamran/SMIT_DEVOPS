@@ -129,3 +129,26 @@ Bash gives you built-in variables to read the arguments inside your script:
 | `$3` | Third argument |
 | `$@` | All arguments as separate words |
 | `$#` | Total number of arguments passed |
+
+### Real Example — greet.sh
+```bash
+#!/bin/bash
+
+echo "Script name : $0"
+echo "Hello, $1!"
+echo "You are $2 years old."
+echo "Total arguments passed: $#"
+```
+
+Run it:
+```bash
+./greet.sh Taimoor 20
+```
+
+Output:
+```
+Script name : ./greet.sh
+Hello, Taimoor!
+You are 20 years old.
+Total arguments passed: 2
+```
