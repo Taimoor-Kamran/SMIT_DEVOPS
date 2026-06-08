@@ -325,4 +325,9 @@ usage() {
     echo "  ./manage.sh nginx logs"
     exit 1
 }
+
+# ─── Validate inputs ──────────────────────────────────────────
+if [ -z "$SERVICE" ] || [ -z "$ACTION" ]; then
+    usage
+fi
 ```
