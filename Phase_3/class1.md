@@ -31,3 +31,14 @@ A **Bash script** is a plain text file containing a list of terminal commands th
 
 echo "Hello, World!"
 ```
+
+**How to run the script:**
+```bash
+chmod +x hello.sh    # give the file permission to execute
+./hello.sh           # run it
+```
+
+> `#!/bin/bash` is called a **shebang** — it tells the system to use Bash to run this file.
+> Always put it on the very first line of every script.
+
+---
