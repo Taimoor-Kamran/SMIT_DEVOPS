@@ -3,3 +3,4 @@
 ---
 
 ## Table of Contents
+1. [What is Bash Scripting?](#what-is-bash-scripting)
