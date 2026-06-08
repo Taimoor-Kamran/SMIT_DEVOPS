@@ -13,3 +13,5 @@
 ---
 
 ## What is Bash Scripting?
+
+**Bash** stands for **Bourne Again SHell**.
