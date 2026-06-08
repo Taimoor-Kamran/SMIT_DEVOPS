@@ -421,3 +421,30 @@ chmod +x manage.sh
 | `systemctl disable <name>` | Remove auto-start |
 | `systemctl is-active <name>` | Check if running (prints active/inactive) |
 
+### tail and Log Cheat Sheet
+
+| Command | Purpose |
+|---------|---------|
+| `tail file.log` | Show last 10 lines |
+| `tail -n 50 file.log` | Show last 50 lines |
+| `tail -f file.log` | Follow live log output |
+| `tail -f file.log \| grep ERROR` | Follow and filter by keyword |
+| `journalctl -u nginx -f` | Follow systemd logs for nginx |
+| `journalctl -u nginx -n 100` | Show last 100 systemd log lines |
+| `journalctl -u nginx --since "1 hour ago"` | Logs from the last hour |
+
+### Common Log File Locations
+
+| Service | Log Path |
+|---------|---------|
+| nginx access | `/var/log/nginx/access.log` |
+| nginx errors | `/var/log/nginx/error.log` |
+| mysql | `/var/log/mysql/error.log` |
+| ssh auth | `/var/log/auth.log` |
+| all system | `/var/log/syslog` |
+| any service | `journalctl -u <service-name>` |
+
+---
+
+*End of Class 2 — Phase 3*
+
