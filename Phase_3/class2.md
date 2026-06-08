@@ -407,3 +407,17 @@ chmod +x manage.sh
 
 ---
 
+## Quick Reference
+
+### systemctl Cheat Sheet
+
+| Command | Purpose |
+|---------|---------|
+| `systemctl start <name>` | Start a service |
+| `systemctl stop <name>` | Stop a service |
+| `systemctl restart <name>` | Restart a service |
+| `systemctl status <name>` | Show status |
+| `systemctl enable <name>` | Auto-start on boot |
+| `systemctl disable <name>` | Remove auto-start |
+| `systemctl is-active <name>` | Check if running (prints active/inactive) |
+
