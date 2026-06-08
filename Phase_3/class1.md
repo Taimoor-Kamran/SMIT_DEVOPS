@@ -211,3 +211,18 @@ echo $?                # prints: 0  (success)
 ls /fake-folder        # this will fail (folder does not exist)
 echo $?                # prints: 2  (error)
 ```
+
+### Setting Exit Codes in Your Script
+
+Use `exit <number>` to stop the script and report success or failure:
+```bash
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Error: No argument given!"
+    exit 1          # stop here and report failure
+fi
+
+echo "Hello, $1!"
+exit 0              # stop here and report success
+```
