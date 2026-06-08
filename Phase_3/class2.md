@@ -16,3 +16,13 @@
 ## What is a Service?
 
 A **service** is a program that runs in the background on your Linux server — silently doing its job without you having to keep a terminal open.
+
+**Real-world examples of services:**
+
+| Service Name | What it does |
+|-------------|-------------|
+| `nginx` | Web server — serves your website to visitors |
+| `mysql` | Database server — stores and retrieves data |
+| `ssh` | Lets you connect to the server remotely |
+| `docker` | Runs containers |
+| `cron` | Runs scheduled tasks automatically |
