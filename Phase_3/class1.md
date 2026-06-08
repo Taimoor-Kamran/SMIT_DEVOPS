@@ -47,3 +47,5 @@ chmod +x hello.sh    # give the file permission to execute
 
 A **variable** is a name that stores a value, so you can reuse it later.
 Think of it like a labelled box — you put something inside the box and refer to it by the label.
+
+### Syntax Rules
