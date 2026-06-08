@@ -390,3 +390,20 @@ chmod +x manage.sh
 ./manage.sh nginx stop       # stop
 ```
 
+### Line-by-Line Explanation of the Script
+
+| Part | Explanation |
+|------|-------------|
+| `set -e` | Stop the script immediately if any command fails |
+| `SERVICE=$1` | Read the first argument (service name) into a variable |
+| `ACTION=$2` | Read the second argument (action) into a variable |
+| `usage()` | A function — reusable block of code to print help text |
+| `[ -z "$SERVICE" ]` | Check if SERVICE variable is empty |
+| `case "$ACTION" in` | Match ACTION against different options |
+| `;;` | End of each case option |
+| `esac` | End of the case block |
+| `--no-pager` | Show full output in terminal without opening a pager |
+| `journalctl -f` | Follow logs in real time (like tail -f but for systemd) |
+
+---
+
