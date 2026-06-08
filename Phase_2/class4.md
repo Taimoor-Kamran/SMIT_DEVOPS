@@ -374,3 +374,40 @@ Push fix → GitHub detects new commit → CI re-runs → All checks pass ✅ �
 5. **Commit small and often** — smaller changes = smaller conflicts
 
 ---
+
+## Quick Reference
+
+### Common Git Commands for PR Workflow
+
+| Command | What it does |
+|---------|-------------|
+| `git checkout -b branch-name` | Create and switch to a new branch |
+| `git add .` | Stage all changed files |
+| `git commit -m "message"` | Save a snapshot of your changes |
+| `git push origin branch-name` | Upload branch to GitHub |
+| `git fetch origin` | Download latest changes (does not merge) |
+| `git merge origin/main` | Merge latest main into your branch |
+| `git status` | See which files have conflicts or changes |
+| `git log --oneline` | See recent commits in one line each |
+
+### GitHub Actions Workflow Triggers
+
+| Trigger | When it runs |
+|---------|-------------|
+| `on: push` | Every time you push any commit |
+| `on: pull_request` | When a PR is opened or updated |
+| `on: workflow_dispatch` | Manually from the Actions tab |
+| `on: schedule` | On a cron schedule (e.g. every night) |
+
+### PR Checklist (before asking for review)
+
+- [ ] Branch is up to date with main (`git merge origin/main`)
+- [ ] All CI checks are green
+- [ ] Conflicts are resolved
+- [ ] Tests pass locally (`npm test`)
+- [ ] Lint passes locally (`npm run lint`)
+- [ ] PR description explains what and why
+
+---
+
+*End of Class 4*
