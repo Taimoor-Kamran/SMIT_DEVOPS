@@ -93,3 +93,16 @@ echo "Max retries allowed: $MAX_RETRIES"
 export DATABASE_URL="localhost:5432"
 echo $DATABASE_URL
 ```
+
+### Common Beginner Mistakes with Variables
+
+| Mistake | Wrong | Correct |
+|---------|-------|---------|
+| Space around = | `name = "Ali"` | `name="Ali"` |
+| Forgot $ to read | `echo name` | `echo $name` |
+| Wrong quotes | `echo '$name'` (prints literally) | `echo "$name"` |
+
+> **Single quotes `'`** print everything literally — `$name` stays as `$name`.
+> **Double quotes `"`** expand variables — `$name` becomes the value.
+
+---
