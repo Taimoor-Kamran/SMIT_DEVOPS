@@ -50,3 +50,25 @@ You (terminal)  →  systemctl command  →  systemd  →  controls the service
 | `systemctl enable nginx` | Auto-start service when server boots |
 | `systemctl disable nginx` | Do NOT auto-start on boot |
 | `systemctl is-active nginx` | Prints "active" or "inactive" |
+
+### Reading systemctl status Output
+
+```bash
+sudo systemctl status nginx
+```
+
+Output looks like this:
+```
+● nginx.service - A high performance web server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled)
+     Active: active (running) since Sun 2026-06-08 14:00:00 PKT
+    Process: 1234 ExecStart=/usr/sbin/nginx
+   Main PID: 1234 (nginx)
+```
+
+**What each line means:**
+- `Loaded` — the service file exists and is recognised by systemd
+- `Active: active (running)` — service is currently running ✅
+- `Active: inactive (dead)` — service is stopped ❌
+- `Active: failed` — service crashed ⚠️
+- `Main PID` — the process ID of the running service
