@@ -226,3 +226,21 @@ fi
 echo "Hello, $1!"
 exit 0              # stop here and report success
 ```
+
+### Using Exit Codes to Chain Commands
+
+Bash has two powerful operators that use exit codes:
+
+| Operator | Meaning | Example |
+|----------|---------|---------|
+| `&&` | Run next command ONLY if previous succeeded (exit 0) | `mkdir logs && echo "Created"` |
+| `\|\|` | Run next command ONLY if previous failed (non-zero) | `mkdir logs \|\| echo "Failed"` |
+
+```bash
+# Real-world example: only deploy if tests pass
+npm test && ./deploy.sh
+#          ^ deploy.sh only runs if npm test exits with 0
+
+# Show error message if directory creation fails
+mkdir /protected-dir || echo "Could not create directory — permission denied"
+```
