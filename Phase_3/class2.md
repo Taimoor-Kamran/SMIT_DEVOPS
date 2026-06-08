@@ -152,3 +152,55 @@ esac
 > **What is `case`?**
 > `case` is like `if/elif/else` but cleaner when you have many options.
 > Each option ends with `;;` and the whole block ends with `esac` (case spelled backwards).
+
+### Version 3 — Script that Accepts Service Name as Argument
+
+Instead of hardcoding `SERVICE="nginx"`, pass the service name when running the script:
+
+```bash
+#!/bin/bash
+set -e
+
+SERVICE=$1    # first argument is the service name
+ACTION=$2     # second argument is the action
+
+if [ -z "$SERVICE" ] || [ -z "$ACTION" ]; then
+    echo "Usage: ./service_v3.sh <service-name> [start|stop|restart|status]"
+    echo "Example: ./service_v3.sh nginx start"
+    exit 1
+fi
+
+case "$ACTION" in
+    start)
+        echo "Starting $SERVICE..."
+        sudo systemctl start $SERVICE
+        ;;
+    stop)
+        echo "Stopping $SERVICE..."
+        sudo systemctl stop $SERVICE
+        ;;
+    restart)
+        echo "Restarting $SERVICE..."
+        sudo systemctl restart $SERVICE
+        ;;
+    status)
+        sudo systemctl status $SERVICE --no-pager
+        ;;
+    *)
+        echo "Unknown action: $ACTION"
+        echo "Valid actions: start | stop | restart | status"
+        exit 1
+        ;;
+esac
+
+echo "Done. Exit code: $?"
+```
+
+**How to use:**
+```bash
+./service_v3.sh nginx start
+./service_v3.sh mysql stop
+./service_v3.sh docker restart
+```
+
+---
