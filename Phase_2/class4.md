@@ -245,4 +245,68 @@ Person A merges first → no problem
 Person B tries to merge → CONFLICT! Git sees two different changes to the same line
 ```
 
+### What a conflict looks like in your file
+
+When a conflict happens, Git adds markers into the file:
+
+```
+<<<<<<< HEAD                    ← your current branch starts here
+greeting = "Welcome"
+=======                         ← separator
+greeting = "Hi there"
+>>>>>>> main                    ← what's in main ends here
+```
+
+You must manually choose which version to keep (or combine both), then remove the markers.
+
+### Step-by-Step: Resolve a Merge Conflict
+
+#### Step 1 — Update your branch with latest main
+```bash
+git checkout feature/your-branch   # switch to your branch
+git fetch origin                   # download latest changes from GitHub
+git merge origin/main              # try to merge main into your branch
+```
+If there are conflicts, Git will say:
+```
+CONFLICT (content): Merge conflict in app.js
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+#### Step 2 — Find all conflicted files
+```bash
+git status
+# Files with "both modified" are the ones with conflicts
+```
+
+#### Step 3 — Open each conflicted file and fix it
+```bash
+# open the file in your editor
+# find the <<<<<<< markers
+# decide which code to keep
+# DELETE the marker lines: <<<<<<<, =======, >>>>>>>
+# save the file
+```
+
+**Before fix:**
+```javascript
+<<<<<<< HEAD
+const greeting = "Welcome";
+=======
+const greeting = "Hi there";
+>>>>>>> main
+```
+
+**After fix (you chose to keep your version):**
+```javascript
+const greeting = "Welcome";
+```
+
+#### Step 4 — Mark the conflict as resolved and commit
+```bash
+git add app.js                        # stage the fixed file
+git commit -m "Resolve merge conflict in app.js"
+git push origin feature/your-branch  # push the fix to GitHub
+```
+
 ---
