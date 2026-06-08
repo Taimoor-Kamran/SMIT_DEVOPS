@@ -269,3 +269,52 @@ echo "All done!"
 ---
 
 ## Putting It All Together
+
+Here is a complete script that uses **variables**, **arguments**, and **exit codes** together.
+
+**Script: backup.sh**
+```bash
+#!/bin/bash
+set -e
+
+# --- Variables ---
+BACKUP_DIR="/tmp/backups"
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")   # e.g. 2026-06-08_14-30-00
+
+# --- Arguments ---
+SOURCE=$1     # first argument: the folder to back up
+
+# --- Validate argument ---
+if [ -z "$SOURCE" ]; then
+    echo "Error: Please provide a source folder."
+    echo "Usage: ./backup.sh /path/to/folder"
+    exit 1
+fi
+
+if [ ! -d "$SOURCE" ]; then
+    echo "Error: '$SOURCE' is not a valid directory."
+    exit 1
+fi
+
+# --- Do the backup ---
+mkdir -p "$BACKUP_DIR"
+DEST="$BACKUP_DIR/backup_${TIMESTAMP}.tar.gz"
+
+echo "Backing up '$SOURCE' to '$DEST'..."
+tar -czf "$DEST" "$SOURCE"
+
+# --- Check if backup succeeded ---
+if [ $? -eq 0 ]; then
+    echo "Backup successful!"
+    exit 0
+else
+    echo "Backup failed!"
+    exit 1
+fi
+```
+
+**How to run:**
+```bash
+chmod +x backup.sh
+./backup.sh /home/taimoor/projects
+```
