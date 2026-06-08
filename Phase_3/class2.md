@@ -269,3 +269,22 @@ sudo journalctl -u nginx -f               # -f means follow (same as tail -f)
 sudo journalctl -u nginx -n 50            # show last 50 lines
 sudo journalctl -u nginx --since "1 hour ago"
 ```
+
+### Filtering Logs with grep
+
+Combine `tail` with `grep` to only show lines containing a keyword:
+
+```bash
+# show only ERROR lines in real time
+tail -f /var/log/nginx/error.log | grep "ERROR"
+
+# show only lines that contain a specific IP address
+tail -f /var/log/nginx/access.log | grep "192.168.1.10"
+
+# show errors and warnings together
+tail -f app.log | grep -E "ERROR|WARN"
+```
+
+> Press `Ctrl + C` to stop `tail -f` at any time.
+
+---
