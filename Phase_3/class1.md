@@ -42,3 +42,5 @@ chmod +x hello.sh    # give the file permission to execute
 > Always put it on the very first line of every script.
 
 ---
+
+## Variables
