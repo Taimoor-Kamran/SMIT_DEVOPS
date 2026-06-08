@@ -77,3 +77,5 @@ Output looks like this:
 > because services run at the system level, not as a regular user.
 
 ---
+
+## Writing a Start/Stop Script
