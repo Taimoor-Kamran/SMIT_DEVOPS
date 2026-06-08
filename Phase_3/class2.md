@@ -221,3 +221,19 @@ When something breaks, the log is the first place you look to understand what we
 | ssh | `/var/log/auth.log` |
 | systemd (all services) | `journalctl -u service-name` |
 | your custom app | wherever your app writes — e.g. `./logs/app.log` |
+
+### What a log entry looks like
+
+```
+2026-06-08 14:23:01 [INFO]  Server started on port 8080
+2026-06-08 14:23:15 [INFO]  GET /home 200 OK - 12ms
+2026-06-08 14:24:02 [ERROR] Database connection failed: timeout after 30s
+2026-06-08 14:24:05 [WARN]  Retrying database connection (attempt 2/3)
+```
+
+Each line has:
+- **Timestamp** — when it happened
+- **Level** — INFO (normal), WARN (possible problem), ERROR (something broke)
+- **Message** — what actually happened
+
+---
