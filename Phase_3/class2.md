@@ -288,3 +288,5 @@ tail -f app.log | grep -E "ERROR|WARN"
 > Press `Ctrl + C` to stop `tail -f` at any time.
 
 ---
+
+## Complete Script: Start, Stop and Tail Logs
