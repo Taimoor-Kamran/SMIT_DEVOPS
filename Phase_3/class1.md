@@ -7,3 +7,7 @@
 2. [Variables](#variables)
 3. [Arguments (Args)](#arguments-args)
 4. [Exit Codes](#exit-codes)
+5. [Putting It All Together](#putting-it-all-together)
+6. [Quick Reference](#quick-reference)
+
+---
