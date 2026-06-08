@@ -378,3 +378,15 @@ case "$ACTION" in
         ;;
 esac
 ```
+
+**Make it executable and run it:**
+```bash
+chmod +x manage.sh
+
+./manage.sh nginx start      # start nginx
+./manage.sh nginx status     # check if running
+./manage.sh nginx logs       # live log stream
+./manage.sh nginx restart    # restart
+./manage.sh nginx stop       # stop
+```
+
