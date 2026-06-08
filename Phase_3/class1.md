@@ -152,3 +152,37 @@ Hello, Taimoor!
 You are 20 years old.
 Total arguments passed: 2
 ```
+
+### Looping Over All Arguments
+```bash
+#!/bin/bash
+for arg in "$@"; do
+    echo "Argument: $arg"
+done
+```
+
+Run it:
+```bash
+./list.sh apple banana mango
+```
+
+Output:
+```
+Argument: apple
+Argument: banana
+Argument: mango
+```
+
+### Checking If an Argument Was Passed
+```bash
+#!/bin/bash
+if [ -z "$1" ]; then
+    echo "Error: Please provide a name."
+    echo "Usage: ./greet.sh <name>"
+    exit 1
+fi
+echo "Hello, $1!"
+```
+> `-z` means "is this string empty?" — we will cover `exit 1` in the next section.
+
+---
