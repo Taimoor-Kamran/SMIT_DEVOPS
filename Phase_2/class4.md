@@ -99,3 +99,53 @@ git push origin main
 After pushing, go to your repo on GitHub → click the **Actions** tab → you will see the workflow running!
 
 ---
+
+## Opening a Pull Request (PR)
+
+A **Pull Request** is a formal way to say:
+> "I made changes on my branch — please review and merge them into main."
+
+### Full Workflow (step by step)
+
+#### 1. Create a new branch (never code directly on main)
+```bash
+git checkout -b feature/add-login-page
+# "feature/add-login-page" is the branch name — name it based on what you're building
+```
+
+#### 2. Make your changes and commit them
+```bash
+# edit your files...
+git add .
+git commit -m "Add login page HTML and CSS"
+```
+
+#### 3. Push the branch to GitHub
+```bash
+git push origin feature/add-login-page
+```
+
+#### 4. Open the PR on GitHub
+- Go to your repo on github.com
+- You will see a yellow banner: **"Compare & pull request"** → click it
+- Fill in:
+  - **Title**: short description (e.g. `Add login page`)
+  - **Description**: what you changed and why
+- Click **"Create pull request"**
+
+#### 5. What happens next?
+As soon as you open the PR, GitHub Actions **automatically** starts running
+your workflow (because we set `on: pull_request` in `ci.yml`).
+
+```
+PR opened
+   ↓
+GitHub triggers ci.yml workflow
+   ↓
+Checks run (tests, lint, build)
+   ↓
+  PASS ✅  →  PR is ready to review & merge
+  FAIL ❌  →  you must fix the code before merging
+```
+
+---
