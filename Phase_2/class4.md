@@ -309,4 +309,48 @@ git commit -m "Resolve merge conflict in app.js"
 git push origin feature/your-branch  # push the fix to GitHub
 ```
 
+### Failed Validation — What it means and how to fix it
+
+After resolving the conflict and pushing, GitHub re-runs the CI pipeline automatically.
+But the checks may **still fail** if your code has errors.
+
+**Common reasons checks fail:**
+
+| Reason | Example error message | Fix |
+|--------|-----------------------|-----|
+| Syntax error | `SyntaxError: Unexpected token` | Fix the typo in your code |
+| Test failure | `FAIL src/app.test.js` | Read the test log, fix the failing test |
+| Lint error | `error: 'var' is not allowed` | Run `npm run lint -- --fix` locally |
+| Missing dependency | `Cannot find module 'express'` | Run `npm install` and commit `package-lock.json` |
+| Wrong Node version | `Engine "node" is incompatible` | Match Node version in workflow to your project |
+
+### How to fix a failed validation
+
+#### Step 1 — Read the error log
+On GitHub → Actions tab → click the failed run → expand the failed step.
+
+#### Step 2 — Reproduce the error locally
+```bash
+# Run the same command that failed in CI
+npm test          # if tests failed
+npm run lint      # if lint failed
+npm run build     # if build failed
+```
+
+#### Step 3 — Fix the code
+```bash
+# edit the file to fix the error
+git add .
+git commit -m "Fix lint error in app.js"
+git push origin feature/your-branch
+```
+
+#### Step 4 — Pipeline re-runs automatically
+As soon as you push, GitHub sees the new commit and **automatically re-runs** all checks.
+You do NOT need to manually trigger it.
+
+```
+Push fix → GitHub detects new commit → CI re-runs → All checks pass ✅ → PR ready to merge
+```
+
 ---
