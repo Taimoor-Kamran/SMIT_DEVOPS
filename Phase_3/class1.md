@@ -16,3 +16,4 @@
 
 **Bash** stands for **Bourne Again SHell**.
 It is the default terminal language on Linux and macOS.
+A **Bash script** is a plain text file containing a list of terminal commands that run automatically, one by one.
