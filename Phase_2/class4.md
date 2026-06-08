@@ -12,3 +12,25 @@
 7. [Quick Reference](#quick-reference)
 
 ---
+
+## What is GitHub Actions?
+
+GitHub Actions is a **free automation tool** built into GitHub.
+It lets you automatically run tasks (like tests, builds, deployments)
+whenever something happens in your repository — for example, when you
+push code or open a Pull Request.
+
+**Key terms for beginners:**
+
+| Term | Simple Meaning |
+|------|---------------|
+| Workflow | A set of automatic tasks written in a YAML file |
+| Job | A group of steps inside a workflow |
+| Step | One single command or action inside a job |
+| Runner | The server/machine that runs your workflow |
+| Trigger (on:) | The event that starts the workflow (e.g. push, pull_request) |
+
+Think of it like this:
+- You push code → GitHub sees it → GitHub automatically runs your tests → tells you pass or fail.
+
+---
