@@ -72,3 +72,8 @@ Output looks like this:
 - `Active: inactive (dead)` — service is stopped ❌
 - `Active: failed` — service crashed ⚠️
 - `Main PID` — the process ID of the running service
+
+> **Beginner tip:** Most `systemctl` commands need `sudo` (admin permission)
+> because services run at the system level, not as a regular user.
+
+---
