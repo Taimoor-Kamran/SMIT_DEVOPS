@@ -204,3 +204,5 @@ echo "Done. Exit code: $?"
 ```
 
 ---
+
+## What are Logs?
