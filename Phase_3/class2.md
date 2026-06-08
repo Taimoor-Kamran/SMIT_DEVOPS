@@ -7,3 +7,4 @@
 2. [Managing Services with systemctl](#managing-services-with-systemctl)
 3. [Writing a Start/Stop Script](#writing-a-startstop-script)
 4. [What are Logs?](#what-are-logs)
+5. [Tailing Logs with tail -f](#tailing-logs-with-tail--f)
