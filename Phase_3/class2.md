@@ -299,3 +299,30 @@ This is the full production-style script that combines everything:
 - uses exit codes correctly
 
 **File: manage.sh**
+
+```bash
+#!/bin/bash
+set -e
+
+# ─── Variables ────────────────────────────────────────────────
+SERVICE=$1
+ACTION=$2
+LOG_DIR="/var/log"
+
+# ─── Help message ─────────────────────────────────────────────
+usage() {
+    echo "Usage: ./manage.sh <service> <action>"
+    echo ""
+    echo "Actions:"
+    echo "  start    — start the service"
+    echo "  stop     — stop the service"
+    echo "  restart  — restart the service"
+    echo "  status   — show current status"
+    echo "  logs     — tail live logs"
+    echo ""
+    echo "Examples:"
+    echo "  ./manage.sh nginx start"
+    echo "  ./manage.sh nginx logs"
+    exit 1
+}
+```
