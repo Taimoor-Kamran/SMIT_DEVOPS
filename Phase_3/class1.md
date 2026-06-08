@@ -108,3 +108,11 @@ echo $DATABASE_URL
 ---
 
 ## Arguments (Args)
+
+**Arguments** are values you pass to a script when you run it, so the script can behave differently each time without changing the code.
+
+**Example:**
+```bash
+./greet.sh Taimoor        # "Taimoor" is the argument
+./greet.sh Ahmed          # "Ahmed" is the argument — same script, different result
+```
