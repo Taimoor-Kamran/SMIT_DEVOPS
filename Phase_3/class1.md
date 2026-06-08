@@ -61,3 +61,23 @@ name="Taimoor"
 echo "Hello, $name"      # prints: Hello, Taimoor
 echo "Hello, ${name}!"   # {} are optional but safer for complex strings
 ```
+
+### Types of Variables
+
+#### 1. String variable
+```bash
+city="Karachi"
+echo "I live in $city"
+```
+
+#### 2. Number variable
+```bash
+age=20
+echo "I am $age years old"
+```
+
+#### 3. Variable from a command (Command Substitution)
+```bash
+today=$(date)           # runs the 'date' command and stores the output
+echo "Today is: $today"
+```
