@@ -82,3 +82,34 @@ Output looks like this:
 
 Instead of typing `systemctl start nginx` and `systemctl stop nginx` manually every time,
 we write a script that accepts a command like `start`, `stop`, `restart`, or `status` as an argument.
+
+### Version 1 — Simple Start/Stop Script
+
+**File: service.sh**
+```bash
+#!/bin/bash
+
+SERVICE="nginx"       # change this to any service name
+
+if [ "$1" == "start" ]; then
+    echo "Starting $SERVICE..."
+    sudo systemctl start $SERVICE
+    echo "$SERVICE started."
+
+elif [ "$1" == "stop" ]; then
+    echo "Stopping $SERVICE..."
+    sudo systemctl stop $SERVICE
+    echo "$SERVICE stopped."
+
+else
+    echo "Usage: ./service.sh [start|stop]"
+    exit 1
+fi
+```
+
+**How to use:**
+```bash
+chmod +x service.sh
+./service.sh start     # starts nginx
+./service.sh stop      # stops nginx
+```
