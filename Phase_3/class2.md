@@ -239,3 +239,8 @@ Each line has:
 ---
 
 ## Tailing Logs with tail -f
+
+The `tail` command shows you the **last few lines** of a file.
+The `-f` flag means **follow** — it keeps watching and prints new lines as they are added in real time.
+
+This is how DevOps engineers monitor a running service live.
