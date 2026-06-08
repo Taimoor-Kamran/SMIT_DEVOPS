@@ -12,3 +12,5 @@
 7. [Quick Reference](#quick-reference)
 
 ---
+
+## What is a Service?
