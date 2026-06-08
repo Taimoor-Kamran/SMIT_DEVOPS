@@ -3,3 +3,4 @@
 ---
 
 ## Table of Contents
+1. [What is a Service?](#what-is-a-service)
