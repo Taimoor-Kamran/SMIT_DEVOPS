@@ -188,3 +188,6 @@ echo "Hello, $1!"
 ---
 
 ## Exit Codes
+
+Every command in Linux/Bash, when it finishes, sends back a number to the system.
+That number is called the **exit code** (also called return code or exit status).
