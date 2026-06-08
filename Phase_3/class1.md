@@ -22,3 +22,5 @@ A **Bash script** is a plain text file containing a list of terminal commands th
 - Automate repetitive tasks (backups, deployments, cleanup)
 - Save time — run 100 commands with one file
 - Used heavily in DevOps, CI/CD pipelines, and server management
+
+**Your first Bash script — Hello World:**
