@@ -24,3 +24,10 @@ A **Bash script** is a plain text file containing a list of terminal commands th
 - Used heavily in DevOps, CI/CD pipelines, and server management
 
 **Your first Bash script — Hello World:**
+
+```bash
+#!/bin/bash
+# This is a comment — Bash ignores lines starting with #
+
+echo "Hello, World!"
+```
