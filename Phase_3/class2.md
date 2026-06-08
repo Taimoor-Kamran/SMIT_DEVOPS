@@ -26,3 +26,12 @@ A **service** is a program that runs in the background on your Linux server — 
 | `ssh` | Lets you connect to the server remotely |
 | `docker` | Runs containers |
 | `cron` | Runs scheduled tasks automatically |
+
+On modern Linux systems, services are managed by **systemd** — the system and service manager.
+You talk to systemd using the `systemctl` command.
+
+```
+You (terminal)  →  systemctl command  →  systemd  →  controls the service
+```
+
+---
