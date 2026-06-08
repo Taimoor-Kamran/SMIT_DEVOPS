@@ -81,3 +81,15 @@ echo "I am $age years old"
 today=$(date)           # runs the 'date' command and stores the output
 echo "Today is: $today"
 ```
+
+#### 4. Readonly variable (constant — value cannot change)
+```bash
+readonly MAX_RETRIES=3
+echo "Max retries allowed: $MAX_RETRIES"
+```
+
+#### 5. Environment variable (available to child processes)
+```bash
+export DATABASE_URL="localhost:5432"
+echo $DATABASE_URL
+```
