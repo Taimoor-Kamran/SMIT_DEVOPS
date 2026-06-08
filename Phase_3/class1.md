@@ -200,3 +200,14 @@ That number is called the **exit code** (also called return code or exit status)
 | `126` | Permission denied — file is not executable |
 | `127` | Command not found |
 | `130` | Script stopped by Ctrl+C |
+
+### Checking the Exit Code of the Last Command
+
+After any command runs, its exit code is stored in `$?`:
+```bash
+ls /home               # this should succeed
+echo $?                # prints: 0  (success)
+
+ls /fake-folder        # this will fail (folder does not exist)
+echo $?                # prints: 2  (error)
+```
