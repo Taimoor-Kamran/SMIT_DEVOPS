@@ -237,3 +237,5 @@ Each line has:
 - **Message** — what actually happened
 
 ---
+
+## Tailing Logs with tail -f
