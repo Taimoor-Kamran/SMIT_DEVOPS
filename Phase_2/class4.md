@@ -225,3 +225,24 @@ GitHub ALLOWS merge ✅
 ```
 
 ---
+
+## Incident: Merge Conflict + Failed Validation
+
+This is a **real-world scenario** that every developer faces. Let's walk through it completely.
+
+### What is a Merge Conflict?
+
+A merge conflict happens when **two people edit the same line** in the same file on different branches, and Git does not know which version to keep.
+
+**Example scenario:**
+```
+main branch has:    greeting = "Hello"
+
+Person A changes:   greeting = "Hi there"   (on branch feature/A)
+Person B changes:   greeting = "Welcome"    (on branch feature/B)
+
+Person A merges first → no problem
+Person B tries to merge → CONFLICT! Git sees two different changes to the same line
+```
+
+---
