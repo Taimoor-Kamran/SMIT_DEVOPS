@@ -191,3 +191,12 @@ echo "Hello, $1!"
 
 Every command in Linux/Bash, when it finishes, sends back a number to the system.
 That number is called the **exit code** (also called return code or exit status).
+
+| Exit Code | Meaning |
+|-----------|---------|
+| `0` | Success — the command worked perfectly |
+| `1` | General error — something went wrong |
+| `2` | Misuse of command (wrong syntax) |
+| `126` | Permission denied — file is not executable |
+| `127` | Command not found |
+| `130` | Script stopped by Ctrl+C |
