@@ -14,3 +14,5 @@
 ---
 
 ## What is a Service?
+
+A **service** is a program that runs in the background on your Linux server — silently doing its job without you having to keep a terminal open.
