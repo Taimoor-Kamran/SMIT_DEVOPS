@@ -37,3 +37,16 @@ You (terminal)  →  systemctl command  →  systemd  →  controls the service
 ---
 
 ## Managing Services with systemctl
+
+### Core systemctl Commands
+
+| Command | What it does |
+|---------|-------------|
+| `systemctl start nginx` | Start the nginx service right now |
+| `systemctl stop nginx` | Stop the nginx service right now |
+| `systemctl restart nginx` | Stop then start again (apply new config) |
+| `systemctl reload nginx` | Reload config without full restart |
+| `systemctl status nginx` | Show if service is running or stopped |
+| `systemctl enable nginx` | Auto-start service when server boots |
+| `systemctl disable nginx` | Do NOT auto-start on boot |
+| `systemctl is-active nginx` | Prints "active" or "inactive" |
