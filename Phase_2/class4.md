@@ -149,3 +149,41 @@ Checks run (tests, lint, build)
 ```
 
 ---
+
+## Running Checks (CI Pipeline)
+
+When a PR is opened, GitHub runs all the **checks** defined in your workflow.
+You can see them at the bottom of the PR page under **"Checks"**.
+
+### What checks look like in the PR
+
+```
+Checks
+├── build-and-test
+│   ├── ✅ Checkout code
+│   ├── ✅ Install dependencies
+│   ├── ✅ Run tests
+│   └── ❌ Validate code style   ← this step failed
+```
+
+If any step fails, the whole job is marked **failed** and GitHub blocks the merge
+(if branch protection is enabled — covered next).
+
+### How to see detailed logs
+1. On the PR page, scroll down to **Checks** section
+2. Click the failing check name
+3. Click the failing step to expand the log
+4. Read the error message — it tells you exactly what went wrong
+
+### Re-running checks manually
+If a check failed due to a flaky test or network issue (not your code), you can re-run:
+1. Click **Actions** tab → find the failed run
+2. Click **"Re-run all jobs"** or **"Re-run failed jobs"**
+
+Or from the PR page:
+- Scroll to the checks section → click **"Re-run failed checks"**
+
+> **Beginner tip:** Always read the log before re-running. Re-running does NOT
+> fix a real code problem — it only helps with random/flaky failures.
+
+---
