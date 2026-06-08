@@ -54,3 +54,10 @@ Think of it like a labelled box — you put something inside the box and refer t
 name="Taimoor"        # ✅ correct — no spaces around =
 name = "Taimoor"      # ❌ wrong   — spaces break it in Bash
 ```
+
+To **use** a variable, put `$` in front of the name:
+```bash
+name="Taimoor"
+echo "Hello, $name"      # prints: Hello, Taimoor
+echo "Hello, ${name}!"   # {} are optional but safer for complex strings
+```
