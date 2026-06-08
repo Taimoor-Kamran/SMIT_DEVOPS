@@ -17,3 +17,8 @@
 **Bash** stands for **Bourne Again SHell**.
 It is the default terminal language on Linux and macOS.
 A **Bash script** is a plain text file containing a list of terminal commands that run automatically, one by one.
+
+**Why use Bash scripts?**
+- Automate repetitive tasks (backups, deployments, cleanup)
+- Save time — run 100 commands with one file
+- Used heavily in DevOps, CI/CD pipelines, and server management
