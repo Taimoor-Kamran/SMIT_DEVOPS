@@ -550,3 +550,42 @@ def get_server_info(hostname):
         print(f"Request failed: {e}")
         return None
 ```
+
+### Fix 2 — Add Retries with Exponential Backoff
+
+When an API fails temporarily, retrying after a short wait often succeeds.
+**Exponential backoff** means waiting longer between each retry: 1s → 2s → 4s → give up.
+
+```python
+import requests, json, time
+
+def get_server_info_with_retry(hostname, max_retries=3):
+    for attempt in range(1, max_retries + 1):
+        try:
+            print(f"  Attempt {attempt}/{max_retries}...")
+            response = requests.get(
+                f"https://ipapi.co/{hostname}/json/",
+                timeout=10
+            )
+            response.raise_for_status()
+            content_type = response.headers.get("Content-Type", "")
+            if "application/json" not in content_type:
+                raise ValueError(f"Expected JSON, got: {content_type}")
+            return response.json()          # success
+
+        except (requests.exceptions.Timeout,
+                requests.exceptions.ConnectionError) as e:
+            wait = 2 ** (attempt - 1)       # 1s, 2s, 4s
+            print(f"  Failed: {e}. Retrying in {wait}s...")
+            if attempt < max_retries:
+                time.sleep(wait)
+
+        except Exception as e:
+            print(f"  Non-retryable error: {e}")
+            return None
+
+    print("All retries exhausted.")
+    return None
+```
+
+> Exponential backoff: `2^0=1s`, `2^1=2s`, `2^2=4s` — protects an already-struggling API from being hammered.
