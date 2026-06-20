@@ -491,3 +491,11 @@ cat daily_report.txt
 ```
 
 ---
+
+## Incident: API Timeout and Format Error
+
+**What happened:**
+The `devops_report.py` script ran fine in testing but started crashing in production.
+Two bugs appeared at the same time:
+1. The API call hung for 60+ seconds before crashing with a timeout error — blocking the whole script
+2. When the API did respond, it sometimes returned HTML instead of JSON (during server errors), causing a `json.JSONDecodeError` crash
