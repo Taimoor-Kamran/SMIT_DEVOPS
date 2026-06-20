@@ -226,3 +226,33 @@ until [ $count -gt 5 ]; do
 done
 ```
 Output: `Step 1` through `Step 5`
+
+### Loop Control — break and continue
+
+| Command | What it does |
+|---------|-------------|
+| `break` | Exit the loop immediately — stop all iterations |
+| `continue` | Skip the rest of THIS iteration — jump to next one |
+
+```bash
+# break example — stop when we find the number 3
+for i in {1..10}; do
+    if [ $i -eq 3 ]; then
+        echo "Found 3, stopping."
+        break
+    fi
+    echo "i = $i"
+done
+# prints: i=1, i=2, Found 3 stopping.
+
+# continue example — skip even numbers
+for i in {1..6}; do
+    if [ $(( i % 2 )) -eq 0 ]; then
+        continue      # skip even numbers
+    fi
+    echo "Odd number: $i"
+done
+# prints: 1, 3, 5
+```
+
+---
