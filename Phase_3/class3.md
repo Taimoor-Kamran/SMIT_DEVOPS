@@ -28,3 +28,21 @@ else
     # runs when ALL conditions are FALSE
 fi                          # "fi" closes the if block (if spelled backwards)
 ```
+
+**Beginner Example — check a number:**
+```bash
+#!/bin/bash
+score=75
+
+if [ $score -ge 90 ]; then
+    echo "Grade: A"
+elif [ $score -ge 75 ]; then
+    echo "Grade: B"
+elif [ $score -ge 60 ]; then
+    echo "Grade: C"
+else
+    echo "Grade: F — Please study harder!"
+fi
+```
+
+Output: `Grade: B`
