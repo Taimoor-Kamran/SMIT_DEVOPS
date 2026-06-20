@@ -46,3 +46,14 @@ fi
 ```
 
 Output: `Grade: B`
+
+### Test Operators — Number Comparisons
+
+| Operator | Meaning | Example |
+|----------|---------|---------|
+| `-eq` | equal to | `[ $a -eq $b ]` |
+| `-ne` | not equal to | `[ $a -ne $b ]` |
+| `-gt` | greater than | `[ $a -gt 10 ]` |
+| `-lt` | less than | `[ $a -lt 10 ]` |
+| `-ge` | greater than or equal | `[ $a -ge 10 ]` |
+| `-le` | less than or equal | `[ $a -le 10 ]` |
