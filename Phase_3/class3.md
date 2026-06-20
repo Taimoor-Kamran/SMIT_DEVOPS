@@ -377,3 +377,33 @@ else
     echo "nginx is DOWN"
 fi
 ```
+
+### Step 3 — The Alert Function
+
+Instead of repeating alert code everywhere, we write it as a **function**:
+
+```bash
+# ── alert function ──────────────────────────────────────────
+LOG_FILE="/var/log/monitor_alerts.log"
+ALERT_EMAIL="admin@example.com"
+
+send_alert() {
+    local message="$1"                          # $1 = first argument passed to function
+    local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+    local full_msg="[$timestamp] ALERT: $message"
+
+    # Write to log file
+    echo "$full_msg" >> "$LOG_FILE"
+
+    # Print to terminal
+    echo "$full_msg"
+
+    # Send email (requires mailutils installed: sudo apt install mailutils)
+    echo "$full_msg" | mail -s "Server Alert" "$ALERT_EMAIL"
+}
+```
+
+> **What is a function?**
+> A function is a named block of reusable code.
+> You define it once and call it by name anywhere in the script.
+> `send_alert "Disk is full"` calls the function and passes the message as `$1`.
