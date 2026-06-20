@@ -133,3 +133,8 @@ esac
 ---
 
 ## Loops
+
+A **loop** repeats a block of code multiple times.
+Instead of writing the same command 100 times, write it once inside a loop and let it run 100 times automatically.
+
+Bash has three types of loops: `for`, `while`, and `until`.
