@@ -132,3 +132,27 @@ for err in errors:
 ## Working with JSON
 
 **JSON** (JavaScript Object Notation) is the most common format for exchanging data between systems — APIs, config files, and log files all use JSON.
+
+### What JSON Looks Like
+
+```json
+{
+  "server": "web-01",
+  "status": "running",
+  "cpu": 45,
+  "disk": 72,
+  "services": ["nginx", "mysql", "redis"],
+  "alerts": []
+}
+```
+
+JSON has these data types:
+
+| JSON type | Python equivalent | Example |
+|-----------|-------------------|---------|
+| string | `str` | `"hello"` |
+| number | `int` or `float` | `42`, `3.14` |
+| boolean | `bool` | `true` → `True` |
+| null | `None` | `null` → `None` |
+| array | `list` | `[1, 2, 3]` |
+| object | `dict` | `{"key": "value"}` |
