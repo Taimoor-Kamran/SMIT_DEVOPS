@@ -17,3 +17,12 @@
 
 Bash scripts are great for simple tasks, but Python is used when things get more complex.
 Python can read files, parse JSON, call APIs, send emails, generate reports and more — all in clean, readable code.
+
+| Use Case | Bash | Python |
+|----------|------|--------|
+| Run system commands | ✅ Best choice | ✅ Can do with `subprocess` |
+| Read / write files | ✅ Simple | ✅ More powerful |
+| Parse JSON data | ❌ Very painful | ✅ Built-in `json` module |
+| Call REST APIs | ⚠️ Possible with curl | ✅ Easy with `requests` |
+| Generate HTML/PDF reports | ❌ Not practical | ✅ Many libraries |
+| Complex logic / data processing | ⚠️ Gets messy fast | ✅ Clean and readable |
