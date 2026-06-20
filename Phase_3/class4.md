@@ -271,3 +271,34 @@ print(data["login"])             # GitHub username
 print(data["public_repos"])      # number of public repos
 print(data["followers"])         # number of followers
 ```
+
+### GET Request with Headers and Parameters
+
+```python
+import requests
+
+# API key in headers (most APIs require authentication)
+headers = {
+    "Authorization": "Bearer YOUR_API_TOKEN",
+    "Content-Type": "application/json"
+}
+
+# Query parameters (added to the URL after ?)
+params = {
+    "status": "active",
+    "limit": 10
+}
+
+response = requests.get(
+    "https://api.example.com/servers",
+    headers=headers,
+    params=params,
+    timeout=10           # wait max 10 seconds — ALWAYS set a timeout!
+)
+
+if response.status_code == 200:
+    servers = response.json()
+    print(f"Found {len(servers)} servers")
+else:
+    print(f"Error: {response.status_code} — {response.text}")
+```
