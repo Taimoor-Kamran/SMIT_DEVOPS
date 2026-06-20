@@ -336,3 +336,19 @@ In this lab we build a complete Python DevOps script that:
 1. Reads a server log file and counts errors
 2. Calls a public API to get additional server data
 3. Combines both results into a text report file
+
+### Step 1 — Sample Log File
+
+Create a file called `server.log` with this content to practise with:
+```
+2026-06-20 09:00:01 INFO  Server started
+2026-06-20 09:01:15 INFO  GET /home 200 OK
+2026-06-20 09:02:44 ERROR Database connection failed
+2026-06-20 09:03:10 INFO  GET /about 200 OK
+2026-06-20 09:04:30 ERROR Timeout connecting to cache
+2026-06-20 09:05:00 WARN  Memory usage above 70%
+2026-06-20 09:06:20 ERROR Disk write failed
+2026-06-20 09:07:00 INFO  GET /api/status 200 OK
+2026-06-20 09:08:44 WARN  CPU spike detected
+2026-06-20 09:09:15 INFO  Backup completed
+```
