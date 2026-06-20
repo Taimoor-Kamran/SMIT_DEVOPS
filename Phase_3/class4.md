@@ -352,3 +352,35 @@ Create a file called `server.log` with this content to practise with:
 2026-06-20 09:08:44 WARN  CPU spike detected
 2026-06-20 09:09:15 INFO  Backup completed
 ```
+
+### Step 2 — Parse the Log File
+
+```python
+# parse_logs.py
+
+def parse_log(filepath):
+    """Read a log file and return counts and error messages."""
+    counts = {"INFO": 0, "WARN": 0, "ERROR": 0}
+    errors = []
+
+    with open(filepath, "r") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue          # skip empty lines
+
+            parts = line.split()  # split by whitespace
+            # Format: date time LEVEL message
+            if len(parts) < 3:
+                continue
+
+            level = parts[2]      # third word is the log level
+
+            if level in counts:
+                counts[level] += 1
+
+            if level == "ERROR":
+                errors.append(line)
+
+    return counts, errors
+```
