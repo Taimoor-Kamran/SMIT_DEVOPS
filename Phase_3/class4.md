@@ -454,3 +454,40 @@ def generate_report(log_counts, errors, api_data, output_file):
 
     print(f"Report saved to: {output_file}")
 ```
+
+### Step 5 — Main Script that ties it all together
+
+```python
+# devops_report.py — complete script
+
+import requests
+import json
+from datetime import datetime
+
+# ── paste parse_log(), get_server_info(), generate_report() here ──
+
+if __name__ == "__main__":
+    LOG_FILE    = "server.log"
+    SERVER_IP   = "8.8.8.8"          # replace with your server IP
+    OUTPUT_FILE = "daily_report.txt"
+
+    print("Step 1: Parsing log file...")
+    counts, errors = parse_log(LOG_FILE)
+    print(f"  Found: {counts}")
+
+    print("Step 2: Calling API for server info...")
+    api_data = get_server_info(SERVER_IP)
+
+    print("Step 3: Generating report...")
+    generate_report(counts, errors, api_data, OUTPUT_FILE)
+
+    print("Done!")
+```
+
+**Run it:**
+```bash
+python3 devops_report.py
+cat daily_report.txt
+```
+
+---
