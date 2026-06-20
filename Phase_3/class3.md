@@ -66,3 +66,27 @@ Output: `Grade: B`
 | `!=` | strings are NOT equal | `[ "$a" != "$b" ]` |
 | `-z` | string is empty | `[ -z "$a" ]` |
 | `-n` | string is NOT empty | `[ -n "$a" ]` |
+
+### Test Operators — File Checks
+
+| Operator | Meaning |
+|----------|---------|
+| `-f file` | file exists and is a regular file |
+| `-d dir` | directory exists |
+| `-e path` | file OR directory exists |
+| `-r file` | file is readable |
+| `-w file` | file is writable |
+| `-x file` | file is executable |
+| `-s file` | file exists and is NOT empty |
+
+```bash
+#!/bin/bash
+LOG="/var/log/app.log"
+
+if [ -f "$LOG" ]; then
+    echo "Log file exists."
+else
+    echo "Log file missing — creating it..."
+    touch "$LOG"
+fi
+```
