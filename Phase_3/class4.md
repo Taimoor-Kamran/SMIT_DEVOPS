@@ -240,3 +240,16 @@ APIs use **HTTP** — the same protocol your browser uses to load websites.
 | `POST` | Send / create data | Send an alert message |
 | `PUT` | Update existing data | Update a config |
 | `DELETE` | Delete data | Remove an old deployment |
+
+### HTTP Status Codes
+
+| Code | Meaning |
+|------|---------|
+| `200` | OK — success |
+| `201` | Created — new resource created |
+| `400` | Bad Request — your request had an error |
+| `401` | Unauthorized — wrong or missing API key |
+| `404` | Not Found — the URL does not exist |
+| `429` | Too Many Requests — you are being rate-limited |
+| `500` | Internal Server Error — the API server crashed |
+| `503` | Service Unavailable — server is down |
