@@ -490,3 +490,33 @@ crontab -e
 
 **What happened:**
 The monitoring script started sending alert emails every 30 seconds saying the disk was critically full — but when the team checked the server, disk usage was only 45%. The script had a **logic bug** in the condition that caused it to always trigger alerts even when everything was fine.
+
+### The Buggy Code
+
+```bash
+# BUGGY version of check_disk()
+check_disk() {
+    local usage=$(df / | awk 'NR==2 {print $5}' | tr -d '%')
+    echo "Disk usage: ${usage}%"
+
+    if [ "$usage" -gt "$DISK_THRESHOLD" ] || [ "$usage" -lt 0 ]; then   # ← BUG HERE
+        send_alert "Disk usage is ${usage}% — threshold is ${DISK_THRESHOLD}%"
+    fi
+}
+```
+
+**What is wrong?**
+The condition uses `||` (OR) instead of `&&` (AND).
+
+```
+Buggy logic:  alert if (usage > 80) OR (usage < 0)
+Correct logic: alert if (usage > 80)
+```
+
+Because `usage < 0` is impossible for disk usage, the OR condition was changed in intent by a developer who meant to add a safety check — but instead the whole condition broke in a different way.
+
+Even worse, on some systems `df` returns a string like `45%` and if `tr -d '%'` fails silently, `$usage` becomes an empty string. Then:
+- `[ "" -gt 80 ]` → error (treated as 0, which is NOT greater than 80) → OK
+- `[ "" -lt 0 ]` → error (treated as 0, which IS less than 0 in some Bash versions) → ALERT!
+
+This is the real root cause — **comparing an empty or non-numeric variable** with `-lt`.
