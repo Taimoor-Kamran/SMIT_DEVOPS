@@ -520,3 +520,30 @@ Even worse, on some systems `df` returns a string like `45%` and if `tr -d '%'` 
 - `[ "" -lt 0 ]` → error (treated as 0, which IS less than 0 in some Bash versions) → ALERT!
 
 This is the real root cause — **comparing an empty or non-numeric variable** with `-lt`.
+
+### The Fix
+
+```bash
+# FIXED version of check_disk()
+check_disk() {
+    local usage=$(df / | awk 'NR==2 {print $5}' | tr -d '%')
+
+    # Guard: make sure usage is a valid number before comparing
+    if ! [[ "$usage" =~ ^[0-9]+$ ]]; then
+        send_alert "Could not read disk usage — got: '$usage'"
+        return 1
+    fi
+
+    echo "Disk usage: ${usage}%"
+
+    # Fixed condition: only alert when usage is genuinely above threshold
+    if [ "$usage" -gt "$DISK_THRESHOLD" ]; then
+        send_alert "Disk usage is ${usage}% — threshold is ${DISK_THRESHOLD}%"
+    fi
+}
+```
+
+**What changed:**
+1. Added a **regex check** `[[ "$usage" =~ ^[0-9]+$ ]]` to verify the value is a pure number before comparing it — this prevents the empty-string comparison bug
+2. Removed the incorrect `|| [ "$usage" -lt 0 ]` condition
+3. If the value is not a number, we alert about the data problem itself — not a false disk alert
