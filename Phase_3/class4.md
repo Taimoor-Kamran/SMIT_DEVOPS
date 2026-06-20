@@ -513,3 +513,40 @@ def get_server_info(hostname):
 **Two problems:**
 - No `timeout=` → hangs forever if API is slow
 - No content-type check → crashes with `JSONDecodeError` when API returns HTML error page
+
+### Fix 1 — Add Timeout and Validate Response Format
+
+```python
+import requests
+import json
+
+def get_server_info(hostname):
+    try:
+        response = requests.get(
+            f"https://ipapi.co/{hostname}/json/",
+            timeout=10                        # FIX 1: always set a timeout
+        )
+        response.raise_for_status()           # raise error for 4xx/5xx
+
+        # FIX 2: check Content-Type before parsing as JSON
+        content_type = response.headers.get("Content-Type", "")
+        if "application/json" not in content_type:
+            print(f"Unexpected response format: {content_type}")
+            print(f"Response body: {response.text[:200]}")
+            return None
+
+        return response.json()
+
+    except requests.exceptions.Timeout:
+        print("API timed out after 10 seconds")
+        return None
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP error: {e.response.status_code}")
+        return None
+    except json.JSONDecodeError as e:
+        print(f"Response is not valid JSON: {e}")
+        return None
+    except requests.exceptions.RequestException as e:
+        print(f"Request failed: {e}")
+        return None
+```
