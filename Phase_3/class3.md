@@ -213,3 +213,16 @@ while ! systemctl is-active --quiet nginx; do
 done
 echo "nginx is UP!"
 ```
+
+### until Loop — keep looping until condition becomes TRUE
+
+`until` is the **opposite** of `while` — it loops as long as the condition is FALSE and stops when it becomes TRUE.
+
+```bash
+count=1
+until [ $count -gt 5 ]; do
+    echo "Step $count"
+    count=$(( count + 1 ))
+done
+```
+Output: `Step 1` through `Step 5`
