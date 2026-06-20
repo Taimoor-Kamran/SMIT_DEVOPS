@@ -13,3 +13,6 @@
 ---
 
 ## Conditionals
+
+A **conditional** lets your script make a decision — run one block of code if something is true, and a different block if it is false.
+Think of it like a fork in the road: your script chooses which path to take based on a condition.
