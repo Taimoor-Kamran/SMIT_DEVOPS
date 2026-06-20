@@ -61,3 +61,27 @@ Python makes reading and writing files very simple.
 | `"w"` | Write — create or overwrite the file |
 | `"a"` | Append — add to the end without deleting existing content |
 | `"r+"` | Read and Write |
+
+### Reading a File
+
+```python
+# Method 1 — read entire file as one big string
+with open("app.log", "r") as f:
+    content = f.read()
+    print(content)
+
+# Method 2 — read line by line (best for large files)
+with open("app.log", "r") as f:
+    for line in f:
+        print(line.strip())    # .strip() removes the \n at end of each line
+
+# Method 3 — read all lines into a list
+with open("app.log", "r") as f:
+    lines = f.readlines()     # returns ["line1\n", "line2\n", ...]
+    print(f"Total lines: {len(lines)}")
+```
+
+> **What is `with open(...) as f`?**
+> This is called a **context manager**. It automatically closes the file
+> when the `with` block finishes — even if an error happens.
+> Always use `with open` instead of `f = open()` to avoid leaving files open.
