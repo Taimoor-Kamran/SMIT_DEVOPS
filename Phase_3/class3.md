@@ -131,3 +131,5 @@ esac
 > It is cleaner and faster to read than a long chain of `elif`.
 
 ---
+
+## Loops
