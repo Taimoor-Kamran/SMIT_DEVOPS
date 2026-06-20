@@ -52,3 +52,12 @@ python3 hello.py           # run it
 
 In DevOps, files are everywhere — log files, config files, reports, CSV data files.
 Python makes reading and writing files very simple.
+
+### File Modes
+
+| Mode | Meaning |
+|------|---------|
+| `"r"` | Read — open file for reading (default) |
+| `"w"` | Write — create or overwrite the file |
+| `"a"` | Append — add to the end without deleting existing content |
+| `"r+"` | Read and Write |
