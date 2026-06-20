@@ -26,3 +26,24 @@ Python can read files, parse JSON, call APIs, send emails, generate reports and 
 | Call REST APIs | ⚠️ Possible with curl | ✅ Easy with `requests` |
 | Generate HTML/PDF reports | ❌ Not practical | ✅ Many libraries |
 | Complex logic / data processing | ⚠️ Gets messy fast | ✅ Clean and readable |
+
+### Setting Up Python
+
+```bash
+python3 --version          # check if Python is installed
+sudo apt install python3   # install on Ubuntu/Debian
+sudo apt install python3-pip  # install pip (Python package manager)
+
+pip3 install requests      # install the requests library (needed for APIs)
+```
+
+**Your first Python script:**
+```python
+# hello.py
+print("Hello, DevOps World!")
+```
+```bash
+python3 hello.py           # run it
+```
+
+---
