@@ -196,3 +196,31 @@ for service in config["services"]:
 
 > `json.load()` (no 's') — reads JSON directly **from a file object**
 > `json.loads()` (with 's') — parses a JSON **string**
+
+### Writing JSON to a File
+
+```python
+import json
+
+report = {
+    "date": "2026-06-20",
+    "server": "web-01",
+    "cpu_usage": 45,
+    "disk_usage": 72,
+    "alerts": ["Disk above 70%"],
+    "status": "warning"
+}
+
+# Write Python dict → JSON file
+with open("report.json", "w") as f:
+    json.dump(report, f, indent=4)    # indent=4 makes it human-readable
+
+# Convert Python dict → JSON string (useful for printing or sending)
+json_string = json.dumps(report, indent=4)
+print(json_string)
+```
+
+> `json.dump()` — write to **file**
+> `json.dumps()` — convert to **string** (s = string)
+
+---
