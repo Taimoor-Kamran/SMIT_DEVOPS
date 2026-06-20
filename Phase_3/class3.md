@@ -407,3 +407,65 @@ send_alert() {
 > A function is a named block of reusable code.
 > You define it once and call it by name anywhere in the script.
 > `send_alert "Disk is full"` calls the function and passes the message as `$1`.
+
+### Step 4 — Complete monitor.sh Script
+
+```bash
+#!/bin/bash
+# monitor.sh — system monitoring script with alerts
+
+set -e
+
+# ── Config ──────────────────────────────────────────────────
+LOG_FILE="/var/log/monitor_alerts.log"
+ALERT_EMAIL="admin@example.com"
+DISK_THRESHOLD=80       # alert if disk usage > 80%
+CPU_THRESHOLD=90        # alert if CPU usage > 90%
+SERVICE="nginx"         # service to monitor
+
+# ── Alert Function ───────────────────────────────────────────
+send_alert() {
+    local message="$1"
+    local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+    local full_msg="[$timestamp] ALERT: $message"
+    echo "$full_msg" | tee -a "$LOG_FILE"
+    echo "$full_msg" | mail -s "Server Alert" "$ALERT_EMAIL" 2>/dev/null || true
+}
+
+# ── Check Disk Usage ─────────────────────────────────────────
+check_disk() {
+    local usage=$(df / | awk 'NR==2 {print $5}' | tr -d '%')
+    echo "Disk usage: ${usage}%"
+    if [ "$usage" -gt "$DISK_THRESHOLD" ]; then
+        send_alert "Disk usage is ${usage}% — threshold is ${DISK_THRESHOLD}%"
+    fi
+}
+
+# ── Check CPU Usage ──────────────────────────────────────────
+check_cpu() {
+    local usage=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d. -f1)
+    echo "CPU usage: ${usage}%"
+    if [ "$usage" -gt "$CPU_THRESHOLD" ]; then
+        send_alert "CPU usage is ${usage}% — threshold is ${CPU_THRESHOLD}%"
+    fi
+}
+
+# ── Check Service ────────────────────────────────────────────
+check_service() {
+    if systemctl is-active --quiet "$SERVICE"; then
+        echo "Service $SERVICE: running"
+    else
+        send_alert "Service $SERVICE is DOWN!"
+    fi
+}
+
+# ── Main Loop ────────────────────────────────────────────────
+echo "Starting monitor... (Press Ctrl+C to stop)"
+while true; do
+    echo "--- Check at $(date '+%H:%M:%S') ---"
+    check_disk
+    check_cpu
+    check_service
+    sleep 30        # wait 30 seconds before next check
+done
+```
