@@ -231,3 +231,12 @@ An **API** (Application Programming Interface) lets your script talk to other se
 For example: get weather data, post a Slack message, query a monitoring system, or trigger a deployment.
 
 APIs use **HTTP** — the same protocol your browser uses to load websites.
+
+### HTTP Methods — the 4 main ones
+
+| Method | What it does | Real example |
+|--------|-------------|-------------|
+| `GET` | Fetch / read data | Get server status |
+| `POST` | Send / create data | Send an alert message |
+| `PUT` | Update existing data | Update a config |
+| `DELETE` | Delete data | Remove an old deployment |
