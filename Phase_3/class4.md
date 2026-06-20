@@ -329,3 +329,10 @@ else:
 ```
 
 ---
+
+## Lab: Parse Logs, Call API, Generate Report
+
+In this lab we build a complete Python DevOps script that:
+1. Reads a server log file and counts errors
+2. Calls a public API to get additional server data
+3. Combines both results into a text report file
