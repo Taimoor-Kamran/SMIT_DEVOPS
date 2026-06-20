@@ -589,3 +589,17 @@ def get_server_info_with_retry(hostname, max_retries=3):
 ```
 
 > Exponential backoff: `2^0=1s`, `2^1=2s`, `2^2=4s` — protects an already-struggling API from being hammered.
+
+### Lessons Learned from this Incident
+
+| Lesson | Rule |
+|--------|------|
+| Always set `timeout=` on every request | Never let a script hang forever on a network call |
+| Always validate `Content-Type` before `.json()` | APIs return HTML on errors — don't assume JSON |
+| Use `raise_for_status()` | Catches 4xx/5xx automatically |
+| Wrap requests in try/except | Network calls always fail eventually |
+| Add retries for transient errors | Timeout + ConnectionError → retry; 400/401 → do not retry |
+| Log every failure with detail | `print(f"Attempt {attempt} failed: {e}")` saves debug time |
+
+---
+
