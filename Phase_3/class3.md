@@ -107,3 +107,27 @@ fi
 
 > **Important:** Always put variables in **double quotes** inside `[ ]`
 > to avoid errors when the variable is empty: `"$var"` not `$var`
+
+### case Statement (clean alternative to long if/elif chains)
+
+```bash
+#!/bin/bash
+day="Monday"
+
+case "$day" in
+    Monday|Tuesday|Wednesday|Thursday|Friday)
+        echo "$day is a weekday."
+        ;;
+    Saturday|Sunday)
+        echo "$day is a weekend!"
+        ;;
+    *)
+        echo "Unknown day: $day"
+        ;;
+esac
+```
+
+> Use `case` when you are matching one variable against many possible values.
+> It is cleaner and faster to read than a long chain of `elif`.
+
+---
