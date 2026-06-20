@@ -4,3 +4,4 @@
 
 ## Table of Contents
 1. [Conditionals](#conditionals)
+2. [Loops](#loops)
