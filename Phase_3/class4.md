@@ -384,3 +384,32 @@ def parse_log(filepath):
 
     return counts, errors
 ```
+
+### Step 3 — Call an API
+
+```python
+import requests
+
+def get_server_info(hostname):
+    """Call a public API to get IP/location info for a server."""
+    try:
+        response = requests.get(
+            f"https://ipapi.co/{hostname}/json/",
+            timeout=10
+        )
+        response.raise_for_status()    # raises exception for 4xx/5xx errors
+        return response.json()
+    except requests.exceptions.Timeout:
+        print("API call timed out")
+        return None
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP error: {e}")
+        return None
+    except requests.exceptions.RequestException as e:
+        print(f"Request failed: {e}")
+        return None
+```
+
+> **What is `raise_for_status()`?**
+> It automatically raises a `HTTPError` exception if the status code is 4xx or 5xx.
+> Without it, even a 404 response would look like a success to your code.
