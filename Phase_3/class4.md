@@ -302,3 +302,30 @@ if response.status_code == 200:
 else:
     print(f"Error: {response.status_code} — {response.text}")
 ```
+
+### POST Request — Send Data to an API
+
+```python
+import requests
+import json
+
+# Send an alert to a Slack webhook
+webhook_url = "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+
+payload = {
+    "text": "🚨 ALERT: Disk usage is above 80% on web-01!"
+}
+
+response = requests.post(
+    webhook_url,
+    json=payload,        # json= automatically sets Content-Type header
+    timeout=10
+)
+
+if response.status_code == 200:
+    print("Alert sent to Slack successfully!")
+else:
+    print(f"Failed to send alert: {response.status_code}")
+```
+
+---
