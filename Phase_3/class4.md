@@ -224,3 +224,10 @@ print(json_string)
 > `json.dumps()` — convert to **string** (s = string)
 
 ---
+
+## Making API Requests
+
+An **API** (Application Programming Interface) lets your script talk to other services over the internet.
+For example: get weather data, post a Slack message, query a monitoring system, or trigger a deployment.
+
+APIs use **HTTP** — the same protocol your browser uses to load websites.
