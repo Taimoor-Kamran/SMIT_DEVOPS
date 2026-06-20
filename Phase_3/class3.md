@@ -16,3 +16,15 @@
 
 A **conditional** lets your script make a decision — run one block of code if something is true, and a different block if it is false.
 Think of it like a fork in the road: your script chooses which path to take based on a condition.
+
+### if / elif / else
+
+```bash
+if [ condition ]; then
+    # runs when condition is TRUE
+elif [ other_condition ]; then
+    # runs when other_condition is TRUE
+else
+    # runs when ALL conditions are FALSE
+fi                          # "fi" closes the if block (if spelled backwards)
+```
