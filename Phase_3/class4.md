@@ -14,3 +14,6 @@
 ---
 
 ## Why Python for DevOps?
+
+Bash scripts are great for simple tasks, but Python is used when things get more complex.
+Python can read files, parse JSON, call APIs, send emails, generate reports and more — all in clean, readable code.
