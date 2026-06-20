@@ -138,3 +138,26 @@ A **loop** repeats a block of code multiple times.
 Instead of writing the same command 100 times, write it once inside a loop and let it run 100 times automatically.
 
 Bash has three types of loops: `for`, `while`, and `until`.
+
+### for Loop — loop over a list
+
+**Syntax:**
+```bash
+for variable in list; do
+    # commands using $variable
+done
+```
+
+**Example 1 — loop over words:**
+```bash
+for fruit in apple banana mango orange; do
+    echo "I like $fruit"
+done
+```
+Output:
+```
+I like apple
+I like banana
+I like mango
+I like orange
+```
