@@ -90,3 +90,20 @@ else
     touch "$LOG"
 fi
 ```
+
+### Combining Conditions with AND / OR
+
+```bash
+# AND — both conditions must be true
+if [ $age -ge 18 ] && [ $age -le 60 ]; then
+    echo "Working age"
+fi
+
+# OR — at least one condition must be true
+if [ "$status" = "error" ] || [ "$status" = "critical" ]; then
+    echo "ALERT: Problem detected!"
+fi
+```
+
+> **Important:** Always put variables in **double quotes** inside `[ ]`
+> to avoid errors when the variable is empty: `"$var"` not `$var`
