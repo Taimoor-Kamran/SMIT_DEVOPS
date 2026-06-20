@@ -128,3 +128,7 @@ for err in errors:
 ```
 
 ---
+
+## Working with JSON
+
+**JSON** (JavaScript Object Notation) is the most common format for exchanging data between systems — APIs, config files, and log files all use JSON.
