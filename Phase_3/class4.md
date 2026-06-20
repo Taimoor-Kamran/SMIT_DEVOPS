@@ -618,3 +618,31 @@ def get_server_info_with_retry(hostname, max_retries=3):
 | List directory | `os.listdir("/path")` |
 | Make directory | `os.makedirs("dir", exist_ok=True)` |
 
+### JSON Cheat Sheet
+
+| Task | Code |
+|------|------|
+| JSON string → Python dict | `json.loads(string)` |
+| JSON file → Python dict | `json.load(file_object)` |
+| Python dict → JSON string | `json.dumps(data, indent=4)` |
+| Python dict → JSON file | `json.dump(data, file_object, indent=4)` |
+| Access a key | `data["key"]` |
+| Safe access (no crash) | `data.get("key", "default")` |
+
+### Requests Cheat Sheet
+
+| Task | Code |
+|------|------|
+| GET request | `requests.get(url, timeout=10)` |
+| POST with JSON body | `requests.post(url, json=payload, timeout=10)` |
+| Add headers | `requests.get(url, headers={"Authorization": "Bearer TOKEN"})` |
+| Check status code | `response.status_code` |
+| Parse JSON response | `response.json()` |
+| Raise error on 4xx/5xx | `response.raise_for_status()` |
+| Get response text | `response.text` |
+| Check Content-Type | `response.headers.get("Content-Type", "")` |
+
+---
+
+*End of Class 4 — Phase 3*
+
