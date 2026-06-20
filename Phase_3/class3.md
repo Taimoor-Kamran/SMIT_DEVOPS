@@ -262,3 +262,19 @@ done
 **Cron** is a Linux tool that runs commands or scripts automatically at a scheduled time — every minute, every hour, every day, every week, etc.
 
 Think of it like an alarm clock for your server — set it once and it runs forever on schedule.
+
+### Crontab Syntax
+
+A cron job is one line with **5 time fields** followed by the command:
+
+```
+* * * * *  command-to-run
+│ │ │ │ │
+│ │ │ │ └─── Day of week  (0-7, 0 and 7 = Sunday)
+│ │ │ └───── Month        (1-12)
+│ │ └─────── Day of month (1-31)
+│ └───────── Hour         (0-23)
+└─────────── Minute       (0-59)
+```
+
+> `*` means "every" — `* * * * *` means "every minute of every hour of every day"
