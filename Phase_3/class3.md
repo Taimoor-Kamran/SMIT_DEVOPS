@@ -57,3 +57,12 @@ Output: `Grade: B`
 | `-lt` | less than | `[ $a -lt 10 ]` |
 | `-ge` | greater than or equal | `[ $a -ge 10 ]` |
 | `-le` | less than or equal | `[ $a -le 10 ]` |
+
+### Test Operators — String Comparisons
+
+| Operator | Meaning | Example |
+|----------|---------|---------|
+| `=` | strings are equal | `[ "$a" = "$b" ]` |
+| `!=` | strings are NOT equal | `[ "$a" != "$b" ]` |
+| `-z` | string is empty | `[ -z "$a" ]` |
+| `-n` | string is NOT empty | `[ -n "$a" ]` |
