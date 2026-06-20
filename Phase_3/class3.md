@@ -485,3 +485,8 @@ crontab -e
 ```
 
 ---
+
+## Incident: Logic Bug Causes False Alerts
+
+**What happened:**
+The monitoring script started sending alert emails every 30 seconds saying the disk was critically full — but when the team checked the server, disk usage was only 45%. The script had a **logic bug** in the condition that caused it to always trigger alerts even when everything was fine.
