@@ -338,3 +338,15 @@ In this lab we build a real monitoring script that:
 - checks if a service is running
 - sends an **alert** to a log file if anything is above the threshold
 - optionally sends an email alert
+
+### Step 1 — Understand the tools we will use
+
+| Tool / Command | What it does |
+|---------------|-------------|
+| `df -h` | Show disk usage in human-readable format |
+| `top -bn1` | Run `top` once (batch mode) and output stats |
+| `awk` | Extract a specific column from command output |
+| `systemctl is-active` | Check if a service is running |
+| `mail -s` | Send an email from terminal |
+| `echo >> file` | Append a line to a log file |
+| `date` | Get current date and time |
