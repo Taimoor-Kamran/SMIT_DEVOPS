@@ -293,3 +293,27 @@ A cron job is one line with **5 time fields** followed by the command:
 | `0 9-17 * * 1-5` | Every hour 9AM–5PM, Monday to Friday |
 | `@reboot` | Once when the server starts |
 | `@daily` | Once every day at midnight |
+
+### How to Add a Cron Job
+
+```bash
+crontab -e          # open your crontab file to edit
+crontab -l          # list all your current cron jobs
+crontab -r          # remove ALL your cron jobs (careful!)
+```
+
+Inside `crontab -e`, add one line per job:
+```bash
+# Run backup script every day at 2 AM
+0 2 * * * /home/taimoor/scripts/backup.sh
+
+# Run monitor script every 5 minutes and log output
+*/5 * * * * /home/taimoor/scripts/monitor.sh >> /var/log/monitor.log 2>&1
+
+# Start nginx when server reboots
+@reboot sudo systemctl start nginx
+```
+
+> `>> /var/log/monitor.log 2>&1` means:
+> - `>>` append output to the log file (don't overwrite)
+> - `2>&1` also capture error messages into the same file
