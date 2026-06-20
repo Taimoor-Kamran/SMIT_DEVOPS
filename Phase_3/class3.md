@@ -161,3 +161,25 @@ I like banana
 I like mango
 I like orange
 ```
+
+**Example 2 — loop over a number range:**
+```bash
+for i in {1..5}; do
+    echo "Count: $i"
+done
+```
+Output: `Count: 1` through `Count: 5`
+
+**Example 3 — C-style for loop (like other programming languages):**
+```bash
+for (( i=1; i<=5; i++ )); do
+    echo "Number: $i"
+done
+```
+
+**Example 4 — loop over files in a directory:**
+```bash
+for file in /var/log/*.log; do
+    echo "Found log: $file"
+done
+```
