@@ -47,3 +47,8 @@ python3 hello.py           # run it
 ```
 
 ---
+
+## Working with Files
+
+In DevOps, files are everywhere — log files, config files, reports, CSV data files.
+Python makes reading and writing files very simple.
