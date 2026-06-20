@@ -12,3 +12,5 @@
 7. [Quick Reference](#quick-reference)
 
 ---
+
+## Why Python for DevOps?
