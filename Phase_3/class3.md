@@ -547,3 +547,45 @@ check_disk() {
 1. Added a **regex check** `[[ "$usage" =~ ^[0-9]+$ ]]` to verify the value is a pure number before comparing it — this prevents the empty-string comparison bug
 2. Removed the incorrect `|| [ "$usage" -lt 0 ]` condition
 3. If the value is not a number, we alert about the data problem itself — not a false disk alert
+
+### How to Debug Logic Bugs in Bash
+
+#### Technique 1 — Print every variable before comparing
+```bash
+echo "DEBUG: usage='$usage', threshold='$DISK_THRESHOLD'"
+if [ "$usage" -gt "$DISK_THRESHOLD" ]; then
+```
+
+#### Technique 2 — Run with bash -x (trace mode)
+```bash
+bash -x monitor.sh
+# prints every line as it runs with a + prefix:
+# + usage=45
+# + '[' 45 -gt 80 ']'
+```
+
+#### Technique 3 — Test the condition alone in terminal
+```bash
+usage=""
+[ "$usage" -lt 0 ] && echo "TRIGGERED" || echo "not triggered"
+# this reveals the bug immediately
+```
+
+#### Technique 4 — set -x inside the script
+```bash
+#!/bin/bash
+set -x       # enable trace for whole script
+set -e       # exit on any error
+```
+
+### Lessons Learned from this Incident
+
+| Lesson | Rule to follow |
+|--------|---------------|
+| Always validate variables before comparing | Use `[[ "$var" =~ ^[0-9]+$ ]]` for numbers |
+| Use `&&` not `||` for "both must be true" guards | Think clearly about AND vs OR logic |
+| Test conditions in isolation first | Test `[ "$var" -gt 80 ]` in terminal before putting in script |
+| Never trust command output is always clean | Commands can fail silently — always check |
+| Add debug logging when building new scripts | `echo "DEBUG: var=$var"` saves hours of guessing |
+
+---
