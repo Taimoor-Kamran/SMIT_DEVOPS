@@ -85,3 +85,21 @@ with open("app.log", "r") as f:
 > This is called a **context manager**. It automatically closes the file
 > when the `with` block finishes — even if an error happens.
 > Always use `with open` instead of `f = open()` to avoid leaving files open.
+
+### Writing and Appending to a File
+
+```python
+# Write — creates the file (or wipes it if it already exists)
+with open("report.txt", "w") as f:
+    f.write("=== Daily Report ===\n")
+    f.write("Status: OK\n")
+
+# Append — adds to the end of the file
+with open("report.txt", "a") as f:
+    f.write("New line added\n")
+
+# Write multiple lines at once
+lines = ["Server: OK\n", "DB: OK\n", "API: OK\n"]
+with open("report.txt", "w") as f:
+    f.writelines(lines)
+```
