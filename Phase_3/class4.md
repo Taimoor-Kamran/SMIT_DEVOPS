@@ -103,3 +103,28 @@ lines = ["Server: OK\n", "DB: OK\n", "API: OK\n"]
 with open("report.txt", "w") as f:
     f.writelines(lines)
 ```
+
+### Useful File Operations with os and pathlib
+
+```python
+import os
+
+os.path.exists("app.log")        # True if file exists
+os.path.getsize("app.log")       # file size in bytes
+os.makedirs("logs/2026", exist_ok=True)   # create nested folders
+os.listdir("/var/log")           # list files in a directory
+os.remove("old.log")             # delete a file
+os.rename("old.log", "new.log")  # rename a file
+```
+
+```python
+# Searching for ERROR lines in a log file
+with open("/var/log/app.log", "r") as f:
+    errors = [line for line in f if "ERROR" in line]
+
+print(f"Found {len(errors)} errors")
+for err in errors:
+    print(err.strip())
+```
+
+---
