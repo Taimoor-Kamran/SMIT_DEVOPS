@@ -350,3 +350,30 @@ In this lab we build a real monitoring script that:
 | `mail -s` | Send an email from terminal |
 | `echo >> file` | Append a line to a log file |
 | `date` | Get current date and time |
+
+### Step 2 — Get system metrics (building blocks)
+
+**Get disk usage percent:**
+```bash
+disk_usage=$(df / | awk 'NR==2 {print $5}' | tr -d '%')
+echo "Disk used: $disk_usage%"
+# df /         → show disk info for root partition
+# awk NR==2    → pick the second line (the data line)
+# print $5     → pick the 5th column (the % used)
+# tr -d '%'    → remove the % sign so we get a plain number
+```
+
+**Get CPU usage percent:**
+```bash
+cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | tr -d '%us,')
+echo "CPU used: $cpu_usage%"
+```
+
+**Check if a service is running:**
+```bash
+if systemctl is-active --quiet nginx; then
+    echo "nginx is running"
+else
+    echo "nginx is DOWN"
+fi
+```
