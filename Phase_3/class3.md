@@ -329,3 +329,12 @@ Inside `crontab -e`, add one line per job:
 | Cron not running at all | Check `systemctl status cron` |
 
 ---
+
+## Lab: Monitoring Script with Alerts
+
+In this lab we build a real monitoring script that:
+- checks CPU usage every few seconds in a loop
+- checks disk usage
+- checks if a service is running
+- sends an **alert** to a log file if anything is above the threshold
+- optionally sends an email alert
