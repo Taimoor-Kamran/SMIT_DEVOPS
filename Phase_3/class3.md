@@ -183,3 +183,33 @@ for file in /var/log/*.log; do
     echo "Found log: $file"
 done
 ```
+
+### while Loop — keep looping while condition is TRUE
+
+**Syntax:**
+```bash
+while [ condition ]; do
+    # commands
+done
+```
+
+**Example 1 — countdown:**
+```bash
+count=5
+while [ $count -gt 0 ]; do
+    echo "Countdown: $count"
+    count=$(( count - 1 ))    # decrease count by 1
+done
+echo "Go!"
+```
+
+**Example 2 — wait until a service is up (real DevOps use case):**
+```bash
+#!/bin/bash
+echo "Waiting for nginx to start..."
+while ! systemctl is-active --quiet nginx; do
+    echo "  nginx not ready yet... retrying in 3s"
+    sleep 3
+done
+echo "nginx is UP!"
+```
