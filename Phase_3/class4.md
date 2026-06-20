@@ -176,3 +176,23 @@ print(type(data))        # <class 'dict'>
 
 > `json.loads()` — converts a **JSON string** into a Python **dictionary**
 > Think: "loads" = load from String
+
+### Reading JSON from a File
+
+```python
+import json
+
+# Read a JSON config file
+with open("config.json", "r") as f:
+    config = json.load(f)        # load = load from File (no 's')
+
+print(config["server"])
+print(config["services"])        # ['nginx', 'mysql', 'redis']
+
+# Loop over a JSON list
+for service in config["services"]:
+    print(f"Service: {service}")
+```
+
+> `json.load()` (no 's') — reads JSON directly **from a file object**
+> `json.loads()` (with 's') — parses a JSON **string**
