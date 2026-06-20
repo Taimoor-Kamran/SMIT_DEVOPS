@@ -607,3 +607,34 @@ set -e       # exit on any error
 | `[ -d dir ]` | directory exists |
 | `&&` | AND — both must be true |
 | `\|\|` | OR — at least one must be true |
+
+### Loops Cheat Sheet
+
+| Syntax | Purpose |
+|--------|---------|
+| `for x in list; do` | loop over each item in a list |
+| `for i in {1..10}; do` | loop from 1 to 10 |
+| `for (( i=0; i<5; i++ )); do` | C-style counter loop |
+| `while [ condition ]; do` | loop while condition is true |
+| `until [ condition ]; do` | loop until condition becomes true |
+| `break` | exit the loop immediately |
+| `continue` | skip to next iteration |
+| `done` | end of any loop |
+
+### Cron Cheat Sheet
+
+| Expression | Meaning |
+|-----------|---------|
+| `* * * * *` | every minute |
+| `0 * * * *` | every hour |
+| `0 9 * * *` | daily at 9 AM |
+| `0 9 * * 1` | every Monday at 9 AM |
+| `*/5 * * * *` | every 5 minutes |
+| `@reboot` | on server startup |
+| `@daily` | once per day |
+| `crontab -e` | edit your cron jobs |
+| `crontab -l` | list your cron jobs |
+
+---
+
+*End of Class 3 — Phase 3*
