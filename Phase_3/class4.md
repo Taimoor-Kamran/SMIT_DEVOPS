@@ -253,3 +253,21 @@ APIs use **HTTP** — the same protocol your browser uses to load websites.
 | `429` | Too Many Requests — you are being rate-limited |
 | `500` | Internal Server Error — the API server crashed |
 | `503` | Service Unavailable — server is down |
+
+### GET Request — Fetch Data from an API
+
+```python
+import requests
+
+# Simple GET request
+response = requests.get("https://api.github.com/users/Taimoor-Kamran")
+
+print(response.status_code)      # 200 = success
+print(response.json())           # parsed JSON response as Python dict
+
+# Access specific fields
+data = response.json()
+print(data["login"])             # GitHub username
+print(data["public_repos"])      # number of public repos
+print(data["followers"])         # number of followers
+```
