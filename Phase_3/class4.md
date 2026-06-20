@@ -156,3 +156,23 @@ JSON has these data types:
 | null | `None` | `null` → `None` |
 | array | `list` | `[1, 2, 3]` |
 | object | `dict` | `{"key": "value"}` |
+
+### Parsing JSON (string → Python object)
+
+```python
+import json
+
+# JSON string (what an API sends you)
+json_string = '{"server": "web-01", "cpu": 45, "status": "running"}'
+
+# Parse it into a Python dictionary
+data = json.loads(json_string)     # loads = load from String
+
+print(data["server"])    # web-01
+print(data["cpu"])       # 45
+print(data["status"])    # running
+print(type(data))        # <class 'dict'>
+```
+
+> `json.loads()` — converts a **JSON string** into a Python **dictionary**
+> Think: "loads" = load from String
