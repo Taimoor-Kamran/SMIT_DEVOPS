@@ -469,3 +469,19 @@ while true; do
     sleep 30        # wait 30 seconds before next check
 done
 ```
+
+**How to run it:**
+```bash
+chmod +x monitor.sh
+./monitor.sh                            # run manually
+./monitor.sh >> /var/log/monitor.log &  # run in background
+```
+
+**Schedule it with cron to run every 5 minutes:**
+```bash
+crontab -e
+# add this line:
+*/5 * * * * /home/taimoor/scripts/monitor.sh >> /var/log/monitor.log 2>&1
+```
+
+---
