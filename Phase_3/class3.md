@@ -278,3 +278,18 @@ A cron job is one line with **5 time fields** followed by the command:
 ```
 
 > `*` means "every" — `* * * * *` means "every minute of every hour of every day"
+
+### Cron Schedule Examples
+
+| Cron expression | When it runs |
+|----------------|-------------|
+| `* * * * *` | Every minute |
+| `0 * * * *` | Every hour (at minute 0) |
+| `0 9 * * *` | Every day at 9:00 AM |
+| `0 9 * * 1` | Every Monday at 9:00 AM |
+| `0 0 1 * *` | First day of every month at midnight |
+| `*/5 * * * *` | Every 5 minutes |
+| `0 9,18 * * *` | At 9 AM and 6 PM every day |
+| `0 9-17 * * 1-5` | Every hour 9AM–5PM, Monday to Friday |
+| `@reboot` | Once when the server starts |
+| `@daily` | Once every day at midnight |
