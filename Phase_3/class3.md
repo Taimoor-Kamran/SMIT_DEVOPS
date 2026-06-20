@@ -256,3 +256,9 @@ done
 ```
 
 ---
+
+## Cron — Scheduled Tasks
+
+**Cron** is a Linux tool that runs commands or scripts automatically at a scheduled time — every minute, every hour, every day, every week, etc.
+
+Think of it like an alarm clock for your server — set it once and it runs forever on schedule.
