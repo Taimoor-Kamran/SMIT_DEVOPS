@@ -499,3 +499,17 @@ The `devops_report.py` script ran fine in testing but started crashing in produc
 Two bugs appeared at the same time:
 1. The API call hung for 60+ seconds before crashing with a timeout error — blocking the whole script
 2. When the API did respond, it sometimes returned HTML instead of JSON (during server errors), causing a `json.JSONDecodeError` crash
+
+### The Buggy Code
+
+```python
+# BUGGY version — no timeout, no format validation
+def get_server_info(hostname):
+    response = requests.get(f"https://ipapi.co/{hostname}/json/")
+    data = response.json()    # crashes if response is HTML not JSON
+    return data
+```
+
+**Two problems:**
+- No `timeout=` → hangs forever if API is slow
+- No content-type check → crashes with `JSONDecodeError` when API returns HTML error page
