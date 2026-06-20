@@ -413,3 +413,44 @@ def get_server_info(hostname):
 > **What is `raise_for_status()`?**
 > It automatically raises a `HTTPError` exception if the status code is 4xx or 5xx.
 > Without it, even a 404 response would look like a success to your code.
+
+### Step 4 — Generate the Report
+
+```python
+from datetime import datetime
+
+def generate_report(log_counts, errors, api_data, output_file):
+    """Write a combined report from log data and API data."""
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    with open(output_file, "w") as f:
+        f.write("=" * 50 + "\n")
+        f.write("       SERVER DAILY REPORT\n")
+        f.write("=" * 50 + "\n")
+        f.write(f"Generated: {now}\n\n")
+
+        # Log summary section
+        f.write("── Log Summary ──────────────────────────\n")
+        f.write(f"  INFO  entries : {log_counts['INFO']}\n")
+        f.write(f"  WARN  entries : {log_counts['WARN']}\n")
+        f.write(f"  ERROR entries : {log_counts['ERROR']}\n\n")
+
+        # Error details section
+        if errors:
+            f.write("── Errors Detected ──────────────────────\n")
+            for err in errors:
+                f.write(f"  {err}\n")
+            f.write("\n")
+
+        # API data section
+        if api_data:
+            f.write("── Server Info (from API) ───────────────\n")
+            f.write(f"  IP      : {api_data.get('ip', 'N/A')}\n")
+            f.write(f"  City    : {api_data.get('city', 'N/A')}\n")
+            f.write(f"  Country : {api_data.get('country_name', 'N/A')}\n\n")
+
+        f.write("=" * 50 + "\n")
+        f.write("End of Report\n")
+
+    print(f"Report saved to: {output_file}")
+```
