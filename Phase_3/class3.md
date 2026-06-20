@@ -317,3 +317,15 @@ Inside `crontab -e`, add one line per job:
 > `>> /var/log/monitor.log 2>&1` means:
 > - `>>` append output to the log file (don't overwrite)
 > - `2>&1` also capture error messages into the same file
+
+### Common Cron Mistakes for Beginners
+
+| Mistake | Fix |
+|---------|-----|
+| Script runs manually but not from cron | Use full absolute paths: `/home/user/script.sh` not `./script.sh` |
+| No output — can't see if it ran | Redirect output: `script.sh >> /tmp/cron.log 2>&1` |
+| Environment variables missing | Set them inside the script or at top of crontab |
+| Script not executable | Run `chmod +x script.sh` |
+| Cron not running at all | Check `systemctl status cron` |
+
+---
