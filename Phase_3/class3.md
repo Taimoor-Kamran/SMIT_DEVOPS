@@ -589,3 +589,21 @@ set -e       # exit on any error
 | Add debug logging when building new scripts | `echo "DEBUG: var=$var"` saves hours of guessing |
 
 ---
+
+## Quick Reference
+
+### Conditionals Cheat Sheet
+
+| Syntax | Purpose |
+|--------|---------|
+| `if [ condition ]; then` | basic if |
+| `elif [ condition ]; then` | else-if |
+| `else` | fallback |
+| `fi` | end of if block |
+| `[ $a -gt $b ]` | number: a greater than b |
+| `[ "$a" = "$b" ]` | string: a equals b |
+| `[ -z "$a" ]` | string is empty |
+| `[ -f file ]` | file exists |
+| `[ -d dir ]` | directory exists |
+| `&&` | AND — both must be true |
+| `\|\|` | OR — at least one must be true |
