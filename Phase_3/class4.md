@@ -603,3 +603,18 @@ def get_server_info_with_retry(hostname, max_retries=3):
 
 ---
 
+## Quick Reference
+
+### Files Cheat Sheet
+
+| Task | Code |
+|------|------|
+| Read whole file | `with open("f","r") as f: f.read()` |
+| Read line by line | `for line in f:` |
+| Read all lines to list | `f.readlines()` |
+| Write to file | `open("f","w")` + `f.write()` |
+| Append to file | `open("f","a")` + `f.write()` |
+| Check file exists | `os.path.exists("f")` |
+| List directory | `os.listdir("/path")` |
+| Make directory | `os.makedirs("dir", exist_ok=True)` |
+
