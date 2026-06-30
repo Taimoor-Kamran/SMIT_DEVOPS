@@ -223,3 +223,15 @@ This makes builds **much faster**.
 First build:     Layer 1 ✅ built  →  Layer 2 ✅ built  →  Layer 3 ✅ built  →  Layer 4 ✅ built
 Second build:    Layer 1 ⚡ cached →  Layer 2 ⚡ cached →  Layer 3 ⚡ cached →  Layer 4 ✅ rebuilt
 ```
+
+### Layers are also SHARED between images
+
+If two images both use `ubuntu:22.04` as their base, Docker stores that layer **once** on disk.
+Both images share it — this saves a huge amount of disk space.
+
+```
+Image A:  ubuntu:22.04 (shared) + python + flask app
+Image B:  ubuntu:22.04 (shared) + node + express app
+            ↑
+       same layer, stored once on disk
+```
