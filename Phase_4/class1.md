@@ -108,3 +108,7 @@ But it does **NOT** contain: a full operating system or a kernel.
 | Easy to scale — spin up 100 containers in seconds | Security vulnerabilities in the kernel affect all containers |
 | Consistent: "works on my machine" problem is solved | Newer technology — more complex to learn at first |
 | Perfect for microservices and CI/CD pipelines | |
+
+---
+
+## Containers vs VMs — Side by Side
