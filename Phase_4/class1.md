@@ -98,3 +98,13 @@ But it does **NOT** contain: a full operating system or a kernel.
 
 > **Key insight:** Because containers share the OS kernel, they are much lighter and faster than VMs.
 > You can start a container in **milliseconds** vs minutes for a VM.
+
+### Pros and Cons of Containers
+
+| Pros | Cons |
+|------|------|
+| Extremely fast to start (milliseconds) | Less isolation than VMs — containers share the kernel |
+| Very lightweight — uses very little RAM and disk | All containers must use the same OS type as the host |
+| Easy to scale — spin up 100 containers in seconds | Security vulnerabilities in the kernel affect all containers |
+| Consistent: "works on my machine" problem is solved | Newer technology — more complex to learn at first |
+| Perfect for microservices and CI/CD pipelines | |
