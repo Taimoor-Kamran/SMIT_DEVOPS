@@ -235,3 +235,21 @@ Image B:  ubuntu:22.04 (shared) + node + express app
             ↑
        same layer, stored once on disk
 ```
+
+### The Writable Container Layer
+
+When you **run** a container from an image, Docker adds one more layer on top — a **writable layer**.
+
+```
+┌──────────────────────────────────────┐
+│  Writable Layer (container runtime)  │  ← files you create/change while the container is running
+├──────────────────────────────────────┤
+│  Layer 4: COPY app.py                │  (read-only)
+├──────────────────────────────────────┤
+│  Layer 3: RUN pip install flask      │  (read-only)
+├──────────────────────────────────────┤
+│  Layer 2: RUN apt-get install python │  (read-only)
+├──────────────────────────────────────┤
+│  Layer 1: FROM ubuntu:22.04          │  (read-only)
+└──────────────────────────────────────┘
+```
