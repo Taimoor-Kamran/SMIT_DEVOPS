@@ -24,3 +24,7 @@ There are **two main technologies** that do this: **Virtual Machines** and **Con
 **Simple analogy:**
 - A **VM** is like renting a **separate apartment** — your own kitchen, bathroom, walls, everything.
 - A **Container** is like renting a **room in a shared flat** — you share the kitchen and plumbing, but your room is private.
+
+---
+
+## Virtual Machines (VMs)
