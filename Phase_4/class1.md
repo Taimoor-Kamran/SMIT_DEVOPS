@@ -218,3 +218,8 @@ Layer 1:  FROM ubuntu:22.04           ← start with Ubuntu base
 Layers are **cached** by Docker. If you rebuild the image and only changed your app code (Layer 4),
 Docker reuses Layers 1, 2, and 3 from the cache — it only rebuilds Layer 4.
 This makes builds **much faster**.
+
+```
+First build:     Layer 1 ✅ built  →  Layer 2 ✅ built  →  Layer 3 ✅ built  →  Layer 4 ✅ built
+Second build:    Layer 1 ⚡ cached →  Layer 2 ⚡ cached →  Layer 3 ⚡ cached →  Layer 4 ✅ rebuilt
+```
