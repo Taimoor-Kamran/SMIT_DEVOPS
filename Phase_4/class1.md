@@ -256,3 +256,20 @@ When you **run** a container from an image, Docker adds one more layer on top â€
 
 > **Important:** When the container is deleted, the writable layer is lost.
 > To save data permanently, use **Docker Volumes** (covered in a later class).
+
+### How to inspect layers of an image
+
+```bash
+docker history nginx
+```
+
+Output (simplified):
+```
+IMAGE          CREATED        CREATED BY                              SIZE
+abc123def456   2 weeks ago    CMD ["nginx" "-g" "daemon off;"]        0B
+<missing>      2 weeks ago    COPY /etc/nginx /etc/nginx              4.61kB
+<missing>      2 weeks ago    RUN apt-get install nginx               55.3MB
+<missing>      2 weeks ago    FROM debian:bullseye-slim               80.5MB
+```
+
+Each row is one layer. You can see exactly what each layer added and how big it is.
