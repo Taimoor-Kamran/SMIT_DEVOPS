@@ -17,3 +17,4 @@
 
 **Virtualization** means running one or more "fake" computers inside your real computer.
 Your physical computer has CPU, RAM, and a hard disk.
+Virtualization lets you **share** those resources across many isolated environments at the same time.
