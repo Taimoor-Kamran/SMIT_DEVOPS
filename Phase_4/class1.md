@@ -8,3 +8,4 @@
 3. [Containers](#containers)
 4. [Containers vs VMs — Side by Side](#containers-vs-vms--side-by-side)
 5. [What is a Docker Image?](#what-is-a-docker-image)
+6. [Image Layers](#image-layers)
