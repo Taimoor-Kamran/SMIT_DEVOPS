@@ -153,3 +153,11 @@ the code, the runtime, the libraries, the config files — packaged into one fil
 | State | Read-only, never changes | Has a writable layer on top |
 | Analogy | A **recipe** for a cake | The **actual cake** you baked |
 | Created by | `docker build` | `docker run` |
+
+You can run **many containers** from the **same image** — just like you can bake many cakes from one recipe.
+
+```
+nginx image  →  container 1 (port 8080)
+             →  container 2 (port 8081)
+             →  container 3 (port 8082)
+```
