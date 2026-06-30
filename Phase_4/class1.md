@@ -20,3 +20,7 @@ Your physical computer has CPU, RAM, and a hard disk.
 Virtualization lets you **share** those resources across many isolated environments at the same time.
 
 There are **two main technologies** that do this: **Virtual Machines** and **Containers**.
+
+**Simple analogy:**
+- A **VM** is like renting a **separate apartment** — your own kitchen, bathroom, walls, everything.
+- A **Container** is like renting a **room in a shared flat** — you share the kitchen and plumbing, but your room is private.
