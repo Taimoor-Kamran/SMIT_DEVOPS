@@ -283,3 +283,15 @@ Each row is one layer. You can see exactly what each layer added and how big it 
 | Combine `RUN` commands with `&&` | Fewer layers = smaller image |
 | Use a small base image (`alpine` instead of `ubuntu`) | Reduces final image size dramatically |
 | Clean up in the same `RUN` layer (`apt-get clean`) | Removing files in a later layer doesn't help — use same layer |
+
+**Example — bad (many layers, bigger image):**
+```dockerfile
+RUN apt-get update
+RUN apt-get install -y curl
+RUN apt-get clean
+```
+
+**Example — good (one layer, same cache benefit, smaller image):**
+```dockerfile
+RUN apt-get update && apt-get install -y curl && apt-get clean
+```
