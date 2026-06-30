@@ -66,3 +66,7 @@ It sits between the physical hardware and the VMs, sharing resources.
 | Can run a different OS than the host (e.g. Windows on Linux) | Uses lots of RAM and disk (each VM needs its own OS) |
 | Very secure — strong separation between VMs | Takes minutes to create and configure |
 | Great for running untrusted code | Overkill for small apps — wasteful |
+
+---
+
+## Containers
