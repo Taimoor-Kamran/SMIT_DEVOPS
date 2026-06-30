@@ -137,3 +137,7 @@ But it does **NOT** contain: a full operating system or a kernel.
 - You want **fast deployments** and **easy scaling**
 - You are using **CI/CD pipelines** (build, test, deploy)
 - You want the app to behave the **same way** on every machine
+
+---
+
+## What is a Docker Image?
