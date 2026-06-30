@@ -57,3 +57,12 @@ It sits between the physical hardware and the VMs, sharing resources.
 |------------|------|--------------|
 | Type 1 (bare-metal) | Runs directly on hardware — no host OS needed | VMware ESXi, Microsoft Hyper-V, KVM |
 | Type 2 (hosted) | Runs inside a host OS (like an app) | VirtualBox, VMware Workstation, Parallels |
+
+### Pros and Cons of VMs
+
+| Pros | Cons |
+|------|------|
+| Complete isolation — one VM crashing does not affect others | Slow to start (1-2 minutes to boot) |
+| Can run a different OS than the host (e.g. Windows on Linux) | Uses lots of RAM and disk (each VM needs its own OS) |
+| Very secure — strong separation between VMs | Takes minutes to create and configure |
+| Great for running untrusted code | Overkill for small apps — wasteful |
