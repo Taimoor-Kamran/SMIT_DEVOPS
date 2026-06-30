@@ -30,3 +30,4 @@ There are **two main technologies** that do this: **Virtual Machines** and **Con
 ## Virtual Machines (VMs)
 
 A **Virtual Machine** is a complete computer that runs inside software called a **hypervisor**.
+It has its own operating system, its own kernel, its own virtual hard disk, and its own virtual CPU and RAM.
