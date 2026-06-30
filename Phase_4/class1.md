@@ -212,3 +212,9 @@ Layer 3:  RUN pip install flask       ← install Python packages
 Layer 2:  RUN apt-get install python3 ← install Python
 Layer 1:  FROM ubuntu:22.04           ← start with Ubuntu base
 ```
+
+### Why are layers important?
+
+Layers are **cached** by Docker. If you rebuild the image and only changed your app code (Layer 4),
+Docker reuses Layers 1, 2, and 3 from the cache — it only rebuilds Layer 4.
+This makes builds **much faster**.
