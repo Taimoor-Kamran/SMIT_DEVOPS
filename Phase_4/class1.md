@@ -14,3 +14,5 @@
 ---
 
 ## What is Virtualization?
+
+**Virtualization** means running one or more "fake" computers inside your real computer.
