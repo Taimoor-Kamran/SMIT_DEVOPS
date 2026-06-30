@@ -28,3 +28,5 @@ There are **two main technologies** that do this: **Virtual Machines** and **Con
 ---
 
 ## Virtual Machines (VMs)
+
+A **Virtual Machine** is a complete computer that runs inside software called a **hypervisor**.
