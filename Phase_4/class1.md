@@ -295,3 +295,7 @@ RUN apt-get clean
 ```dockerfile
 RUN apt-get update && apt-get install -y curl && apt-get clean
 ```
+
+---
+
+## Quick Reference
