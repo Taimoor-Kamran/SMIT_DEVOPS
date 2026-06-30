@@ -202,3 +202,13 @@ node         20-alpine  fed123cba456   130MB
 
 A Docker image is not a single file — it is built from **multiple layers** stacked on top of each other.
 Each layer represents one instruction in the Dockerfile.
+
+**Think of layers like a stack of transparent slides:**
+Each slide adds something new on top. The final image is all the slides combined.
+
+```
+Layer 4:  COPY app.py /app/          ← your application code
+Layer 3:  RUN pip install flask       ← install Python packages
+Layer 2:  RUN apt-get install python3 ← install Python
+Layer 1:  FROM ubuntu:22.04           ← start with Ubuntu base
+```
