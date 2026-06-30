@@ -199,3 +199,6 @@ node         20-alpine  fed123cba456   130MB
 ---
 
 ## Image Layers
+
+A Docker image is not a single file — it is built from **multiple layers** stacked on top of each other.
+Each layer represents one instruction in the Dockerfile.
