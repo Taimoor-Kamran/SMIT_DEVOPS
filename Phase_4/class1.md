@@ -195,3 +195,7 @@ nginx        latest     abc123def456   187MB
 ubuntu       22.04      def456abc789   77MB
 node         20-alpine  fed123cba456   130MB
 ```
+
+---
+
+## Image Layers
