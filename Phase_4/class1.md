@@ -70,3 +70,5 @@ It sits between the physical hardware and the VMs, sharing resources.
 ---
 
 ## Containers
+
+A **container** is a lightweight, isolated environment that runs your application and its dependencies — but **shares the host OS kernel** instead of having its own.
