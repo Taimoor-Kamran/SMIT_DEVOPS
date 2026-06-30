@@ -31,3 +31,19 @@ There are **two main technologies** that do this: **Virtual Machines** and **Con
 
 A **Virtual Machine** is a complete computer that runs inside software called a **hypervisor**.
 It has its own operating system, its own kernel, its own virtual hard disk, and its own virtual CPU and RAM.
+
+**How a VM stack looks:**
+
+```
+┌─────────────────────────────────────┐
+│         Your Application            │
+├─────────────────────────────────────┤
+│       Guest OS (e.g. Ubuntu)        │  ← full OS inside the VM
+├─────────────────────────────────────┤
+│            Hypervisor               │  ← manages VMs (VMware, VirtualBox, KVM)
+├─────────────────────────────────────┤
+│        Host OS (your laptop OS)     │
+├─────────────────────────────────────┤
+│       Physical Hardware             │  ← CPU, RAM, Disk
+└─────────────────────────────────────┘
+```
