@@ -112,3 +112,15 @@ But it does **NOT** contain: a full operating system or a kernel.
 ---
 
 ## Containers vs VMs — Side by Side
+
+| Feature | Virtual Machine | Container |
+|---------|----------------|-----------|
+| OS | Full OS per VM (GB each) | Shares host OS kernel |
+| Size | Gigabytes | Megabytes |
+| Startup time | 1–5 minutes | Milliseconds |
+| Performance | Slower (overhead from full OS) | Near-native speed |
+| Isolation | Very strong (separate kernel) | Process-level isolation |
+| Portability | Can be slow to move (large files) | Very portable (small image) |
+| Resource usage | High (RAM, CPU, disk) | Very low |
+| Best for | Full OS isolation, legacy apps | Microservices, CI/CD, cloud apps |
+| Examples | VirtualBox, VMware, KVM | Docker, Podman, containerd |
