@@ -173,3 +173,25 @@ Images are stored in a **registry** — a central place to upload and download i
 | Amazon ECR | AWS's private registry for production |
 | Google Artifact Registry | GCP's registry |
 | Your own private registry | Can self-host with Docker Registry |
+
+**How to get an image from Docker Hub:**
+
+```bash
+docker pull nginx           # downloads the latest nginx image
+docker pull ubuntu:22.04    # downloads Ubuntu 22.04 image
+docker pull node:20-alpine  # downloads Node.js 20 on Alpine Linux (tiny)
+```
+
+**How to see images you have downloaded:**
+
+```bash
+docker images
+```
+
+Output:
+```
+REPOSITORY   TAG        IMAGE ID       SIZE
+nginx        latest     abc123def456   187MB
+ubuntu       22.04      def456abc789   77MB
+node         20-alpine  fed123cba456   130MB
+```
