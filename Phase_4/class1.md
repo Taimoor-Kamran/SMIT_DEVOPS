@@ -161,3 +161,15 @@ nginx image  →  container 1 (port 8080)
              →  container 2 (port 8081)
              →  container 3 (port 8082)
 ```
+
+### Where do images come from?
+
+Images are stored in a **registry** — a central place to upload and download images.
+
+| Registry | Description |
+|----------|-------------|
+| Docker Hub | The default public registry — millions of free images |
+| GitHub Container Registry (ghcr.io) | GitHub's registry for your own images |
+| Amazon ECR | AWS's private registry for production |
+| Google Artifact Registry | GCP's registry |
+| Your own private registry | Can self-host with Docker Registry |
