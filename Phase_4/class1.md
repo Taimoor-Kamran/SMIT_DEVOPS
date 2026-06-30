@@ -299,3 +299,13 @@ RUN apt-get update && apt-get install -y curl && apt-get clean
 ---
 
 ## Quick Reference
+
+### Containers vs VMs Cheat Sheet
+
+| | VM | Container |
+|--|--|--|
+| OS | Full OS (GB) | Shared kernel (MB) |
+| Start | Minutes | Milliseconds |
+| Size | GB | MB |
+| Isolation | Strong | Process-level |
+| Tool | VirtualBox / VMware / KVM | Docker / Podman |
