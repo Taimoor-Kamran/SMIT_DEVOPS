@@ -95,3 +95,6 @@ But it does **NOT** contain: a full operating system or a kernel.
 │              Physical Hardware                    │
 └───────────────────────────────────────────────────┘
 ```
+
+> **Key insight:** Because containers share the OS kernel, they are much lighter and faster than VMs.
+> You can start a container in **milliseconds** vs minutes for a VM.
