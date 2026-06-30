@@ -334,3 +334,20 @@ RUN apt-get update && apt-get install -y curl && apt-get clean
 | `docker rm <id>` | Delete a stopped container |
 | `docker logs <id>` | View container output logs |
 | `docker exec -it <id> bash` | Open a terminal inside a running container |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| Hypervisor | Software that creates and manages VMs |
+| Guest OS | The OS running inside a VM |
+| Host OS | The OS on your physical machine |
+| Image | Read-only template to create containers |
+| Container | A running instance of an image |
+| Layer | One step in building a Docker image |
+| Registry | A server that stores and serves Docker images |
+| Docker Hub | The default public registry for Docker images |
+| Kernel | The core of the OS that manages hardware |
+| `docker pull` | Download an image from a registry |
+| `docker build` | Create an image from a Dockerfile |
+| `docker run` | Start a container from an image |
