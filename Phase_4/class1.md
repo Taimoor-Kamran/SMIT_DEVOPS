@@ -141,3 +141,6 @@ But it does **NOT** contain: a full operating system or a kernel.
 ---
 
 ## What is a Docker Image?
+
+A **Docker image** is a read-only template that contains everything needed to run your application:
+the code, the runtime, the libraries, the config files — packaged into one file.
