@@ -253,3 +253,6 @@ When you **run** a container from an image, Docker adds one more layer on top �
 │  Layer 1: FROM ubuntu:22.04          │  (read-only)
 └──────────────────────────────────────┘
 ```
+
+> **Important:** When the container is deleted, the writable layer is lost.
+> To save data permanently, use **Docker Volumes** (covered in a later class).
