@@ -80,3 +80,18 @@ Think of a container as a **box** that contains:
 - Environment variables
 
 But it does **NOT** contain: a full operating system or a kernel.
+
+**How a Container stack looks:**
+
+```
+┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+│  Container 1 │  │  Container 2 │  │  Container 3 │
+│  (Node app)  │  │  (Python app)│  │  (MySQL)     │
+├──────────────┴──┴──────────────┴──┴──────────────┤
+│              Container Runtime (Docker)           │  ← manages containers
+├───────────────────────────────────────────────────┤
+│              Host OS Kernel                       │  ← SHARED by all containers
+├───────────────────────────────────────────────────┤
+│              Physical Hardware                    │
+└───────────────────────────────────────────────────┘
+```
