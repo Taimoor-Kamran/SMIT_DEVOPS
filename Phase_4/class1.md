@@ -320,3 +320,17 @@ RUN apt-get update && apt-get install -y curl && apt-get clean
 | `docker build -t myapp .` | Build an image from a Dockerfile in current folder |
 | `docker history nginx` | Show all layers of the nginx image |
 | `docker inspect nginx` | Show full metadata of an image |
+
+### Docker Container Commands Cheat Sheet
+
+| Command | What it does |
+|---------|-------------|
+| `docker run nginx` | Run a container from the nginx image |
+| `docker run -d nginx` | Run in background (detached) |
+| `docker run -p 8080:80 nginx` | Map port 8080 on host to port 80 in container |
+| `docker ps` | List running containers |
+| `docker ps -a` | List all containers (including stopped) |
+| `docker stop <id>` | Stop a running container |
+| `docker rm <id>` | Delete a stopped container |
+| `docker logs <id>` | View container output logs |
+| `docker exec -it <id> bash` | Open a terminal inside a running container |
