@@ -52,3 +52,8 @@ It has its own operating system, its own kernel, its own virtual hard disk, and 
 
 A **hypervisor** is the software that creates and manages VMs.
 It sits between the physical hardware and the VMs, sharing resources.
+
+| Hypervisor | Type | Example tools |
+|------------|------|--------------|
+| Type 1 (bare-metal) | Runs directly on hardware — no host OS needed | VMware ESXi, Microsoft Hyper-V, KVM |
+| Type 2 (hosted) | Runs inside a host OS (like an app) | VirtualBox, VMware Workstation, Parallels |
