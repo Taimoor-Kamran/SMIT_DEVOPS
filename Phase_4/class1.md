@@ -309,3 +309,14 @@ RUN apt-get update && apt-get install -y curl && apt-get clean
 | Size | GB | MB |
 | Isolation | Strong | Process-level |
 | Tool | VirtualBox / VMware / KVM | Docker / Podman |
+
+### Docker Image Commands Cheat Sheet
+
+| Command | What it does |
+|---------|-------------|
+| `docker pull nginx` | Download nginx image from Docker Hub |
+| `docker images` | List all images on your machine |
+| `docker rmi nginx` | Delete an image |
+| `docker build -t myapp .` | Build an image from a Dockerfile in current folder |
+| `docker history nginx` | Show all layers of the nginx image |
+| `docker inspect nginx` | Show full metadata of an image |
