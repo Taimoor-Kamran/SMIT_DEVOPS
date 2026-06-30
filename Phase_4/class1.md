@@ -124,3 +124,16 @@ But it does **NOT** contain: a full operating system or a kernel.
 | Resource usage | High (RAM, CPU, disk) | Very low |
 | Best for | Full OS isolation, legacy apps | Microservices, CI/CD, cloud apps |
 | Examples | VirtualBox, VMware, KVM | Docker, Podman, containerd |
+
+### When to use a VM vs a Container?
+
+**Use a VM when:**
+- You need to run a **completely different OS** (e.g. Windows app on a Linux server)
+- You need **maximum isolation** (e.g. security testing, untrusted code)
+- You are running **legacy applications** that need a full OS environment
+
+**Use a Container when:**
+- You are deploying a **web app, API, or microservice**
+- You want **fast deployments** and **easy scaling**
+- You are using **CI/CD pipelines** (build, test, deploy)
+- You want the app to behave the **same way** on every machine
