@@ -351,3 +351,7 @@ RUN apt-get update && apt-get install -y curl && apt-get clean
 | `docker pull` | Download an image from a registry |
 | `docker build` | Create an image from a Dockerfile |
 | `docker run` | Start a container from an image |
+
+---
+
+*End of Class 1 — Phase 4*
