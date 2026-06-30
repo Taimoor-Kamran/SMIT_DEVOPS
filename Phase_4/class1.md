@@ -273,3 +273,13 @@ abc123def456   2 weeks ago    CMD ["nginx" "-g" "daemon off;"]        0B
 ```
 
 Each row is one layer. You can see exactly what each layer added and how big it is.
+
+### Best practices for image layers
+
+| Practice | Why |
+|----------|-----|
+| Put rarely-changing layers first (e.g. `FROM`, `RUN apt-get`) | Maximise cache hits on rebuild |
+| Put frequently-changing layers last (e.g. `COPY app.py`) | Only the last layer rebuilds each time |
+| Combine `RUN` commands with `&&` | Fewer layers = smaller image |
+| Use a small base image (`alpine` instead of `ubuntu`) | Reduces final image size dramatically |
+| Clean up in the same `RUN` layer (`apt-get clean`) | Removing files in a later layer doesn't help — use same layer |
