@@ -223,3 +223,34 @@ Most notes follow the same pattern, so once you read one, you know how to read a
 | **Lab** | Hands-on practice — do it yourself |
 | **Incident** | A real problem → how to investigate → how to fix |
 | **Quick Reference / Glossary** | Cheat sheet for revision and interviews |
+
+---
+
+## How to Use This Repo
+
+### Option 1: Read on GitHub (easiest)
+
+Just click any link in the [Notes Index](#notes-index). GitHub shows Markdown files nicely formatted.
+
+### Option 2: Download to Your Computer
+
+```bash
+git clone https://github.com/Taimoor-Kamran/SMIT_DEVOPS.git
+cd SMIT_DEVOPS
+```
+
+Open the folder in **VS Code** and press `Ctrl + Shift + V` on any `.md` file to see the formatted preview.
+
+Get the latest notes later with:
+
+```bash
+git pull
+```
+
+### Study Method That Works
+
+1. **Read** the concept part of a class
+2. **Type** every command yourself (don't just copy-paste — typing builds memory)
+3. **Do the Lab** at the end of the class
+4. **Break something on purpose** and fix it, like the Incident section
+5. **Revise** using the Quick Reference before moving to the next class
