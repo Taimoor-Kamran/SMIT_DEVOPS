@@ -356,3 +356,56 @@ So even if the user has `AdministratorAccess`, without MFA they can do nothing e
   - **Passkey / security key:** touch the key or use fingerprint/face
   - If you have more than one device, choose which one to use
 - You are signed in ✅
+
+---
+
+## Check Which Users Have MFA
+
+### 1. Users List (quickest)
+
+- **IAM → Users**
+- Look at the **MFA** column:
+  - Shows the device type (e.g. **Virtual**, **FIDO security key**) → MFA is **on** ✅
+  - Empty / **–** → MFA is **off** ❌
+
+> If you don't see the column, click the ⚙️ **settings** icon above the table and turn on **MFA**.
+
+### 2. Inside One User
+
+- **IAM → Users** → click the user → **Security credentials** tab → **Multi-factor authentication (MFA)** lists all their devices
+
+### 3. Credential Report
+
+- **IAM → Credential report** → **Download credentials report**
+- Check the **`mfa_active`** column → `true` or `false` for each user
+
+### 4. IAM Dashboard
+
+- **IAM → Dashboard** → **Security recommendations** shows warnings like *"Add MFA for yourself"* or users without MFA
+
+### 5. AWS CLI
+
+```bash
+# MFA devices of one user (empty list = no MFA)
+aws iam list-mfa-devices --user-name ali
+
+# All virtual MFA devices in the account and which user owns each
+aws iam list-virtual-mfa-devices --assignment-status Assigned
+
+# Virtual MFA devices created but NOT attached to any user (leftovers)
+aws iam list-virtual-mfa-devices --assignment-status Unassigned
+```
+
+**Small script — list every user without MFA:**
+
+```bash
+#!/bin/bash
+# Prints the name of every IAM user who has no MFA device
+
+for user in $(aws iam list-users --query 'Users[].UserName' --output text); do
+  count=$(aws iam list-mfa-devices --user-name "$user" --query 'length(MFADevices)')
+  if [ "$count" -eq 0 ]; then
+    echo "❌ No MFA: $user"
+  fi
+done
+```
