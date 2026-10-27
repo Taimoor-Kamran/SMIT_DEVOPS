@@ -65,3 +65,19 @@ Think of this repo as a **notebook you never lose**. Instead of paper notes that
 - 👨‍💻 **Developers** who want to understand servers, CI/CD, containers and the cloud
 
 **You do NOT need:** a computer science degree, prior coding experience, or a paid cloud account (AWS Free Tier is enough).
+
+---
+
+## What You Will Learn
+
+| Area | Topics |
+|------|--------|
+| **DevOps Basics** | What DevOps is, SDLC phases, environments (DEV → SIT → UAT → PROD) |
+| **Linux** | WSL setup, filesystem, paths, file commands, searching, permissions, users & groups, processes, signals, tuning, logs, disk, networking |
+| **Remote Servers** | SSH keys, connecting to servers, creating an AWS EC2 instance, VirtualBox VMs |
+| **Git & GitHub** | Git basics, local vs remote, branching, trunk-based development, feature flags, pull requests, code review, recovering lost work |
+| **CI/CD** | GitHub Actions workflows, PR checks, merge policies, branch protection |
+| **Scripting** | Bash variables, arguments, exit codes, loops, conditionals, cron jobs, service scripts, Python for files / JSON / APIs |
+| **Containers** | Virtual machines vs containers, Docker images, image layers, Docker commands |
+| **AWS Cloud** | IAM users, user groups, policies, custom policies, root account MFA, IAM user MFA |
+| **Web Basics** | HTML tags, text formatting, lists |
