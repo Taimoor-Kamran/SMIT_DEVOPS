@@ -272,3 +272,14 @@ git pull
 
 > ⚠️ **AWS tip:** set a **billing budget alert** as soon as you create your account,
 > and always **stop or terminate** EC2 instances after practice so you don't get charged.
+
+---
+
+## Tips for Beginners
+
+- **Don't rush.** One class properly understood is better than five classes skimmed.
+- **Errors are normal.** Read the error message — it usually tells you exactly what is wrong.
+- **Use `man` and `--help`.** Example: `man ls` or `ls --help`.
+- **Practise daily**, even 30 minutes. DevOps is a hands-on skill.
+- **Never share secrets** — passwords, `.pem` keys, or AWS access keys must never be pushed to GitHub.
+- **Build small projects** — a backup script, a Dockerised app, a GitHub Actions pipeline.
