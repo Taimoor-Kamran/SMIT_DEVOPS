@@ -299,3 +299,14 @@ These are learning notes, so improvements are welcome!
 Or simply open an **Issue** describing what's wrong or what topic you'd like added.
 
 > If these notes helped you, please give the repo a ⭐ — it helps other beginners find it.
+
+---
+
+## Author
+
+**Taimoor Kamran**
+DevOps student at **Saylani Mass IT Training (SMIT)**
+
+- GitHub: [@Taimoor-Kamran](https://github.com/Taimoor-Kamran)
+
+*Learning in public — one class at a time.* 🚀
