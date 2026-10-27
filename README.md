@@ -254,3 +254,21 @@ git pull
 3. **Do the Lab** at the end of the class
 4. **Break something on purpose** and fix it, like the Incident section
 5. **Revise** using the Quick Reference before moving to the next class
+
+---
+
+## Tools You Need
+
+| Tool | Why | Cost |
+|------|-----|------|
+| Linux terminal — **Ubuntu** / **WSL** on Windows | Run all Linux and Bash commands | Free |
+| **VS Code** | Read notes and write scripts | Free |
+| **Git** + **GitHub account** | Phase 2 and version control | Free |
+| **Python 3** | Phase 3 Python scripts | Free |
+| **Docker** (Docker Desktop or Docker Engine) | Phase 4 containers | Free |
+| **AWS account** | EC2 and AWS folder | Free Tier |
+| **Authenticator app** (Google / Microsoft Authenticator) | AWS MFA | Free |
+| **VirtualBox** *(optional)* | Run an Ubuntu virtual machine | Free |
+
+> ⚠️ **AWS tip:** set a **billing budget alert** as soon as you create your account,
+> and always **stop or terminate** EC2 instances after practice so you don't get charged.
