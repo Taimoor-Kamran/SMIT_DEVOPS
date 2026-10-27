@@ -80,3 +80,14 @@ An IAM user can have one or both types of access:
  └─────────────────┘     └──────────────────────┘
    (Browser)               (aws cli / terraform)
 ```
+
+---
+
+## Before You Start
+
+You need:
+- An AWS account (Free Tier is fine)
+- Sign in as the **root user** **or** as an IAM user who already has admin permissions (`AdministratorAccess` or `IAMFullAccess`)
+
+> If this is a brand-new account, you will do this first step as the root user.
+> After you create your own **admin IAM user**, stop using the root user.
