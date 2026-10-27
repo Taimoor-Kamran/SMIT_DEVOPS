@@ -360,3 +360,97 @@ EC2 instance:     arn:aws:ec2:us-east-1:123456789012:instance/i-0abcd1234efgh567
 IAM user:         arn:aws:iam::123456789012:user/ali
 IAM group:        arn:aws:iam::123456789012:group/Developers
 ```
+
+---
+
+## Create Your Own Custom Policy — Step by Step
+
+**Goal:** Create a policy called **`S3-SmitBucket-ReadOnly`** that lets users **only read files from one bucket** named `smit-devops-files`. Then attach it to a group.
+
+### Step 1: Open Policies
+
+- **IAM → Policies** (left sidebar)
+- Click **Create policy**
+
+### Step 2: Choose the Editor
+
+AWS gives you two editors:
+
+| Editor | Best for |
+|--------|----------|
+| **Visual** | Beginners — click to choose service, actions, resources |
+| **JSON** | When you already know or copied the JSON |
+
+### Option A: Using the Visual Editor
+
+- **Select a service** → search and choose **S3**
+- **Actions allowed:**
+  - Expand **List** → tick ✅ `ListBucket`
+  - Expand **Read** → tick ✅ `GetObject`
+- **Resources:** choose **Specific**
+  - Next to **bucket**, click **Add ARNs** → Resource bucket name: `smit-devops-files` → **Add ARNs**
+  - Next to **object**, click **Add ARNs** → Resource bucket name: `smit-devops-files`, Resource object name: tick **Any object name** → **Add ARNs**
+- *(Optional)* **Request conditions** → leave empty for now
+- Click **Next**
+
+### Option B: Using the JSON Editor
+
+- Click the **JSON** tab
+- Delete what's there and paste:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListTheBucket",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::smit-devops-files"
+    },
+    {
+      "Sid": "ReadObjectsInTheBucket",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::smit-devops-files/*"
+    }
+  ]
+}
+```
+
+> **Why two statements?** `ListBucket` works on the **bucket itself** (`smit-devops-files`),
+> while `GetObject` works on the **files inside** it (`smit-devops-files/*`). They need different ARNs.
+
+- AWS checks the policy live and shows **errors / warnings** at the bottom. Fix any red errors.
+- Click **Next**
+
+### Step 3: Review and Name
+
+- **Policy name:** `S3-SmitBucket-ReadOnly`
+- **Description:** `Read-only access to the smit-devops-files bucket`
+- Check the **Permissions defined in this policy** summary
+- *(Optional)* add tags
+- Click **Create policy**
+
+Your policy now appears in the list with type **Customer managed**. 🎉
+
+### Step 4: Attach it to the Group
+
+- **IAM → User groups** → click **`Developers`** → **Permissions** tab
+- **Add permissions** → **Attach policies**
+- **Filter by Type** → **Customer managed**
+- Tick ✅ **S3-SmitBucket-ReadOnly** → **Attach policies**
+
+### Step 5: Test it
+
+- Sign in as `ali` (a member of `Developers`)
+- Open **S3** → you can open `smit-devops-files` and download files ✅
+- Try uploading a file → **Access Denied** ❌ (correct — we only allowed reading)
+
+### Edit a Custom Policy Later
+
+- **IAM → Policies** → click the policy → **Edit**
+- Change it in Visual or JSON → **Next** → **Save changes**
+
+> AWS keeps up to **5 versions** of each customer managed policy.
+> You can see them in the **Policy versions** tab and roll back to an older one with **Set as default**.
