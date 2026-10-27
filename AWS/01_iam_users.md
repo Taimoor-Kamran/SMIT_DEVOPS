@@ -55,3 +55,28 @@ This identity is called the **root user**.
 
 > **Golden rule:** Lock the root user away (strong password + MFA) and use **IAM users** for daily work.
 > See `03_root_account_mfa.md` for how to protect the root user.
+
+---
+
+## Types of Access an IAM User Can Have
+
+An IAM user can have one or both types of access:
+
+| Access Type | Used For | Credentials |
+|-------------|----------|-------------|
+| **Console access** | Logging in to the AWS website (Management Console) in a browser | Username + Password (+ MFA) |
+| **Programmatic access** | Using AWS CLI, SDKs (Python boto3, Node.js), Terraform, scripts | Access Key ID + Secret Access Key |
+
+```
+           ┌──────────────────────┐
+           │      IAM User: ali   │
+           └──────────┬───────────┘
+          ┌───────────┴────────────┐
+          ▼                        ▼
+ ┌─────────────────┐     ┌──────────────────────┐
+ │ Console Access  │     │ Programmatic Access  │
+ │ username +      │     │ Access Key ID +      │
+ │ password + MFA  │     │ Secret Access Key    │
+ └─────────────────┘     └──────────────────────┘
+   (Browser)               (aws cli / terraform)
+```
