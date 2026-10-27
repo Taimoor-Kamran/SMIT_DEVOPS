@@ -624,3 +624,29 @@ Every time a user clicks something or runs a command, AWS checks all their polic
 - `ali` is in group `Developers` → has `AmazonS3FullAccess` (Allow `s3:*`)
 - `ali` is also in group `NoDelete` → has the "Block Deleting S3 Buckets" policy (Deny `s3:DeleteBucket`)
 - Result: `ali` can do everything in S3 **except** delete buckets.
+
+---
+
+## Test and Audit Permissions
+
+### IAM Policy Simulator
+
+Test what a user can or cannot do **without** actually doing it.
+
+- Open: `https://policysim.aws.amazon.com`
+- On the left, choose **Users** → select `ali`
+- Choose a service, e.g. **Amazon S3**, and select actions, e.g. `DeleteBucket`
+- Click **Run Simulation**
+- Result shows **allowed** or **denied** for each action ✅ / ❌
+
+### Last Accessed (Access Advisor)
+
+Shows which services a user/group actually **used** — helps you remove permissions nobody uses.
+
+- **IAM → User groups** (or Users) → click the name → **Last Accessed** tab
+- Services with "Not accessed in the tracking period" → consider removing that permission
+
+### See Who Uses a Policy
+
+- **IAM → Policies** → click the policy → **Entities attached** tab
+- Shows every user, group and role that has this policy
