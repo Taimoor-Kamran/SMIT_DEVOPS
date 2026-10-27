@@ -205,3 +205,21 @@ SMIT_DEVOPS/
 |-------|-------|
 | [Class 1](HTML/class_1/nodes.md) | HTML structure, headings, paragraphs, text formatting, quotations |
 | [Class 2](HTML/class_2/notes.md) | `abbr`, `cite`, `address`, `ins`/`del`, ordered, unordered & description lists |
+
+---
+
+## How Every Note is Written
+
+Most notes follow the same pattern, so once you read one, you know how to read all of them:
+
+| Section | What it gives you |
+|---------|-------------------|
+| **Title + Table of Contents** | See the whole class at a glance |
+| **Concept explanation** | What it is, in plain English, often with a real-life analogy |
+| **Diagrams** | ASCII pictures that show how things connect |
+| **Commands with comments** | Copy-paste ready, every line explained |
+| **Tables** | Comparisons (e.g. VM vs Container, Root vs IAM user) |
+| **`>` Notes and ⚠️ warnings** | Common mistakes and important tips |
+| **Lab** | Hands-on practice — do it yourself |
+| **Incident** | A real problem → how to investigate → how to fix |
+| **Quick Reference / Glossary** | Cheat sheet for revision and interviews |
