@@ -23,3 +23,19 @@
 11. [Tips for Beginners](#tips-for-beginners)
 12. [Contributing / Found a Mistake?](#contributing--found-a-mistake)
 13. [Author](#author)
+
+---
+
+## What is This Repo?
+
+This repository is a collection of **class notes** for learning **DevOps** — from your very first Linux command all the way to Docker containers and AWS cloud security.
+
+Every topic taught in class is written down as a **Markdown (`.md`) file** with:
+- simple explanations and real-life analogies
+- commands you can copy and run
+- step-by-step labs (practice)
+- real-world **incidents** (something breaks → how to find and fix it)
+- cheat sheets for quick revision
+
+**Simple analogy:**
+Think of this repo as a **notebook you never lose**. Instead of paper notes that get lost after the course, everything lives on GitHub — searchable, organised, and free for anyone to read.
