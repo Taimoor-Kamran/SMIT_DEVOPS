@@ -95,3 +95,14 @@ AWS supports **3 types** of MFA devices:
 
 **How many devices?** You can register up to **8 MFA devices** on the root user (and on each IAM user).
 You only need **one** of them to sign in. Adding a second one as a backup is a great idea.
+
+---
+
+## Before You Start
+
+You need:
+- Your **root email** and **password**
+- A smartphone with an authenticator app installed:
+  - **Google Authenticator** (Android / iPhone)
+  - **Microsoft Authenticator** (Android / iPhone)
+  - **Authy** (Android / iPhone / Desktop)
