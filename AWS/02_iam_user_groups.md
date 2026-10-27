@@ -700,3 +700,18 @@ aws iam delete-group --group-name Developers
 
 > In the **console**, deleting a group removes users and policies for you.
 > In the **CLI**, you must first remove all users, detach all policies, and delete inline policies — then delete the group.
+
+---
+
+## Best Practices
+
+| Practice | Why |
+|----------|-----|
+| Give permissions to **groups**, not individual users | Easy to manage and audit |
+| Name groups by **job role** (`Developers`, `Admins`) | Anyone can understand who gets what |
+| Follow **least privilege** | Start small, add permissions only when needed |
+| Prefer **customer managed** policies over inline | Reusable, versioned, easy to review |
+| Use **Deny** policies as guardrails | Protects important actions (delete bucket, leave region) |
+| Review **Last Accessed** every few months | Remove unused permissions |
+| Download the **credential report** regularly | Find users without MFA or with old access keys |
+| Keep `AdministratorAccess` to a very small group | Fewer admins = less risk |
