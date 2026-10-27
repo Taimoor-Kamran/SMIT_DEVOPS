@@ -577,3 +577,45 @@ aws iam delete-virtual-mfa-device \
 | Verify identity before removing a "lost" device | Stops social-engineering attacks |
 | Check the **MFA** column / credential report monthly | Catch users who don't have MFA |
 | Use **temporary** credentials (`get-session-token`) for CLI | MFA-protected and expire automatically |
+
+---
+
+## Quick Reference
+
+### Console Path Cheat Sheet
+
+| Task | Where to go |
+|------|------------|
+| Admin assigns MFA | IAM → Users → (user) → Security credentials → Assign MFA device |
+| User assigns own MFA | Username (top right) → Security credentials → Assign MFA device |
+| Create `ForceMFA` policy | IAM → Policies → Create policy → JSON |
+| Attach to all users | IAM → User groups → AllUsers → Permissions → Attach policies |
+| Check MFA status | IAM → Users → MFA column |
+| MFA audit file | IAM → Credential report → `mfa_active` column |
+| Remove lost device | IAM → Users → (user) → Security credentials → select device → Remove |
+
+### MFA CLI Cheat Sheet
+
+| Command | What it does |
+|---------|-------------|
+| `aws iam list-mfa-devices --user-name ali` | Show a user's MFA devices |
+| `aws iam list-virtual-mfa-devices` | List all virtual MFA devices in the account |
+| `aws iam create-virtual-mfa-device --virtual-mfa-device-name <n> --outfile qr.png --bootstrap-method QRCodePNG` | Create device + QR image |
+| `aws iam enable-mfa-device --user-name <u> --serial-number <arn> --authentication-code1 <c1> --authentication-code2 <c2>` | Attach device to user |
+| `aws iam deactivate-mfa-device --user-name <u> --serial-number <arn>` | Turn off a user's MFA |
+| `aws sts get-session-token --serial-number <arn> --token-code <code>` | Get MFA-protected temporary CLI credentials |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| MFA device ARN / Identifier | Unique ID of an MFA device, e.g. `arn:aws:iam::123456789012:mfa/ali-phone` |
+| `ManageOwnMFA` | Our custom policy letting users set up their own MFA |
+| `ForceMFA` | Our custom policy that denies almost everything until the user signs in with MFA |
+| `aws:MultiFactorAuthPresent` | Condition key that is `true` when the request was made with MFA |
+| `BoolIfExists` | Condition operator — also matches when the key is missing |
+| `NotAction` | "Every action except these" |
+| `get-session-token` | STS command that turns access keys + MFA code into temporary credentials |
+| Session token | Third part of temporary credentials, required with `ASIA...` keys |
+| Resync | Re-align AWS with a device whose codes drifted |
+| Unassigned virtual MFA | A virtual device created but never attached to a user |
