@@ -308,3 +308,55 @@ A policy is like a **permission slip**:
 - **IAM → Users** → click the user → **Permissions** tab
 - **Add permissions** → **Add permissions** → **Attach policies directly**
 - Tick the policy → **Next** → **Add permissions**
+
+---
+
+## Understanding Policy JSON
+
+Every policy follows the same structure. Here is the AWS managed policy **`AmazonS3ReadOnlyAccess`** (simplified):
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:Get*",
+        "s3:List*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+| Part | Meaning |
+|------|---------|
+| `Version` | Policy language version. **Always** use `"2012-10-17"` (it's not today's date — it's the latest version) |
+| `Statement` | A list of rules. A policy can have one or many statements |
+| `Sid` | *(optional)* Statement ID — a name to describe the rule, e.g. `"AllowS3Read"` |
+| `Effect` | `"Allow"` or `"Deny"` |
+| `Action` | What can be done. Format: `service:ActionName` e.g. `s3:GetObject`, `ec2:StartInstances` |
+| `Resource` | Which resource the action applies to — an **ARN**, or `"*"` for all |
+| `Condition` | *(optional)* Extra rules — e.g. only from a certain IP, only with MFA, only in a certain region |
+
+### Wildcards `*`
+
+| Value | Meaning |
+|-------|---------|
+| `"Action": "*"` | All actions in all services (dangerous!) |
+| `"Action": "s3:*"` | All S3 actions |
+| `"Action": "s3:Get*"` | All S3 actions starting with `Get` (GetObject, GetBucketPolicy...) |
+| `"Resource": "*"` | Every resource |
+| `"Resource": "arn:aws:s3:::my-bucket/*"` | Every object inside `my-bucket` |
+
+### Common ARN Formats
+
+```
+S3 bucket:        arn:aws:s3:::my-bucket
+S3 objects:       arn:aws:s3:::my-bucket/*
+EC2 instance:     arn:aws:ec2:us-east-1:123456789012:instance/i-0abcd1234efgh5678
+IAM user:         arn:aws:iam::123456789012:user/ali
+IAM group:        arn:aws:iam::123456789012:group/Developers
+```
