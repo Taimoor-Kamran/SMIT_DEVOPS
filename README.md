@@ -81,3 +81,35 @@ Think of this repo as a **notebook you never lose**. Instead of paper notes that
 | **Containers** | Virtual machines vs containers, Docker images, image layers, Docker commands |
 | **AWS Cloud** | IAM users, user groups, policies, custom policies, root account MFA, IAM user MFA |
 | **Web Basics** | HTML tags, text formatting, lists |
+
+---
+
+## Learning Path (Recommended Order)
+
+Follow the folders in this order. Each step builds on the one before it.
+
+```
+ ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+ │  Linux_OS    │──► │   Phase_1    │──► │   Phase_2    │──► │   Phase_3    │
+ │ Linux basics │    │ DevOps + SSH │    │  Git, PRs,   │    │ Bash + Python│
+ │ & commands   │    │ Linux admin  │    │ GitHub CI/CD │    │  scripting   │
+ └──────────────┘    └──────────────┘    └──────────────┘    └──────┬───────┘
+                                                                    │
+                     ┌──────────────┐    ┌──────────────┐           │
+                     │     AWS      │◄── │   Phase_4    │◄──────────┘
+                     │ IAM, Users,  │    │   Docker &   │
+                     │   MFA        │    │  Containers  │
+                     └──────────────┘    └──────────────┘
+
+   HTML  →  optional side track (web page basics), read any time
+```
+
+| Step | Folder | Why at this point |
+|------|--------|-------------------|
+| 1 | `Linux_OS/` | Almost every server in the world runs Linux — learn the terminal first |
+| 2 | `Phase_1/` | DevOps concepts + real Linux administration (users, permissions, processes, logs) |
+| 3 | `Phase_2/` | Git and GitHub — how teams store code and work together |
+| 4 | `Phase_3/` | Automate the boring stuff with Bash and Python |
+| 5 | `Phase_4/` | Package apps into containers with Docker |
+| 6 | `AWS/` | Move to the cloud and secure your AWS account |
+| — | `HTML/` | Optional — basics of how web pages are built |
