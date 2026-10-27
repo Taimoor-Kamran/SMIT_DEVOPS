@@ -547,3 +547,17 @@ aws iam delete-virtual-mfa-device \
 ```
 
 > ⚠️ Delete the `ali-qr.png` file after scanning — anyone with that image can generate Ali's codes.
+
+---
+
+## Troubleshooting
+
+| Problem | Reason | Fix |
+|---------|--------|-----|
+| "Access denied" when user clicks **Assign MFA device** | User has no permission to manage own MFA | Attach `ManageOwnMFA` or `ForceMFA` policy |
+| "Entity already exists" when adding device | A device with that name was created before but not finished | Use a different device name, or admin deletes the unassigned virtual device |
+| Codes always "invalid" | Phone time is wrong | Turn on automatic date & time, then **Resync** |
+| User has MFA but still gets "not authorized" everywhere | They signed in **before** setting up MFA | **Sign out** and sign in again with MFA |
+| CLI says "AccessDenied" after enabling `ForceMFA` | Long-term access keys have no MFA | Use `aws sts get-session-token` with MFA code |
+| "The security token included in the request is expired" | Temporary session ended | Run `get-session-token` again |
+| Locked out after `ForceMFA` | Admin's own user had no MFA | Sign in as **root** → set up MFA on the admin user |
