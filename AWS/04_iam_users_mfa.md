@@ -64,3 +64,51 @@ If its password leaks and there's no MFA, an attacker can do almost anything.
   │  Good for: small teams, 1–5 users  │        │  Good for: teams, remote people ✅ │
   └────────────────────────────────────┘        └────────────────────────────────────┘
 ```
+
+---
+
+## Way 1: Admin Assigns MFA to a User
+
+Example: the admin adds MFA for user **`ali`**. Ali must be **present with his phone**, because the QR code must be scanned on **his** phone.
+
+### Step 1: Open the User
+
+- Sign in as an **admin** (or root)
+- Search **IAM** → open it
+- Left sidebar → **Users** → click **`ali`**
+
+### Step 2: Open Security Credentials
+
+- Click the **Security credentials** tab
+- Scroll to **Multi-factor authentication (MFA)**
+- Click **Assign MFA device**
+
+### Step 3: Choose Device Name and Type
+
+- **Device name:** `ali-phone` (use the person's name + device so it's easy to identify)
+- **MFA device:** choose one:
+  - **Authenticator app** ← easiest for beginners
+  - **Passkey or security key**
+  - **Hardware TOTP token**
+- Click **Next**
+
+### Step 4: Scan the QR Code (Authenticator App)
+
+- Ali installs **Google Authenticator** / **Microsoft Authenticator** / **Authy** on his phone
+- On AWS, click **Show QR code**
+- Ali opens the app → **+** → **Scan a QR code** → scans the screen
+- The app now shows a 6-digit code for **Amazon Web Services (ali@123456789012)**
+
+### Step 5: Enter Two Consecutive Codes
+
+- **MFA code 1:** the code currently shown in Ali's app
+- Wait for it to change (≈30 seconds)
+- **MFA code 2:** the next code
+- Click **Add MFA**
+
+### Step 6: Done ✅
+
+AWS shows **"MFA device assigned"**. In the **Users** list, the **MFA** column for `ali` now shows the device type instead of being empty.
+
+> **For passkey / security key:** after choosing the type and clicking **Next**, the browser pop-up appears.
+> The user must touch **their** key or use **their** fingerprint on **that** computer — so this also needs the user present.
