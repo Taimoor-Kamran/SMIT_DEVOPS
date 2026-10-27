@@ -134,3 +134,33 @@ The group `Developers` now appears in the **User groups** list showing the numbe
 | `ReadOnly` | `ReadOnlyAccess` | View everything, change nothing |
 | `Billing` | `Billing` (job function) | View and manage billing |
 | `DevOps` | `PowerUserAccess` | Everything except managing IAM users/groups |
+
+---
+
+## Add Users to a Group
+
+There are **3 ways** to add a user to a group.
+
+### Way 1: From the Group Page
+
+- **IAM → User groups** → click **`Developers`**
+- Open the **Users** tab
+- Click **Add users**
+- Tick ✅ the users (e.g. `ahmed`)
+- Click **Add users**
+
+### Way 2: From the User Page
+
+- **IAM → Users** → click the user **`ahmed`**
+- Open the **Groups** tab
+- Click **Add user to groups**
+- Tick ✅ `Developers`
+- Click **Add to group(s)**
+
+### Way 3: While Creating a New User
+
+- In the **Create user** wizard, on the **Set permissions** step
+- Choose **Add user to group**
+- Tick ✅ the group(s)
+
+> Changes take effect **almost immediately** (sometimes a few seconds). The user may need to refresh the console page.
