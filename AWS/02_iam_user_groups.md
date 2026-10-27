@@ -764,3 +764,7 @@ aws iam delete-group --group-name Developers
 | Policy variable | Placeholder like `${aws:username}` filled in by AWS at runtime |
 | Policy Simulator | Tool to test permissions without making real changes |
 | Credential report | CSV of all users with password, MFA and key status |
+
+---
+
+*End of IAM User Groups & Policies — AWS*
