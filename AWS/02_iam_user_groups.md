@@ -164,3 +164,19 @@ There are **3 ways** to add a user to a group.
 - Tick ✅ the group(s)
 
 > Changes take effect **almost immediately** (sometimes a few seconds). The user may need to refresh the console page.
+
+---
+
+## Remove a User from a Group
+
+### From the Group Page
+
+- **IAM → User groups** → click **`Developers`** → **Users** tab
+- Tick ✅ the user → click **Remove users**
+
+### From the User Page
+
+- **IAM → Users** → click the user → **Groups** tab
+- Tick ✅ the group → click **Remove**
+
+> Removing a user from a group does **not** delete the user. It only takes away the permissions that came from that group.
