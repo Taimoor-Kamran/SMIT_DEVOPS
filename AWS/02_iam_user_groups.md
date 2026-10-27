@@ -81,3 +81,56 @@ Imagine you have **50 developers**, and each one needs the same 5 policies.
 | Max groups per account | **300** (default limit) |
 | Max managed policies per group | **10** (default limit, can be increased to 20) |
 | Group names | Must be unique in the account, letters/numbers and `+ = , . @ _ -` |
+
+---
+
+## Create a User Group — Step by Step
+
+In this example we will create a group called **`Developers`**.
+
+### Step 1: Open User Groups
+
+- Sign in to the AWS Console (as root or an admin user)
+- Search for **IAM** in the top search bar → open it
+- In the left sidebar under **Access management**, click **User groups**
+- Click **Create group**
+
+### Step 2: Name the Group
+
+- **User group name:** `Developers`
+
+> Use clear names that describe the **job role**: `Developers`, `Admins`, `Testers`, `DevOps`, `Billing`, `ReadOnly`.
+
+### Step 3: Add Users to the Group *(optional)*
+
+- You will see a list of all existing IAM users
+- Tick ✅ the users you want to add, e.g. `ali` and `sara`
+
+You can skip this and add users later.
+
+### Step 4: Attach Permissions Policies *(optional)*
+
+- In the search box type `EC2`
+- Tick ✅ **AmazonEC2FullAccess**
+- Search `S3` and tick ✅ **AmazonS3ReadOnlyAccess**
+
+You can use the **Filter by Type** dropdown to show only:
+- **AWS managed** (made by AWS)
+- **Customer managed** (made by you)
+- **AWS managed - job function** (made by AWS for common roles like `Billing`, `DatabaseAdministrator`)
+
+### Step 5: Create
+
+- Click **Create user group**
+
+The group `Developers` now appears in the **User groups** list showing the number of **Users** and **Permissions**. 🎉
+
+### Common Groups You Can Create for Practice
+
+| Group Name | Policy to Attach | What members can do |
+|------------|------------------|---------------------|
+| `Admins` | `AdministratorAccess` | Everything (except root-only tasks) |
+| `Developers` | `AmazonEC2FullAccess`, `AmazonS3FullAccess` | Manage servers and storage |
+| `ReadOnly` | `ReadOnlyAccess` | View everything, change nothing |
+| `Billing` | `Billing` (job function) | View and manage billing |
+| `DevOps` | `PowerUserAccess` | Everything except managing IAM users/groups |
