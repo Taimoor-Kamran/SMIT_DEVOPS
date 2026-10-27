@@ -202,3 +202,21 @@ A **passkey** uses your phone's or laptop's built-in fingerprint/face/PIN. A **s
 
 > Passkeys are **phishing resistant** — they only work on the real `aws.amazon.com` website,
 > so a fake login page can't steal them.
+
+---
+
+## Method 3: Add a Hardware TOTP Token
+
+A **hardware TOTP token** is a small keyfob that shows a 6-digit code when you press its button. You buy it from AWS-supported vendors.
+
+### Steps
+
+- Sign in as **root user** → **Security credentials**
+- **Multi-factor authentication (MFA)** → **Assign MFA device**
+- **Device name:** e.g. `root-hardware-token`
+- **MFA device:** select **Hardware TOTP token** → **Next**
+- **Serial number:** type the serial number printed on the **back** of the token
+- **MFA code 1:** press the button → enter the 6-digit code
+- Wait 30 seconds → press again
+- **MFA code 2:** enter the new code
+- Click **Add MFA** ✅
