@@ -53,3 +53,15 @@ Think of this repo as a **notebook you never lose**. Instead of paper notes that
 | Revision before interviews takes time | Every note ends with a **Quick Reference / Cheat Sheet** |
 
 > **Goal:** a beginner should be able to open this repo, follow it in order, and understand DevOps fundamentals **without any other resource**.
+
+---
+
+## Who Should Use It?
+
+- 🎓 **SMIT students** — revise what was taught in class
+- 🐣 **Complete beginners** — no Linux, Git or cloud experience needed
+- 🔄 **People switching careers** into DevOps, Cloud or SRE
+- 💼 **Job seekers** — quick revision before DevOps interviews
+- 👨‍💻 **Developers** who want to understand servers, CI/CD, containers and the cloud
+
+**You do NOT need:** a computer science degree, prior coding experience, or a paid cloud account (AWS Free Tier is enough).
