@@ -47,3 +47,20 @@ If its password leaks and there's no MFA, an attacker can do almost anything.
 | Max devices | 8 | 8 per user |
 | Lost device recovery | Email + phone verification (self-service) | **Admin removes it** and user adds a new one |
 | Can be forced by policy | AWS requires it | **You** enforce it with an IAM policy |
+
+---
+
+## Two Ways to Set Up MFA for IAM Users
+
+```
+  ┌────────────────────────────────────┐        ┌────────────────────────────────────┐
+  │  Way 1: Admin assigns MFA          │        │  Way 2: User sets up own MFA       │
+  │                                    │        │                                    │
+  │  Admin opens the user's page and   │        │  User signs in and adds MFA from   │
+  │  registers the device — user must  │        │  their own Security credentials    │
+  │  be sitting next to the admin with │        │  page.                             │
+  │  their phone.                      │        │                                    │
+  │                                    │        │  Needs a "manage own MFA" policy.  │
+  │  Good for: small teams, 1–5 users  │        │  Good for: teams, remote people ✅ │
+  └────────────────────────────────────┘        └────────────────────────────────────┘
+```
