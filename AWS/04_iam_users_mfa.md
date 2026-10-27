@@ -217,3 +217,129 @@ By default, a new user can't add their own MFA device. We create a **custom poli
 - Add every IAM user to this group
 
 Now every user can set up their own MFA (Way 2). ✅
+
+---
+
+## Force Users to Use MFA (Enforce MFA Policy)
+
+Allowing MFA is good, but some users will simply **never** set it up.
+This policy **blocks almost everything** until the user signs in **with MFA**.
+
+```
+  User signs in WITHOUT MFA                    User signs in WITH MFA
+            │                                            │
+            ▼                                            ▼
+  ┌──────────────────────────────┐           ┌──────────────────────────────┐
+  │ Can ONLY:                    │           │ Gets ALL normal permissions  │
+  │ - change own password        │           │ from their groups            │
+  │ - set up own MFA device      │           │ (EC2, S3, etc.) ✅           │
+  │ Everything else ❌ DENIED    │           │                              │
+  └──────────────────────────────┘           └──────────────────────────────┘
+```
+
+### Step 1: Create the Enforce Policy
+
+- **IAM → Policies** → **Create policy** → **JSON** tab → paste:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowViewAccountInfo",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetAccountPasswordPolicy",
+        "iam:ListVirtualMFADevices"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AllowManageOwnPasswordAndUserInfo",
+      "Effect": "Allow",
+      "Action": [
+        "iam:ChangePassword",
+        "iam:GetUser"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    },
+    {
+      "Sid": "AllowManageOwnVirtualMFADevice",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateVirtualMFADevice"
+      ],
+      "Resource": "arn:aws:iam::*:mfa/*"
+    },
+    {
+      "Sid": "AllowManageOwnUserMFA",
+      "Effect": "Allow",
+      "Action": [
+        "iam:DeactivateMFADevice",
+        "iam:EnableMFADevice",
+        "iam:ListMFADevices",
+        "iam:ResyncMFADevice"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    },
+    {
+      "Sid": "DenyAllExceptListedIfNoMFA",
+      "Effect": "Deny",
+      "NotAction": [
+        "iam:CreateVirtualMFADevice",
+        "iam:EnableMFADevice",
+        "iam:GetUser",
+        "iam:ChangePassword",
+        "iam:ListMFADevices",
+        "iam:ListVirtualMFADevices",
+        "iam:ResyncMFADevice",
+        "sts:GetSessionToken"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "BoolIfExists": {
+          "aws:MultiFactorAuthPresent": "false"
+        }
+      }
+    }
+  ]
+}
+```
+
+- **Policy name:** `ForceMFA`
+- **Description:** `Allow users to manage own MFA, deny everything else until signed in with MFA`
+- Click **Create policy**
+
+> This policy **already includes** everything from `ManageOwnMFA`, plus the last **Deny** statement.
+> So you only need to attach **`ForceMFA`** — not both.
+
+### Understanding the Deny Statement
+
+| Part | Meaning |
+|------|---------|
+| `"Effect": "Deny"` | Block… |
+| `"NotAction": [...]` | …every action **except** the ones in this list (MFA setup + password change) |
+| `"aws:MultiFactorAuthPresent": "false"` | …but **only** when the user did **not** sign in with MFA |
+| `BoolIfExists` | Also treats requests with **no MFA info at all** (like plain access keys) as "no MFA" |
+
+Remember the rule from `02_iam_user_groups.md`: **explicit Deny always wins**.
+So even if the user has `AdministratorAccess`, without MFA they can do nothing except set up MFA.
+
+### Step 2: Attach it to a Group
+
+- **IAM → User groups** → **`AllUsers`** → **Permissions** → **Add permissions** → **Attach policies**
+- Tick ✅ **ForceMFA** → **Attach policies**
+- Make sure every IAM user is in `AllUsers`
+
+### Step 3: Test it
+
+1. Sign in as a user **without** MFA → open **EC2** → you see **"You are not authorized..."** ❌
+2. Go to **Security credentials** → **Assign MFA device** → set it up ✅
+3. **Sign out** and **sign in again** using the MFA code
+4. Open **EC2** again → works ✅
+
+> ⚠️ **Don't lock yourself out!** Before attaching `ForceMFA` to a group that includes **your own admin user**,
+> make sure your admin user **already has MFA set up**. Keep the root user (with MFA) as an emergency backup.
+
+> ⚠️ `ForceMFA` also blocks **plain access keys** used in the CLI.
+> CLI users must get a temporary session with MFA (see [Using MFA with AWS CLI](#using-mfa-with-aws-cli)).
