@@ -662,3 +662,41 @@ Shows which services a user/group actually **used** — helps you remove permiss
 
 > Deleting a group **does not delete the users** inside it.
 > The users stay, but they lose the permissions that came from this group.
+
+---
+
+## Groups and Policies with AWS CLI
+
+```bash
+# ---------- Groups ----------
+aws iam create-group --group-name Developers                       # create group
+aws iam list-groups                                                # list all groups
+aws iam add-user-to-group --group-name Developers --user-name ali  # add user
+aws iam get-group --group-name Developers                          # see users in group
+aws iam list-groups-for-user --user-name ali                       # groups of a user
+aws iam remove-user-from-group --group-name Developers --user-name ali
+
+# ---------- Attach AWS managed policy to a group ----------
+aws iam attach-group-policy --group-name Developers \
+  --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess
+
+aws iam list-attached-group-policies --group-name Developers       # see policies
+aws iam detach-group-policy --group-name Developers \
+  --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess
+
+# ---------- Custom (customer managed) policy ----------
+# Save your JSON into a file called s3-readonly.json first, then:
+aws iam create-policy --policy-name S3-SmitBucket-ReadOnly \
+  --policy-document file://s3-readonly.json
+
+aws iam attach-group-policy --group-name Developers \
+  --policy-arn arn:aws:iam::123456789012:policy/S3-SmitBucket-ReadOnly
+
+aws iam list-policies --scope Local                                # only YOUR policies
+
+# ---------- Delete group (must be empty with no policies) ----------
+aws iam delete-group --group-name Developers
+```
+
+> In the **console**, deleting a group removes users and policies for you.
+> In the **CLI**, you must first remove all users, detach all policies, and delete inline policies — then delete the group.
