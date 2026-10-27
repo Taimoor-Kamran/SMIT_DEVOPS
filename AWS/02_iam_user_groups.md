@@ -22,3 +22,35 @@
 17. [Groups and Policies with AWS CLI](#groups-and-policies-with-aws-cli)
 18. [Best Practices](#best-practices)
 19. [Quick Reference](#quick-reference)
+
+---
+
+## What is an IAM User Group?
+
+An **IAM user group** is a collection of IAM users.
+When you attach a permission (policy) to a group, **every user in that group** automatically gets that permission.
+
+**Simple analogy:**
+Think of a school.
+- **Users** are the **students**.
+- **Groups** are the **classes** — e.g. "Class 10-A", "Science Club".
+- **Policies** are the **rules** of each class — "Science Club members can enter the lab".
+
+If a new student joins the Science Club, you don't write new rules for them. You just **add them to the club**, and they get lab access automatically.
+
+```
+                    ┌──────────────────────────────┐
+                    │   Policy: AmazonEC2FullAccess│
+                    └──────────────┬───────────────┘
+                                   │ attached to
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │     Group: Developers        │
+                    └──────────────┬───────────────┘
+              ┌────────────────────┼────────────────────┐
+              ▼                    ▼                    ▼
+         ┌─────────┐          ┌─────────┐          ┌─────────┐
+         │   ali   │          │  sara   │          │  ahmed  │
+         └─────────┘          └─────────┘          └─────────┘
+       (all 3 users get EC2 full access through the group)
+```
