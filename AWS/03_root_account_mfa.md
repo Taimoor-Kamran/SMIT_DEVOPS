@@ -76,3 +76,22 @@ Even if a thief steals your key (password), the guard won't let them in without 
 
 > **AWS now requires MFA for root users.** If your root user doesn't have MFA,
 > AWS will ask you to register a device when you sign in. Set it up yourself first — it only takes 2 minutes.
+
+---
+
+## Types of MFA Devices in AWS
+
+AWS supports **3 types** of MFA devices:
+
+| Type | What it is | Examples | Cost | Security |
+|------|-----------|----------|------|----------|
+| **Passkey or security key** | Uses FIDO2 standard. You touch a key or use fingerprint/face | YubiKey, Google Titan Key, iPhone/Android passkey, Windows Hello, Touch ID | Free (built-in passkey) or ~$25–$60 (hardware key) | ⭐⭐⭐ Highest — phishing resistant |
+| **Authenticator app** (virtual MFA) | A phone app that shows a new 6-digit code every 30 seconds | Google Authenticator, Microsoft Authenticator, Authy, Duo Mobile | Free | ⭐⭐ Good |
+| **Hardware TOTP token** | A small physical keyfob with a screen that shows 6-digit codes | Thales / Gemalto tokens | ~$15–$25 | ⭐⭐ Good |
+
+> **For beginners:** use an **Authenticator app** — it is free and works on any phone.
+> **For best security:** use a **passkey or security key**.
+> **SMS (text message) codes are NOT supported** by AWS for MFA.
+
+**How many devices?** You can register up to **8 MFA devices** on the root user (and on each IAM user).
+You only need **one** of them to sign in. Adding a second one as a backup is a great idea.
