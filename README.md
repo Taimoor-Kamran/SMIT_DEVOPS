@@ -39,3 +39,17 @@ Every topic taught in class is written down as a **Markdown (`.md`) file** with:
 
 **Simple analogy:**
 Think of this repo as a **notebook you never lose**. Instead of paper notes that get lost after the course, everything lives on GitHub — searchable, organised, and free for anyone to read.
+
+---
+
+## Why This Repo Exists
+
+| Problem | How this repo helps |
+|---------|---------------------|
+| Class moves fast and you forget commands | Every command is written with an explanation of **what** it does and **why** |
+| Online tutorials assume you already know things | Notes start from **zero** and explain every new word |
+| Theory without practice is easy to forget | Each class has a **Lab** so you actually type the commands |
+| Real jobs are about fixing problems, not just running commands | Many classes include an **Incident** section — debugging like a real DevOps engineer |
+| Revision before interviews takes time | Every note ends with a **Quick Reference / Cheat Sheet** |
+
+> **Goal:** a beginner should be able to open this repo, follow it in order, and understand DevOps fundamentals **without any other resource**.
