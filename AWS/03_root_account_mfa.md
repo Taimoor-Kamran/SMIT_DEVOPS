@@ -180,3 +180,25 @@ AWS asks for **two consecutive** codes to make sure your phone's clock is in syn
 
 You will see a green message: **"MFA device assigned"**.
 The **Multi-factor authentication (MFA)** section now lists your device with its **identifier**, **type** and **creation date**.
+
+---
+
+## Method 2: Add a Passkey or Security Key
+
+A **passkey** uses your phone's or laptop's built-in fingerprint/face/PIN. A **security key** is a small USB/NFC device like a **YubiKey**.
+
+### Steps
+
+- Sign in as **root user** → account name (top right) → **Security credentials**
+- **Multi-factor authentication (MFA)** → **Assign MFA device**
+- **Device name:** e.g. `root-yubikey` or `root-laptop-passkey`
+- **MFA device:** select **Passkey or security key**
+- Click **Next**
+- Your **browser** opens a pop-up asking where to save the passkey. Choose one:
+  - **This device** → uses Windows Hello (PIN / face / fingerprint) or Mac Touch ID
+  - **iPhone, iPad or Android device** → scan the QR code with your phone, then confirm with fingerprint/face
+  - **Security key** → plug in your YubiKey and **touch** it when it blinks
+- Follow the prompts → AWS shows **"MFA device assigned"** ✅
+
+> Passkeys are **phishing resistant** — they only work on the real `aws.amazon.com` website,
+> so a fake login page can't steal them.
