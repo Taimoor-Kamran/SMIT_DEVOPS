@@ -561,3 +561,19 @@ aws iam delete-virtual-mfa-device \
 | CLI says "AccessDenied" after enabling `ForceMFA` | Long-term access keys have no MFA | Use `aws sts get-session-token` with MFA code |
 | "The security token included in the request is expired" | Temporary session ended | Run `get-session-token` again |
 | Locked out after `ForceMFA` | Admin's own user had no MFA | Sign in as **root** → set up MFA on the admin user |
+
+---
+
+## Best Practices
+
+| Practice | Why |
+|----------|-----|
+| Turn on MFA for **every** IAM user with console access | Password alone is not enough protection |
+| **Enforce** MFA with the `ForceMFA` policy | Users can't skip it |
+| Let users manage **their own** MFA | Works for remote teams, admin doesn't need the user's phone |
+| Name devices clearly (`ali-phone`, `ali-yubikey`) | Easy to know which device to remove when lost |
+| Register a **backup** device for admins | Losing one device doesn't lock them out |
+| Prefer **passkeys / security keys** for admins | Phishing resistant |
+| Verify identity before removing a "lost" device | Stops social-engineering attacks |
+| Check the **MFA** column / credential report monthly | Catch users who don't have MFA |
+| Use **temporary** credentials (`get-session-token`) for CLI | MFA-protected and expire automatically |
