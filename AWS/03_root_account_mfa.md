@@ -106,3 +106,77 @@ You need:
   - **Google Authenticator** (Android / iPhone)
   - **Microsoft Authenticator** (Android / iPhone)
   - **Authy** (Android / iPhone / Desktop)
+
+---
+
+## Method 1: Add an Authenticator App (Virtual MFA)
+
+### Step 1: Sign In as the Root User
+
+- Go to `https://console.aws.amazon.com`
+- Choose **Root user**
+- Enter your **root user email address** → **Next**
+- Complete the **security check** (captcha) if asked
+- Enter your **password** → **Sign in**
+
+### Step 2: Open Security Credentials
+
+- Click your **account name** in the top-right corner of the console
+- Click **Security credentials**
+
+You are now on the page **My security credentials (root user)**.
+
+> You can also reach this page from **IAM → Dashboard** → the **Security recommendations** box → **Add MFA** next to "Add MFA for root user".
+
+### Step 3: Start Assigning the MFA Device
+
+- Scroll to the section **Multi-factor authentication (MFA)**
+- Click **Assign MFA device**
+
+### Step 4: Choose the Device
+
+- **Device name:** give it a name you'll recognise, e.g. `root-taimoor-phone`
+
+> Device names can contain letters, numbers and `+ = , . @ - _` (up to 128 characters).
+> Use a name that tells you **which** phone/device it is — helpful when you have backups.
+
+- **MFA device:** select **Authenticator app**
+- Click **Next**
+
+### Step 5: Install the App on Your Phone
+
+If you haven't already, install **Google Authenticator** or **Microsoft Authenticator** from the Play Store / App Store.
+
+### Step 6: Scan the QR Code
+
+- On the AWS page, click **Show QR code**
+- Open the authenticator app on your phone
+- Tap **+** (Add) → **Scan a QR code**
+- Point your phone camera at the QR code on the screen
+
+The app now shows a new entry like **Amazon Web Services (root-account-mfa-device@123456789012)** with a 6-digit code that changes every 30 seconds.
+
+> **Can't scan?** Click **Show secret key** on AWS and type that key manually into the app
+> (in the app choose **Enter a setup key** → paste the key → choose **Time based**).
+
+### Step 7: Enter Two Codes
+
+AWS asks for **two consecutive** codes to make sure your phone's clock is in sync:
+
+- **MFA code 1:** type the 6-digit code shown in the app now, e.g. `482913`
+- **Wait** for the code to change (up to 30 seconds)
+- **MFA code 2:** type the **next** new code, e.g. `105377`
+- Click **Add MFA**
+
+```
+ App shows:  482913   ──(wait 30 sec)──►   105377
+               │                              │
+           MFA code 1                     MFA code 2
+```
+
+> ⚠️ Don't enter the same code twice and don't wait too long after the second code — submit right away.
+
+### Step 8: Done ✅
+
+You will see a green message: **"MFA device assigned"**.
+The **Multi-factor authentication (MFA)** section now lists your device with its **identifier**, **type** and **creation date**.
