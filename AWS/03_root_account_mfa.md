@@ -63,3 +63,16 @@ Even if a thief steals your key (password), the guard won't let them in without 
                     │                     │
              (something you know)  (something you have)
 ```
+
+---
+
+## Why the Root User MUST Have MFA
+
+- If someone gets your root password (phishing, data leak, reused password), they can:
+  - Launch hundreds of expensive servers for **crypto mining** → you get a bill of **thousands of dollars**
+  - Delete all your data and backups
+  - Change the email and **take the account away** from you
+- With MFA, a stolen password **alone is useless**.
+
+> **AWS now requires MFA for root users.** If your root user doesn't have MFA,
+> AWS will ask you to register a device when you sign in. Set it up yourself first — it only takes 2 minutes.
