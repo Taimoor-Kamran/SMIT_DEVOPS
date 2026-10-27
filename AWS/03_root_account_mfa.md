@@ -288,3 +288,46 @@ If codes keep failing (usually because the phone clock is wrong):
 - First, on your phone, turn on **automatic date & time** in settings
 - In AWS: **Security credentials** → tick the device → **Resync**
 - Enter two consecutive codes → **Resync**
+
+---
+
+## Other Ways to Secure the Root Account
+
+MFA is the most important step, but also do these:
+
+### 1. Use a Strong, Unique Password
+
+- At least **16 characters**, mix of letters, numbers and symbols
+- **Never** reuse the password from Gmail, Facebook, etc.
+- Store it in a **password manager** (Bitwarden, 1Password, KeePass)
+
+**Change root password:** account name (top right) → **Security credentials** → **Account details** section → **Edit** → change the password → **Save changes**.
+
+### 2. Secure the Root Email
+
+The root email can **reset the password**, so whoever controls the email controls AWS.
+- Turn on **2-Step Verification** on that Gmail/Outlook account too
+- Ideally use a separate email just for AWS, e.g. `aws-root@yourcompany.com`
+
+### 3. Don't Create Root Access Keys
+
+- Root access keys give **full API access** with no MFA check
+- If you see any under **Security credentials → Access keys** → **Deactivate** and **Delete** them
+
+### 4. Set Alternate Contacts
+
+- Account name → **Account** → **Alternate contacts** → **Edit**
+- Add **Billing**, **Operations** and **Security** contacts so AWS can reach the right person in an emergency
+
+### 5. Turn on Billing Alerts
+
+- Search **Billing and Cost Management** → **Budgets** → **Create budget**
+- Choose a template like **Zero spend budget** or **Monthly cost budget** (e.g. $5)
+- Enter your email → **Create budget**
+- If someone misuses your account, you get an email quickly
+
+### 6. Create an Admin IAM User and Stop Using Root
+
+- Create an IAM user (e.g. `taimoor-admin`) in the `Admins` group with `AdministratorAccess`
+- Turn on MFA for that user too (see `04_iam_users_mfa.md`)
+- Sign out of root and use the admin user from now on
