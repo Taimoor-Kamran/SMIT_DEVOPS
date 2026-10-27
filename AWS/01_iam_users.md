@@ -268,3 +268,68 @@ After:   https://smit-devops.signin.aws.amazon.com/console
 
 > The alias must be **unique across all of AWS** (like a username on Instagram).
 > It can only contain lowercase letters, numbers, and hyphens.
+
+---
+
+## Create Access Keys for CLI Access
+
+If the user needs to use the **AWS CLI** or code (Terraform, Python, etc.), they need **access keys**.
+
+An access key has two parts:
+
+| Part | Example | Like a... |
+|------|---------|----------|
+| **Access Key ID** | `AKIAIOSFODNN7EXAMPLE` | Username |
+| **Secret Access Key** | `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY` | Password |
+
+### Steps
+
+- Go to **IAM → Users** → click the user name **`ali`**
+- Open the **Security credentials** tab
+- Scroll down to **Access keys** → click **Create access key**
+- **Use case:** choose **Command Line Interface (CLI)**
+- Tick ✅ **I understand the above recommendation and want to proceed to create an access key**
+- Click **Next**
+- **Description tag** *(optional)*: e.g. `ali-laptop-cli`
+- Click **Create access key**
+- Click **Download .csv file** (or copy both values)
+- Click **Done**
+
+> ⚠️ The **Secret Access Key** is shown **only once**. If you lose it, delete the key and create a new one.
+> ⚠️ **Never** push access keys to GitHub. Bots scan GitHub all the time and will use your keys within minutes.
+> One user can have a maximum of **2** access keys at the same time.
+
+### Configure AWS CLI with the Keys
+
+On your Ubuntu / WSL terminal:
+
+```bash
+aws configure
+```
+
+It will ask:
+
+```
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]: us-east-1
+Default output format [None]: json
+```
+
+Test that it works:
+
+```bash
+aws sts get-caller-identity
+```
+
+Output:
+
+```json
+{
+    "UserId": "AIDAEXAMPLEUSERID",
+    "Account": "123456789012",
+    "Arn": "arn:aws:iam::123456789012:user/ali"
+}
+```
+
+If you see your username in the `Arn`, the CLI is connected as `ali`. ✅
