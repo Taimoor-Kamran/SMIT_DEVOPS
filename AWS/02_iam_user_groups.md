@@ -591,3 +591,36 @@ Even if a user has `AmazonS3FullAccess`, this stops them from deleting any bucke
 
 > `${aws:username}` is a **policy variable**. AWS replaces it with the name of the user who is signed in.
 > So `ali` can only change **ali's** keys, and `sara` only **sara's** keys — with one single policy.
+
+---
+
+## How AWS Decides: Allow or Deny?
+
+Every time a user clicks something or runs a command, AWS checks all their policies (from the user + all their groups):
+
+```
+          Request comes in
+                │
+                ▼
+  ┌───────────────────────────────┐
+  │ Is there an explicit DENY?    │── Yes ──► ❌ DENIED  (Deny always wins)
+  └───────────────┬───────────────┘
+                  │ No
+                  ▼
+  ┌───────────────────────────────┐
+  │ Is there an explicit ALLOW?   │── Yes ──► ✅ ALLOWED
+  └───────────────┬───────────────┘
+                  │ No
+                  ▼
+           ❌ DENIED  (deny by default)
+```
+
+**Three rules to remember:**
+1. Everything is **denied by default**.
+2. An **Allow** opens the door.
+3. An explicit **Deny** closes it — and **always wins**, no matter how many Allows exist.
+
+**Example:**
+- `ali` is in group `Developers` → has `AmazonS3FullAccess` (Allow `s3:*`)
+- `ali` is also in group `NoDelete` → has the "Block Deleting S3 Buckets" policy (Deny `s3:DeleteBucket`)
+- Result: `ali` can do everything in S3 **except** delete buckets.
