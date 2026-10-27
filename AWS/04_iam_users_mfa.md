@@ -473,3 +473,25 @@ aws s3 ls        # works now ✅ (until the session expires)
 
 > These variables only last for the **current terminal window**. When the session expires, repeat Step 2.
 > To go back to your normal keys: `unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN`
+
+---
+
+## Resync, Remove or Replace a User's MFA
+
+### Resync (codes keep failing)
+
+- Turn on **automatic date & time** on the phone first (most common fix)
+- **IAM → Users** → (user) → **Security credentials** → tick the MFA device → **Resync**
+- Enter two consecutive codes → **Resync**
+
+### Remove an MFA Device
+
+- **IAM → Users** → (user) → **Security credentials**
+- **Multi-factor authentication (MFA)** → tick ✅ the device → **Remove** → confirm
+
+### Replace (User Got a New Phone)
+
+1. User signs in with the **old** phone one last time
+2. **Assign MFA device** → add the **new** phone (e.g. `ali-new-phone`)
+3. Sign out and test sign-in with the new phone
+4. **Remove** the old device
