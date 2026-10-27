@@ -34,3 +34,16 @@
 **Why IAM users need MFA too:**
 Your admin IAM user (e.g. `taimoor-admin` with `AdministratorAccess`) is **almost as powerful as root**.
 If its password leaks and there's no MFA, an attacker can do almost anything.
+
+---
+
+## Root MFA vs IAM User MFA
+
+| | Root User MFA | IAM User MFA |
+|---|---|---|
+| Who sets it up | Root user only | Admin **or** the user themselves (if allowed) |
+| Where | Account name → Security credentials | IAM → Users → (user) → Security credentials |
+| Device types | Passkey/security key, Authenticator app, Hardware TOTP | Same 3 types |
+| Max devices | 8 | 8 per user |
+| Lost device recovery | Email + phone verification (self-service) | **Admin removes it** and user adds a new one |
+| Can be forced by policy | AWS requires it | **You** enforce it with an IAM policy |
