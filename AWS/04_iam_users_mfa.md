@@ -495,3 +495,18 @@ aws s3 ls        # works now ✅ (until the session expires)
 2. **Assign MFA device** → add the **new** phone (e.g. `ali-new-phone`)
 3. Sign out and test sign-in with the new phone
 4. **Remove** the old device
+
+---
+
+## User Lost Their MFA Device
+
+IAM users **cannot** recover MFA by themselves. The **admin** fixes it:
+
+1. **Verify** it's really the user (call them, check with their manager) — attackers also pretend to "lose" phones
+2. Admin signs in → **IAM → Users** → (user) → **Security credentials**
+3. Tick the lost device → **Remove**
+4. *(Optional but recommended)* **Reset the user's password** and **deactivate their access keys** if the phone may be stolen
+5. Ask the user to sign in and **assign a new MFA device** (Way 2), or assign it for them (Way 1)
+
+> If the **admin** loses their own MFA and no other admin exists, sign in as the **root user** to remove it.
+> This is one more reason to keep the root user safe with its own MFA.
