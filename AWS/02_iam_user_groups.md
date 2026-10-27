@@ -246,3 +246,19 @@ aws iam get-group --group-name Developers --query 'Users[].UserName'
 # All groups a user belongs to
 aws iam list-groups-for-user --user-name ali
 ```
+
+---
+
+## What is an IAM Policy?
+
+A **policy** is a **JSON document** that says which **actions** are **allowed** or **denied** on which **resources**.
+
+> By default, a new IAM user can do **nothing** at all.
+> Every permission must be given through a policy. This is called **"deny by default"**.
+
+**Simple analogy:**
+A policy is like a **permission slip**:
+*"ALLOW the holder to READ books from the LIBRARY."*
+- **Effect** → Allow
+- **Action** → Read
+- **Resource** → Library
