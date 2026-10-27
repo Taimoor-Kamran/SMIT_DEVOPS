@@ -280,3 +280,31 @@ A policy is like a **permission slip**:
 
 > AWS managed policies are easy but often give **more** access than needed.
 > As you grow, prefer **customer managed** policies that follow least privilege.
+
+---
+
+## Attach Policies to a Group
+
+### Attach an Existing Policy
+
+- **IAM → User groups** → click **`Developers`**
+- Open the **Permissions** tab
+- Click **Add permissions** → **Attach policies**
+- Search and tick ✅ the policy, e.g. **AmazonRDSReadOnlyAccess**
+- Click **Attach policies**
+
+### Add an Inline Policy to a Group
+
+- **Permissions** tab → **Add permissions** → **Create inline policy**
+- Build the policy (Visual or JSON) → **Next**
+- Give it a name → **Create policy**
+
+### Remove a Policy from a Group
+
+- **Permissions** tab → tick ✅ the policy → click **Remove** → confirm
+
+### Attach a Policy Directly to a User *(not recommended for daily use)*
+
+- **IAM → Users** → click the user → **Permissions** tab
+- **Add permissions** → **Add permissions** → **Attach policies directly**
+- Tick the policy → **Next** → **Add permissions**
