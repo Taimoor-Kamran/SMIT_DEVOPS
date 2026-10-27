@@ -430,3 +430,19 @@ aws iam list-access-keys --user-name ali                  # get the AccessKeyId
 aws iam delete-access-key --user-name ali --access-key-id AKIAIOSFODNN7EXAMPLE
 aws iam delete-user --user-name ali
 ```
+
+---
+
+## Best Practices
+
+| Practice | Why |
+|----------|-----|
+| Don't use the root user for daily work | Root has unlimited power — one mistake or leak = full account loss |
+| Create one IAM user **per person** | Never share one login between people — you can't tell who did what |
+| Give **least privilege** | Only give the permissions someone actually needs |
+| Use **groups** to give permissions | Easier to manage 1 group than 50 users one by one |
+| Enable **MFA** on every user | A stolen password alone is no longer enough to log in |
+| Force password reset on first login | Only the user knows their final password |
+| Never commit access keys to Git | Leaked keys get abused within minutes |
+| Rotate access keys regularly (e.g. every 90 days) | Limits the damage if a key leaks silently |
+| Remove unused users and keys | Fewer doors = fewer ways to break in |
