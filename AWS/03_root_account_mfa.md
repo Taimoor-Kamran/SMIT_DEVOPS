@@ -427,3 +427,7 @@ Tick all of these for a safe account:
 | STS | Security Token Service — gives temporary AWS credentials |
 | IAM Identity Center | AWS single sign-on service for many users and accounts |
 | Federation | Logging in to AWS with an outside identity (Google, Microsoft, Okta) |
+
+---
+
+*End of Root Account MFA — AWS*
