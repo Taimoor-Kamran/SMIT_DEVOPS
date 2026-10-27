@@ -510,3 +510,40 @@ IAM users **cannot** recover MFA by themselves. The **admin** fixes it:
 
 > If the **admin** loses their own MFA and no other admin exists, sign in as the **root user** to remove it.
 > This is one more reason to keep the root user safe with its own MFA.
+
+---
+
+## MFA with AWS CLI Commands (Admin)
+
+Setting up virtual MFA fully from the CLI is possible (useful for automation):
+
+```bash
+# 1. Create a virtual MFA device and save its QR code as an image
+aws iam create-virtual-mfa-device \
+  --virtual-mfa-device-name ali-phone \
+  --outfile ali-qr.png \
+  --bootstrap-method QRCodePNG
+
+# 2. Scan ali-qr.png with the phone app, then enable it with two consecutive codes
+aws iam enable-mfa-device \
+  --user-name ali \
+  --serial-number arn:aws:iam::123456789012:mfa/ali-phone \
+  --authentication-code1 482913 \
+  --authentication-code2 105377
+
+# 3. List MFA devices of the user
+aws iam list-mfa-devices --user-name ali
+
+# 4. Resync
+aws iam resync-mfa-device --user-name ali \
+  --serial-number arn:aws:iam::123456789012:mfa/ali-phone \
+  --authentication-code1 111111 --authentication-code2 222222
+
+# 5. Remove: deactivate first, then delete the virtual device
+aws iam deactivate-mfa-device --user-name ali \
+  --serial-number arn:aws:iam::123456789012:mfa/ali-phone
+aws iam delete-virtual-mfa-device \
+  --serial-number arn:aws:iam::123456789012:mfa/ali-phone
+```
+
+> ⚠️ Delete the `ali-qr.png` file after scanning — anyone with that image can generate Ali's codes.
