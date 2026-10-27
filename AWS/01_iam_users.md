@@ -492,3 +492,7 @@ aws iam delete-user --user-name ali
 | Account alias | A friendly name that replaces the Account ID in the sign-in URL |
 | ARN | Amazon Resource Name — the unique ID of anything in AWS, e.g. `arn:aws:iam::123456789012:user/ali` |
 | Least privilege | Give only the minimum permissions needed to do the job |
+
+---
+
+*End of IAM Users — AWS*
