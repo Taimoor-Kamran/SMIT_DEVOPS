@@ -254,3 +254,19 @@ If you lose your only phone, signing in becomes difficult. So register a **secon
 
 > Apps like **Authy** and **Microsoft Authenticator** can also back up your codes to the cloud,
 > so if you change phones you can restore them.
+
+---
+
+## Lost Your MFA Device? (Recovery)
+
+If your phone is lost, broken or reset and you have **no backup device**:
+
+- Go to the root sign-in page → enter email and password
+- On the MFA screen, click **Troubleshoot MFA** / **Sign in using alternative factors**
+- **Step 1 — Email verification:** AWS sends an email to your root email address → click the link in it
+- **Step 2 — Phone verification:** AWS calls the **phone number** on your account → enter the code shown on screen
+- After both steps, you are signed in → go to **Security credentials** → remove the old device and add a new one
+
+> ⚠️ This only works if your **root email** and **account phone number** are correct and you still have access to them.
+> Keep them up to date: account name (top right) → **Account** → **Contact information**.
+> If even this fails, you must contact **AWS Support** and prove ownership of the account.
