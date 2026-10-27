@@ -333,3 +333,27 @@ Output:
 ```
 
 If you see your username in the `Arn`, the CLI is connected as `ali`. ✅
+
+---
+
+## Set a Password Policy
+
+A **password policy** sets the rules for IAM user passwords (minimum length, symbols, expiry, etc.).
+
+**Steps:**
+
+- Go to **IAM → Account settings** (left sidebar)
+- In the **Password policy** section, click **Edit**
+- Choose **Custom**
+- Set the rules, for example:
+  - ✅ Minimum password length: **12** characters
+  - ✅ Require at least one uppercase letter (A–Z)
+  - ✅ Require at least one lowercase letter (a–z)
+  - ✅ Require at least one number (0–9)
+  - ✅ Require at least one non-alphanumeric character (`! @ # $ %`)
+  - ✅ Turn on password expiration: **90** days
+  - ✅ Prevent password reuse: remember last **5** passwords
+  - ✅ Allow users to change their own password
+- Click **Save changes**
+
+> The password policy applies to **IAM users only**. It does **not** apply to the root user.
