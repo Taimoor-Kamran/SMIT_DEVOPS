@@ -619,3 +619,7 @@ aws iam delete-virtual-mfa-device \
 | Session token | Third part of temporary credentials, required with `ASIA...` keys |
 | Resync | Re-align AWS with a device whose codes drifted |
 | Unassigned virtual MFA | A virtual device created but never attached to a user |
+
+---
+
+*End of IAM Users MFA — AWS*
