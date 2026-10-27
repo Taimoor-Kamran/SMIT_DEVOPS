@@ -446,3 +446,49 @@ aws iam delete-user --user-name ali
 | Never commit access keys to Git | Leaked keys get abused within minutes |
 | Rotate access keys regularly (e.g. every 90 days) | Limits the damage if a key leaks silently |
 | Remove unused users and keys | Fewer doors = fewer ways to break in |
+
+---
+
+## Quick Reference
+
+### Console Path Cheat Sheet
+
+| Task | Where to go |
+|------|------------|
+| Create user | IAM → Users → Create user |
+| Reset password | IAM → Users → (user) → Security credentials → Manage console access |
+| Create access key | IAM → Users → (user) → Security credentials → Create access key |
+| Password policy | IAM → Account settings → Password policy → Edit |
+| Account alias | IAM → Dashboard → Account Alias → Create |
+| Delete user | IAM → Users → select user → Delete |
+
+### IAM User CLI Cheat Sheet
+
+| Command | What it does |
+|---------|-------------|
+| `aws iam create-user --user-name ali` | Create a user |
+| `aws iam create-login-profile --user-name ali --password '...'` | Give console password |
+| `aws iam list-users` | List all users |
+| `aws iam get-user --user-name ali` | Show details of one user |
+| `aws iam attach-user-policy --user-name ali --policy-arn <arn>` | Attach a policy to a user |
+| `aws iam create-access-key --user-name ali` | Create access keys |
+| `aws iam delete-user --user-name ali` | Delete a user |
+| `aws sts get-caller-identity` | Show "who am I" for the current CLI login |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| IAM | Identity and Access Management — controls who can do what in AWS |
+| Root user | The email-based owner login created at sign-up, has full access |
+| IAM user | A person or app identity created inside your AWS account |
+| Console access | Logging in to the AWS website with username + password |
+| Programmatic access | Using AWS from CLI/code with access keys |
+| Access Key ID | Public part of an access key (like a username) |
+| Secret Access Key | Private part of an access key (like a password) — shown only once |
+| Policy | A JSON document that lists what actions are allowed or denied |
+| AWS managed policy | A ready-made policy created and maintained by AWS (e.g. `ReadOnlyAccess`) |
+| Account ID | The 12-digit number that identifies your AWS account |
+| Account alias | A friendly name that replaces the Account ID in the sign-in URL |
+| ARN | Amazon Resource Name — the unique ID of anything in AWS, e.g. `arn:aws:iam::123456789012:user/ali` |
+| Least privilege | Give only the minimum permissions needed to do the job |
