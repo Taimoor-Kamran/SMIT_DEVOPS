@@ -367,3 +367,19 @@ AWS has several ways to prove **who you are**. Here is the full picture for begi
 
 > **Rule of thumb:** prefer **temporary** credentials (roles, Identity Center, STS) over **long-term** ones (access keys).
 > Temporary credentials expire automatically, so a leak causes much less damage.
+
+---
+
+## Root User Security Checklist
+
+Tick all of these for a safe account:
+
+- [ ] Root user has a **strong, unique password** saved in a password manager
+- [ ] Root user has **MFA** turned on
+- [ ] A **backup MFA device** is registered
+- [ ] Root user has **no access keys**
+- [ ] Root email account has its own **2-step verification**
+- [ ] Account **phone number** and **contact info** are correct
+- [ ] **Alternate contacts** are set
+- [ ] A **budget / billing alert** is created
+- [ ] An **admin IAM user** with MFA exists, and root is no longer used daily
