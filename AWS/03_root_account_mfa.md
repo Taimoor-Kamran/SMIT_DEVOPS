@@ -234,3 +234,23 @@ From now on, signing in as root works like this:
   - **Passkey / security key:** touch the key or confirm with fingerprint/face
   - If you have several devices, AWS lets you choose which one to use
 - You are in ✅
+
+---
+
+## Add a Backup MFA Device
+
+If you lose your only phone, signing in becomes difficult. So register a **second** device:
+
+- Repeat **Method 1** or **Method 2** with a **different** device name, e.g. `root-backup-yubikey`
+- Now you can sign in with **either** device
+
+**Good backup combinations:**
+
+| Main device | Backup device |
+|-------------|---------------|
+| Phone authenticator app | YubiKey security key |
+| Laptop passkey | Phone authenticator app |
+| YubiKey #1 | YubiKey #2 kept in a safe place |
+
+> Apps like **Authy** and **Microsoft Authenticator** can also back up your codes to the cloud,
+> so if you change phones you can restore them.
