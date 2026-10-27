@@ -343,3 +343,16 @@ So even if the user has `AdministratorAccess`, without MFA they can do nothing e
 
 > ⚠️ `ForceMFA` also blocks **plain access keys** used in the CLI.
 > CLI users must get a temporary session with MFA (see [Using MFA with AWS CLI](#using-mfa-with-aws-cli)).
+
+---
+
+## Sign In as an IAM User with MFA
+
+- Open your sign-in URL, e.g. `https://smit-devops.signin.aws.amazon.com/console`
+  *(or go to `https://console.aws.amazon.com` → **IAM user** → enter Account ID / alias)*
+- Enter **IAM username** and **Password** → **Sign in**
+- The **Multi-factor authentication** screen appears:
+  - **Authenticator app:** type the 6-digit code from the app → **Submit**
+  - **Passkey / security key:** touch the key or use fingerprint/face
+  - If you have more than one device, choose which one to use
+- You are signed in ✅
