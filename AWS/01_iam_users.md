@@ -246,3 +246,25 @@ Now the user is inside the AWS Console. In the top-right corner they will see `a
 
 > **Where do I find my Account ID?**
 > Click your account name in the top-right corner of the console — the 12-digit Account ID is shown there.
+
+---
+
+## Create an Account Alias (Easy Sign-in URL)
+
+A 12-digit number is hard to remember. You can replace it with a friendly name called an **account alias**.
+
+```
+Before:  https://123456789012.signin.aws.amazon.com/console
+After:   https://smit-devops.signin.aws.amazon.com/console
+```
+
+**Steps:**
+
+- Go to **IAM → Dashboard**
+- On the right side, find **AWS Account** → **Account Alias**
+- Click **Create**
+- Type an alias, e.g. `smit-devops`
+- Click **Save changes**
+
+> The alias must be **unique across all of AWS** (like a username on Instagram).
+> It can only contain lowercase letters, numbers, and hyphens.
