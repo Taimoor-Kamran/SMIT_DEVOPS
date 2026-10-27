@@ -715,3 +715,52 @@ aws iam delete-group --group-name Developers
 | Review **Last Accessed** every few months | Remove unused permissions |
 | Download the **credential report** regularly | Find users without MFA or with old access keys |
 | Keep `AdministratorAccess` to a very small group | Fewer admins = less risk |
+
+---
+
+## Quick Reference
+
+### Console Path Cheat Sheet
+
+| Task | Where to go |
+|------|------------|
+| Create group | IAM → User groups → Create group |
+| Add user to group | IAM → User groups → (group) → Users → Add users |
+| Attach policy to group | IAM → User groups → (group) → Permissions → Add permissions → Attach policies |
+| Create custom policy | IAM → Policies → Create policy |
+| Count users | IAM → Dashboard → IAM resources |
+| Credential report | IAM → Credential report → Download credentials report |
+| Test permissions | `https://policysim.aws.amazon.com` |
+| Unused permissions | (user/group) → Last Accessed tab |
+
+### Groups & Policies CLI Cheat Sheet
+
+| Command | What it does |
+|---------|-------------|
+| `aws iam create-group --group-name Developers` | Create a group |
+| `aws iam add-user-to-group --group-name Developers --user-name ali` | Add user to group |
+| `aws iam get-group --group-name Developers` | List users in a group |
+| `aws iam list-users --query 'length(Users)'` | Count all users |
+| `aws iam get-account-summary` | Counts of users, groups, policies + limits |
+| `aws iam attach-group-policy --group-name <g> --policy-arn <arn>` | Attach a policy to a group |
+| `aws iam create-policy --policy-name <n> --policy-document file://p.json` | Create custom policy |
+| `aws iam list-policies --scope Local` | List your custom policies |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| User group | A collection of IAM users that share the same permissions |
+| Policy | JSON document that allows or denies actions on resources |
+| AWS managed policy | Ready-made policy created by AWS |
+| Customer managed policy | Policy you create yourself and can reuse |
+| Inline policy | Policy embedded directly in one user/group/role |
+| Effect | `Allow` or `Deny` |
+| Action | The operation, e.g. `s3:GetObject` |
+| Resource | The thing the action works on, written as an ARN |
+| Condition | Extra rule for when the statement applies (IP, region, MFA) |
+| Explicit deny | A `Deny` statement — always overrides any `Allow` |
+| Implicit deny | Default deny when nothing allows the action |
+| Policy variable | Placeholder like `${aws:username}` filled in by AWS at runtime |
+| Policy Simulator | Tool to test permissions without making real changes |
+| Credential report | CSV of all users with password, MFA and key status |
