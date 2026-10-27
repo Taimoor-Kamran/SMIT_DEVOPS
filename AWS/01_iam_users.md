@@ -36,3 +36,22 @@ Think of your AWS account as an **office building**.
 
 > IAM is a **global** service. You do not choose a region for it.
 > A user you create is available in **all** regions of your account.
+
+---
+
+## Root User vs IAM User
+
+When you first create an AWS account, you sign in with the **email and password** you used to sign up.
+This identity is called the **root user**.
+
+| | Root User | IAM User |
+|---|---|---|
+| Created when | You sign up for AWS | You (or an admin) create it inside IAM |
+| Signs in with | Email address + password | Account ID (or alias) + username + password |
+| Permissions | **Full access to everything** — cannot be limited | Only what you give it through policies |
+| How many | Only one per account | Up to 5,000 per account |
+| Can close the account / change billing plan | Yes | No |
+| Should be used daily | **No** — only for rare account-level tasks | **Yes** — use this for daily work |
+
+> **Golden rule:** Lock the root user away (strong password + MFA) and use **IAM users** for daily work.
+> See `03_root_account_mfa.md` for how to protect the root user.
