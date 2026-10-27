@@ -67,3 +67,17 @@ Imagine you have **50 developers**, and each one needs the same 5 policies.
 | New developer joins → attach 5 policies again | New developer joins → add to group (1 click) |
 | Developer changes team → find and remove each policy | Move them from one group to another |
 | Hard to see who has what | Open the group and see everything in one place |
+
+---
+
+## Rules and Limits of Groups
+
+| Rule | Detail |
+|------|--------|
+| A group contains **only users** | You cannot put a group inside another group (no nested groups) |
+| A user can be in **many groups** | Up to **10 groups** per user |
+| Permissions **add up** | If `ali` is in `Developers` and `Testers`, he gets permissions from **both** |
+| Groups can't sign in | A group is not an identity — it has no password or access keys |
+| Max groups per account | **300** (default limit) |
+| Max managed policies per group | **10** (default limit, can be increased to 20) |
+| Group names | Must be unique in the account, letters/numbers and `+ = , . @ _ -` |
