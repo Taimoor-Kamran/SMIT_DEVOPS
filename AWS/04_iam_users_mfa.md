@@ -19,3 +19,18 @@
 14. [Troubleshooting](#troubleshooting)
 15. [Best Practices](#best-practices)
 16. [Quick Reference](#quick-reference)
+
+---
+
+## Quick Recap: What is MFA?
+
+**MFA (Multi-Factor Authentication)** means the user needs **two things** to sign in:
+1. Their **password** (something they know)
+2. A **code or touch** from a device (something they have) — phone app, passkey or YubiKey
+
+> We already learned MFA basics and device types in `03_root_account_mfa.md`.
+> This file focuses on **IAM users** — the people working in your account every day.
+
+**Why IAM users need MFA too:**
+Your admin IAM user (e.g. `taimoor-admin` with `AdministratorAccess`) is **almost as powerful as root**.
+If its password leaks and there's no MFA, an attacker can do almost anything.
