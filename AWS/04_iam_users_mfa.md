@@ -112,3 +112,26 @@ AWS shows **"MFA device assigned"**. In the **Users** list, the **MFA** column f
 
 > **For passkey / security key:** after choosing the type and clicking **Next**, the browser pop-up appears.
 > The user must touch **their** key or use **their** fingerprint on **that** computer — so this also needs the user present.
+
+---
+
+## Way 2: User Sets Up Their Own MFA
+
+This is the **better** way for teams — every user registers MFA on their own device, wherever they are.
+
+> ⚠️ The user needs permission to do this. If they get **"Access denied"**, the admin must first attach
+> the policy from the next section ([Allow Users to Manage Their Own MFA](#allow-users-to-manage-their-own-mfa-policy)).
+
+### Steps (done by the user, e.g. `sara`)
+
+- Sign in to the console as `sara` (sign-in URL + username + password)
+- Click **your username** in the top-right corner (e.g. `sara @ 1234-5678-9012`)
+- Click **Security credentials**
+- In **Multi-factor authentication (MFA)** → click **Assign MFA device**
+- **Device name:** `sara-phone`
+- **MFA device:** **Authenticator app** → **Next**
+- Click **Show QR code** → scan it with the authenticator app on your phone
+- Enter **MFA code 1** → wait → enter **MFA code 2**
+- Click **Add MFA** ✅
+
+**Important:** after adding MFA, **sign out and sign in again**. The new login will ask for the MFA code, and only then will the user get full permissions (if MFA is enforced).
