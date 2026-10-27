@@ -270,3 +270,21 @@ If your phone is lost, broken or reset and you have **no backup device**:
 > ⚠️ This only works if your **root email** and **account phone number** are correct and you still have access to them.
 > Keep them up to date: account name (top right) → **Account** → **Contact information**.
 > If even this fails, you must contact **AWS Support** and prove ownership of the account.
+
+---
+
+## Remove or Replace an MFA Device
+
+**When changing phones**, add the new device **first**, then remove the old one.
+
+- Sign in as root → **Security credentials**
+- **Multi-factor authentication (MFA)** → tick ✅ the old device
+- Click **Remove** → confirm **Remove**
+
+### Resync an Authenticator App
+
+If codes keep failing (usually because the phone clock is wrong):
+
+- First, on your phone, turn on **automatic date & time** in settings
+- In AWS: **Security credentials** → tick the device → **Resync**
+- Enter two consecutive codes → **Resync**
