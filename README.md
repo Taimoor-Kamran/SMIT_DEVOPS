@@ -136,3 +136,72 @@ SMIT_DEVOPS/
 │   ├── class_1/ class_2/
 └── README.md        # You are here
 ```
+
+---
+
+## Notes Index
+
+### 🐧 Linux_OS — Linux Basics
+
+| Class | Topic |
+|-------|-------|
+| [Class 1](Linux_OS/class_1/notes.md) | What is DevOps, installing WSL and Ubuntu on Windows |
+| [Class 2](Linux_OS/class_2/notes.md) | Basic commands — `pwd`, `ls`, `mkdir`, `cd`, `touch`, `cat` and more |
+| [Class 3](Linux_OS/class_3/notes.md) | Searching files (`locate`, `find`, `grep`), help commands, viewing & comparing files |
+| [Class 4](Linux_OS/class_4/notes.md) | `chmod`, `chgrp`, downloads, system info, text processing, date & calendar |
+| [Class 5](Linux_OS/class_5/notes.md) | User management — add, modify, delete users, passwords, expiry & lock |
+| [Class 6](Linux_OS/class_6/nodes.md) | Red Hat Linux, SNAP package manager, SNAP vs APT |
+| [Class 7](Linux_OS/class_7/nodes.md) | Networking commands — `ip`, `ping`, `traceroute`, `netstat`, `dig`, `curl`, `scp` |
+| [Class 8](Linux_OS/class_8/nodes.md) | Shell scripting — shells, variables, input, exit status, operators |
+
+### 🚀 Phase 1 — DevOps Fundamentals & Linux Administration
+
+| Class | Topic |
+|-------|-------|
+| [Class 1](Phase_1/class1.md) | DevOps overview, SDLC, environments, SSH keys, AWS EC2, VirtualBox VM |
+| [Class 2](Phase_1/class2.md) | Linux filesystem, paths, permissions basics, core commands |
+| [Class 3](Phase_1/class_3.md) | Users, groups, `chmod`, `chown`, `umask`, file ownership for services |
+| [Class 4](Phase_1/class_4.md) | Service users, directory ownership, secure permissions |
+| [Class 5](Phase_1/class_5.md) | Processes and signals — `ps`, `top`, `htop`, `kill` |
+| [Class 6](Phase_1/class_6.md) | Basic tuning — heavy processes, simulating load, nice values, safe termination |
+| [Class 7](Phase_1/class_7.md) | Logs, disk (`df`, `du`, inodes), networking (IP, DNS, HTTP), cloud networking intro |
+
+### 🌿 Phase 2 — Git, GitHub & CI/CD
+
+| Class | Topic |
+|-------|-------|
+| [Class 1](Phase_2/class1.md) | Git fundamentals, local vs remote, recovering lost changes with `reflog` |
+| [Class 2](Phase_2/class2.md) | Branching, trunk-based development, feature flags, rebase |
+| [Class 3](Phase_2/class3.md) | Pull request workflow, code review, environment promotion |
+| [Class 4](Phase_2/class4.md) | GitHub Actions — PR checks, merge policies, branch protection |
+
+### 🛠️ Phase 3 — Scripting & Automation
+
+| Class | Topic |
+|-------|-------|
+| [Class 1](Phase_3/class1.md) | Bash scripting basics — variables, arguments, exit codes |
+| [Class 2](Phase_3/class2.md) | Start/stop services with `systemctl` and tail logs |
+| [Class 3](Phase_3/class3.md) | Advanced Bash — loops, conditionals, cron jobs, monitoring script |
+| [Class 4](Phase_3/class4.md) | Python for DevOps — files, JSON, API requests, reports |
+
+### 🐳 Phase 4 — Containers & Docker
+
+| Class | Topic |
+|-------|-------|
+| [Class 1](Phase_4/class1.md) | Containers vs VMs, Docker images, image layers, Docker commands |
+
+### ☁️ AWS — Cloud & Security
+
+| # | Topic |
+|---|-------|
+| [01](AWS/01_iam_users.md) | IAM users — create users, sign-in, account alias, access keys, password policy |
+| [02](AWS/02_iam_user_groups.md) | User groups, policies, custom policies, allow vs deny, Policy Simulator |
+| [03](AWS/03_root_account_mfa.md) | Root account MFA and other AWS authentication methods |
+| [04](AWS/04_iam_users_mfa.md) | MFA for IAM users, enforcing MFA, MFA with the AWS CLI |
+
+### 🌐 HTML — Web Basics
+
+| Class | Topic |
+|-------|-------|
+| [Class 1](HTML/class_1/nodes.md) | HTML structure, headings, paragraphs, text formatting, quotations |
+| [Class 2](HTML/class_2/notes.md) | `abbr`, `cite`, `address`, `ins`/`del`, ordered, unordered & description lists |
