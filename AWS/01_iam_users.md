@@ -215,3 +215,34 @@ You can:
 > If you close this page without saving it, you will have to **reset** the password later.
 
 Click **Return to users list**. Your user `ali` now appears in the users list. 🎉
+
+---
+
+## How the New User Signs In
+
+Give the user these 3 things (send the password through a **different** channel than the URL, e.g. URL by email and password by WhatsApp/phone):
+
+1. **Sign-in URL** → `https://123456789012.signin.aws.amazon.com/console`
+2. **Username** → `ali`
+3. **Temporary password**
+
+**The user does this:**
+
+- Open the sign-in URL
+- The **Account ID** is already filled in (from the URL)
+- Enter **IAM username:** `ali`
+- Enter **Password:** the temporary password
+- Click **Sign in**
+- AWS asks to set a **new password** → enter old password, new password, confirm → **Confirm password change**
+
+Now the user is inside the AWS Console. In the top-right corner they will see `ali @ 1234-5678-9012`.
+
+**Another way to sign in** (without the special URL):
+
+- Go to `https://console.aws.amazon.com`
+- Choose **IAM user**
+- Enter the **12-digit Account ID** (or alias) → **Next**
+- Enter username and password
+
+> **Where do I find my Account ID?**
+> Click your account name in the top-right corner of the console — the 12-digit Account ID is shown there.
