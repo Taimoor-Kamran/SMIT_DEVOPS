@@ -262,3 +262,21 @@ A policy is like a **permission slip**:
 - **Effect** → Allow
 - **Action** → Read
 - **Resource** → Library
+
+---
+
+## Types of Policies
+
+| Type | Who creates it | Reusable? | Example | When to use |
+|------|----------------|-----------|---------|-------------|
+| **AWS managed** | AWS | Yes — attach to many users/groups | `AdministratorAccess`, `ReadOnlyAccess`, `AmazonS3FullAccess` | Quick start, common needs |
+| **AWS managed – job function** | AWS | Yes | `Billing`, `DatabaseAdministrator`, `NetworkAdministrator` | Common job roles |
+| **Customer managed** | **You** | Yes | `S3-MyBucket-ReadOnly` | ✅ When you need exact, limited permissions |
+| **Inline** | You | **No** — lives inside one user/group/role only | — | Rare, strict one-to-one cases |
+
+**How to recognise them in the console:**
+- AWS managed policies have an orange/yellow AWS icon and type **AWS managed**
+- Your own policies show type **Customer managed**
+
+> AWS managed policies are easy but often give **more** access than needed.
+> As you grow, prefer **customer managed** policies that follow least privilege.
