@@ -331,3 +331,39 @@ The root email can **reset the password**, so whoever controls the email control
 - Create an IAM user (e.g. `taimoor-admin`) in the `Admins` group with `AdministratorAccess`
 - Turn on MFA for that user too (see `04_iam_users_mfa.md`)
 - Sign out of root and use the admin user from now on
+
+---
+
+## Other Authentication Methods Available in AWS
+
+AWS has several ways to prove **who you are**. Here is the full picture for beginners:
+
+| Method | Who uses it | How it works | Notes |
+|--------|------------|--------------|-------|
+| **Root email + password** | Account owner | Sign in with sign-up email | Use rarely, always with MFA |
+| **IAM username + password** | IAM users | Account ID/alias + username + password | Daily console work |
+| **MFA (app / passkey / hardware)** | Root + IAM users | Second step after password | Always turn on |
+| **Access keys** | IAM users (CLI, SDK, Terraform) | Access Key ID + Secret Access Key | Long-term — keep secret, rotate often |
+| **Temporary credentials (STS)** | Users, apps, roles | Short-lived keys that expire (15 min – 12 hours) | Safer than long-term keys |
+| **IAM Roles** | AWS services (EC2, Lambda), other accounts | Service "assumes" a role and gets temporary credentials | No passwords or keys to store |
+| **IAM Identity Center (SSO)** | Companies with many users / accounts | One login portal for all AWS accounts | Recommended by AWS for organisations |
+| **Identity federation (SAML / OIDC)** | Companies using Google Workspace, Microsoft Entra ID, Okta | Log in to AWS using your company login | No separate AWS passwords |
+| **SSH key pairs** | EC2 Linux servers | Private `.pem` key to SSH into a server | Not for AWS console — only for the server itself |
+| **Amazon Cognito** | Users of **your** app (website/mobile) | Sign-up / sign-in for your app's customers | Not for AWS console access |
+
+```
+   Who needs access?
+         │
+         ├── Account owner (rare tasks)  ──►  Root user + MFA
+         │
+         ├── A person (daily work)       ──►  IAM user + MFA   (or IAM Identity Center)
+         │
+         ├── A script / CLI on laptop    ──►  Access keys (+ MFA session)  or  Identity Center CLI login
+         │
+         ├── An AWS service (EC2, Lambda)──►  IAM Role  (no keys!)
+         │
+         └── Customers of your app       ──►  Amazon Cognito
+```
+
+> **Rule of thumb:** prefer **temporary** credentials (roles, Identity Center, STS) over **long-term** ones (access keys).
+> Temporary credentials expire automatically, so a leak causes much less damage.
