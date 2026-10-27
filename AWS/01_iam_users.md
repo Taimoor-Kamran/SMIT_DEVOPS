@@ -391,3 +391,42 @@ A **password policy** sets the rules for IAM user passwords (minimum length, sym
 - Type the username to confirm → click **Delete user**
 
 > Deleting a user cannot be undone. Their password, access keys, and MFA devices are deleted too.
+
+---
+
+## Create a User with AWS CLI
+
+Everything above can also be done from the terminal (you must be logged in with an admin user).
+
+```bash
+# 1. Create the user
+aws iam create-user --user-name ali
+
+# 2. Give console access (password) and force a reset on first login
+aws iam create-login-profile --user-name ali --password 'TempPass@12345' --password-reset-required
+
+# 3. Attach a policy directly
+aws iam attach-user-policy --user-name ali --policy-arn arn:aws:iam::aws:policy/ReadOnlyAccess
+
+# 4. Create access keys for CLI
+aws iam create-access-key --user-name ali
+
+# 5. List all users
+aws iam list-users
+
+# 6. See details of one user
+aws iam get-user --user-name ali
+
+# 7. See which policies are attached to the user
+aws iam list-attached-user-policies --user-name ali
+```
+
+**Delete a user from CLI** (you must remove everything attached to it first):
+
+```bash
+aws iam delete-login-profile --user-name ali
+aws iam detach-user-policy --user-name ali --policy-arn arn:aws:iam::aws:policy/ReadOnlyAccess
+aws iam list-access-keys --user-name ali                  # get the AccessKeyId
+aws iam delete-access-key --user-name ali --access-key-id AKIAIOSFODNN7EXAMPLE
+aws iam delete-user --user-name ali
+```
