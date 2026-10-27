@@ -135,3 +135,85 @@ This is the **better** way for teams — every user registers MFA on their own d
 - Click **Add MFA** ✅
 
 **Important:** after adding MFA, **sign out and sign in again**. The new login will ask for the MFA code, and only then will the user get full permissions (if MFA is enforced).
+
+---
+
+## Allow Users to Manage Their Own MFA (Policy)
+
+By default, a new user can't add their own MFA device. We create a **custom policy** that lets every user manage **only their own** password and MFA.
+
+### Step 1: Create the Policy
+
+- **IAM → Policies** → **Create policy**
+- Click the **JSON** tab → delete everything → paste:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowViewAccountInfo",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetAccountPasswordPolicy",
+        "iam:ListVirtualMFADevices"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AllowManageOwnPasswordAndUserInfo",
+      "Effect": "Allow",
+      "Action": [
+        "iam:ChangePassword",
+        "iam:GetUser"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    },
+    {
+      "Sid": "AllowManageOwnVirtualMFADevice",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateVirtualMFADevice"
+      ],
+      "Resource": "arn:aws:iam::*:mfa/*"
+    },
+    {
+      "Sid": "AllowManageOwnUserMFA",
+      "Effect": "Allow",
+      "Action": [
+        "iam:DeactivateMFADevice",
+        "iam:EnableMFADevice",
+        "iam:ListMFADevices",
+        "iam:ResyncMFADevice"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    }
+  ]
+}
+```
+
+- Click **Next**
+- **Policy name:** `ManageOwnMFA`
+- **Description:** `Lets each IAM user manage their own password and MFA device`
+- Click **Create policy**
+
+### What Each Statement Does
+
+| Sid | Allows |
+|-----|--------|
+| `AllowViewAccountInfo` | See the password rules and the list of MFA devices |
+| `AllowManageOwnPasswordAndUserInfo` | Change **own** password and view **own** user details |
+| `AllowManageOwnVirtualMFADevice` | Create a new virtual MFA device (the QR code) |
+| `AllowManageOwnUserMFA` | Turn on, turn off, list and resync **own** MFA devices |
+
+> `${aws:username}` is replaced by the signed-in user's name.
+> So `sara` can manage **only sara's** MFA, never `ali`'s.
+
+### Step 2: Attach it to a Group
+
+- **IAM → User groups** → create a group called **`AllUsers`** (or use an existing group)
+- **Permissions** tab → **Add permissions** → **Attach policies**
+- Filter **Customer managed** → tick ✅ **ManageOwnMFA** → **Attach policies**
+- Add every IAM user to this group
+
+Now every user can set up their own MFA (Way 2). ✅
