@@ -113,3 +113,26 @@ Follow the folders in this order. Each step builds on the one before it.
 | 5 | `Phase_4/` | Package apps into containers with Docker |
 | 6 | `AWS/` | Move to the cloud and secure your AWS account |
 | — | `HTML/` | Optional — basics of how web pages are built |
+
+---
+
+## Folder Structure
+
+```
+SMIT_DEVOPS/
+├── Linux_OS/        # Linux basics: WSL, commands, permissions, users, networking, shell scripting
+│   ├── class_1/ ... class_8/
+├── Phase_1/         # DevOps fundamentals, SSH, Linux administration, processes, logs, disk, networking
+│   ├── class1.md ... class_7.md
+├── Phase_2/         # Git, branching, pull requests, code review, GitHub Actions
+│   ├── class1.md ... class4.md
+├── Phase_3/         # Bash scripting, services & logs, loops & cron, Python for DevOps
+│   ├── class1.md ... class4.md
+├── Phase_4/         # Containers vs VMs, Docker images and layers
+│   └── class1.md
+├── AWS/             # AWS IAM users, groups, policies and MFA
+│   ├── 01_iam_users.md ... 04_iam_users_mfa.md
+├── HTML/            # HTML basics
+│   ├── class_1/ class_2/
+└── README.md        # You are here
+```
