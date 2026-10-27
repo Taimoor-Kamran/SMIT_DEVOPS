@@ -283,3 +283,19 @@ git pull
 - **Practise daily**, even 30 minutes. DevOps is a hands-on skill.
 - **Never share secrets** — passwords, `.pem` keys, or AWS access keys must never be pushed to GitHub.
 - **Build small projects** — a backup script, a Dockerised app, a GitHub Actions pipeline.
+
+---
+
+## Contributing / Found a Mistake?
+
+These are learning notes, so improvements are welcome!
+
+1. **Fork** this repository
+2. Create a branch: `git checkout -b fix/typo-in-phase1`
+3. Make your change and commit: `git commit -m "Fix typo in Phase 1 class 2"`
+4. Push: `git push origin fix/typo-in-phase1`
+5. Open a **Pull Request**
+
+Or simply open an **Issue** describing what's wrong or what topic you'd like added.
+
+> If these notes helped you, please give the repo a ⭐ — it helps other beginners find it.
