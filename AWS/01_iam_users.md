@@ -16,3 +16,23 @@
 11. [Create a User with AWS CLI](#create-a-user-with-aws-cli)
 12. [Best Practices](#best-practices)
 13. [Quick Reference](#quick-reference)
+
+---
+
+## What is IAM?
+
+**IAM** stands for **Identity and Access Management**.
+It is a free AWS service that controls **who** can sign in to your AWS account and **what** they are allowed to do.
+
+IAM answers two simple questions:
+- **Authentication** → *Who are you?* (username + password, MFA, access keys)
+- **Authorization** → *What are you allowed to do?* (permissions / policies)
+
+**Simple analogy:**
+Think of your AWS account as an **office building**.
+- The **root user** is the **owner** of the building — they have the master key to every room.
+- **IAM users** are the **employees** — each one gets their own ID card.
+- **Policies** are the **rules written on the ID card** — which rooms (services) each employee can open.
+
+> IAM is a **global** service. You do not choose a region for it.
+> A user you create is available in **all** regions of your account.
