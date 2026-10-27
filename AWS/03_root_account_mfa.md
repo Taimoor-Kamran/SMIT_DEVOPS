@@ -38,3 +38,28 @@ The root user has **complete, unlimited access** to everything in the account �
 
 > Because it is so powerful, use the root user **only** for these rare tasks.
 > For daily work, create an IAM admin user (see `01_iam_users.md`).
+
+---
+
+## What is MFA?
+
+**MFA** stands for **Multi-Factor Authentication**.
+It means you need **two different things** to log in instead of just one password.
+
+| Factor | Meaning | Example |
+|--------|---------|---------|
+| Something you **know** | A secret in your head | Password |
+| Something you **have** | A physical device | Mobile phone app, YubiKey |
+| Something you **are** | Your body | Fingerprint, Face ID |
+
+**Simple analogy:**
+Your password is the **key** to your house. MFA is a **security guard** at the door who also checks your **ID card**.
+Even if a thief steals your key (password), the guard won't let them in without your ID card (phone).
+
+```
+ Without MFA:   Password  ───────────────────────────────►  ✅ Logged in
+
+ With MFA:      Password  ──►  6-digit code from phone  ──►  ✅ Logged in
+                    │                     │
+             (something you know)  (something you have)
+```
