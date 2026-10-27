@@ -650,3 +650,15 @@ Shows which services a user/group actually **used** — helps you remove permiss
 
 - **IAM → Policies** → click the policy → **Entities attached** tab
 - Shows every user, group and role that has this policy
+
+---
+
+## Delete a Group
+
+- **IAM → User groups**
+- Tick ✅ the group, e.g. `Testers`
+- Click **Delete**
+- Type the group name to confirm → **Delete**
+
+> Deleting a group **does not delete the users** inside it.
+> The users stay, but they lose the permissions that came from this group.
