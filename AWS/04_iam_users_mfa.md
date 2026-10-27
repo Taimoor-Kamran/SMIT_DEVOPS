@@ -409,3 +409,67 @@ for user in $(aws iam list-users --query 'Users[].UserName' --output text); do
   fi
 done
 ```
+
+---
+
+## Using MFA with AWS CLI
+
+Access keys in `aws configure` do **not** include MFA. If you use the `ForceMFA` policy, normal CLI commands will be **denied**.
+
+The fix: use your keys + MFA code to get **temporary credentials** that include MFA.
+
+### Step 1: Find Your MFA Device ARN
+
+- Console → your username (top right) → **Security credentials** → **Multi-factor authentication (MFA)** → copy the **Identifier**
+
+Or from the CLI:
+
+```bash
+aws iam list-mfa-devices --user-name ali
+```
+
+It looks like:
+
+```
+arn:aws:iam::123456789012:mfa/ali-phone
+```
+
+### Step 2: Get a Temporary Session
+
+```bash
+aws sts get-session-token \
+  --serial-number arn:aws:iam::123456789012:mfa/ali-phone \
+  --token-code 123456 \
+  --duration-seconds 43200
+```
+
+- `--token-code` → the current 6-digit code from your authenticator app
+- `--duration-seconds` → how long the session lasts (`43200` = 12 hours, max is 36 hours for IAM users)
+
+Output:
+
+```json
+{
+    "Credentials": {
+        "AccessKeyId": "ASIAEXAMPLETEMPKEY",
+        "SecretAccessKey": "wJalrXUtnFEMI/K7MDENG/EXAMPLETEMPSECRET",
+        "SessionToken": "IQoJb3JpZ2luX2VjEXAMPLE...very-long-token...",
+        "Expiration": "2026-10-27T21:00:00+00:00"
+    }
+}
+```
+
+> Temporary keys start with **`ASIA`**. Long-term keys start with **`AKIA`**.
+
+### Step 3: Use the Temporary Credentials
+
+```bash
+export AWS_ACCESS_KEY_ID=ASIAEXAMPLETEMPKEY
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/EXAMPLETEMPSECRET
+export AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEXAMPLE...very-long-token...
+
+aws s3 ls        # works now ✅ (until the session expires)
+```
+
+> These variables only last for the **current terminal window**. When the session expires, repeat Step 2.
+> To go back to your normal keys: `unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN`
