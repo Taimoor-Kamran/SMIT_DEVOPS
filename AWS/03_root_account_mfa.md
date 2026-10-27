@@ -220,3 +220,17 @@ A **hardware TOTP token** is a small keyfob that shows a 6-digit code when you p
 - Wait 30 seconds → press again
 - **MFA code 2:** enter the new code
 - Click **Add MFA** ✅
+
+---
+
+## Sign In as Root with MFA
+
+From now on, signing in as root works like this:
+
+- Go to `https://console.aws.amazon.com` → choose **Root user**
+- Enter **email** → **Next** → enter **password** → **Sign in**
+- AWS shows **Multi-factor authentication** screen:
+  - **Authenticator app:** open the app → type the current 6-digit code → **Submit**
+  - **Passkey / security key:** touch the key or confirm with fingerprint/face
+  - If you have several devices, AWS lets you choose which one to use
+- You are in ✅
