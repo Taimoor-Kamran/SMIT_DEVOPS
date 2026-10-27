@@ -383,3 +383,47 @@ Tick all of these for a safe account:
 - [ ] **Alternate contacts** are set
 - [ ] A **budget / billing alert** is created
 - [ ] An **admin IAM user** with MFA exists, and root is no longer used daily
+
+---
+
+## Quick Reference
+
+### Root MFA Steps Cheat Sheet
+
+| Step | Action |
+|------|--------|
+| 1 | Sign in → **Root user** → email → password |
+| 2 | Account name (top right) → **Security credentials** |
+| 3 | **Multi-factor authentication (MFA)** → **Assign MFA device** |
+| 4 | Device name + choose type (Authenticator app / Passkey / Hardware TOTP) |
+| 5 | Scan QR code (app) or touch key (passkey) |
+| 6 | Enter **MFA code 1** and **MFA code 2** (two consecutive codes) |
+| 7 | **Add MFA** → "MFA device assigned" ✅ |
+
+### MFA Device Comparison
+
+| | Authenticator app | Passkey / Security key | Hardware TOTP |
+|---|---|---|---|
+| Cost | Free | Free / ~$25+ | ~$15+ |
+| Phishing resistant | No | **Yes** | No |
+| Needs phone | Yes | No (if USB key) | No |
+| Beginner friendly | ⭐⭐⭐ | ⭐⭐ | ⭐⭐ |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| Root user | The owner login created at sign-up with full, unlimited access |
+| MFA | Multi-Factor Authentication — password + a second proof |
+| Virtual MFA | An authenticator app on your phone that generates codes |
+| TOTP | Time-based One-Time Password — 6-digit code that changes every 30 seconds |
+| Passkey | A FIDO2 login stored on your phone/laptop, unlocked by fingerprint/face/PIN |
+| Security key | A physical FIDO2 device like a YubiKey |
+| FIDO2 | An open standard for phishing-resistant, password-less authentication |
+| QR code | The square barcode you scan to link the authenticator app to AWS |
+| Secret key | The text version of the QR code, for manual entry |
+| Resync | Re-align AWS with your device when codes stop working |
+| Alternative factors | Email + phone verification used to sign in when the MFA device is lost |
+| STS | Security Token Service — gives temporary AWS credentials |
+| IAM Identity Center | AWS single sign-on service for many users and accounts |
+| Federation | Logging in to AWS with an outside identity (Google, Microsoft, Okta) |
