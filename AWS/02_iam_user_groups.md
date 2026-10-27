@@ -54,3 +54,16 @@ If a new student joins the Science Club, you don't write new rules for them. You
          └─────────┘          └─────────┘          └─────────┘
        (all 3 users get EC2 full access through the group)
 ```
+
+---
+
+## Why Use Groups?
+
+Imagine you have **50 developers**, and each one needs the same 5 policies.
+
+| Without groups | With groups |
+|----------------|-------------|
+| Attach 5 policies × 50 users = **250 actions** | Attach 5 policies to 1 group + add 50 users |
+| New developer joins → attach 5 policies again | New developer joins → add to group (1 click) |
+| Developer changes team → find and remove each policy | Move them from one group to another |
+| Hard to see who has what | Open the group and see everything in one place |
