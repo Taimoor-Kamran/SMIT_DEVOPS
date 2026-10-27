@@ -454,3 +454,140 @@ Your policy now appears in the list with type **Customer managed**. 🎉
 
 > AWS keeps up to **5 versions** of each customer managed policy.
 > You can see them in the **Policy versions** tab and roll back to an older one with **Set as default**.
+
+---
+
+## Custom Policy Examples
+
+### Example 1: EC2 — Only Start, Stop and View Instances
+
+Useful for a junior person who should restart servers but not create or delete them.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ViewInstances",
+      "Effect": "Allow",
+      "Action": "ec2:Describe*",
+      "Resource": "*"
+    },
+    {
+      "Sid": "StartStopInstances",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:StartInstances",
+        "ec2:StopInstances",
+        "ec2:RebootInstances"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+### Example 2: Allow Everything, but Only in One Region
+
+Users can only work in **Mumbai (`ap-south-1`)**. Global services like IAM still work because they don't belong to a region.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "OnlyMumbaiRegion",
+      "Effect": "Deny",
+      "NotAction": [
+        "iam:*",
+        "sts:*",
+        "support:*",
+        "cloudfront:*",
+        "route53:*"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEquals": {
+          "aws:RequestedRegion": "ap-south-1"
+        }
+      }
+    }
+  ]
+}
+```
+
+> This is a **Deny** policy — it doesn't give access by itself.
+> Attach it **together with** an Allow policy (e.g. `PowerUserAccess`) to limit that access to one region.
+
+### Example 3: Block Deleting S3 Buckets
+
+Even if a user has `AmazonS3FullAccess`, this stops them from deleting any bucket.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "NoBucketDelete",
+      "Effect": "Deny",
+      "Action": "s3:DeleteBucket",
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+### Example 4: Allow Only from Office IP Address
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyOutsideOffice",
+      "Effect": "Deny",
+      "Action": "*",
+      "Resource": "*",
+      "Condition": {
+        "NotIpAddress": {
+          "aws:SourceIp": "203.0.113.0/24"
+        }
+      }
+    }
+  ]
+}
+```
+
+> ⚠️ Be careful with IP-based deny rules — if your IP changes, you lock yourself out.
+
+### Example 5: Let Users Manage Their Own Password and Access Keys
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ViewPasswordPolicy",
+      "Effect": "Allow",
+      "Action": "iam:GetAccountPasswordPolicy",
+      "Resource": "*"
+    },
+    {
+      "Sid": "ManageOwnPasswordAndKeys",
+      "Effect": "Allow",
+      "Action": [
+        "iam:ChangePassword",
+        "iam:GetUser",
+        "iam:CreateAccessKey",
+        "iam:DeleteAccessKey",
+        "iam:ListAccessKeys",
+        "iam:UpdateAccessKey"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    }
+  ]
+}
+```
+
+> `${aws:username}` is a **policy variable**. AWS replaces it with the name of the user who is signed in.
+> So `ali` can only change **ali's** keys, and `sara` only **sara's** keys — with one single policy.
