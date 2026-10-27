@@ -19,3 +19,22 @@
 14. [Other Authentication Methods Available in AWS](#other-authentication-methods-available-in-aws)
 15. [Root User Security Checklist](#root-user-security-checklist)
 16. [Quick Reference](#quick-reference)
+
+---
+
+## What is the Root User?
+
+The **root user** is the identity created when you **first sign up** for AWS.
+It logs in with the **email address** and **password** you used during sign-up.
+
+The root user has **complete, unlimited access** to everything in the account — and this power **cannot be limited** with IAM policies.
+
+**Things only the root user can do** (a few examples):
+- Close the AWS account
+- Change the account's email address, name or root password
+- Change the AWS Support plan
+- Restore IAM permissions if the only admin locks themselves out
+- Register as a seller in the Reserved Instance Marketplace
+
+> Because it is so powerful, use the root user **only** for these rare tasks.
+> For daily work, create an IAM admin user (see `01_iam_users.md`).
