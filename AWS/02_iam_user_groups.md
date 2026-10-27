@@ -180,3 +180,69 @@ There are **3 ways** to add a user to a group.
 - Tick ✅ the group → click **Remove**
 
 > Removing a user from a group does **not** delete the user. It only takes away the permissions that came from that group.
+
+---
+
+## How to Check How Many Users You Have
+
+### 1. IAM Dashboard (fastest)
+
+- Go to **IAM → Dashboard**
+- Look at the **IAM resources** box. It shows counts like:
+
+```
+IAM resources
+User groups    Users    Roles    Policies    Identity providers
+    3            7        12        4               0
+```
+
+### 2. Users Page
+
+- **IAM → Users** → the heading shows the total, e.g. **Users (7)**
+- The table also shows each user's **Groups**, **Last activity**, **MFA**, **Password age** and **Access key age**
+
+### 3. Users Inside One Group
+
+- **IAM → User groups** → the list shows a **Users** column with the count for each group
+- Click a group → **Users** tab → heading shows e.g. **Users in this group (3)**
+
+### 4. Which Groups a User Belongs To
+
+- **IAM → Users** → click the user → **Groups** tab
+
+### 5. Credential Report (full audit file)
+
+A **credential report** is a CSV file listing **every** user and the status of their password, MFA and access keys.
+
+- **IAM → Credential report** (left sidebar, under Access reports)
+- Click **Download credentials report**
+
+Open the file in Excel / Google Sheets. Useful columns:
+
+| Column | Meaning |
+|--------|---------|
+| `user` | Username |
+| `password_enabled` | Does the user have console access? |
+| `password_last_used` | When they last logged in |
+| `mfa_active` | Is MFA turned on? |
+| `access_key_1_active` | Do they have an active access key? |
+| `access_key_1_last_used_date` | When the key was last used |
+
+### 6. Using AWS CLI
+
+```bash
+# Count all users
+aws iam list-users --query 'length(Users)'
+
+# Show only the usernames
+aws iam list-users --query 'Users[].UserName' --output table
+
+# Account summary — shows Users, Groups, Policies counts and limits
+aws iam get-account-summary
+
+# All users in a group
+aws iam get-group --group-name Developers --query 'Users[].UserName'
+
+# All groups a user belongs to
+aws iam list-groups-for-user --user-name ali
+```
