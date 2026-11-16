@@ -527,3 +527,18 @@ mkdir -p ~/cli-lab && cd ~/cli-lab && git init
 6. **Permissions:** run `/permissions` and add an allow rule for `Bash(git status)`
 7. **Name and resume:** `/rename cli-lab`, `/exit`, then `claude -r "cli-lab"`
 8. **Context:** run `/context`, then `/clear`
+
+---
+
+## Troubleshooting
+
+| Problem | Fix |
+|---------|-----|
+| `claude: command not found` | Close and reopen the terminal; check `~/.local/bin` is in your `PATH`; run the installer again |
+| Login browser doesn't open (WSL / SSH server) | Copy the URL shown in the terminal into any browser |
+| Something seems broken | `claude doctor` (outside) or `/doctor` (inside a session) |
+| Claude is slow or forgetting things | `/compact` or `/clear` — the context is too full |
+| Same permission question every time | Choose "Yes, and don't ask again", or add an `allow` rule |
+| Print mode does nothing in a script | It may be waiting for a permission — add `--allowedTools` |
+| Old version | `claude update` |
+| `npm` install permission errors | Don't use `sudo`; use the native installer instead |
