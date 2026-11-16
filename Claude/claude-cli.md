@@ -480,3 +480,33 @@ When creating a bash script:
 ```
 
 Now in a session you can type `/new-script` and Claude follows these rules.
+
+---
+
+## The `.claude` Folder Map
+
+```
+~/.claude/                     ← YOUR personal folder (all projects)
+├── settings.json              ← your personal settings
+├── CLAUDE.md                  ← instructions for all your projects
+├── skills/                    ← your personal skills
+├── agents/                    ← your personal subagents
+└── projects/                  ← saved sessions and auto memory
+
+my-project/                    ← a PROJECT folder
+├── CLAUDE.md                  ← project instructions (commit)
+├── CLAUDE.local.md            ← your private notes (don't commit)
+├── .mcp.json                  ← shared MCP servers (commit)
+└── .claude/
+    ├── settings.json          ← team settings (commit)
+    ├── settings.local.json    ← your project overrides (don't commit)
+    ├── skills/                ← project skills (commit)
+    └── agents/                ← project subagents (commit)
+```
+
+**Add these to `.gitignore`:**
+
+```
+CLAUDE.local.md
+.claude/settings.local.json
+```
