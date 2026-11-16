@@ -602,3 +602,7 @@ mkdir -p ~/cli-lab && cd ~/cli-lab && git init
 | Subagent | A specialised helper Claude for one type of job |
 | Hook | A command that runs automatically when Claude does something |
 | Plugin | A bundle of skills, agents, hooks and MCP servers |
+
+---
+
+*End of Claude CLI — Claude*
