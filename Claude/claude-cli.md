@@ -450,3 +450,20 @@ claude mcp remove playwright
 Inside a session, `/mcp` shows connected servers and lets you log in to ones that need it.
 
 > ⚠️ Only add MCP servers you **trust**. A server can see the data you send it and can run actions for Claude.
+
+---
+
+## Skills, Subagents, Hooks and Plugins
+
+These are ways to **customise** Claude Code. You don't need them on day one — just know what they are.
+
+| Feature | What it is | Where it lives | Example |
+|---------|-----------|----------------|---------|
+| **Skill** | A saved set of instructions for a task; run with `/name` or Claude uses it automatically | `.claude/skills/<name>/SKILL.md` | A `/deploy` skill with your team's deploy checklist |
+| **Subagent** | A helper Claude with its own instructions and tools, for one type of job | `.claude/agents/<name>.md` | A "security-reviewer" agent |
+| **Hook** | A shell command that runs **automatically** on an event (before/after a tool runs) | `hooks` section of `settings.json` | Run `shellcheck` every time Claude edits a `.sh` file |
+| **Plugin** | A package that bundles skills, agents, hooks and MCP servers together | Installed with `/plugin` or `claude plugin` | Install a team's ready-made toolkit |
+
+**Example skill** — `.claude/skills/new-script/SKILL.md`:
+
+```markdown
