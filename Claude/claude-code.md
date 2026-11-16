@@ -106,3 +106,36 @@ Claude Code is one product that you can open in many places:
 | **GitHub Actions / GitLab CI** | Let Claude work automatically inside your pipelines |
 
 All of them use the **same account** and the **same settings files**.
+
+---
+
+## What You Need (Requirements)
+
+### Account
+
+You need a **paid** Claude plan **or** an API account:
+
+| Account type | Can use Claude Code? |
+|--------------|---------------------|
+| Claude **Free** | ❌ No |
+| Claude **Pro** | ✅ Yes — good for students and individuals |
+| Claude **Max / Ultra** | ✅ Yes — more usage |
+| Claude **Team / Enterprise** | ✅ Yes — for companies |
+| **Claude Console** (API, pay per use) | ✅ Yes |
+| Amazon Bedrock / Google Cloud / Microsoft Foundry | ✅ Yes — for companies using cloud providers |
+
+### Computer
+
+| Item | Minimum |
+|------|---------|
+| macOS | 13.0 or newer |
+| Windows | Windows 10 (1809) or newer |
+| Linux | Ubuntu 20.04+, Debian 10+, Alpine 3.19+ |
+| RAM | 4 GB or more |
+| CPU | x64 or ARM64 |
+| Internet | Required |
+| Shell | Bash, Zsh, PowerShell or CMD |
+
+> **On Windows**, you can run Claude Code natively **or** inside **WSL 2** (the Ubuntu you installed in `Linux_OS/class_1`).
+> For DevOps practice, **WSL 2 is recommended** — your commands will be real Linux commands.
+> If you use native Windows, install **Git for Windows** first.
