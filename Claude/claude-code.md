@@ -495,3 +495,19 @@ Now give these prompts **one by one**, reading and approving each step:
 - Use `@filename` to point at a file, e.g. `explain @deploy.sh`
 - Break big jobs into small steps, or use **Plan mode**
 - If Claude goes the wrong way, press `Esc` and correct it — don't wait
+
+---
+
+## Safety Rules and Best Practices
+
+| Rule | Why |
+|------|-----|
+| Start Claude **inside a project folder** | It only works in the folders you give it |
+| Only trust folders **you** know | Project settings can make Claude run commands |
+| **Read** every command before approving | You are responsible for what runs on your machine |
+| Use **Git** and commit often | Easy to undo anything, even outside Claude |
+| Never paste **passwords, AWS keys or `.pem` files** into the chat | Secrets should never leave your machine |
+| Don't let Claude touch **production** without a review | Test on DEV first (remember DEV → SIT → UAT → PROD) |
+| Keep **Default mode** while learning | Fewer surprises |
+| Never use **bypass permissions** on your real computer | Nothing would stop a harmful command |
+| **Understand** the code before you commit it | Interviews and real jobs need *your* knowledge |
