@@ -400,3 +400,53 @@ Instead of answering the same permission question every time, write **rules** in
 > A good habit: **deny** reading `.env` files so secrets never get sent to the AI.
 
 You can also manage these rules with the `/permissions` command inside a session.
+
+---
+
+## MCP — Connect Claude to Other Tools
+
+**MCP** stands for **Model Context Protocol**. It's a standard way to plug **extra tools** into Claude — like GitHub, databases, a web browser, Jira or Slack.
+
+**Simple analogy:** MCP is like **USB** for AI. Any tool that has an "MCP plug" can connect to Claude.
+
+```
+                 ┌──────────────┐
+                 │ Claude Code  │
+                 └──────┬───────┘
+                        │ MCP
+      ┌─────────────────┼─────────────────┐
+      ▼                 ▼                 ▼
+ ┌─────────┐      ┌──────────┐      ┌──────────┐
+ │ GitHub  │      │ Database │      │ Browser  │
+ └─────────┘      └──────────┘      └──────────┘
+```
+
+### Add an MCP Server
+
+```bash
+# A remote server over HTTP
+claude mcp add --transport http <name> <url>
+
+# A local server program (everything after -- is the command to run)
+claude mcp add playwright -- npx -y @playwright/mcp@latest
+```
+
+### Scopes — Who Gets the Server?
+
+| Flag | Saved for |
+|------|----------|
+| `--scope local` (default) | Only you, only this project |
+| `--scope user` | Only you, all projects |
+| `--scope project` | Everyone on the project (saved in `.mcp.json`, commit it) |
+
+### Manage Servers
+
+```bash
+claude mcp list            # list all servers
+claude mcp get playwright  # details of one server
+claude mcp remove playwright
+```
+
+Inside a session, `/mcp` shows connected servers and lets you log in to ones that need it.
+
+> ⚠️ Only add MCP servers you **trust**. A server can see the data you send it and can run actions for Claude.
