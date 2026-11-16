@@ -398,3 +398,30 @@ Open **Customize** in the sidebar to manage these:
 - [ ] You can explain when to use Chat vs Code vs Cowork
 - [ ] You saw a permission / approval request and understood it
 - [ ] Cowork only touched the `Cowork-Practice` folder
+
+---
+
+## Safety Rules and Limitations
+
+### Safety Rules
+
+| Rule | Why |
+|------|-----|
+| Connect only the **folder** a task needs | Least privilege — less risk if something goes wrong |
+| Start with **Manually approve** | You see every action while you learn |
+| **Back up** files before big organising jobs | Mistakes on many files are hard to undo |
+| Read the **plan** before letting it run | Catch misunderstandings early |
+| Don't connect folders with **passwords, keys or bank documents** | Keep sensitive data away from AI tasks |
+| Only add **trusted** connectors and plugins | They can read and act on your data |
+| Check the **output** before sending it to anyone | You're responsible for the final work |
+
+> Cowork runs in an **isolated environment** on Anthropic's servers. That protects your computer itself,
+> but it does **not** limit what Claude can reach through the folders, connectors and permissions **you** give it.
+
+### Current Limitations
+
+- The Cowork desktop experience is in **beta** — features change often
+- **Sessions can't be shared** with others (individual created files / artifacts can)
+- **`git push` and uploads** are blocked from Cowork's network
+- Some features (like plugins that use local MCP servers) work **only in the desktop app**, not on the web
+- When you delete a task, it disappears from your history right away and is removed from Anthropic's storage within 30 days
