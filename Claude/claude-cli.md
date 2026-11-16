@@ -470,3 +470,13 @@ These are ways to **customise** Claude Code. You don't need them on day one — 
 ---
 name: new-script
 description: Create a new bash script following our team rules
+---
+
+When creating a bash script:
+1. Start with `#!/bin/bash` and `set -euo pipefail`
+2. Add a comment at the top explaining what the script does
+3. Put all paths in variables at the top
+4. Run `shellcheck` on it and fix every warning
+```
+
+Now in a session you can type `/new-script` and Claude follows these rules.
