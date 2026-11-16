@@ -353,3 +353,50 @@ Claude Code reads settings from **JSON files**. There are several levels:
 ```
 
 > The easy way to change settings is the `/config` command — it writes these files for you.
+
+---
+
+## Permission Rules (Allow / Ask / Deny)
+
+Instead of answering the same permission question every time, write **rules** in a settings file.
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(npm run test *)",
+      "Bash(docker ps)"
+    ],
+    "ask": [
+      "Bash(git push *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Bash(rm -rf *)"
+    ]
+  }
+}
+```
+
+| List | Meaning |
+|------|---------|
+| `allow` | Do it **without asking** |
+| `ask` | **Always ask** first |
+| `deny` | **Never** allow — blocked |
+
+**How rules are written:**
+
+| Rule | Matches |
+|------|---------|
+| `Bash(git status)` | Exactly the command `git status` |
+| `Bash(npm run test *)` | `npm run test` followed by anything |
+| `Read(./.env)` | Reading the `.env` file |
+| `Edit` | Any file edit |
+
+> Just like AWS IAM policies (`AWS/02_iam_user_groups.md`), **deny always wins** over allow.
+> A good habit: **deny** reading `.env` files so secrets never get sent to the AI.
+
+You can also manage these rules with the `/permissions` command inside a session.
