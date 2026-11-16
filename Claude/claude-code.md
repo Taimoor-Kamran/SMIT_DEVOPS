@@ -223,3 +223,78 @@ claude auth logout     # log out
 ```
 
 > Inside WSL, if the browser doesn't open automatically, copy the link shown in the terminal and paste it into your Windows browser.
+
+---
+
+## Your First Session — Step by Step
+
+### Step 1: Go to a Project Folder
+
+Claude Code works on the folder you start it in. Let's create a practice folder:
+
+```bash
+mkdir -p ~/claude-practice
+cd ~/claude-practice
+git init
+```
+
+> Always start Claude Code **inside a project folder**, never in your home folder `~` or in `/`.
+> It can see everything inside the folder you start it in.
+
+### Step 2: Start Claude Code
+
+```bash
+claude
+```
+
+### Step 3: Trust the Folder
+
+The first time you open a folder, Claude asks: **"Do you trust the files in this folder?"**
+
+- Choose **Yes, proceed** — only for folders **you** created or trust.
+
+> Why does it ask? A project folder can contain settings that tell Claude to run commands.
+> A folder you downloaded from a stranger could contain harmful settings.
+
+### Step 4: Ask Your First Question
+
+You'll see a prompt box `>`. Type:
+
+```
+> what files are in this folder and what is this project?
+```
+
+Claude reads the folder and answers. Because the folder is empty, it will tell you that.
+
+### Step 5: Ask It to Create Something
+
+```
+> create a bash script called sysinfo.sh that prints the hostname, date, uptime and disk usage
+```
+
+Claude will:
+- Show you the file it wants to create (a **diff** — green lines are new)
+- Ask: **Do you want to create sysinfo.sh?** → choose **Yes**
+
+### Step 6: Let It Run the Script
+
+```
+> make it executable and run it
+```
+
+Claude asks permission to run `chmod +x sysinfo.sh` and `./sysinfo.sh`.
+Choose **Yes** for each, and Claude shows you the output.
+
+### Step 7: Exit
+
+```
+> /exit
+```
+
+Or press `Ctrl + C` twice. 🎉
+
+**Continue later where you left off:**
+
+```bash
+claude -c       # continue the most recent conversation in this folder
+```
