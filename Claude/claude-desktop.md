@@ -1,1 +1,23 @@
 # Claude Desktop App: Chat, Code and Cowork
+
+---
+
+## Table of Contents
+1. [What is the Claude Desktop App?](#what-is-the-claude-desktop-app)
+2. [The Three Modes: Chat, Code and Cowork](#the-three-modes-chat-code-and-cowork)
+3. [Requirements](#requirements)
+4. [Install the Desktop App — Step by Step](#install-the-desktop-app--step-by-step)
+5. [Sign In and Tour the App](#sign-in-and-tour-the-app)
+6. [Mode 1: Chat](#mode-1-chat)
+7. [Mode 2: Code (Claude Code in the App)](#mode-2-code-claude-code-in-the-app)
+8. [Mode 3: What is Cowork?](#mode-3-what-is-cowork)
+9. [Start Your First Cowork Task — Step by Step](#start-your-first-cowork-task--step-by-step)
+10. [Cowork Approval Modes](#cowork-approval-modes)
+11. [Folder Access — How Cowork Uses Your Files](#folder-access--how-cowork-uses-your-files)
+12. [Cowork Network Access](#cowork-network-access)
+13. [What Else Cowork Can Do](#what-else-cowork-can-do)
+14. [Connectors, Skills and Plugins](#connectors-skills-and-plugins)
+15. [Cowork vs Claude Code — Which One?](#cowork-vs-claude-code--which-one)
+16. [Lab: Try All Three Modes](#lab-try-all-three-modes)
+17. [Safety Rules and Limitations](#safety-rules-and-limitations)
+18. [Quick Reference](#quick-reference)
