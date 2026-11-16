@@ -446,3 +446,34 @@ Claude saves a **checkpoint** before it edits files. If you don't like what it d
 > ⚠️ Rewind only undoes **file edits Claude made**. It does **not** undo things that happened outside your folder,
 > like a command that deleted a database or pushed to GitHub. That's why you read commands before approving them.
 > Using **Git** and committing often is still your best safety net.
+
+---
+
+## Lab: Use Claude Code on a DevOps Task
+
+**Goal:** Use Claude Code to build a small Dockerised app and a CI pipeline.
+
+```bash
+mkdir -p ~/claude-lab && cd ~/claude-lab && git init
+claude
+```
+
+Now give these prompts **one by one**, reading and approving each step:
+
+1. `create a simple Python Flask app in app.py with one route / that returns "Hello SMIT"`
+2. `create a requirements.txt and a Dockerfile using python:3.12-slim`
+3. `build the docker image and run the container on port 5000, then curl it to test`
+4. `create a .github/workflows/ci.yml that builds the docker image on every pull request`
+5. `/init` — let Claude write a CLAUDE.md for this project
+6. `look at all my changes and write a commit message, then commit`
+
+**Check yourself:**
+- [ ] `curl localhost:5000` prints `Hello SMIT`
+- [ ] You can explain every line of the Dockerfile
+- [ ] `git log` shows your commit
+
+**Clean up:**
+
+```
+> stop and remove the container you started
+```
