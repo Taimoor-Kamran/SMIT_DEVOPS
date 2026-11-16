@@ -284,3 +284,23 @@ Use the **mode selector** in the message box to choose how much Claude asks you:
 
 > On **Enterprise** plans, **Manually approve** is the default, and admins can turn off the other modes.
 > **Deleting files** always needs a separate, explicit **Allow** from you.
+
+---
+
+## Folder Access — How Cowork Uses Your Files
+
+- Cowork can **read and write** files only in folders **you connect**
+- For local files, the **Desktop app must be open** and connected
+- If you **rename or move** a connected folder, reconnect it from its new location
+  (on Apple-silicon Macs the app may offer **"Keep connected"** for the new location)
+
+```
+ Your computer
+ ├── Documents/
+ │   ├── SMIT-Notes/     ✅ connected → Cowork can read & write here
+ │   └── Bank/           ❌ not connected → Cowork can't see it
+ └── Downloads/          ❌ not connected
+```
+
+> **Least privilege again!** Just like AWS IAM (`AWS/02_iam_user_groups.md`), give Cowork access
+> to the **smallest folder** it needs. Keep a **backup** (or use Git) before big file-organising tasks.
