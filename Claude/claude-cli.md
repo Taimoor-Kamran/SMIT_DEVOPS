@@ -467,3 +467,6 @@ These are ways to **customise** Claude Code. You don't need them on day one — 
 **Example skill** — `.claude/skills/new-script/SKILL.md`:
 
 ```markdown
+---
+name: new-script
+description: Create a new bash script following our team rules
