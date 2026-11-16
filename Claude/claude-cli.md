@@ -254,3 +254,21 @@ a1b2c3d4e5f6   nginx    Exited (1) 2 minutes ago
 ```
 
 Claude now knows which container you mean and can check its logs.
+
+---
+
+## Managing Context (Claude's Short-Term Memory)
+
+**Context** is everything Claude currently "remembers" in this session — your messages, files it read, command outputs.
+It has a **size limit** (called the **context window**). When it gets full, Claude becomes slower and less accurate.
+
+**Simple analogy:** context is like a **whiteboard**. You can only fit so much. When it's full, either **erase it** (`/clear`) or **summarise** what's on it (`/compact`).
+
+| Situation | What to do |
+|-----------|-----------|
+| Starting a **new, unrelated** task | `/clear` |
+| Long task, want to keep the important parts | `/compact` |
+| Want to see how full it is | `/context` |
+| Want something remembered **forever** | Put it in `CLAUDE.md` |
+
+> Claude also compacts **automatically** when the context is nearly full, so long sessions keep working.
