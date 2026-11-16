@@ -197,3 +197,38 @@ Inside an interactive session, type `/` to see a menu of commands. Start typing 
 | `/release-notes` | See what's new |
 
 > Type `/help` to see the full, up-to-date list on your version.
+
+---
+
+## Keyboard Shortcuts
+
+### Most Important
+
+| Key | What it does |
+|-----|-------------|
+| `Enter` | Send your message |
+| `Esc` | **Stop** Claude (keeps the work done so far) |
+| `Esc` `Esc` | Clear the prompt — or, if the prompt is empty, open **rewind** |
+| `Shift + Tab` | Switch permission mode (Default → Accept edits → Plan → ...) |
+| `Ctrl + C` | Interrupt; press twice to exit |
+| `Ctrl + D` | Exit (press twice) |
+| `?` | Show shortcut help (on an empty prompt) |
+
+### Useful Extras
+
+| Key | What it does |
+|-----|-------------|
+| `↑` / `↓` | Scroll through your previous messages |
+| `Ctrl + R` | Search your message history |
+| `Ctrl + O` | Open the full transcript viewer |
+| `Ctrl + T` | Show / hide Claude's task checklist |
+| `Ctrl + B` | Background tasks |
+| `Ctrl + G` | Open your prompt in a text editor (good for long prompts) |
+| `Ctrl + S` | Save the current prompt for later (stash) |
+| `Ctrl + L` | Redraw the screen |
+| `Ctrl + V` (`Alt + V` on Windows / WSL) | Paste an image (e.g. a screenshot of an error) |
+| `Alt + P` (`Option + P` on Mac) | Switch model |
+| `Alt + T` (`Option + T` on Mac) | Turn extended thinking on/off |
+
+> **Multi-line messages:** press `Shift + Enter` (or type `\` then `Enter`) to add a new line without sending.
+> On macOS, `Option` shortcuts need **"Use Option as Meta key"** turned on in your terminal settings.
