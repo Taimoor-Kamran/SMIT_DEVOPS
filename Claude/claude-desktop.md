@@ -159,3 +159,19 @@ sudo apt update && sudo apt upgrade
 | **Model picker** | Choose which Claude model to use |
 
 > Anthropic updates the app often, so button names and positions can change slightly. The ideas stay the same.
+
+---
+
+## Mode 1: Chat
+
+Chat is the normal "ask Claude anything" mode.
+
+**Good uses for a DevOps student:**
+- `Explain the difference between a Docker image and a container like I'm a beginner`
+- `Make me a 10-question quiz on Linux file permissions`
+- `What's the difference between git merge and git rebase?`
+- Upload a screenshot of an error → `What does this error mean?`
+
+**Tips:**
+- Use **Projects** to group chats about one topic (e.g. "AWS Study") and add files Claude should always know about
+- Chat **cannot** change files on your computer — use **Code** or **Cowork** for that
