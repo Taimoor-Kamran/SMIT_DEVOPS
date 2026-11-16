@@ -21,3 +21,27 @@
 16. [Safety Rules and Best Practices](#safety-rules-and-best-practices)
 17. [Update, Diagnose and Uninstall](#update-diagnose-and-uninstall)
 18. [Quick Reference](#quick-reference)
+
+---
+
+## What is Claude Code?
+
+**Claude Code** is an **AI coding assistant** made by **Anthropic**.
+It runs **inside your project folder** and can **read your files, write code, run commands, and fix errors** — while you watch and approve each step.
+
+You talk to it in plain English, for example:
+
+```
+> write a bash script that backs up /var/log to /backup every night and add it to cron
+```
+
+And Claude Code will:
+1. Look at your project files
+2. Write the script
+3. Ask your permission to save it
+4. Ask your permission to run a test command
+5. Tell you what it did
+
+**Simple analogy:**
+Normal ChatGPT-style chat is like **calling a friend** for help — they tell you what to type, and **you** do the typing.
+Claude Code is like that friend **sitting next to you at your laptop** — they can open files and type commands themselves, but they **ask you first** before touching anything.
