@@ -77,3 +77,32 @@ Claude Code is like that friend **sitting next to you at your laptop** — they 
 | Review | `review this script for security problems` |
 
 > Claude Code is a **helper, not a replacement** for learning. Always read what it writes so **you** understand it too.
+
+---
+
+## Where You Can Use Claude Code
+
+Claude Code is one product that you can open in many places:
+
+```
+                         ┌────────────────────┐
+                         │    Claude Code     │
+                         └─────────┬──────────┘
+     ┌───────────┬────────────┬────┴──────┬────────────┬────────────┐
+     ▼           ▼            ▼           ▼            ▼            ▼
+ Terminal    VS Code     JetBrains    Desktop app    Web         Mobile
+  (CLI)     extension     plugin      (Code tab)  claude.ai/code  app
+```
+
+| Where | Best for |
+|-------|----------|
+| **Terminal (CLI)** | Full features, scripting, servers, WSL — ⭐ **what DevOps people use most** (see `claude-cli.md`) |
+| **VS Code extension** | Working inside VS Code with diffs shown in the editor |
+| **JetBrains plugin** | IntelliJ, PyCharm, WebStorm and other JetBrains IDEs |
+| **Desktop app → Code tab** | Visual diff review, many sessions side by side (see `claude-desktop.md`) |
+| **Web — `claude.ai/code`** | Cloud sessions that keep running even after you close your laptop |
+| **Mobile app (iOS / Android)** | Start and check on cloud sessions from your phone |
+| **Slack** | Mention `@Claude` in a channel to give it a task |
+| **GitHub Actions / GitLab CI** | Let Claude work automatically inside your pipelines |
+
+All of them use the **same account** and the **same settings files**.
