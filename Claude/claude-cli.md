@@ -60,3 +60,25 @@ The **Claude CLI** is the `claude` command. It is **Claude Code running in your 
 | Conversation | Back and forth | One shot, then exits |
 | Permission prompts | Shown on screen | Not possible — you decide permissions with flags |
 | Best for | Daily coding and learning | Automation and scripts |
+
+---
+
+## Starting Claude — Basic Commands
+
+| Command | What it does |
+|---------|-------------|
+| `claude` | Start an interactive session in the current folder |
+| `claude "explain this project"` | Start interactive and send the first message straight away |
+| `claude -p "explain this project"` | Print mode — answer once and exit |
+| `cat error.log \| claude -p "what is wrong?"` | Send a file's content into Claude through a pipe |
+| `claude -c` | **Continue** the most recent conversation in this folder |
+| `claude -r` | **Resume** — choose an old conversation from a list |
+| `claude --version` | Show the installed version |
+| `claude update` | Update to the latest version |
+| `claude doctor` | Check installation health |
+| `claude auth login` / `logout` / `status` | Manage login |
+| `claude mcp ...` | Manage MCP servers (see [MCP](#mcp--connect-claude-to-other-tools)) |
+| `claude plugin ...` | Manage plugins |
+| `claude --help` | Show every command and flag |
+
+> `claude --help` on **your** machine is always the final truth — new flags are added often.
