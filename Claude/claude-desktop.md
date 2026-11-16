@@ -269,3 +269,18 @@ Cowork shows **how it plans to do the task** before it starts the heavy work.
 
 - Open the files Cowork created and check them
 - Ask for changes: `make the quiz harder` or `add page numbers`
+
+---
+
+## Cowork Approval Modes
+
+Use the **mode selector** in the message box to choose how much Claude asks you:
+
+| Mode | What happens | Use when |
+|------|-------------|----------|
+| **Manually approve** | Claude asks **Allow / Deny** for each action | ✅ Beginners, sensitive files, first time trying a task |
+| **Automatically approve** | A **safety reviewer** checks each action and blocks unsafe ones; you're not asked every time | Normal everyday tasks (default on Pro, Max, Ultra, Team) |
+| **Skip all approvals** | **Nothing** checks actions | ⚠️ Only fully trusted tasks on unimportant files |
+
+> On **Enterprise** plans, **Manually approve** is the default, and admins can turn off the other modes.
+> **Deleting files** always needs a separate, explicit **Allow** from you.
