@@ -320,3 +320,16 @@ When Cowork runs commands, its **internet access** is limited by a setting in **
 > Some hosts like npm and GitHub are **download-only** — Cowork can install packages, but it **can't upload**.
 > For example, `git push` is blocked. Push your code from your own terminal.
 > These limits are helpful guard-rails, **not** a complete security boundary.
+
+---
+
+## What Else Cowork Can Do
+
+| Feature | What it does |
+|---------|-------------|
+| **Scheduled tasks** | Run a task automatically on a schedule — type `/schedule` in a task, or use **Scheduled** in the sidebar |
+| **Projects** | Group related tasks and files together |
+| **Browser use** | Claude can open web pages in its built-in browser (or Claude in Chrome if you use it) — change this in **Settings → Cowork** |
+| **Plugins** | Add ready-made packs of skills and tools for a job role |
+| **Dispatch** *(Pro, Max, Ultra)* | Send a task from your **phone** and let your desktop do the work |
+| **Sub-agents** | Splits big jobs into parts that run at the same time |
