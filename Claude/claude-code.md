@@ -1,0 +1,575 @@
+# Claude Code: Your AI Pair Programmer for DevOps
+
+---
+
+## Table of Contents
+1. [What is Claude Code?](#what-is-claude-code)
+2. [Chat AI vs Agentic AI](#chat-ai-vs-agentic-ai)
+3. [Why DevOps Engineers Use Claude Code](#why-devops-engineers-use-claude-code)
+4. [Where You Can Use Claude Code](#where-you-can-use-claude-code)
+5. [What You Need (Requirements)](#what-you-need-requirements)
+6. [Install Claude Code — Step by Step](#install-claude-code--step-by-step)
+7. [Log In for the First Time](#log-in-for-the-first-time)
+8. [Your First Session — Step by Step](#your-first-session--step-by-step)
+9. [How Claude Code Works (The Agent Loop)](#how-claude-code-works-the-agent-loop)
+10. [Permissions — Claude Asks Before Acting](#permissions--claude-asks-before-acting)
+11. [Permission Modes](#permission-modes)
+12. [CLAUDE.md — Give Claude Project Memory](#claudemd--give-claude-project-memory)
+13. [Undo Mistakes with Rewind](#undo-mistakes-with-rewind)
+14. [Lab: Use Claude Code on a DevOps Task](#lab-use-claude-code-on-a-devops-task)
+15. [Writing Good Prompts](#writing-good-prompts)
+16. [Safety Rules and Best Practices](#safety-rules-and-best-practices)
+17. [Update, Diagnose and Uninstall](#update-diagnose-and-uninstall)
+18. [Quick Reference](#quick-reference)
+
+---
+
+## What is Claude Code?
+
+**Claude Code** is an **AI coding assistant** made by **Anthropic**.
+It runs **inside your project folder** and can **read your files, write code, run commands, and fix errors** — while you watch and approve each step.
+
+You talk to it in plain English, for example:
+
+```
+> write a bash script that backs up /var/log to /backup every night and add it to cron
+```
+
+And Claude Code will:
+1. Look at your project files
+2. Write the script
+3. Ask your permission to save it
+4. Ask your permission to run a test command
+5. Tell you what it did
+
+**Simple analogy:**
+Normal ChatGPT-style chat is like **calling a friend** for help — they tell you what to type, and **you** do the typing.
+Claude Code is like that friend **sitting next to you at your laptop** — they can open files and type commands themselves, but they **ask you first** before touching anything.
+
+---
+
+## Chat AI vs Agentic AI
+
+| | Chat AI (normal chatbot) | Agentic AI (Claude Code) |
+|---|---|---|
+| Sees your files | ❌ Only what you copy-paste | ✅ Reads your project directly |
+| Edits files | ❌ You copy the answer and paste it | ✅ Edits files for you (after you approve) |
+| Runs commands | ❌ You run them yourself | ✅ Runs `ls`, `git`, `docker`, tests... (after you approve) |
+| Fixes its own mistakes | ❌ You paste the error back | ✅ Sees the error output and tries again |
+| Multi-step work | One answer at a time | Plans and finishes the whole task |
+
+> **Agent** = an AI that can **take actions** (use tools), not just talk.
+> The "tools" Claude Code uses are things like *Read file*, *Edit file*, *Run bash command*, *Search the web*.
+
+---
+
+## Why DevOps Engineers Use Claude Code
+
+| DevOps task | Example prompt |
+|-------------|---------------|
+| Write scripts | `write a bash script that checks disk usage and emails me if it's above 80%` |
+| Understand old code | `explain what deploy.sh does, step by step` |
+| Fix errors | `my docker build fails with this error, fix it` |
+| Write config files | `create a Dockerfile for this Node.js app using a small alpine image` |
+| CI/CD | `write a GitHub Actions workflow that runs tests on every pull request` |
+| Git work | `look at my changes and write a good commit message` |
+| Learn | `what does chmod 750 mean? show me on this folder` |
+| Review | `review this script for security problems` |
+
+> Claude Code is a **helper, not a replacement** for learning. Always read what it writes so **you** understand it too.
+
+---
+
+## Where You Can Use Claude Code
+
+Claude Code is one product that you can open in many places:
+
+```
+                         ┌────────────────────┐
+                         │    Claude Code     │
+                         └─────────┬──────────┘
+     ┌───────────┬────────────┬────┴──────┬────────────┬────────────┐
+     ▼           ▼            ▼           ▼            ▼            ▼
+ Terminal    VS Code     JetBrains    Desktop app    Web         Mobile
+  (CLI)     extension     plugin      (Code tab)  claude.ai/code  app
+```
+
+| Where | Best for |
+|-------|----------|
+| **Terminal (CLI)** | Full features, scripting, servers, WSL — ⭐ **what DevOps people use most** (see `claude-cli.md`) |
+| **VS Code extension** | Working inside VS Code with diffs shown in the editor |
+| **JetBrains plugin** | IntelliJ, PyCharm, WebStorm and other JetBrains IDEs |
+| **Desktop app → Code tab** | Visual diff review, many sessions side by side (see `claude-desktop.md`) |
+| **Web — `claude.ai/code`** | Cloud sessions that keep running even after you close your laptop |
+| **Mobile app (iOS / Android)** | Start and check on cloud sessions from your phone |
+| **Slack** | Mention `@Claude` in a channel to give it a task |
+| **GitHub Actions / GitLab CI** | Let Claude work automatically inside your pipelines |
+
+All of them use the **same account** and the **same settings files**.
+
+---
+
+## What You Need (Requirements)
+
+### Account
+
+You need a **paid** Claude plan **or** an API account:
+
+| Account type | Can use Claude Code? |
+|--------------|---------------------|
+| Claude **Free** | ❌ No |
+| Claude **Pro** | ✅ Yes — good for students and individuals |
+| Claude **Max / Ultra** | ✅ Yes — more usage |
+| Claude **Team / Enterprise** | ✅ Yes — for companies |
+| **Claude Console** (API, pay per use) | ✅ Yes |
+| Amazon Bedrock / Google Cloud / Microsoft Foundry | ✅ Yes — for companies using cloud providers |
+
+### Computer
+
+| Item | Minimum |
+|------|---------|
+| macOS | 13.0 or newer |
+| Windows | Windows 10 (1809) or newer |
+| Linux | Ubuntu 20.04+, Debian 10+, Alpine 3.19+ |
+| RAM | 4 GB or more |
+| CPU | x64 or ARM64 |
+| Internet | Required |
+| Shell | Bash, Zsh, PowerShell or CMD |
+
+> **On Windows**, you can run Claude Code natively **or** inside **WSL 2** (the Ubuntu you installed in `Linux_OS/class_1`).
+> For DevOps practice, **WSL 2 is recommended** — your commands will be real Linux commands.
+> If you use native Windows, install **Git for Windows** first.
+
+---
+
+## Install Claude Code — Step by Step
+
+Pick **one** method. The **native installer** is the recommended one — it **updates itself automatically**.
+
+### Method 1: Native Installer (Recommended)
+
+**macOS / Linux / WSL (Ubuntu):**
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+**Windows PowerShell:**
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+**Windows CMD:**
+
+```bat
+curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
+```
+
+> **What does `curl ... | bash` mean?**
+> `curl` downloads the install script, and `| bash` runs it straight away.
+> Only run this kind of command from websites you **trust** (here: `claude.ai`, the official site).
+
+### Method 2: Package Managers
+
+| Tool | Install | Update (manual) |
+|------|---------|----------------|
+| Homebrew (macOS) | `brew install --cask claude-code` | `brew upgrade claude-code` |
+| WinGet (Windows) | `winget install Anthropic.ClaudeCode` | `winget upgrade Anthropic.ClaudeCode` |
+| npm (needs Node.js 22+) | `npm install -g @anthropic-ai/claude-code@latest` | same command again |
+
+> ⚠️ Never use `sudo npm install -g` — it causes permission problems. Use the native installer instead if npm complains.
+> Package-manager installs do **not** auto-update — you must update them yourself.
+
+### Step 2: Check It Installed
+
+Close and reopen your terminal, then:
+
+```bash
+claude --version
+```
+
+Output (your version number will be different):
+
+```
+2.1.325 (Claude Code)
+```
+
+If you see `command not found`, restart the terminal. Still not working? Run `claude doctor` (see [Update, Diagnose and Uninstall](#update-diagnose-and-uninstall)).
+
+---
+
+## Log In for the First Time
+
+- Open a terminal and type:
+
+```bash
+claude
+```
+
+- Choose your **theme** (light / dark) with the arrow keys → **Enter**
+- Choose how to log in:
+  - **Claude account** (Pro / Max / Team / Enterprise) ← most students
+  - **Claude Console** account (API billing)
+- A **browser window** opens → sign in to your Claude account → click **Authorize**
+- Go back to the terminal — you will see **"Login successful"**
+
+**Login commands you can use any time:**
+
+```bash
+claude auth status     # am I logged in? which account?
+claude auth login      # log in
+claude auth logout     # log out
+```
+
+> Inside WSL, if the browser doesn't open automatically, copy the link shown in the terminal and paste it into your Windows browser.
+
+---
+
+## Your First Session — Step by Step
+
+### Step 1: Go to a Project Folder
+
+Claude Code works on the folder you start it in. Let's create a practice folder:
+
+```bash
+mkdir -p ~/claude-practice
+cd ~/claude-practice
+git init
+```
+
+> Always start Claude Code **inside a project folder**, never in your home folder `~` or in `/`.
+> It can see everything inside the folder you start it in.
+
+### Step 2: Start Claude Code
+
+```bash
+claude
+```
+
+### Step 3: Trust the Folder
+
+The first time you open a folder, Claude asks: **"Do you trust the files in this folder?"**
+
+- Choose **Yes, proceed** — only for folders **you** created or trust.
+
+> Why does it ask? A project folder can contain settings that tell Claude to run commands.
+> A folder you downloaded from a stranger could contain harmful settings.
+
+### Step 4: Ask Your First Question
+
+You'll see a prompt box `>`. Type:
+
+```
+> what files are in this folder and what is this project?
+```
+
+Claude reads the folder and answers. Because the folder is empty, it will tell you that.
+
+### Step 5: Ask It to Create Something
+
+```
+> create a bash script called sysinfo.sh that prints the hostname, date, uptime and disk usage
+```
+
+Claude will:
+- Show you the file it wants to create (a **diff** — green lines are new)
+- Ask: **Do you want to create sysinfo.sh?** → choose **Yes**
+
+### Step 6: Let It Run the Script
+
+```
+> make it executable and run it
+```
+
+Claude asks permission to run `chmod +x sysinfo.sh` and `./sysinfo.sh`.
+Choose **Yes** for each, and Claude shows you the output.
+
+### Step 7: Exit
+
+```
+> /exit
+```
+
+Or press `Ctrl + C` twice. 🎉
+
+**Continue later where you left off:**
+
+```bash
+claude -c       # continue the most recent conversation in this folder
+```
+
+---
+
+## How Claude Code Works (The Agent Loop)
+
+Every task follows the same loop:
+
+```
+     You give a task
+           │
+           ▼
+   ┌───────────────┐
+   │ 1. Think/Plan │  "I need to read deploy.sh first"
+   └───────┬───────┘
+           ▼
+   ┌───────────────┐
+   │ 2. Use a tool │  Read file / Edit file / Run command / Search
+   └───────┬───────┘
+           ▼
+   ┌───────────────┐      Needs permission?
+   │ 3. Ask you    │──►   You choose Yes / No
+   └───────┬───────┘
+           ▼
+   ┌───────────────┐
+   │ 4. See result │  Command output, error messages, test results
+   └───────┬───────┘
+           │
+           ├──── not finished ──► back to step 1
+           ▼
+     Tells you what it did ✅
+```
+
+**Tools Claude Code uses:**
+
+| Tool | What it does | Asks permission? |
+|------|-------------|-----------------|
+| **Read** | Opens and reads files | No (inside your project) |
+| **Search** (Glob / Grep) | Finds files and text | No |
+| **Edit / Write** | Changes or creates files | ✅ Yes |
+| **Bash** | Runs terminal commands | ✅ Yes (most commands) |
+| **Web search / fetch** | Looks things up online | ✅ Yes |
+
+You can **stop Claude any time** by pressing `Esc`. It keeps the work done so far and waits for you.
+
+---
+
+## Permissions — Claude Asks Before Acting
+
+When Claude wants to edit a file or run a command, you see a box like:
+
+```
+ Bash command
+   docker build -t myapp .
+
+ Do you want to proceed?
+ ❯ 1. Yes
+   2. Yes, and don't ask again for docker build commands in this project
+   3. No, and tell Claude what to do differently (esc)
+```
+
+| Choice | Meaning |
+|--------|---------|
+| **Yes** | Allow this one time |
+| **Yes, and don't ask again...** | Always allow this kind of command in this project |
+| **No** | Block it, and type what you want instead |
+
+> ⚠️ **Read every command before you click Yes.** Be extra careful with commands like
+> `rm -rf`, `sudo`, `git push --force`, `docker system prune`, `terraform destroy`, or anything touching production servers.
+
+---
+
+## Permission Modes
+
+A **permission mode** decides **how often** Claude asks you. Press **`Shift + Tab`** to switch between modes during a session (the current mode is shown at the bottom of the screen).
+
+| Mode | What it does | When to use |
+|------|-------------|-------------|
+| **Default** (Manual) | Asks the first time it uses each tool | ✅ **Beginners — use this** |
+| **Accept edits** | Auto-accepts file edits in your project; still asks for most commands | You trust the task and want fewer pop-ups |
+| **Plan** | **Read-only.** Claude explores and writes a **plan**, but changes nothing | Big tasks — review the plan first, then let it work |
+| **Auto** | A safety checker reviews each action instead of asking you | Experienced users, long tasks |
+| **Bypass permissions** | Never asks | ⚠️ Only inside throw-away containers/VMs — **never on your real machine** |
+
+> **Beginner tip:** Use **Plan mode** for anything bigger than a small fix.
+> Claude shows the plan → you read it → you approve → then it starts editing.
+
+---
+
+## CLAUDE.md — Give Claude Project Memory
+
+Every new session starts fresh — Claude doesn't remember yesterday's chat.
+A **`CLAUDE.md`** file fixes this. It's a normal Markdown file with **instructions Claude reads at the start of every session**.
+
+**Simple analogy:** `CLAUDE.md` is like the **notice board** in an office — rules everyone must read before starting work.
+
+### Create One Automatically
+
+Inside a session, type:
+
+```
+> /init
+```
+
+Claude studies your project and writes a `CLAUDE.md` for you. Read it and edit anything that's wrong.
+
+### Example CLAUDE.md for a DevOps Project
+
+```markdown
+# Project: SMIT Web App
+
+## Commands
+- Build image: `docker build -t smit-app .`
+- Run tests: `npm test`
+- Start locally: `docker compose up -d`
+
+## Rules
+- All bash scripts must start with `#!/bin/bash` and `set -euo pipefail`
+- Never edit files in `prod/` — production config is changed only by the team lead
+- Use Ubuntu 24.04 as the base image unless told otherwise
+- Write commit messages in present tense: "Add backup script"
+```
+
+### Where CLAUDE.md Files Can Live
+
+| File | Applies to | Share with team? |
+|------|-----------|-----------------|
+| `./CLAUDE.md` (project folder) | This project | ✅ Yes — commit it to Git |
+| `./CLAUDE.local.md` | This project, only you | ❌ No — add to `.gitignore` |
+| `~/.claude/CLAUDE.md` | **All** your projects | Personal |
+
+Edit them any time with the `/memory` command.
+
+> Claude Code can also keep its own **auto memory** — notes it learns while working with you.
+> You can view and edit that with `/memory` too.
+
+---
+
+## Undo Mistakes with Rewind
+
+Claude saves a **checkpoint** before it edits files. If you don't like what it did:
+
+- Press **`Esc` twice** (with an empty prompt) — or type `/rewind`
+- Choose the point in the conversation to go back to
+- Choose whether to restore the **code**, the **conversation**, or **both**
+
+> ⚠️ Rewind only undoes **file edits Claude made**. It does **not** undo things that happened outside your folder,
+> like a command that deleted a database or pushed to GitHub. That's why you read commands before approving them.
+> Using **Git** and committing often is still your best safety net.
+
+---
+
+## Lab: Use Claude Code on a DevOps Task
+
+**Goal:** Use Claude Code to build a small Dockerised app and a CI pipeline.
+
+```bash
+mkdir -p ~/claude-lab && cd ~/claude-lab && git init
+claude
+```
+
+Now give these prompts **one by one**, reading and approving each step:
+
+1. `create a simple Python Flask app in app.py with one route / that returns "Hello SMIT"`
+2. `create a requirements.txt and a Dockerfile using python:3.12-slim`
+3. `build the docker image and run the container on port 5000, then curl it to test`
+4. `create a .github/workflows/ci.yml that builds the docker image on every pull request`
+5. `/init` — let Claude write a CLAUDE.md for this project
+6. `look at all my changes and write a commit message, then commit`
+
+**Check yourself:**
+- [ ] `curl localhost:5000` prints `Hello SMIT`
+- [ ] You can explain every line of the Dockerfile
+- [ ] `git log` shows your commit
+
+**Clean up:**
+
+```
+> stop and remove the container you started
+```
+
+---
+
+## Writing Good Prompts
+
+| ❌ Vague prompt | ✅ Clear prompt |
+|----------------|----------------|
+| `fix it` | `docker build fails with "pip: not found" — find the cause in the Dockerfile and fix it` |
+| `make a script` | `write a bash script that deletes log files older than 7 days in /var/log/myapp, with a --dry-run option` |
+| `improve the code` | `refactor backup.sh so the folder paths are variables at the top, keep the same behaviour` |
+| `add tests` | `add pytest tests for the / route in app.py and run them` |
+
+**Tips:**
+- Say **what**, **where** (file names) and **how you'll check it**
+- Paste the **exact error message**
+- Use `@filename` to point at a file, e.g. `explain @deploy.sh`
+- Break big jobs into small steps, or use **Plan mode**
+- If Claude goes the wrong way, press `Esc` and correct it — don't wait
+
+---
+
+## Safety Rules and Best Practices
+
+| Rule | Why |
+|------|-----|
+| Start Claude **inside a project folder** | It only works in the folders you give it |
+| Only trust folders **you** know | Project settings can make Claude run commands |
+| **Read** every command before approving | You are responsible for what runs on your machine |
+| Use **Git** and commit often | Easy to undo anything, even outside Claude |
+| Never paste **passwords, AWS keys or `.pem` files** into the chat | Secrets should never leave your machine |
+| Don't let Claude touch **production** without a review | Test on DEV first (remember DEV → SIT → UAT → PROD) |
+| Keep **Default mode** while learning | Fewer surprises |
+| Never use **bypass permissions** on your real computer | Nothing would stop a harmful command |
+| **Understand** the code before you commit it | Interviews and real jobs need *your* knowledge |
+
+---
+
+## Update, Diagnose and Uninstall
+
+```bash
+claude --version     # show installed version
+claude update        # update now (native installs also auto-update in the background)
+claude doctor        # check installation health and settings problems
+```
+
+**Uninstall (native installer, macOS/Linux/WSL):**
+
+```bash
+rm -f ~/.local/bin/claude
+rm -rf ~/.local/share/claude
+```
+
+> Your settings in `~/.claude/` stay after uninstalling. Delete that folder too only if you want a completely clean removal.
+
+---
+
+## Quick Reference
+
+### First-Day Cheat Sheet
+
+| Command / Key | What it does |
+|---------------|-------------|
+| `curl -fsSL https://claude.ai/install.sh \| bash` | Install (macOS / Linux / WSL) |
+| `claude` | Start Claude Code in the current folder |
+| `claude -c` | Continue the last conversation |
+| `claude auth status` | Check login |
+| `/init` | Create a CLAUDE.md for the project |
+| `/memory` | Edit CLAUDE.md / memory |
+| `/help` | Show help |
+| `/exit` | Quit |
+| `Shift + Tab` | Switch permission mode |
+| `Esc` | Stop Claude |
+| `Esc Esc` | Rewind (undo) |
+| `@file` | Mention a file |
+| `!command` | Run a shell command yourself |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| Claude Code | Anthropic's agentic AI coding tool that works in your project |
+| Agent | An AI that can take actions with tools, not just chat |
+| Tool | An action Claude can take — read, edit, run bash, search |
+| Prompt | The instruction you type to Claude |
+| Session | One conversation with Claude Code |
+| Permission prompt | The Yes/No box shown before Claude edits or runs something |
+| Permission mode | How often Claude asks for permission (Default, Accept edits, Plan, Auto) |
+| Plan mode | Read-only mode where Claude only plans |
+| CLAUDE.md | Instruction file Claude reads at the start of every session |
+| Checkpoint / Rewind | Saved point you can go back to if an edit goes wrong |
+| Diff | A view showing removed (red) and added (green) lines |
+| Context | Everything Claude currently "remembers" in this session |
+
+---
+
+*End of Claude Code — Claude*
