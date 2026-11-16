@@ -175,3 +175,29 @@ Chat is the normal "ask Claude anything" mode.
 **Tips:**
 - Use **Projects** to group chats about one topic (e.g. "AWS Study") and add files Claude should always know about
 - Chat **cannot** change files on your computer — use **Code** or **Cowork** for that
+
+---
+
+## Mode 2: Code (Claude Code in the App)
+
+The **Code** tab is **Claude Code** — the same tool as the terminal `claude` command (see `claude-code.md`), but with a **visual screen**.
+
+### Start a Code Session
+
+- Click the **Code** tab
+- Choose a **project folder** on your computer (e.g. your `SMIT_DEVOPS` repo)
+- Type a task, e.g. `add a README section that explains the AWS folder`
+- Claude shows each change as a **diff** (red = removed, green = added) → **approve** or **reject**
+
+### Why Use Code in the App Instead of the Terminal?
+
+| Desktop Code tab | Terminal CLI |
+|------------------|-------------|
+| Visual diff review — easier to read changes | Text diffs |
+| Many sessions side by side, each with its own folder | One session per terminal window |
+| No terminal knowledge needed to start | Needs terminal comfort |
+| Computer use (Claude can use apps on your screen — Pro/Max/Ultra, preview) | — |
+| — | Works over SSH on servers, scripts, CI/CD (`-p`) |
+
+> Both share the same **settings**, **CLAUDE.md** and **permissions**.
+> You can move a terminal session into the app with `/desktop` inside the CLI.
