@@ -383,3 +383,52 @@ A **permission mode** decides **how often** Claude asks you. Press **`Shift + Ta
 
 > **Beginner tip:** Use **Plan mode** for anything bigger than a small fix.
 > Claude shows the plan → you read it → you approve → then it starts editing.
+
+---
+
+## CLAUDE.md — Give Claude Project Memory
+
+Every new session starts fresh — Claude doesn't remember yesterday's chat.
+A **`CLAUDE.md`** file fixes this. It's a normal Markdown file with **instructions Claude reads at the start of every session**.
+
+**Simple analogy:** `CLAUDE.md` is like the **notice board** in an office — rules everyone must read before starting work.
+
+### Create One Automatically
+
+Inside a session, type:
+
+```
+> /init
+```
+
+Claude studies your project and writes a `CLAUDE.md` for you. Read it and edit anything that's wrong.
+
+### Example CLAUDE.md for a DevOps Project
+
+```markdown
+# Project: SMIT Web App
+
+## Commands
+- Build image: `docker build -t smit-app .`
+- Run tests: `npm test`
+- Start locally: `docker compose up -d`
+
+## Rules
+- All bash scripts must start with `#!/bin/bash` and `set -euo pipefail`
+- Never edit files in `prod/` — production config is changed only by the team lead
+- Use Ubuntu 24.04 as the base image unless told otherwise
+- Write commit messages in present tense: "Add backup script"
+```
+
+### Where CLAUDE.md Files Can Live
+
+| File | Applies to | Share with team? |
+|------|-----------|-----------------|
+| `./CLAUDE.md` (project folder) | This project | ✅ Yes — commit it to Git |
+| `./CLAUDE.local.md` | This project, only you | ❌ No — add to `.gitignore` |
+| `~/.claude/CLAUDE.md` | **All** your projects | Personal |
+
+Edit them any time with the `/memory` command.
+
+> Claude Code can also keep its own **auto memory** — notes it learns while working with you.
+> You can view and edit that with `/memory` too.
