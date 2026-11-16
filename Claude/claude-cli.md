@@ -100,3 +100,34 @@ claude -n "docker-fix"          # start a new session and give it a name
 Inside a session:
 - `/resume` → pick another old session
 - `/rename docker-fix` → give the current session a name, so it's easy to find later
+
+---
+
+## Important Flags (Options)
+
+A **flag** changes how `claude` starts. Example: `claude --model opus`.
+
+| Flag | What it does | Example |
+|------|-------------|---------|
+| `-p`, `--print` | Print mode (answer and exit) | `claude -p "summarise README.md"` |
+| `-c`, `--continue` | Continue the last session | `claude -c` |
+| `-r`, `--resume` | Resume a chosen session | `claude -r` |
+| `-n`, `--name` | Name the session | `claude -n "nginx-setup"` |
+| `--model` | Choose the model (`sonnet`, `opus`, `haiku`, `fable`, or a full model ID) | `claude --model sonnet` |
+| `--effort` | How hard Claude thinks (more effort = slower but more careful) | `claude --effort high` |
+| `--permission-mode` | Start in a mode: `default`, `acceptEdits`, `plan`, `auto`, `dontAsk`, `bypassPermissions` | `claude --permission-mode plan` |
+| `--add-dir` | Let Claude also work in another folder | `claude --add-dir ../shared-scripts` |
+| `--allowedTools` | Tools/commands allowed **without asking** | `claude --allowedTools "Bash(git status)" "Read"` |
+| `--disallowedTools` | Tools/commands that are **blocked** | `claude --disallowedTools "Bash(rm *)"` |
+| `--output-format` | Print mode output: `text`, `json`, `stream-json` | `claude -p "hi" --output-format json` |
+| `--max-turns` | Stop after N steps (print mode) | `claude -p "fix lint" --max-turns 5` |
+| `--max-budget-usd` | Stop if the cost goes above a dollar limit (print mode) | `claude -p "..." --max-budget-usd 1` |
+| `--append-system-prompt` | Add extra instructions for this run | `claude --append-system-prompt "Answer in simple English"` |
+| `--mcp-config` | Load MCP servers from a JSON file | `claude --mcp-config mcp.json` |
+| `--settings` | Load settings from a file | `claude --settings ci-settings.json` |
+| `--chrome` | Turn on the Claude in Chrome browser integration | `claude --chrome` |
+| `--desktop` | Open this session in the Claude Desktop app | `claude --desktop` |
+| `--dangerously-skip-permissions` | Never ask for permission | ⚠️ **Only** in throw-away containers |
+
+> ⚠️ **`--dangerously-skip-permissions`** lets Claude run **any** command without asking — including deleting files.
+> The word "dangerously" is there for a reason. Only use it inside a disposable Docker container or VM with no secrets.
