@@ -36,3 +36,27 @@ The **Claude CLI** is the `claude` command. It is **Claude Code running in your 
 - Servers usually have **no graphical screen** — only a terminal over SSH
 - The CLI can run **inside scripts, cron jobs and CI/CD pipelines**
 - It has the **full feature set** — every other version of Claude Code is built on top of it
+
+---
+
+## Two Ways to Use the CLI
+
+```
+  ┌──────────────────────────────────┐        ┌──────────────────────────────────┐
+  │  1. Interactive mode             │        │  2. Print mode (-p)              │
+  │                                  │        │                                  │
+  │  $ claude                        │        │  $ claude -p "explain this log"  │
+  │  > you type...                   │        │  (prints the answer and exits)   │
+  │  < Claude answers...             │        │                                  │
+  │  > you type again...             │        │  Used in: scripts, cron,         │
+  │                                  │        │  pipelines, GitHub Actions       │
+  │  A live chat in the terminal     │        │  One question → one answer       │
+  └──────────────────────────────────┘        └──────────────────────────────────┘
+```
+
+| | Interactive | Print (`-p`) |
+|---|---|---|
+| How to start | `claude` | `claude -p "question"` |
+| Conversation | Back and forth | One shot, then exits |
+| Permission prompts | Shown on screen | Not possible — you decide permissions with flags |
+| Best for | Daily coding and learning | Automation and scripts |
