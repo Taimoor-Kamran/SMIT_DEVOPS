@@ -68,3 +68,24 @@ It puts **all of Claude's features in one window** — chatting, coding, and doi
 - **Chat** = asking a teacher a question.
 - **Code** = a programmer sitting with you at your laptop.
 - **Cowork** = an assistant you give a job to — "organise these files and make a report" — and they come back when it's done.
+
+---
+
+## Requirements
+
+### Account
+
+| Plan | Chat | Code | Cowork |
+|------|------|------|--------|
+| Free | ✅ | ❌ | ❌ |
+| Pro | ✅ | ✅ | ✅ |
+| Max / Ultra | ✅ | ✅ | ✅ |
+| Team / Enterprise | ✅ | ✅ | ✅ (admin can control it) |
+
+### Computer
+
+| OS | Minimum |
+|----|---------|
+| **macOS** | macOS 13 (Ventura) or newer |
+| **Windows** | Windows 10 or newer (x64 or ARM64) |
+| **Linux** *(beta)* | Ubuntu 22.04 LTS+ or Debian 12+ (x64 or arm64) |
