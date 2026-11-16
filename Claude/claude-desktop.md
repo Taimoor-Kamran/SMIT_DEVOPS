@@ -125,3 +125,37 @@ sudo apt update && sudo apt upgrade
 ```
 
 > **WSL users:** install the Desktop app on **Windows** (not inside WSL). The Code tab can still work with your WSL projects.
+
+---
+
+## Sign In and Tour the App
+
+- Open the app → click **Sign in**
+- Sign in with the **same account** you use on `claude.ai` (Google, email, etc.)
+- Allow any permissions macOS / Windows asks for (notifications etc.)
+
+**What you'll see:**
+
+```
+ ┌────────────────┬─────────────────────────────────────────────┐
+ │  Sidebar       │                                             │
+ │                │                                             │
+ │  + New         │          Main area                          │
+ │  Chats/Tasks   │      (your conversation or task)            │
+ │  Projects      │                                             │
+ │  Scheduled     │                                             │
+ │  Customize     │  ┌──────────────────────────────────────┐   │
+ │                │  │ Message box    [+]  [mode]  [model]  │   │
+ │  Settings      │  └──────────────────────────────────────┘   │
+ └────────────────┴─────────────────────────────────────────────┘
+```
+
+| Part | What it does |
+|------|-------------|
+| **Sidebar** | Old conversations, projects, scheduled tasks, Customize (connectors, skills, plugins) |
+| **Message box** | Where you type |
+| **`+` button** | Attach files, add connectors |
+| **Mode selector** | Switch between Chat / Code / Cowork |
+| **Model picker** | Choose which Claude model to use |
+
+> Anthropic updates the app often, so button names and positions can change slightly. The ideas stay the same.
