@@ -341,3 +341,28 @@ Every task follows the same loop:
 | **Web search / fetch** | Looks things up online | ✅ Yes |
 
 You can **stop Claude any time** by pressing `Esc`. It keeps the work done so far and waits for you.
+
+---
+
+## Permissions — Claude Asks Before Acting
+
+When Claude wants to edit a file or run a command, you see a box like:
+
+```
+ Bash command
+   docker build -t myapp .
+
+ Do you want to proceed?
+ ❯ 1. Yes
+   2. Yes, and don't ask again for docker build commands in this project
+   3. No, and tell Claude what to do differently (esc)
+```
+
+| Choice | Meaning |
+|--------|---------|
+| **Yes** | Allow this one time |
+| **Yes, and don't ask again...** | Always allow this kind of command in this project |
+| **No** | Block it, and type what you want instead |
+
+> ⚠️ **Read every command before you click Yes.** Be extra careful with commands like
+> `rm -rf`, `sudo`, `git push --force`, `docker system prune`, `terraform destroy`, or anything touching production servers.
