@@ -510,3 +510,20 @@ my-project/                    ← a PROJECT folder
 CLAUDE.local.md
 .claude/settings.local.json
 ```
+
+---
+
+## Lab: CLI Practice
+
+```bash
+mkdir -p ~/cli-lab && cd ~/cli-lab && git init
+```
+
+1. **Print mode:** `claude -p "write a bash script hello.sh that prints Hello SMIT" > hello.sh` — open `hello.sh`. What went wrong? (Hint: Claude's answer may include explanation text, not only code.) Now try again with: `claude -p "output ONLY the raw bash script, no explanation, for a script that prints Hello SMIT" > hello.sh`
+2. **Pipe:** `ls -la /etc | claude -p "which of these files are about networking?"`
+3. **Interactive:** run `claude`, then `!git status`, then ask `what does this output mean?`
+4. **Mention a file:** `explain @hello.sh line by line`
+5. **Plan mode:** press `Shift + Tab` until you see **plan mode**, then ask `add a --name argument to hello.sh`. Read the plan, then approve it.
+6. **Permissions:** run `/permissions` and add an allow rule for `Bash(git status)`
+7. **Name and resume:** `/rename cli-lab`, `/exit`, then `claude -r "cli-lab"`
+8. **Context:** run `/context`, then `/clear`
