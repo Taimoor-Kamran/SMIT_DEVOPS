@@ -45,3 +45,18 @@ And Claude Code will:
 **Simple analogy:**
 Normal ChatGPT-style chat is like **calling a friend** for help — they tell you what to type, and **you** do the typing.
 Claude Code is like that friend **sitting next to you at your laptop** — they can open files and type commands themselves, but they **ask you first** before touching anything.
+
+---
+
+## Chat AI vs Agentic AI
+
+| | Chat AI (normal chatbot) | Agentic AI (Claude Code) |
+|---|---|---|
+| Sees your files | ❌ Only what you copy-paste | ✅ Reads your project directly |
+| Edits files | ❌ You copy the answer and paste it | ✅ Edits files for you (after you approve) |
+| Runs commands | ❌ You run them yourself | ✅ Runs `ls`, `git`, `docker`, tests... (after you approve) |
+| Fixes its own mistakes | ❌ You paste the error back | ✅ Sees the error output and tries again |
+| Multi-step work | One answer at a time | Plans and finishes the whole task |
+
+> **Agent** = an AI that can **take actions** (use tools), not just talk.
+> The "tools" Claude Code uses are things like *Read file*, *Edit file*, *Run bash command*, *Search the web*.
