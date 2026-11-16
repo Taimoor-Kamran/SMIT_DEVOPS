@@ -21,3 +21,18 @@
 16. [Lab: CLI Practice](#lab-cli-practice)
 17. [Troubleshooting](#troubleshooting)
 18. [Quick Reference](#quick-reference)
+
+---
+
+## What is the Claude CLI?
+
+**CLI** stands for **Command Line Interface** — a program you use by typing in the terminal instead of clicking buttons.
+
+The **Claude CLI** is the `claude` command. It is **Claude Code running in your terminal**.
+
+> If you haven't installed Claude Code yet, read `claude-code.md` first.
+
+**Why the CLI matters for DevOps:**
+- Servers usually have **no graphical screen** — only a terminal over SSH
+- The CLI can run **inside scripts, cron jobs and CI/CD pipelines**
+- It has the **full feature set** — every other version of Claude Code is built on top of it
