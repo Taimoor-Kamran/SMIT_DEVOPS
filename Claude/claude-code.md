@@ -60,3 +60,20 @@ Claude Code is like that friend **sitting next to you at your laptop** — they 
 
 > **Agent** = an AI that can **take actions** (use tools), not just talk.
 > The "tools" Claude Code uses are things like *Read file*, *Edit file*, *Run bash command*, *Search the web*.
+
+---
+
+## Why DevOps Engineers Use Claude Code
+
+| DevOps task | Example prompt |
+|-------------|---------------|
+| Write scripts | `write a bash script that checks disk usage and emails me if it's above 80%` |
+| Understand old code | `explain what deploy.sh does, step by step` |
+| Fix errors | `my docker build fails with this error, fix it` |
+| Write config files | `create a Dockerfile for this Node.js app using a small alpine image` |
+| CI/CD | `write a GitHub Actions workflow that runs tests on every pull request` |
+| Git work | `look at my changes and write a good commit message` |
+| Learn | `what does chmod 750 mean? show me on this folder` |
+| Review | `review this script for security problems` |
+
+> Claude Code is a **helper, not a replacement** for learning. Always read what it writes so **you** understand it too.
