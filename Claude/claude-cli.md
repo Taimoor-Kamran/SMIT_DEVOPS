@@ -542,3 +542,63 @@ mkdir -p ~/cli-lab && cd ~/cli-lab && git init
 | Print mode does nothing in a script | It may be waiting for a permission — add `--allowedTools` |
 | Old version | `claude update` |
 | `npm` install permission errors | Don't use `sudo`; use the native installer instead |
+
+---
+
+## Quick Reference
+
+### CLI Commands Cheat Sheet
+
+| Command | What it does |
+|---------|-------------|
+| `claude` | Interactive session |
+| `claude "task"` | Interactive with a first message |
+| `claude -p "task"` | Print mode — answer and exit |
+| `cat file \| claude -p "task"` | Pipe content into Claude |
+| `claude -c` | Continue the last session |
+| `claude -r` | Resume an old session |
+| `claude --model opus` | Choose a model |
+| `claude --permission-mode plan` | Start in plan mode |
+| `claude --add-dir <path>` | Add another folder |
+| `claude mcp add <name> -- <command>` | Add an MCP server |
+| `claude mcp list` | List MCP servers |
+| `claude update` | Update |
+| `claude doctor` | Health check |
+
+### Slash Commands Cheat Sheet
+
+| Command | What it does |
+|---------|-------------|
+| `/help` | All commands |
+| `/init` | Create CLAUDE.md |
+| `/clear` | Fresh conversation |
+| `/compact` | Summarise to save space |
+| `/context` | How full the context is |
+| `/model` | Change model |
+| `/permissions` | Allow / ask / deny rules |
+| `/memory` | Edit CLAUDE.md |
+| `/mcp` | MCP servers |
+| `/rewind` | Undo to a checkpoint |
+| `/resume` | Open an old session |
+| `/usage` | Plan usage |
+| `/exit` | Quit |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| CLI | Command Line Interface — a program you use by typing |
+| Interactive mode | Live back-and-forth chat in the terminal |
+| Print mode (`-p`) | One question, one answer, then exit — for scripts |
+| Flag | An option added to a command, like `--model` |
+| Slash command | A command inside a session that starts with `/` |
+| Context window | How much Claude can "remember" in one session |
+| Compact | Summarise the conversation to free up context |
+| Settings scope | Which settings file a setting lives in (user, project, local, managed) |
+| Permission rule | An allow / ask / deny entry for a tool or command |
+| MCP | Model Context Protocol — the standard for plugging tools into Claude |
+| MCP server | A program that gives Claude extra tools (GitHub, database, browser) |
+| Skill | Saved instructions Claude can use, run with `/name` |
+| Subagent | A specialised helper Claude for one type of job |
+| Hook | A command that runs automatically when Claude does something |
+| Plugin | A bundle of skills, agents, hooks and MCP servers |
