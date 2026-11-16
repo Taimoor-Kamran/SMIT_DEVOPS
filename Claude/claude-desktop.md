@@ -223,3 +223,49 @@ reading files, creating documents, building spreadsheets with formulas, making p
 
 **Simple analogy:**
 Chat is **asking for directions**. Cowork is **handing someone the car keys** and saying "please pick up these three things and bring them home" — they plan the route and do it.
+
+---
+
+## Start Your First Cowork Task — Step by Step
+
+### Step 1: Open Cowork
+
+- Open the **Claude Desktop app** (Cowork also works on `claude.ai` and the mobile app)
+- In the message box, select **Cowork**
+
+> If you don't see separate **Chat** and **Cowork** options, you have the newer **unified** version of the app —
+> any conversation can take a Cowork task. Just describe the job.
+
+### Step 2: Connect a Folder (for File Tasks)
+
+- If the task uses files on your computer, **connect the folder** Claude should work in when the app asks
+- Pick a **specific** folder — e.g. `Documents/SMIT-Notes` — **not** your whole home folder or C: drive
+
+### Step 3: Describe the Task Clearly
+
+Example:
+
+```
+In the folder SMIT-Notes, read all the .md files in Phase_1.
+Create a file called Phase_1_Revision.docx with:
+- one heading per class
+- 5 key points per class
+- a 10-question quiz at the end with answers on the last page
+```
+
+### Step 4: Review Claude's Plan
+
+Cowork shows **how it plans to do the task** before it starts the heavy work.
+- Read it
+- If something is wrong, tell it: `don't include the incident sections`
+
+### Step 5: Let it Run and Approve Actions
+
+- Claude works step by step and shows progress
+- Depending on the **approval mode** (next section), it asks you to **Allow** or **Deny** actions
+- You can keep using your computer while it works
+
+### Step 6: Check the Result
+
+- Open the files Cowork created and check them
+- Ask for changes: `make the quiz harder` or `add page numbers`
