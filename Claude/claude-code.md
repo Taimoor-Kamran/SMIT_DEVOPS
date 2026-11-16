@@ -139,3 +139,60 @@ You need a **paid** Claude plan **or** an API account:
 > **On Windows**, you can run Claude Code natively **or** inside **WSL 2** (the Ubuntu you installed in `Linux_OS/class_1`).
 > For DevOps practice, **WSL 2 is recommended** — your commands will be real Linux commands.
 > If you use native Windows, install **Git for Windows** first.
+
+---
+
+## Install Claude Code — Step by Step
+
+Pick **one** method. The **native installer** is the recommended one — it **updates itself automatically**.
+
+### Method 1: Native Installer (Recommended)
+
+**macOS / Linux / WSL (Ubuntu):**
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+**Windows PowerShell:**
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+**Windows CMD:**
+
+```bat
+curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
+```
+
+> **What does `curl ... | bash` mean?**
+> `curl` downloads the install script, and `| bash` runs it straight away.
+> Only run this kind of command from websites you **trust** (here: `claude.ai`, the official site).
+
+### Method 2: Package Managers
+
+| Tool | Install | Update (manual) |
+|------|---------|----------------|
+| Homebrew (macOS) | `brew install --cask claude-code` | `brew upgrade claude-code` |
+| WinGet (Windows) | `winget install Anthropic.ClaudeCode` | `winget upgrade Anthropic.ClaudeCode` |
+| npm (needs Node.js 22+) | `npm install -g @anthropic-ai/claude-code@latest` | same command again |
+
+> ⚠️ Never use `sudo npm install -g` — it causes permission problems. Use the native installer instead if npm complains.
+> Package-manager installs do **not** auto-update — you must update them yourself.
+
+### Step 2: Check It Installed
+
+Close and reopen your terminal, then:
+
+```bash
+claude --version
+```
+
+Output (your version number will be different):
+
+```
+2.1.325 (Claude Code)
+```
+
+If you see `command not found`, restart the terminal. Still not working? Run `claude doctor` (see [Update, Diagnose and Uninstall](#update-diagnose-and-uninstall)).
