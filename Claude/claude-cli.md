@@ -82,3 +82,21 @@ The **Claude CLI** is the `claude` command. It is **Claude Code running in your 
 | `claude --help` | Show every command and flag |
 
 > `claude --help` on **your** machine is always the final truth — new flags are added often.
+
+---
+
+## Resume Old Conversations
+
+Claude saves every session. You can come back to them later.
+
+```bash
+claude -c                       # continue the last conversation in this folder
+claude -c -p "now add tests"    # continue it in print mode
+claude -r                       # open a list of old sessions and pick one
+claude -r "docker-fix"          # resume the session named "docker-fix"
+claude -n "docker-fix"          # start a new session and give it a name
+```
+
+Inside a session:
+- `/resume` → pick another old session
+- `/rename docker-fix` → give the current session a name, so it's easy to find later
