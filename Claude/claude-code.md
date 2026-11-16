@@ -511,3 +511,22 @@ Now give these prompts **one by one**, reading and approving each step:
 | Keep **Default mode** while learning | Fewer surprises |
 | Never use **bypass permissions** on your real computer | Nothing would stop a harmful command |
 | **Understand** the code before you commit it | Interviews and real jobs need *your* knowledge |
+
+---
+
+## Update, Diagnose and Uninstall
+
+```bash
+claude --version     # show installed version
+claude update        # update now (native installs also auto-update in the background)
+claude doctor        # check installation health and settings problems
+```
+
+**Uninstall (native installer, macOS/Linux/WSL):**
+
+```bash
+rm -f ~/.local/bin/claude
+rm -rf ~/.local/share/claude
+```
+
+> Your settings in `~/.claude/` stay after uninstalling. Delete that folder too only if you want a completely clean removal.
