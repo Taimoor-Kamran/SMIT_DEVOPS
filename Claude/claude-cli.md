@@ -324,3 +324,32 @@ claude -p "check git status and tell me what's not committed" \
 
 > Anything not allowed is simply **refused**, and Claude tells you it couldn't do it.
 > In CI/CD (GitHub Actions, GitLab CI) you also use print mode, with an **API key** stored as a **secret**.
+
+---
+
+## Settings Files
+
+Claude Code reads settings from **JSON files**. There are several levels:
+
+| File | Applies to | Commit to Git? |
+|------|-----------|---------------|
+| `~/.claude/settings.json` | **You**, in all projects | — (personal) |
+| `.claude/settings.json` | **Everyone** on this project | ✅ Yes — shared with the team |
+| `.claude/settings.local.json` | **You**, only in this project | ❌ No — keep out of Git |
+| Managed settings | Whole company (set by IT) | — |
+
+**Which one wins?** If two files disagree, the more specific one wins:
+
+```
+ Managed (company)            ← highest
+   │
+ --settings flag
+   │
+ .claude/settings.local.json  (you, this project)
+   │
+ .claude/settings.json        (team, this project)
+   │
+ ~/.claude/settings.json      (you, everywhere)  ← lowest
+```
+
+> The easy way to change settings is the `/config` command — it writes these files for you.
