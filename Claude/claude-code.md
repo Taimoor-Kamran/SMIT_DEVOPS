@@ -530,3 +530,42 @@ rm -rf ~/.local/share/claude
 ```
 
 > Your settings in `~/.claude/` stay after uninstalling. Delete that folder too only if you want a completely clean removal.
+
+---
+
+## Quick Reference
+
+### First-Day Cheat Sheet
+
+| Command / Key | What it does |
+|---------------|-------------|
+| `curl -fsSL https://claude.ai/install.sh \| bash` | Install (macOS / Linux / WSL) |
+| `claude` | Start Claude Code in the current folder |
+| `claude -c` | Continue the last conversation |
+| `claude auth status` | Check login |
+| `/init` | Create a CLAUDE.md for the project |
+| `/memory` | Edit CLAUDE.md / memory |
+| `/help` | Show help |
+| `/exit` | Quit |
+| `Shift + Tab` | Switch permission mode |
+| `Esc` | Stop Claude |
+| `Esc Esc` | Rewind (undo) |
+| `@file` | Mention a file |
+| `!command` | Run a shell command yourself |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| Claude Code | Anthropic's agentic AI coding tool that works in your project |
+| Agent | An AI that can take actions with tools, not just chat |
+| Tool | An action Claude can take — read, edit, run bash, search |
+| Prompt | The instruction you type to Claude |
+| Session | One conversation with Claude Code |
+| Permission prompt | The Yes/No box shown before Claude edits or runs something |
+| Permission mode | How often Claude asks for permission (Default, Accept edits, Plan, Auto) |
+| Plan mode | Read-only mode where Claude only plans |
+| CLAUDE.md | Instruction file Claude reads at the start of every session |
+| Checkpoint / Rewind | Saved point you can go back to if an edit goes wrong |
+| Diff | A view showing removed (red) and added (green) lines |
+| Context | Everything Claude currently "remembers" in this session |
