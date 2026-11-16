@@ -89,3 +89,39 @@ It puts **all of Claude's features in one window** — chatting, coding, and doi
 | **macOS** | macOS 13 (Ventura) or newer |
 | **Windows** | Windows 10 or newer (x64 or ARM64) |
 | **Linux** *(beta)* | Ubuntu 22.04 LTS+ or Debian 12+ (x64 or arm64) |
+
+---
+
+## Install the Desktop App — Step by Step
+
+### Windows
+
+- Go to **`https://claude.ai/download`**
+- Click the **Windows** download
+- Open the downloaded installer file
+- Follow the installer → it opens Claude when finished
+- Later, open it from the **Start menu** → search **Claude**
+
+### macOS
+
+- Go to **`https://claude.ai/download`**
+- Click the **macOS** download (a `.dmg` file)
+- Open the `.dmg` → drag **Claude** into the **Applications** folder
+- Open **Applications → Claude**
+- If macOS asks *"Are you sure you want to open it?"* → click **Open**
+
+### Linux (Ubuntu / Debian) — Beta
+
+The Linux app is installed from Anthropic's **apt repository** (or a `.deb` file). Follow the setup steps on the download page to add the repository, then:
+
+```bash
+sudo apt update && sudo apt install claude-desktop
+```
+
+Updates come through apt as usual:
+
+```bash
+sudo apt update && sudo apt upgrade
+```
+
+> **WSL users:** install the Desktop app on **Windows** (not inside WSL). The Code tab can still work with your WSL projects.
