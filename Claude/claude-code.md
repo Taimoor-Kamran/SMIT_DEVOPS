@@ -432,3 +432,17 @@ Edit them any time with the `/memory` command.
 
 > Claude Code can also keep its own **auto memory** — notes it learns while working with you.
 > You can view and edit that with `/memory` too.
+
+---
+
+## Undo Mistakes with Rewind
+
+Claude saves a **checkpoint** before it edits files. If you don't like what it did:
+
+- Press **`Esc` twice** (with an empty prompt) — or type `/rewind`
+- Choose the point in the conversation to go back to
+- Choose whether to restore the **code**, the **conversation**, or **both**
+
+> ⚠️ Rewind only undoes **file edits Claude made**. It does **not** undo things that happened outside your folder,
+> like a command that deleted a database or pushed to GitHub. That's why you read commands before approving them.
+> Using **Git** and committing often is still your best safety net.
