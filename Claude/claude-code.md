@@ -366,3 +366,20 @@ When Claude wants to edit a file or run a command, you see a box like:
 
 > ⚠️ **Read every command before you click Yes.** Be extra careful with commands like
 > `rm -rf`, `sudo`, `git push --force`, `docker system prune`, `terraform destroy`, or anything touching production servers.
+
+---
+
+## Permission Modes
+
+A **permission mode** decides **how often** Claude asks you. Press **`Shift + Tab`** to switch between modes during a session (the current mode is shown at the bottom of the screen).
+
+| Mode | What it does | When to use |
+|------|-------------|-------------|
+| **Default** (Manual) | Asks the first time it uses each tool | ✅ **Beginners — use this** |
+| **Accept edits** | Auto-accepts file edits in your project; still asks for most commands | You trust the task and want fewer pop-ups |
+| **Plan** | **Read-only.** Claude explores and writes a **plan**, but changes nothing | Big tasks — review the plan first, then let it work |
+| **Auto** | A safety checker reviews each action instead of asking you | Experienced users, long tasks |
+| **Bypass permissions** | Never asks | ⚠️ Only inside throw-away containers/VMs — **never on your real machine** |
+
+> **Beginner tip:** Use **Plan mode** for anything bigger than a small fix.
+> Claude shows the plan → you read it → you approve → then it starts editing.
