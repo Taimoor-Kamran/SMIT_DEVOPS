@@ -569,3 +569,7 @@ rm -rf ~/.local/share/claude
 | Checkpoint / Rewind | Saved point you can go back to if an edit goes wrong |
 | Diff | A view showing removed (red) and added (green) lines |
 | Context | Everything Claude currently "remembers" in this session |
+
+---
+
+*End of Claude Code — Claude*
