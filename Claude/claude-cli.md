@@ -232,3 +232,25 @@ Inside an interactive session, type `/` to see a menu of commands. Start typing 
 
 > **Multi-line messages:** press `Shift + Enter` (or type `\` then `Enter`) to add a new line without sending.
 > On macOS, `Option` shortcuts need **"Use Option as Meta key"** turned on in your terminal settings.
+
+---
+
+## Special Prefixes: `/`, `@`, `!`
+
+| Start your message with | Meaning | Example |
+|-------------------------|---------|---------|
+| `/` | Run a slash command or skill | `/init` |
+| `@` | Mention a file or folder (with autocomplete) | `explain @scripts/backup.sh` |
+| `!` | **Shell mode** — run the command yourself; the output is added to the chat | `!docker ps` |
+
+**Example using `!`:**
+
+```
+> !docker ps -a
+CONTAINER ID   IMAGE    STATUS
+a1b2c3d4e5f6   nginx    Exited (1) 2 minutes ago
+
+> why did my nginx container exit? check its logs
+```
+
+Claude now knows which container you mean and can check its logs.
