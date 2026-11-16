@@ -354,3 +354,22 @@ Open **Customize** in the sidebar to manage these:
 > Skills you made for the CLI must be added separately in **Customize** for Cowork.
 
 > ⚠️ A connector gives Claude access to that app's data. Only connect accounts you're comfortable sharing, and remove connectors you don't use.
+
+---
+
+## Cowork vs Claude Code — Which One?
+
+| | Cowork | Claude Code |
+|---|---|---|
+| Made for | Everyday knowledge work: files, documents, research | Software and DevOps work: code, scripts, servers |
+| Needs terminal / coding | ❌ No | ✅ Helpful |
+| Output | Documents, spreadsheets, presentations, organised files | Code changes, commits, scripts, configs |
+| Where it runs | Desktop app, web, mobile, Chrome | Terminal, IDEs, Desktop Code tab, web |
+| Runs in | An isolated environment on Anthropic's servers, using folders you connect | Directly on your machine (or in the cloud on the web) |
+| Git push / deploy | ❌ Blocked (download-only network) | ✅ Yes (with your permission) |
+| Automation in CI/CD | ❌ | ✅ `claude -p` |
+
+**Rule of thumb:**
+- Building or fixing **code / infrastructure** → **Claude Code**
+- Producing **documents, reports, organised files** → **Cowork**
+- Just **learning or asking** → **Chat**
