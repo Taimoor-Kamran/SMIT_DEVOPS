@@ -333,3 +333,24 @@ When Cowork runs commands, its **internet access** is limited by a setting in **
 | **Plugins** | Add ready-made packs of skills and tools for a job role |
 | **Dispatch** *(Pro, Max, Ultra)* | Send a task from your **phone** and let your desktop do the work |
 | **Sub-agents** | Splits big jobs into parts that run at the same time |
+
+---
+
+## Connectors, Skills and Plugins
+
+Open **Customize** in the sidebar to manage these:
+
+| Feature | What it is | Example |
+|---------|-----------|---------|
+| **Connectors** | Connect Claude to apps you use (built on **MCP**) | Google Drive, Gmail, GitHub, Slack, Notion |
+| **Skills** | Saved instructions for a type of task — load automatically or run with `/` | "Write notes in SMIT beginner style" |
+| **Plugins** | Bundles of skills, connectors and tools | A ready-made "sales" or "design" toolkit |
+
+**Add a connector:**
+- Click **`+`** next to the message box → **Add connectors**
+- Choose the app → sign in → allow access
+
+> Cowork **does not** read the `~/.claude` folder that the Claude Code CLI uses.
+> Skills you made for the CLI must be added separately in **Customize** for Cowork.
+
+> ⚠️ A connector gives Claude access to that app's data. Only connect accounts you're comfortable sharing, and remove connectors you don't use.
