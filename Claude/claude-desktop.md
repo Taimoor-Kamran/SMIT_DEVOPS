@@ -425,3 +425,54 @@ Open **Customize** in the sidebar to manage these:
 - **`git push` and uploads** are blocked from Cowork's network
 - Some features (like plugins that use local MCP servers) work **only in the desktop app**, not on the web
 - When you delete a task, it disappears from your history right away and is removed from Anthropic's storage within 30 days
+
+---
+
+## Quick Reference
+
+### Desktop App Cheat Sheet
+
+| Task | How |
+|------|-----|
+| Download | `https://claude.ai/download` |
+| Linux install | `sudo apt install claude-desktop` (after adding the repo) |
+| Start a chat | Message box → **Chat** |
+| Start coding | **Code** tab → choose project folder |
+| Start a Cowork task | Message box → **Cowork** → describe the result |
+| Change approval mode | Mode selector in the message box |
+| Add a connector | **`+`** → **Add connectors** |
+| Manage skills / plugins | Sidebar → **Customize** |
+| Schedule a task | `/schedule` in a task, or **Scheduled** in the sidebar |
+| Network access for Cowork | **Settings → Capabilities** |
+| Move a CLI session into the app | `/desktop` inside the terminal `claude` |
+
+### Which Mode? Cheat Sheet
+
+| I want to... | Use |
+|--------------|-----|
+| Learn a concept / ask a question | Chat |
+| Write or fix a script, Dockerfile, pipeline | Code |
+| Review code changes visually | Code |
+| Turn notes into slides or a Word document | Cowork |
+| Organise or rename lots of files | Cowork |
+| Build a spreadsheet from PDFs | Cowork |
+| Run something every week automatically | Cowork scheduled task |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| Claude Desktop | Anthropic's installable app for macOS, Windows and Linux |
+| Chat | Normal question-and-answer conversation mode |
+| Code tab | Claude Code inside the Desktop app with a visual screen |
+| Cowork | Agent mode for multi-step work on files and documents, no coding needed |
+| Approval mode | How often Cowork asks you before acting (Manual, Auto, Skip) |
+| Connected folder | A folder on your computer that Cowork is allowed to use |
+| Connector | A link between Claude and another app, built on MCP |
+| Skill | Saved instructions for a type of task |
+| Plugin | A bundle of skills, connectors and tools |
+| Scheduled task | A Cowork task that runs automatically on a schedule |
+| Dispatch | Sending a task from your phone to your desktop |
+| Sub-agent | A helper that handles one part of a bigger task in parallel |
+| Network egress | Cowork's ability to reach the internet |
+| Beta | A feature that works but is still being improved |
