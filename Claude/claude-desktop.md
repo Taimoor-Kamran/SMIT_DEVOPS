@@ -201,3 +201,25 @@ The **Code** tab is **Claude Code** — the same tool as the terminal `claude` c
 
 > Both share the same **settings**, **CLAUDE.md** and **permissions**.
 > You can move a terminal session into the app with `/desktop` inside the CLI.
+
+---
+
+## Mode 3: What is Cowork?
+
+**Cowork** uses the **same agent technology as Claude Code** — but with **no terminal and no coding needed**.
+
+You describe the **result** you want, and Claude works through all the steps itself:
+reading files, creating documents, building spreadsheets with formulas, making presentations, researching the web — often running several **sub-agents** at the same time.
+
+**Examples of Cowork tasks:**
+
+| You say | Cowork does |
+|---------|------------|
+| `Organise my Downloads folder into subfolders by file type` | Looks at every file, creates folders, moves files |
+| `Read all the PDFs in this folder and make an Excel sheet of invoice number, date and amount` | Reads each PDF, builds the spreadsheet with totals |
+| `Turn my Phase_1 notes into a 10-slide revision presentation` | Reads the notes, writes and designs the slides |
+| `Research the top 5 DevOps tools for 2026 and write a 2-page comparison` | Searches the web, writes a document with sources |
+| `Every Monday, summarise my week's class notes` | Runs on a schedule |
+
+**Simple analogy:**
+Chat is **asking for directions**. Cowork is **handing someone the car keys** and saying "please pick up these three things and bring them home" — they plan the route and do it.
