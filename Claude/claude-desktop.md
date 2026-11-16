@@ -36,3 +36,35 @@ It puts **all of Claude's features in one window** — chatting, coding, and doi
 - One click from your taskbar / dock
 
 > The website `claude.ai` and the Desktop app use the **same account** — your chats show up in both.
+
+---
+
+## The Three Modes: Chat, Code and Cowork
+
+```
+ ┌────────────────────────────────────────────────────────────────────┐
+ │                       Claude Desktop App                           │
+ ├──────────────────────┬──────────────────────┬──────────────────────┤
+ │        Chat          │        Code          │       Cowork         │
+ │                      │                      │                      │
+ │  Ask questions,      │  Claude Code with a  │  Give an outcome —   │
+ │  learn, brainstorm,  │  visual screen: edit │  Claude does multi-  │
+ │  write text          │  code, see diffs,    │  step work on files, │
+ │                      │  run commands        │  docs, spreadsheets  │
+ │                      │                      │                      │
+ │  "Explain Docker     │  "Add a health check │  "Turn these 10 PDF  │
+ │   volumes"           │   to my Dockerfile"  │   invoices into one  │
+ │                      │                      │   Excel sheet"       │
+ └──────────────────────┴──────────────────────┴──────────────────────┘
+```
+
+| Mode | Who it's for | Works on your files? | Needs coding? |
+|------|-------------|---------------------|--------------|
+| **Chat** | Everyone | Only files you upload | No |
+| **Code** | Developers, DevOps | ✅ Your project folder | Yes (it's Claude Code) |
+| **Cowork** | Everyone — students, office work, research | ✅ Folders you connect | **No** |
+
+**Simple analogy:**
+- **Chat** = asking a teacher a question.
+- **Code** = a programmer sitting with you at your laptop.
+- **Cowork** = an assistant you give a job to — "organise these files and make a report" — and they come back when it's done.
