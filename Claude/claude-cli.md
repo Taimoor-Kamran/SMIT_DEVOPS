@@ -272,3 +272,55 @@ It has a **size limit** (called the **context window**). When it gets full, Clau
 | Want something remembered **forever** | Put it in `CLAUDE.md` |
 
 > Claude also compacts **automatically** when the context is nearly full, so long sessions keep working.
+
+---
+
+## Print Mode — Claude in Scripts and Pipelines
+
+Print mode (`-p`) turns Claude into a normal Linux command, so you can use it with pipes `|`, redirects `>` and scripts.
+
+### Examples
+
+```bash
+# Explain a log file
+cat /var/log/nginx/error.log | claude -p "explain these errors in simple words"
+
+# Save the answer to a file
+claude -p "write a .gitignore for a Python project" > .gitignore
+
+# Explain the last 5 commits
+git log -5 --stat | claude -p "summarise these commits for a status report"
+
+# Review staged changes before committing
+git diff --staged | claude -p "review this diff for bugs and security problems"
+
+# Get JSON output for other tools
+claude -p "list the services in docker-compose.yml" --output-format json
+```
+
+### Print Mode in a Bash Script
+
+```bash
+#!/bin/bash
+# disk_report.sh — ask Claude to explain disk usage
+
+set -euo pipefail
+
+report=$(df -h; du -sh /var/log/* 2>/dev/null | sort -rh | head -10)
+
+echo "$report" | claude -p "Explain this disk usage report for a beginner. Which folders should I clean first?" \
+  --max-turns 3
+```
+
+### Permissions in Print Mode
+
+Print mode **can't show permission pop-ups**, so you decide in advance with flags:
+
+```bash
+# Allow only read-only git commands and reading files
+claude -p "check git status and tell me what's not committed" \
+  --allowedTools "Bash(git status)" "Bash(git diff *)" "Read"
+```
+
+> Anything not allowed is simply **refused**, and Claude tells you it couldn't do it.
+> In CI/CD (GitHub Actions, GitLab CI) you also use print mode, with an **API key** stored as a **secret**.
