@@ -373,3 +373,28 @@ Open **Customize** in the sidebar to manage these:
 - Building or fixing **code / infrastructure** → **Claude Code**
 - Producing **documents, reports, organised files** → **Cowork**
 - Just **learning or asking** → **Chat**
+
+---
+
+## Lab: Try All Three Modes
+
+### Part 1 — Chat
+- Ask: `Explain the 4 SDLC environments DEV, SIT, UAT, PROD with a real example`
+- Then: `Make a 5-question quiz on that`
+
+### Part 2 — Code
+- Open the **Code** tab → choose a practice folder (e.g. `~/claude-practice`)
+- Ask: `create a bash script that prints the top 5 processes by memory usage`
+- Review the diff → approve → ask Claude to run it
+
+### Part 3 — Cowork
+- Make a test folder `Cowork-Practice` and put a few files in it (some `.txt`, `.png`, `.pdf` files)
+- Open **Cowork** → choose **Manually approve**
+- Connect the `Cowork-Practice` folder
+- Ask: `Organise this folder into subfolders by file type and create a summary.md listing what moved where`
+- Approve each step and check the result
+
+**Check yourself:**
+- [ ] You can explain when to use Chat vs Code vs Cowork
+- [ ] You saw a permission / approval request and understood it
+- [ ] Cowork only touched the `Cowork-Practice` folder
