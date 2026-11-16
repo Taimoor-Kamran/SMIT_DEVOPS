@@ -131,3 +131,69 @@ A **flag** changes how `claude` starts. Example: `claude --model opus`.
 
 > ⚠️ **`--dangerously-skip-permissions`** lets Claude run **any** command without asking — including deleting files.
 > The word "dangerously" is there for a reason. Only use it inside a disposable Docker container or VM with no secrets.
+
+---
+
+## Slash Commands (Inside a Session)
+
+Inside an interactive session, type `/` to see a menu of commands. Start typing to filter the list.
+
+### Session and Context
+
+| Command | What it does |
+|---------|-------------|
+| `/clear` | Start a fresh conversation (empty context) |
+| `/compact` | Summarise the conversation to free up space (you can add instructions: `/compact keep the docker errors`) |
+| `/context` | Show how full Claude's context is |
+| `/resume` | Open an old session |
+| `/rename <name>` | Rename the current session |
+| `/rewind` | Go back to a checkpoint (undo edits) |
+| `/exit` | Quit Claude Code |
+
+### Settings
+
+| Command | What it does |
+|---------|-------------|
+| `/config` | Open the settings menu |
+| `/model` | Change the AI model |
+| `/effort` | Change how much effort Claude uses |
+| `/permissions` | View and edit allow / ask / deny rules |
+| `/memory` | Edit CLAUDE.md files and auto memory |
+| `/theme` | Change colours |
+| `/keybindings` | Customise keyboard shortcuts |
+| `/statusline` | Set up the status line at the bottom |
+
+### Project Work
+
+| Command | What it does |
+|---------|-------------|
+| `/init` | Create a `CLAUDE.md` for this project |
+| `/plan <task>` | Switch to plan mode and plan a task |
+| `/add-dir <path>` | Add another folder to the session |
+| `/diff` | Show the changes made in this session |
+| `/review` | Review code changes |
+| `/security-review` | Look for security problems in your changes |
+
+### Tools and Extensions
+
+| Command | What it does |
+|---------|-------------|
+| `/mcp` | Manage MCP server connections |
+| `/agents` | Manage subagents |
+| `/skills` | List available skills |
+| `/hooks` | View hooks |
+| `/plugin` | Browse and install plugins |
+
+### Help and Account
+
+| Command | What it does |
+|---------|-------------|
+| `/help` | Show help and all commands |
+| `/status` | Show version, account, model and settings |
+| `/usage` | Show how much of your plan usage you've used |
+| `/doctor` | Check and fix installation problems |
+| `/login` / `/logout` | Switch or sign out of your account |
+| `/feedback` | Report a bug to Anthropic |
+| `/release-notes` | See what's new |
+
+> Type `/help` to see the full, up-to-date list on your version.
