@@ -476,3 +476,7 @@ Open **Customize** in the sidebar to manage these:
 | Sub-agent | A helper that handles one part of a bigger task in parallel |
 | Network egress | Cowork's ability to reach the internet |
 | Beta | A feature that works but is still being improved |
+
+---
+
+*End of Claude Desktop & Cowork — Claude*
