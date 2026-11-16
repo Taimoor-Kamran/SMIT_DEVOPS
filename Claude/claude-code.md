@@ -298,3 +298,46 @@ Or press `Ctrl + C` twice. 🎉
 ```bash
 claude -c       # continue the most recent conversation in this folder
 ```
+
+---
+
+## How Claude Code Works (The Agent Loop)
+
+Every task follows the same loop:
+
+```
+     You give a task
+           │
+           ▼
+   ┌───────────────┐
+   │ 1. Think/Plan │  "I need to read deploy.sh first"
+   └───────┬───────┘
+           ▼
+   ┌───────────────┐
+   │ 2. Use a tool │  Read file / Edit file / Run command / Search
+   └───────┬───────┘
+           ▼
+   ┌───────────────┐      Needs permission?
+   │ 3. Ask you    │──►   You choose Yes / No
+   └───────┬───────┘
+           ▼
+   ┌───────────────┐
+   │ 4. See result │  Command output, error messages, test results
+   └───────┬───────┘
+           │
+           ├──── not finished ──► back to step 1
+           ▼
+     Tells you what it did ✅
+```
+
+**Tools Claude Code uses:**
+
+| Tool | What it does | Asks permission? |
+|------|-------------|-----------------|
+| **Read** | Opens and reads files | No (inside your project) |
+| **Search** (Glob / Grep) | Finds files and text | No |
+| **Edit / Write** | Changes or creates files | ✅ Yes |
+| **Bash** | Runs terminal commands | ✅ Yes (most commands) |
+| **Web search / fetch** | Looks things up online | ✅ Yes |
+
+You can **stop Claude any time** by pressing `Esc`. It keeps the work done so far and waits for you.
