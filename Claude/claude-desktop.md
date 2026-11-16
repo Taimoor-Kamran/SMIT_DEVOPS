@@ -21,3 +21,18 @@
 16. [Lab: Try All Three Modes](#lab-try-all-three-modes)
 17. [Safety Rules and Limitations](#safety-rules-and-limitations)
 18. [Quick Reference](#quick-reference)
+
+---
+
+## What is the Claude Desktop App?
+
+The **Claude Desktop app** is a normal program you install on your computer (like WhatsApp Desktop or VS Code).
+It puts **all of Claude's features in one window** — chatting, coding, and doing multi-step work on your files.
+
+**Why use the app instead of the website?**
+- It can work with **files and folders on your computer**
+- It runs **Claude Code** with a visual screen (no terminal needed)
+- It has **Cowork** for getting real work done on documents and files
+- One click from your taskbar / dock
+
+> The website `claude.ai` and the Desktop app use the **same account** — your chats show up in both.
