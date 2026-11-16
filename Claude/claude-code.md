@@ -196,3 +196,30 @@ Output (your version number will be different):
 ```
 
 If you see `command not found`, restart the terminal. Still not working? Run `claude doctor` (see [Update, Diagnose and Uninstall](#update-diagnose-and-uninstall)).
+
+---
+
+## Log In for the First Time
+
+- Open a terminal and type:
+
+```bash
+claude
+```
+
+- Choose your **theme** (light / dark) with the arrow keys → **Enter**
+- Choose how to log in:
+  - **Claude account** (Pro / Max / Team / Enterprise) ← most students
+  - **Claude Console** account (API billing)
+- A **browser window** opens → sign in to your Claude account → click **Authorize**
+- Go back to the terminal — you will see **"Login successful"**
+
+**Login commands you can use any time:**
+
+```bash
+claude auth status     # am I logged in? which account?
+claude auth login      # log in
+claude auth logout     # log out
+```
+
+> Inside WSL, if the browser doesn't open automatically, copy the link shown in the terminal and paste it into your Windows browser.
