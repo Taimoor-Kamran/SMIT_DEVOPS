@@ -304,3 +304,19 @@ Use the **mode selector** in the message box to choose how much Claude asks you:
 
 > **Least privilege again!** Just like AWS IAM (`AWS/02_iam_user_groups.md`), give Cowork access
 > to the **smallest folder** it needs. Keep a **backup** (or use Git) before big file-organising tasks.
+
+---
+
+## Cowork Network Access
+
+When Cowork runs commands, its **internet access** is limited by a setting in **Settings → Capabilities**:
+
+| Setting | Cowork can reach |
+|---------|-----------------|
+| **Default** (network egress off) | Only Anthropic's own sites |
+| **Package managers only** | Plus common package registries (npm, PyPI, etc.) and GitHub |
+| **All domains** | Any website |
+
+> Some hosts like npm and GitHub are **download-only** — Cowork can install packages, but it **can't upload**.
+> For example, `git push` is blocked. Push your code from your own terminal.
+> These limits are helpful guard-rails, **not** a complete security boundary.
