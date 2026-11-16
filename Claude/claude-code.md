@@ -477,3 +477,21 @@ Now give these prompts **one by one**, reading and approving each step:
 ```
 > stop and remove the container you started
 ```
+
+---
+
+## Writing Good Prompts
+
+| ❌ Vague prompt | ✅ Clear prompt |
+|----------------|----------------|
+| `fix it` | `docker build fails with "pip: not found" — find the cause in the Dockerfile and fix it` |
+| `make a script` | `write a bash script that deletes log files older than 7 days in /var/log/myapp, with a --dry-run option` |
+| `improve the code` | `refactor backup.sh so the folder paths are variables at the top, keep the same behaviour` |
+| `add tests` | `add pytest tests for the / route in app.py and run them` |
+
+**Tips:**
+- Say **what**, **where** (file names) and **how you'll check it**
+- Paste the **exact error message**
+- Use `@filename` to point at a file, e.g. `explain @deploy.sh`
+- Break big jobs into small steps, or use **Plan mode**
+- If Claude goes the wrong way, press `Esc` and correct it — don't wait
