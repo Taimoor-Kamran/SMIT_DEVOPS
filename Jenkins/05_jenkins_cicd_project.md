@@ -81,3 +81,39 @@ Clone it on your **own computer** (or WSL):
 git clone https://github.com/<your-user>/jenkins-smit-app.git
 cd jenkins-smit-app
 ```
+
+---
+
+## Step 2: Write the App
+
+Create **`app.py`**:
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+VERSION = "v1"
+
+
+@app.route("/")
+def home():
+    return f"Hello SMIT {VERSION} - deployed by Jenkins!\n"
+
+
+@app.route("/health")
+def health():
+    return "OK\n"
+
+
+if __name__ == "__main__":
+    # 0.0.0.0 = listen on all network interfaces, so it works inside Docker
+    app.run(host="0.0.0.0", port=5000)
+```
+
+Create **`requirements.txt`**:
+
+```
+flask==3.0.3
+```
+
+> `/health` is a **health-check endpoint** — a simple URL that says "I'm alive". Pipelines and load balancers use it to test the app.
