@@ -728,3 +728,78 @@ sudo -u jenkins docker ps           # ✅ works
 Click **Build Now** again → ✅ **SUCCESS**.
 
 **Lesson:** When a command works for you but fails in Jenkins, test it with `sudo -u jenkins <command>`.
+
+---
+
+## Quick Reference
+
+### Pipeline Template
+
+```groovy
+pipeline {
+    agent any
+
+    environment {
+        APP_NAME = 'my-app'
+    }
+
+    options {
+        timeout(time: 20, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        timestamps()
+    }
+
+    stages {
+        stage('Build') {
+            steps { sh 'echo "Building $APP_NAME"' }
+        }
+        stage('Test') {
+            steps { sh 'echo "Testing"' }
+        }
+        stage('Deploy') {
+            when { branch 'main' }
+            steps { sh 'echo "Deploying"' }
+        }
+    }
+
+    post {
+        success { echo '✅ Success' }
+        failure { echo '❌ Failed' }
+    }
+}
+```
+
+### Cheat Sheet
+
+| Want to... | Use |
+|------------|-----|
+| Run a shell command | `sh 'command'` |
+| Use a variable | `environment { X = 'y' }` → `$X` in sh |
+| Ask before build | `parameters { choice(...) }` → `params.NAME` |
+| Run a stage only on main | `when { branch 'main' }` |
+| Wait for approval | `input message: '...'` |
+| Use a secret | `withCredentials([...]) { sh '...' }` |
+| Act on failure | `post { failure { ... } }` |
+| Stop hanging builds | `options { timeout(...) }` |
+| Keep disk clean | `options { buildDiscarder(logRotator(numToKeepStr: '10')) }` |
+| Build on schedule | `triggers { cron('H 2 * * *') }` |
+| Generate syntax | Job → **Pipeline Syntax** |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| Freestyle project | A job configured with web forms |
+| Pipeline | A job written as code with stages |
+| Declarative pipeline | Structured pipeline syntax starting with `pipeline { }` |
+| Scripted pipeline | Free-form Groovy pipeline starting with `node { }` |
+| Jenkinsfile | File in the repo containing the pipeline code |
+| SCM | Source Code Management — Git |
+| agent | Where the pipeline runs |
+| stage / steps | A named phase / the commands inside it |
+| post | Actions after the build based on result |
+| parameters | Inputs chosen before a build |
+| Credentials ID | The name used to refer to a stored secret |
+| Multibranch pipeline | One pipeline per branch, found automatically |
+| Snippet Generator | Tool that writes pipeline code for you |
+| Replay | Re-run a build with edited pipeline code |
