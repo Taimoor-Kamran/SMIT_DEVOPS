@@ -201,3 +201,31 @@ Check the version:
 ```bash
 jenkins --version
 ```
+
+---
+
+## Step 5: Start and Enable the Jenkins Service
+
+```bash
+sudo systemctl enable jenkins     # start automatically when the server boots
+sudo systemctl start jenkins      # start it now
+sudo systemctl status jenkins     # check it is running
+```
+
+Look for **`active (running)`** in green:
+
+```
+● jenkins.service - Jenkins Continuous Integration Server
+     Loaded: loaded (/usr/lib/systemd/system/jenkins.service; enabled)
+     Active: active (running) since ...
+```
+
+Press `q` to leave the status screen.
+
+> You learned `systemctl` in `Phase_3/class2.md`. Jenkins is just another **service**, like nginx.
+
+Check that Jenkins is listening on port 8080:
+
+```bash
+sudo ss -tlnp | grep 8080
+```
