@@ -66,3 +66,28 @@ Imagine a team of 5 developers working on one app. **Without automation**, every
 
 **Simple analogy:**
 CI/CD is like a **factory assembly line**. Raw material (your code) goes in at one end. Machines (stages) shape it, check it, and package it. A finished, tested product comes out the other end — the same way every time.
+
+---
+
+## What is Jenkins?
+
+**Jenkins** is a free, **open-source automation server**. It is the most widely used tool for building CI/CD pipelines.
+
+| Fact | Detail |
+|------|--------|
+| Cost | Free and open source |
+| Written in | Java (so it needs Java installed) |
+| Runs on | Linux, Windows, macOS, Docker, Kubernetes |
+| Interface | Web browser — default port **8080** |
+| Extended with | **Plugins** (over 1,800 available) |
+| Pipelines written in | A file called **`Jenkinsfile`** (Groovy-based syntax) |
+| History | Started in 2004 as "Hudson", renamed Jenkins in 2011 |
+
+**What Jenkins can do:**
+- Pull code from GitHub / GitLab / Bitbucket
+- Build apps (Java, Node.js, Python, Go...)
+- Run tests and show reports
+- Build and push **Docker images**
+- Deploy to servers, **AWS**, Kubernetes
+- Run scheduled jobs (like cron) — backups, reports, cleanup
+- Send notifications (email, Slack)
