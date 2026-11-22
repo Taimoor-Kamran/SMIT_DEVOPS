@@ -210,3 +210,33 @@ pipeline {                         // 1. everything goes inside this block
 
 > **Groovy tips:** `//` starts a comment. Text in `'single quotes'` is used as-is.
 > Text in `"double quotes"` replaces `${variables}` with their values.
+
+---
+
+## agent — Where to Run
+
+| Agent | Meaning |
+|-------|---------|
+| `agent any` | Run on **any** available machine (on a learning server, the built-in node) |
+| `agent none` | No default — each stage chooses its own agent |
+| `agent { label 'linux' }` | Run on a machine with the label `linux` |
+| `agent { docker { image 'node:20-alpine' } }` | Run the steps **inside a Docker container** (needs the **Docker Pipeline** plugin) |
+
+**Example — run steps inside a Python container:**
+
+```groovy
+pipeline {
+    agent {
+        docker { image 'python:3.12-slim' }
+    }
+    stages {
+        stage('Check Python') {
+            steps {
+                sh 'python --version'
+            }
+        }
+    }
+}
+```
+
+> With a Docker agent, you don't need Python installed on the server — Jenkins pulls the image and runs the steps in it.
