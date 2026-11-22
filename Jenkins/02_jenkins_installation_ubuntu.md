@@ -26,3 +26,25 @@
 21. [Update, Back Up and Uninstall](#update-back-up-and-uninstall)
 22. [Troubleshooting](#troubleshooting)
 23. [Quick Reference](#quick-reference)
+
+---
+
+## What We Will Do
+
+```
+ Ubuntu server
+   │
+   ├── 1. Install Java 21         (Jenkins is a Java program)
+   ├── 2. Add Jenkins apt repo    (so apt knows where to download Jenkins)
+   ├── 3. apt install jenkins
+   ├── 4. Start the service       (systemctl)
+   ├── 5. Open port 8080
+   └── 6. Finish setup in browser → http://<server-ip>:8080
+```
+
+We will install the **LTS (Long-Term Support)** version — it's the stable version recommended for real use.
+
+| Release line | Updates | Use for |
+|--------------|---------|---------|
+| **LTS** (stable) | Every ~12 weeks, well tested | ✅ Learning and production |
+| **Weekly** | Every week, newest features | Trying new features |
