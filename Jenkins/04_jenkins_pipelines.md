@@ -668,3 +668,28 @@ Don't remember the syntax? Jenkins writes it for you.
 - **Snippet Generator:** choose a step (e.g. `withCredentials`, `git`, `archiveArtifacts`) → fill the form → **Generate Pipeline Script** → copy the code
 - **Declarative Directive Generator:** builds `options`, `parameters`, `triggers`, `when` blocks
 - **Global Variables Reference:** every variable like `env`, `params`, `currentBuild`
+
+---
+
+## Reading Build Results
+
+| Where | What you see |
+|-------|-------------|
+| Job page → stage view / graph | Each stage, its time, and ✅ / ❌ |
+| Click a build → **Console Output** | The full log — **read from the bottom up** to find the error |
+| Build page → **Changes** | Git commits included in this build |
+| Build page → **Replay** | Edit the pipeline code and re-run **once** without changing the job (great for debugging) |
+| Build page → **Restart from Stage** | Re-run from a chosen stage (declarative pipelines) |
+
+**Reading a failure:**
+
+```
++ docker build -t smit-app:7 .
+ERROR: failed to solve: process "/bin/sh -c pip install -r requirements.txt" did not complete successfully: exit code: 1
+script returned exit code 1
+Finished: FAILURE
+```
+
+1. Find the **last `+` line** — the command that failed (`docker build`)
+2. Read the **error** just above `exit code` — `pip install` failed
+3. Fix it (e.g. a wrong package name in `requirements.txt`), push, and build again
