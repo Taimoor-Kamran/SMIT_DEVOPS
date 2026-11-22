@@ -257,3 +257,34 @@ After setup you have **one** user — the admin you created in `02_jenkins_insta
 In a team, **everyone gets their own account**, so you can see **who** started, changed or deleted what.
 
 > Same rule as AWS IAM (`AWS/01_iam_users.md`): **one user per person**, never share the admin login.
+
+---
+
+## Create a Jenkins User — Step by Step
+
+- Log in as **admin**
+- **Manage Jenkins → Users**
+- Click **Create User**
+- Fill in:
+
+| Field | Example |
+|-------|---------|
+| Username | `ali` |
+| Password | a strong password |
+| Confirm password | same |
+| Full name | `Ali Khan` |
+| E-mail address | `ali@example.com` |
+
+- Click **Create User** ✅
+
+`ali` now appears in the **Users** list. Give him the URL `http://<jenkins-ip>:8080` and his password.
+
+### Other User Actions
+
+| Task | How |
+|------|-----|
+| Change a user's password | **Manage Jenkins → Users** → click the user → **Security** (or ⚙️ Configure) → **Password** → Save |
+| Delete a user | **Manage Jenkins → Users** → click the user → **Delete** |
+| Change **your own** password | Click your name (top right) → **Security** / **Configure** → Password |
+
+> Button names can move slightly between Jenkins versions, but they're always under **Manage Jenkins → Users** or your own profile page.
