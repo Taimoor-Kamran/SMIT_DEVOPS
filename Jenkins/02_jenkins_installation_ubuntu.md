@@ -98,3 +98,13 @@ ssh -i jenkins-key.pem ubuntu@<EC2-PUBLIC-IP>
 ```
 
 > Using **My IP** instead of `0.0.0.0/0` (anywhere) means only **you** can reach Jenkins. Never leave Jenkins open to the whole internet.
+
+---
+
+## Option B: Use WSL or a Local Ubuntu VM
+
+You can also install Jenkins on:
+- **WSL Ubuntu** (`Linux_OS/class_1`) — open `http://localhost:8080` in your Windows browser
+- A **VirtualBox Ubuntu VM** (`Phase_1/class1.md`) — open `http://<VM-IP>:8080`
+
+> On WSL, make sure **systemd** is enabled (it is by default in new WSL Ubuntu). Check with `systemctl --version`.
