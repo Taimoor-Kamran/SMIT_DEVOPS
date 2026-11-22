@@ -407,3 +407,21 @@ Roles are easier than ticking boxes per user when you have many people.
 - **Save**
 
 > You can also create **Item roles** with a pattern like `smit-.*` so a team only sees jobs whose names start with `smit-`.
+
+---
+
+## API Tokens
+
+Scripts and tools (like `curl` or a GitHub webhook relay) shouldn't use your password. Use an **API token**.
+
+- Click **your name** (top right) → **Security** (or **Configure**)
+- Under **API Token** → **Add new Token** → give it a name, e.g. `cli-laptop` → **Generate**
+- **Copy it now** — it's shown only once
+
+Use it:
+
+```bash
+curl -u ali:<API_TOKEN> http://<jenkins-ip>:8080/api/json
+```
+
+> Revoke tokens you no longer use from the same page.
