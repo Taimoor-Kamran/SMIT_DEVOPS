@@ -550,3 +550,7 @@ docker run -d --name smit-app --restart unless-stopped -p 5000:5000 smit-app:<ol
 | Docker Hub | Public registry for Docker images |
 | Access token | A password-like secret for tools, can be revoked |
 | Elastic IP | A fixed public IP on AWS that doesn't change on restart |
+
+---
+
+*End of Jenkins CI/CD Project — Jenkins*
