@@ -434,3 +434,22 @@ Share your image so other servers can pull it.
 4. Push the Jenkinsfile change → the image appears on `hub.docker.com/r/<your-user>/smit-app`
 
 > The password shows as `****` in the logs — Jenkins masks credentials automatically.
+
+---
+
+## Incident: Webhook Not Triggering Builds
+
+**Symptom:** You push to GitHub, but no build starts.
+
+**Investigate step by step:**
+
+| Check | How | Fix |
+|-------|-----|-----|
+| 1. Did GitHub send it? | Repo → Settings → Webhooks → **Recent Deliveries** | No delivery → webhook isn't active, or wrong event selected |
+| 2. Did it fail? | Red ❌ + "failed to connect" or "timed out" | GitHub can't reach Jenkins → open port 8080 to GitHub's IPs in the security group |
+| 3. Wrong URL? | Response **404** | URL must be `http://<ip>:8080/github-webhook/` (with the trailing `/`) |
+| 4. Old IP? | EC2 was stopped and started | Public IP changed → update the webhook URL (or use an **Elastic IP**) |
+| 5. Jenkins received it but didn't build? | **Manage Jenkins → System Log** | Make sure the job has **GitHub hook trigger for GITScm polling** ticked and the repo URL **matches exactly** |
+| 6. Never built manually? | — | Run **Build Now** once so Jenkins registers the trigger |
+
+**Redeliver after fixing:** GitHub → Recent Deliveries → click a delivery → **Redeliver**.
