@@ -229,3 +229,26 @@ Check that Jenkins is listening on port 8080:
 ```bash
 sudo ss -tlnp | grep 8080
 ```
+
+---
+
+## Step 6: Open Port 8080
+
+### On AWS EC2
+You already allowed port **8080** in the **security group** (Option A). Nothing else to do.
+
+### If Ubuntu's firewall (UFW) is on
+
+```bash
+sudo ufw status
+```
+
+If it says `Status: active`:
+
+```bash
+sudo ufw allow OpenSSH       # don't lock yourself out!
+sudo ufw allow 8080/tcp
+sudo ufw status
+```
+
+> If UFW shows `inactive`, you don't need to do anything.
