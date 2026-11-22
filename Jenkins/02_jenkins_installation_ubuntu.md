@@ -376,3 +376,24 @@ The **Instance Configuration** page shows **Jenkins URL**, e.g. `http://3.110.25
 | **Security** | Login and permission settings |
 | **Users** | Create and manage Jenkins users |
 | **System Log** | Jenkins' own error logs |
+
+---
+
+## Install Extra Plugins
+
+**Example:** install the **Docker Pipeline** plugin.
+
+- **Manage Jenkins → Plugins**
+- Click **Available plugins** (left side)
+- Search: `Docker Pipeline`
+- Tick ✅ it → click **Install**
+- Tick **Restart Jenkins when installation is complete and no jobs are running** (if shown)
+
+| Tab | Shows |
+|-----|-------|
+| **Updates** | Plugins with a newer version — update them regularly |
+| **Available plugins** | Plugins you can install |
+| **Installed plugins** | What you have — you can disable or uninstall here |
+| **Advanced settings** | Upload a plugin file manually, proxy settings |
+
+**Restart Jenkins safely** (waits for running builds to finish): open `http://<your-jenkins>:8080/safeRestart`
