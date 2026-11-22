@@ -108,3 +108,12 @@ You can also install Jenkins on:
 - A **VirtualBox Ubuntu VM** (`Phase_1/class1.md`) — open `http://<VM-IP>:8080`
 
 > On WSL, make sure **systemd** is enabled (it is by default in new WSL Ubuntu). Check with `systemctl --version`.
+
+---
+
+## Step 1: Update Ubuntu
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y wget
+```
