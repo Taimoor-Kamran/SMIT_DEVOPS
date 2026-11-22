@@ -145,3 +145,39 @@ OpenJDK 64-Bit Server VM (build 21.0.x+x-Ubuntu, mixed mode, sharing)
 
 > **What is `fontconfig`?** Jenkins draws some graphs and images; `fontconfig` gives it the fonts to do that.
 > **JRE vs JDK:** the **JRE** (Java Runtime) is enough to **run** Jenkins. Install the **JDK** (`openjdk-21-jdk`) only if your builds compile Java code.
+
+---
+
+## Step 3: Add the Jenkins Repository
+
+Ubuntu's normal software list doesn't include Jenkins. We add Jenkins' own **apt repository**.
+
+### 3.1 Download the Jenkins signing key
+
+```bash
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+```
+
+### 3.2 Add the repository
+
+```bash
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+```
+
+**What these commands mean:**
+
+| Part | Meaning |
+|------|---------|
+| `jenkins.io-2026.key` | Jenkins' **signing key** — proves packages really come from Jenkins, not a hacker |
+| `/etc/apt/keyrings/` | Folder where apt stores trusted keys |
+| `signed-by=...` | Only trust packages from this repo if they're signed by **this** key |
+| `debian-stable` | The **LTS** repository (use `debian` for weekly) |
+| `/etc/apt/sources.list.d/jenkins.list` | File that tells apt where to download Jenkins from |
+| `tee ... > /dev/null` | Write the line into the file with sudo, hide the screen output |
+
+> ⚠️ The key file name has a **year** in it (`2026`). Jenkins changes the key from time to time.
+> If `apt update` shows a **`NO_PUBKEY`** or **signature** error, check the latest key name on
+> `https://www.jenkins.io/doc/book/installing/linux/` and run Step 3.1 again.
