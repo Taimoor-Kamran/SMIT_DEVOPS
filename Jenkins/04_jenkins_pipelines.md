@@ -632,3 +632,28 @@ my-app/
 
 > When the pipeline comes from SCM, declarative pipelines **check out the code automatically** before the first stage —
 > you don't need a `git` step.
+
+---
+
+## Multibranch Pipeline
+
+A **Multibranch Pipeline** scans your repo and creates a pipeline for **every branch** (and PR) that has a `Jenkinsfile`.
+
+```
+ GitHub repo                       Jenkins Multibranch job
+ ├── main        (Jenkinsfile) ──► main          ✅ #12
+ ├── feature/login (Jenkinsfile) ─► feature/login ✅ #3
+ └── fix/typo    (Jenkinsfile) ──► fix/typo      ❌ #1
+```
+
+### Steps
+
+- **New Item** → `smit-app` → **Multibranch Pipeline** → **OK**
+- **Branch Sources → Add source → GitHub** (or **Git**)
+  - Add **credentials** (GitHub username + personal access token)
+  - **Repository HTTPS URL:** your repo URL → **Validate**
+- **Build Configuration:** by Jenkinsfile, **Script Path:** `Jenkinsfile`
+- **Scan Multibranch Pipeline Triggers:** tick **Periodically if not otherwise run** → e.g. 5 minutes
+- **Save** — Jenkins scans and builds each branch
+
+Now `when { branch 'main' }` works, so you can deploy **only from main** while every feature branch still gets built and tested — exactly the branching workflow from `Phase_2/class2.md`.
