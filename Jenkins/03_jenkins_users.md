@@ -110,3 +110,27 @@ ps -u jenkins -f
 ```
 
 > The `jenkins` user has **no password**, so nobody can log in to it over SSH. You can only switch to it with `sudo`.
+
+---
+
+## Switch to the `jenkins` User
+
+Useful for testing: "does this command work **as Jenkins**?"
+
+```bash
+sudo su - jenkins          # become jenkins (type exit to go back)
+whoami                     # jenkins
+pwd                        # /var/lib/jenkins
+exit
+```
+
+Or run a **single** command as `jenkins`:
+
+```bash
+sudo -u jenkins whoami
+sudo -u jenkins docker ps
+sudo -u jenkins git ls-remote https://github.com/Taimoor-Kamran/SMIT_DEVOPS.git
+```
+
+> **Debug tip:** if a command works for **you** but fails in Jenkins, run it with `sudo -u jenkins ...`.
+> If it fails there too, it's a **permission** problem, not a Jenkins problem.
