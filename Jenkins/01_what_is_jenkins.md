@@ -227,3 +227,24 @@ Plugins are installed from **Manage Jenkins → Plugins** (see `02_jenkins_insta
 - It runs **inside your own network** — needed when code can't leave the company
 - It works with **any** Git provider and any tool
 - It appears in a large number of **DevOps job descriptions**
+
+---
+
+## Where Jenkins Fits in DevOps
+
+```
+ PLAN ─► CODE ─► BUILD ─► TEST ─► RELEASE ─► DEPLOY ─► OPERATE ─► MONITOR
+          │      └──────────── Jenkins automates these ─────────┘
+          │
+        Git / GitHub
+```
+
+Jenkins connects almost everything you've learned so far:
+
+| You learned | Jenkins uses it |
+|-------------|----------------|
+| Linux users & permissions (`Phase_1`) | Jenkins runs as the **`jenkins`** Linux user |
+| Git & PRs (`Phase_2`) | Pulls code, builds every branch and PR |
+| Bash scripting (`Phase_3`) | `sh` steps are bash commands |
+| Docker (`Phase_4`) | Builds and runs images |
+| AWS (`AWS/`) | Runs on EC2, deploys to AWS |
