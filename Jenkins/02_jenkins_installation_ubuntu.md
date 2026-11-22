@@ -252,3 +252,39 @@ sudo ufw status
 ```
 
 > If UFW shows `inactive`, you don't need to do anything.
+
+---
+
+## Step 7: Unlock Jenkins in the Browser
+
+### 7.1 Open Jenkins
+
+In your browser go to:
+
+| Where Jenkins is installed | URL |
+|---------------------------|-----|
+| AWS EC2 | `http://<EC2-PUBLIC-IP>:8080` |
+| WSL | `http://localhost:8080` |
+| VirtualBox VM | `http://<VM-IP>:8080` (find IP with `hostname -I`) |
+
+You will see the **Unlock Jenkins** page. It asks for an **Administrator password**.
+
+### 7.2 Get the password
+
+On the server:
+
+```bash
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
+Output (example):
+
+```
+3f2a9c7d1e8b4a6f9c0d2e5b7a1c3d4e
+```
+
+### 7.3 Paste it
+
+- Copy the password → paste it in the **Administrator password** box → click **Continue**
+
+> This one-time password makes sure **only the person with server access** can set up Jenkins.
