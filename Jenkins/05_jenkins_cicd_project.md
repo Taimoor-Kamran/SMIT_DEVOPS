@@ -19,3 +19,26 @@
 14. [Incident: Port Already Allocated](#incident-port-already-allocated)
 15. [Clean Up](#clean-up)
 16. [Quick Reference](#quick-reference)
+
+---
+
+## What We Will Build
+
+A real CI/CD pipeline: every `git push` automatically **builds**, **tests** and **deploys** a small web app in Docker.
+
+```
+  You                GitHub                  Jenkins (EC2 / Ubuntu)              Browser
+   │                   │                            │                              │
+   │── git push ──────►│                            │                              │
+   │                   │── webhook ────────────────►│                              │
+   │                   │                            │ 1. Checkout code             │
+   │                   │◄──── git clone ────────────│ 2. Build Docker image        │
+   │                   │                            │ 3. Test the image            │
+   │                   │                            │ 4. Deploy (run container)    │
+   │                   │                            │ 5. Smoke test (curl)         │
+   │                   │                            │                              │
+   │                   │                            │◄──── http://<ip>:5000 ───────│
+   │                   │                            │───── "Hello SMIT v1" ───────►│
+```
+
+**Skills used:** Linux (`Phase_1`), Git & GitHub (`Phase_2`), Bash (`Phase_3`), Docker (`Phase_4`), AWS EC2, and Jenkins (files 01–04 in this folder).
