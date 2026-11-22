@@ -408,3 +408,26 @@ pipeline {
 | `choice` | Dropdown |
 | `booleanParam` | Checkbox |
 | `password` | Hidden text box |
+
+---
+
+## when — Run a Stage Only Sometimes
+
+```groovy
+stage('Deploy to PROD') {
+    when {
+        branch 'main'                      // only on the main branch (multibranch)
+    }
+    steps {
+        echo 'Deploying to production'
+    }
+}
+```
+
+| Condition | Runs the stage when... |
+|-----------|----------------------|
+| `branch 'main'` | Building the `main` branch (multibranch pipelines) |
+| `expression { params.ENVIRONMENT == 'prod' }` | The Groovy expression is true |
+| `environment name: 'DEPLOY', value: 'yes'` | A variable has a value |
+| `not { branch 'main' }` | NOT on `main` |
+| `allOf { ... }` / `anyOf { ... }` | All / any of several conditions |
