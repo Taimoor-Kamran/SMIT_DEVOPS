@@ -529,3 +529,19 @@ sudo apt remove --purge -y jenkins
 sudo rm -rf /var/lib/jenkins                  # ⚠️ deletes ALL jobs and history
 sudo rm -f /etc/apt/sources.list.d/jenkins.list /etc/apt/keyrings/jenkins-keyring.asc
 ```
+
+---
+
+## Troubleshooting
+
+| Problem | Likely cause | Fix |
+|---------|-------------|-----|
+| `jenkins: failed to find a valid Java installation` | Java missing or too old | `sudo apt install -y openjdk-21-jre`, then `sudo systemctl restart jenkins` |
+| `apt update` shows `NO_PUBKEY` / signature error | Old or wrong signing key | Download the current key (Step 3.1) from the Jenkins docs |
+| Browser can't open `:8080` (timeout) | Port blocked | Open 8080 in the EC2 security group / `sudo ufw allow 8080/tcp` |
+| Browser can't open `:8080` (refused) | Jenkins not running | `sudo systemctl status jenkins`, read `journalctl -u jenkins` |
+| `Address already in use` | Another app uses 8080 | Change the port (see above) |
+| Jenkins very slow / stops on EC2 | Not enough RAM | Use `t3.small` or bigger; check with `free -h` |
+| `docker: permission denied` in a build | `jenkins` user not in `docker` group | `sudo usermod -aG docker jenkins && sudo systemctl restart jenkins` |
+| Jenkins URL wrong after EC2 restart | Public IP changed | Update **Manage Jenkins → System → Jenkins URL**, or use an Elastic IP |
+| Forgot admin password | — | See `03_jenkins_users.md` → Reset a forgotten admin password |
