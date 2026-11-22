@@ -150,3 +150,33 @@ Builds run as `jenkins`, so they fail when `jenkins` isn't allowed to touch some
 | `git clone git@github.com:...` | `Permission denied (publickey)` | `jenkins` has no SSH key |
 
 Each one has a **safe fix** in the next sections.
+
+---
+
+## Give the `jenkins` User Access — the Safe Way
+
+Use the **Linux permission skills** from `Phase_1/class_3.md` and `class_4.md`.
+
+**Example:** Jenkins must deploy files into `/opt/myapp`.
+
+```bash
+# Option 1 — make a shared group
+sudo groupadd deployers
+sudo usermod -aG deployers jenkins
+sudo chown -R root:deployers /opt/myapp
+sudo chmod -R 775 /opt/myapp
+sudo systemctl restart jenkins     # group changes apply after restart
+```
+
+```bash
+# Option 2 — let jenkins own the deploy folder
+sudo chown -R jenkins:jenkins /opt/myapp
+```
+
+**Check:**
+
+```bash
+sudo -u jenkins touch /opt/myapp/test.txt && echo "✅ jenkins can write"
+```
+
+> ⚠️ **Never** do `chmod -R 777` to "fix" permission errors — it lets **every** user on the server change those files.
