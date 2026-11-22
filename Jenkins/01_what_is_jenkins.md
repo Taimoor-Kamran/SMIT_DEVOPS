@@ -91,3 +91,39 @@ CI/CD is like a **factory assembly line**. Raw material (your code) goes in at o
 - Deploy to servers, **AWS**, Kubernetes
 - Run scheduled jobs (like cron) — backups, reports, cleanup
 - Send notifications (email, Slack)
+
+---
+
+## How Jenkins Works (Architecture)
+
+Jenkins has two main parts: the **controller** and **agents**.
+
+```
+                     ┌────────────────────────────────┐
+  Developer ──push──►│           GitHub               │
+                     └──────────────┬─────────────────┘
+                                    │ webhook ("new code!")
+                                    ▼
+                     ┌────────────────────────────────┐
+  You (browser) ───► │   Jenkins CONTROLLER  :8080    │
+                     │  - web UI                      │
+                     │  - stores jobs, logs, config   │
+                     │  - decides what runs where     │
+                     └───────┬───────────────┬────────┘
+                             │               │  sends work
+                             ▼               ▼
+                     ┌──────────────┐ ┌──────────────┐
+                     │   AGENT 1    │ │   AGENT 2    │
+                     │ Linux+Docker │ │   Windows    │
+                     │ runs builds  │ │ runs builds  │
+                     └──────────────┘ └──────────────┘
+```
+
+| Part | Old name | Job |
+|------|----------|-----|
+| **Controller** | Master | The "brain" — web UI, job settings, schedules work, stores history |
+| **Agent** | Slave / Node | A "worker" machine that actually runs the build steps |
+| **Executor** | — | A slot on a machine that can run **one** build at a time (2 executors = 2 builds at once) |
+
+> **For learning**, one Ubuntu machine is enough. The controller has a **built-in node** that runs builds itself.
+> In real companies, builds run on **separate agents** so the controller stays fast and safe.
