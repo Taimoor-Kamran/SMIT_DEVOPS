@@ -545,3 +545,53 @@ sudo rm -f /etc/apt/sources.list.d/jenkins.list /etc/apt/keyrings/jenkins-keyrin
 | `docker: permission denied` in a build | `jenkins` user not in `docker` group | `sudo usermod -aG docker jenkins && sudo systemctl restart jenkins` |
 | Jenkins URL wrong after EC2 restart | Public IP changed | Update **Manage Jenkins → System → Jenkins URL**, or use an Elastic IP |
 | Forgot admin password | — | See `03_jenkins_users.md` → Reset a forgotten admin password |
+
+---
+
+## Quick Reference
+
+### Install Commands (All in One)
+
+```bash
+sudo apt update && sudo apt install -y wget fontconfig openjdk-21-jre
+
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt update && sudo apt install -y jenkins
+sudo systemctl enable --now jenkins
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
+### Cheat Sheet
+
+| Command / Path | What it does |
+|----------------|-------------|
+| `java -version` | Check Java |
+| `sudo systemctl status jenkins` | Is Jenkins running? |
+| `sudo systemctl restart jenkins` | Restart Jenkins |
+| `sudo journalctl -u jenkins -f` | Live Jenkins logs |
+| `sudo systemctl edit jenkins` | Change port / service settings |
+| `sudo cat /var/lib/jenkins/secrets/initialAdminPassword` | First-time password |
+| `/var/lib/jenkins` | Jenkins home folder |
+| `http://<ip>:8080` | Jenkins web UI |
+| `http://<ip>:8080/safeRestart` | Restart after running builds finish |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| LTS | Long-Term Support — the stable Jenkins release line |
+| JRE / JDK | Java Runtime (to run Java apps) / Java Development Kit (to build them) |
+| apt repository | A server apt downloads packages from |
+| Signing key | A key that proves packages are genuine |
+| systemd service | A background program managed with `systemctl` |
+| JENKINS_HOME | Jenkins' data folder — `/var/lib/jenkins` |
+| Security group | AWS firewall for an EC2 instance |
+| UFW | Uncomplicated Firewall — Ubuntu's firewall tool |
+| Suggested plugins | The common plugin set installed during setup |
+| Elastic IP | A fixed public IP address in AWS |
