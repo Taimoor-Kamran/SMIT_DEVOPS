@@ -288,3 +288,31 @@ In a team, **everyone gets their own account**, so you can see **who** started, 
 | Change **your own** password | Click your name (top right) → **Security** / **Configure** → Password |
 
 > Button names can move slightly between Jenkins versions, but they're always under **Manage Jenkins → Users** or your own profile page.
+
+---
+
+## Security Settings: Who Can Log In
+
+**Manage Jenkins → Security** has two main parts:
+
+```
+ ┌────────────────────────────────────────────────────┐
+ │  Security Realm  = WHO are you?   (authentication) │
+ │  Authorization   = WHAT can you do? (permissions)  │
+ └────────────────────────────────────────────────────┘
+```
+
+**Security Realm** options:
+
+| Option | Meaning |
+|--------|---------|
+| **Jenkins' own user database** | Users are stored inside Jenkins ✅ (default, what we use) |
+| **LDAP** | Log in with company accounts (Active Directory) |
+| **Unix user/group database** | Log in with Linux server accounts |
+| Plugins (GitHub OAuth, SAML, Google...) | Log in with GitHub / Google / company SSO |
+
+Under **Jenkins' own user database** there's a checkbox:
+
+- ☐ **Allow users to sign up** → keep it **OFF** ❌
+
+> If sign-up is on, **anyone** who can reach the page can create an account. Admins should create accounts.
