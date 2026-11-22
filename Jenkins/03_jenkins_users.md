@@ -479,3 +479,45 @@ sudo systemctl start jenkins
 | Use **API tokens**, not passwords, in scripts | Tokens can be revoked one by one |
 | Store secrets in **Jenkins Credentials** | Hidden in logs, managed in one place |
 | Limit port 8080 to trusted IPs | Fewer attackers can even reach the login page |
+
+---
+
+## Quick Reference
+
+### Linux `jenkins` User Cheat Sheet
+
+| Command | What it does |
+|---------|-------------|
+| `id jenkins` | Show UID, GID and groups |
+| `getent passwd jenkins` | Show home folder and shell |
+| `sudo su - jenkins` | Switch to the jenkins user |
+| `sudo -u jenkins <command>` | Run one command as jenkins |
+| `sudo usermod -aG docker jenkins` | Allow docker commands |
+| `sudo visudo -f /etc/sudoers.d/jenkins` | Give limited sudo rules |
+| `sudo systemctl restart jenkins` | Apply group changes |
+
+### Jenkins Web Users Cheat Sheet
+
+| Task | Where |
+|------|-------|
+| Create user | Manage Jenkins → Users → Create User |
+| Login settings | Manage Jenkins → Security → Security Realm |
+| Permissions | Manage Jenkins → Security → Authorization |
+| Roles | Manage Jenkins → Manage and Assign Roles |
+| API token | Your name → Security / Configure → API Token |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| Service user | A Linux account that runs a program, not for human login |
+| `jenkins` user | The Linux account that runs Jenkins and all build commands |
+| JENKINS_HOME | `/var/lib/jenkins` — the jenkins user's home and Jenkins' data folder |
+| `sudo -u` | Run a command as another user |
+| sudoers | The file that controls who can use sudo |
+| Security Realm | How Jenkins checks **who** you are (login) |
+| Authorization | What a logged-in user is **allowed** to do |
+| Matrix-based security | Permissions table per user/group |
+| Role-based strategy | Permissions grouped into roles assigned to users |
+| Anonymous | Visitors who aren't logged in |
+| API token | A revocable secret for scripts instead of a password |
