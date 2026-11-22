@@ -803,3 +803,7 @@ pipeline {
 | Multibranch pipeline | One pipeline per branch, found automatically |
 | Snippet Generator | Tool that writes pipeline code for you |
 | Replay | Re-run a build with edited pipeline code |
+
+---
+
+*End of Jenkins Pipelines — Jenkins*
