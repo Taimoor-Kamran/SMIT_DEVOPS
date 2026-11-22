@@ -521,3 +521,7 @@ sudo systemctl start jenkins
 | Role-based strategy | Permissions grouped into roles assigned to users |
 | Anonymous | Visitors who aren't logged in |
 | API token | A revocable secret for scripts instead of a password |
+
+---
+
+*End of Jenkins Users — Jenkins*
