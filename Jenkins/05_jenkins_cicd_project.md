@@ -318,3 +318,44 @@ docker images | grep smit-app
 ```
 
 > **Why click Build Now the first time?** Jenkins learns about the `triggers { githubPush() }` setting from the Jenkinsfile only **after** the first run.
+
+---
+
+## Step 8: Auto-Build on Every Push (GitHub Webhook)
+
+A **webhook** is GitHub calling Jenkins and saying: **"new code was pushed — build now!"**
+
+```
+ git push ──► GitHub ──POST http://<jenkins-ip>:8080/github-webhook/──► Jenkins ──► build starts
+```
+
+### 8.1 Allow GitHub to Reach Jenkins
+
+GitHub's servers must be able to reach your Jenkins on port 8080.
+
+- **On AWS EC2:** in the security group, add an inbound rule for port **8080** from **GitHub's webhook IP ranges**.
+  You can find them at `https://api.github.com/meta` under `"hooks"`. (Opening 8080 to `0.0.0.0/0` also works for a short practice, but **close it afterwards**.)
+- **On WSL / local VM:** GitHub can't reach your laptop directly. Use **Poll SCM** instead (in the job: **Triggers → Poll SCM** → `H/2 * * * *`), or a tunnel tool like **ngrok**.
+
+### 8.2 Add the Webhook on GitHub
+
+- Open your repo on GitHub → **Settings** → **Webhooks** → **Add webhook**
+- Fill in:
+
+| Field | Value |
+|-------|-------|
+| **Payload URL** | `http://<jenkins-public-ip>:8080/github-webhook/` |
+| **Content type** | `application/json` |
+| **Secret** | leave empty for now |
+| **Which events?** | **Just the push event** |
+| **Active** | ✅ ticked |
+
+- Click **Add webhook**
+
+> ⚠️ The URL **must end with `/github-webhook/`** — including the last slash.
+
+### 8.3 Check the Webhook
+
+- Click the webhook → **Recent Deliveries** tab
+- You should see a delivery with a green ✅ and **Response 200**
+- A red ❌ means GitHub couldn't reach Jenkins — see the [incident below](#incident-webhook-not-triggering-builds)
