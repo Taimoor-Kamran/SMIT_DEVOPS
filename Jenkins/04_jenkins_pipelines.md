@@ -276,3 +276,37 @@ stage('Tests') {
 ```
 
 > Parallel stages finish faster — useful when tests take a long time.
+
+---
+
+## Common Steps
+
+| Step | What it does | Example |
+|------|-------------|---------|
+| `echo` | Print a message | `echo 'Starting build'` |
+| `sh` | Run a shell command (Linux) | `sh 'npm install'` |
+| `bat` | Run a command on Windows agents | `bat 'dir'` |
+| `git` | Clone a repo | `git branch: 'main', url: 'https://github.com/user/repo.git'` |
+| `checkout scm` | Check out the same repo the Jenkinsfile came from | `checkout scm` |
+| `dir` | Run steps inside a sub-folder | `dir('app') { sh 'ls' }` |
+| `sleep` | Wait | `sleep 10` |
+| `timeout` | Stop a step if it takes too long | `timeout(time: 5, unit: 'MINUTES') { sh './test.sh' }` |
+| `retry` | Try again if it fails | `retry(3) { sh 'curl -f http://localhost:5000' }` |
+| `archiveArtifacts` | Keep files from the build | `archiveArtifacts artifacts: 'dist/*.zip'` |
+| `junit` | Show test results (needs JUnit plugin) | `junit 'reports/*.xml'` |
+| `cleanWs` | Delete the workspace (Workspace Cleanup plugin) | `cleanWs()` |
+| `error` | Fail the build on purpose | `error 'Config file missing!'` |
+
+### Multi-line shell commands
+
+```groovy
+steps {
+    sh '''
+        echo "Line 1"
+        cd app
+        ls -la
+    '''
+}
+```
+
+> Triple quotes `'''` let you write a small bash script inside one `sh` step.
