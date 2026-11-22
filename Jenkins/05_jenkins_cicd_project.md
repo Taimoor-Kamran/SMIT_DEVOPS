@@ -483,3 +483,17 @@ docker rm -f <other-container-name>
 Click **Build Now** again → ✅.
 
 **Prevention:** Always deploy with a **fixed container name** (`--name smit-app`) and remove the old one first — just like our Jenkinsfile does with `docker rm -f "$APP_NAME" || true`.
+
+---
+
+## Clean Up
+
+When you finish practising:
+
+```bash
+docker rm -f smit-app
+docker image prune -a -f          # ⚠️ removes ALL unused images
+```
+
+- **GitHub:** delete the webhook (or set it inactive) if you won't use it
+- **AWS:** remove the port 8080 / 5000 rules you opened, and **stop the EC2 instance** so you're not charged
