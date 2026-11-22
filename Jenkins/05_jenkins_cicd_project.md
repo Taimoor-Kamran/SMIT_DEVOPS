@@ -117,3 +117,28 @@ flask==3.0.3
 ```
 
 > `/health` is a **health-check endpoint** — a simple URL that says "I'm alive". Pipelines and load balancers use it to test the app.
+
+---
+
+## Step 3: Write the Dockerfile
+
+Create **`Dockerfile`**:
+
+```dockerfile
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install dependencies first (cached layer — see Phase_4/class1.md)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the app code last (changes most often)
+COPY app.py .
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
+```
+
+> We put `requirements.txt` before `app.py` so Docker **reuses the cached layer** when only the code changes — faster builds.
