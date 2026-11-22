@@ -365,3 +365,46 @@ Jenkins gives every build these variables automatically:
 | `NODE_NAME` | `built-in` | Machine running the build |
 
 > See the full list on any pipeline job: **Pipeline Syntax → Global Variables Reference**.
+
+---
+
+## parameters — Ask for Input Before a Build
+
+Parameters let a person choose options when they click **Build with Parameters**.
+
+```groovy
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'sit', 'uat', 'prod'], description: 'Where to deploy')
+        string(name: 'VERSION', defaultValue: '1.0.0', description: 'App version')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests?')
+    }
+
+    stages {
+        stage('Info') {
+            steps {
+                echo "Deploying version ${params.VERSION} to ${params.ENVIRONMENT}"
+            }
+        }
+        stage('Test') {
+            when { expression { params.RUN_TESTS } }
+            steps {
+                echo 'Running tests...'
+            }
+        }
+    }
+}
+```
+
+> ⚠️ After adding parameters, run the job **once** with **Build Now** — Jenkins reads the new parameters on that run.
+> After that, the button changes to **Build with Parameters**.
+
+| Parameter type | Shows as |
+|----------------|---------|
+| `string` | Text box |
+| `text` | Big multi-line text box |
+| `choice` | Dropdown |
+| `booleanParam` | Checkbox |
+| `password` | Hidden text box |
