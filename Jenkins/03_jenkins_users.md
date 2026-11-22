@@ -63,3 +63,50 @@ an account that exists to **run one program**, not for a human to log in with.
 | ❌ Never do this | ✅ Correct |
 
 **Simple analogy:** the `jenkins` user is like a **contractor** with a key to **one workshop** in a building — not the master key to every room.
+
+---
+
+## Inspect the `jenkins` User
+
+```bash
+id jenkins
+```
+
+Output:
+
+```
+uid=111(jenkins) gid=113(jenkins) groups=113(jenkins)
+```
+
+```bash
+getent passwd jenkins
+```
+
+Output:
+
+```
+jenkins:x:111:113:Jenkins,,,:/var/lib/jenkins:/bin/bash
+```
+
+| Field | Value | Meaning |
+|-------|-------|---------|
+| Username | `jenkins` | The account name |
+| UID / GID | `111` / `113` | User and group ID numbers (yours may differ) |
+| Home | `/var/lib/jenkins` | Its home folder = **JENKINS_HOME** |
+| Shell | `/bin/bash` | Shell used when you switch to it |
+
+**See what it owns:**
+
+```bash
+sudo ls -la /var/lib/jenkins
+```
+
+Everything there is owned by `jenkins:jenkins`.
+
+**See the Jenkins process running as this user:**
+
+```bash
+ps -u jenkins -f
+```
+
+> The `jenkins` user has **no password**, so nobody can log in to it over SSH. You can only switch to it with `sudo`.
