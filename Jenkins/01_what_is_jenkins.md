@@ -282,3 +282,7 @@ Jenkins connects almost everything you've learned so far:
 | `03_jenkins_users.md` | The `jenkins` Linux user and Jenkins web users & permissions |
 | `04_jenkins_pipelines.md` | Freestyle jobs, pipelines and the Jenkinsfile |
 | `05_jenkins_cicd_project.md` | Full project: GitHub → Jenkins → Docker with webhooks |
+
+---
+
+*End of What is Jenkins — Jenkins*
