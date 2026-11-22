@@ -453,3 +453,33 @@ Share your image so other servers can pull it.
 | 6. Never built manually? | — | Run **Build Now** once so Jenkins registers the trigger |
 
 **Redeliver after fixing:** GitHub → Recent Deliveries → click a delivery → **Redeliver**.
+
+---
+
+## Incident: Port Already Allocated
+
+**Symptom:** The **Deploy** stage fails:
+
+```
+docker: Error response from daemon: driver failed programming external connectivity on endpoint smit-app:
+Bind for 0.0.0.0:5000 failed: port is already allocated.
+```
+
+**Investigate:**
+
+```bash
+docker ps --format "table {{.Names}}\t{{.Ports}}"
+sudo ss -tlnp | grep 5000
+```
+
+**Root cause:** Another container (maybe one you started by hand earlier, with a different name) is already using port 5000.
+
+**Fix:**
+
+```bash
+docker rm -f <other-container-name>
+```
+
+Click **Build Now** again → ✅.
+
+**Prevention:** Always deploy with a **fixed container name** (`--name smit-app`) and remove the old one first — just like our Jenkinsfile does with `docker rm -f "$APP_NAME" || true`.
