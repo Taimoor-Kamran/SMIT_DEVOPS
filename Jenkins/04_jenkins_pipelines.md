@@ -450,3 +450,49 @@ The build pauses and shows **Yes, deploy** / **Abort** buttons on the stage. Thi
 
 > Wrap it in a timeout so a forgotten build doesn't wait forever:
 > `timeout(time: 1, unit: 'HOURS') { input message: 'Deploy to PRODUCTION?' }`
+
+---
+
+## post — Run Steps After the Build
+
+`post` runs **after** all stages, depending on the result.
+
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps { sh 'echo building' }
+        }
+    }
+    post {
+        success {
+            echo '✅ Build succeeded!'
+        }
+        failure {
+            echo '❌ Build failed — check the logs.'
+        }
+        always {
+            echo 'This runs every time.'
+        }
+        cleanup {
+            cleanWs()       // delete workspace at the very end
+        }
+    }
+}
+```
+
+| Condition | Runs when |
+|-----------|----------|
+| `always` | Every time, whatever the result |
+| `success` | Build passed |
+| `failure` | Build failed |
+| `unstable` | Build passed but tests were unstable |
+| `aborted` | Someone stopped the build |
+| `changed` | Result is different from the last build |
+| `fixed` | Last build failed, this one passed |
+| `regression` | Last build passed, this one failed/unstable |
+| `unsuccessful` | Not successful (failure, unstable or aborted) |
+| `cleanup` | Last of all, after every other `post` condition |
+
+> Real teams send **Slack or email** messages in `failure` and `fixed`.
