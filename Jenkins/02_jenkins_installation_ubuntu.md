@@ -481,3 +481,16 @@ Now open `http://<server-ip>:8081`. Remember to open the new port in the **secur
 sudo journalctl -u jenkins -f          # follow live logs (Ctrl + C to stop)
 sudo journalctl -u jenkins -n 100      # last 100 lines
 ```
+
+---
+
+## Manage the Jenkins Service
+
+```bash
+sudo systemctl status jenkins      # is it running?
+sudo systemctl stop jenkins        # stop
+sudo systemctl start jenkins       # start
+sudo systemctl restart jenkins     # restart
+sudo systemctl enable jenkins      # start on boot
+sudo systemctl disable jenkins     # don't start on boot
+```
