@@ -48,3 +48,19 @@ We will install the **LTS (Long-Term Support)** version — it's the stable vers
 |--------------|---------|---------|
 | **LTS** (stable) | Every ~12 weeks, well tested | ✅ Learning and production |
 | **Weekly** | Every week, newest features | Trying new features |
+
+---
+
+## Requirements
+
+| Item | Minimum | Recommended (small team) |
+|------|---------|-------------------------|
+| RAM | 256 MB | **4 GB+** |
+| Disk | 1 GB | **50 GB+** |
+| Java | **Java 21** or newer (Java 25 also supported) | OpenJDK 21 |
+| OS | Ubuntu 22.04 / 24.04 LTS | Ubuntu 24.04 LTS |
+| User | A user with `sudo` access | — |
+
+> ⚠️ **Old Java versions (8, 11, 17) are NOT supported** by current Jenkins. Many old tutorials use Java 11 or 17 — they won't work now.
+>
+> In practice, Jenkins + a few builds needs **at least 2 GB RAM**. Builds with Docker need more.
