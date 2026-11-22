@@ -42,3 +42,25 @@ A real CI/CD pipeline: every `git push` automatically **builds**, **tests** and 
 ```
 
 **Skills used:** Linux (`Phase_1`), Git & GitHub (`Phase_2`), Bash (`Phase_3`), Docker (`Phase_4`), AWS EC2, and Jenkins (files 01–04 in this folder).
+
+---
+
+## Before You Start
+
+Make sure you have:
+
+- [ ] Jenkins installed and running (`02_jenkins_installation_ubuntu.md`)
+- [ ] **Git** and **Docker** installed on the Jenkins server
+- [ ] The `jenkins` user in the `docker` group (`03_jenkins_users.md`)
+- [ ] A GitHub account
+- [ ] On EC2: security group allows **8080** (Jenkins) and **5000** (the app) from **My IP**
+
+**Quick check on the server:**
+
+```bash
+sudo systemctl status jenkins --no-pager | head -3
+git --version
+sudo -u jenkins docker ps
+```
+
+All three should work without errors.
