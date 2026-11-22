@@ -496,3 +496,18 @@ pipeline {
 | `cleanup` | Last of all, after every other `post` condition |
 
 > Real teams send **Slack or email** messages in `failure` and `fixed`.
+
+---
+
+## options — Timeouts, Log Rotation, Timestamps
+
+```groovy
+options {
+    timeout(time: 20, unit: 'MINUTES')               // kill builds that hang
+    buildDiscarder(logRotator(numToKeepStr: '10'))   // keep only the last 10 builds
+    timestamps()                                     // time on every log line (Timestamper plugin)
+    disableConcurrentBuilds()                        // don't run two builds at the same time
+}
+```
+
+> **`buildDiscarder` is important** — without it, old builds fill up the server disk (remember the "disk full" incident in `Phase_1/class_7.md`).
