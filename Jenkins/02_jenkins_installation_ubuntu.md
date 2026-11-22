@@ -494,3 +494,38 @@ sudo systemctl restart jenkins     # restart
 sudo systemctl enable jenkins      # start on boot
 sudo systemctl disable jenkins     # don't start on boot
 ```
+
+---
+
+## Update, Back Up and Uninstall
+
+### Update Jenkins
+
+```bash
+sudo apt update
+sudo apt install --only-upgrade jenkins
+sudo systemctl restart jenkins
+```
+
+Then update plugins in **Manage Jenkins → Plugins → Updates**.
+
+### Back Up Jenkins
+
+Everything important is in `/var/lib/jenkins`. A simple backup:
+
+```bash
+sudo systemctl stop jenkins
+sudo tar -czf ~/jenkins-backup-$(date +%F).tar.gz -C /var/lib jenkins
+sudo systemctl start jenkins
+```
+
+> Better: keep your pipelines in **Jenkinsfiles in Git** — then even if Jenkins is lost, your pipelines are safe.
+
+### Uninstall Jenkins
+
+```bash
+sudo systemctl stop jenkins
+sudo apt remove --purge -y jenkins
+sudo rm -rf /var/lib/jenkins                  # ⚠️ deletes ALL jobs and history
+sudo rm -f /etc/apt/sources.list.d/jenkins.list /etc/apt/keyrings/jenkins-keyring.asc
+```
