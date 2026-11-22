@@ -268,3 +268,22 @@ jenkins-smit-app/
 ├── app.py
 └── requirements.txt
 ```
+
+---
+
+## Step 6: Create the Pipeline Job in Jenkins
+
+- Open Jenkins → **New Item**
+- **Name:** `jenkins-smit-app`
+- Choose **Pipeline** → **OK**
+- **General:** tick **GitHub project** → **Project url:** `https://github.com/<your-user>/jenkins-smit-app/`
+- **Triggers:** tick **GitHub hook trigger for GITScm polling**
+- **Pipeline:**
+  - **Definition:** `Pipeline script from SCM`
+  - **SCM:** `Git`
+  - **Repository URL:** `https://github.com/<your-user>/jenkins-smit-app.git`
+  - **Branch Specifier:** `*/main`
+  - **Script Path:** `Jenkinsfile`
+- Click **Save**
+
+> The **GitHub hook trigger** option comes from the **GitHub** plugin (installed with suggested plugins).
