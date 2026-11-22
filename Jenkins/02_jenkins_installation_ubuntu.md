@@ -397,3 +397,34 @@ The **Instance Configuration** page shows **Jenkins URL**, e.g. `http://3.110.25
 | **Advanced settings** | Upload a plugin file manually, proxy settings |
 
 **Restart Jenkins safely** (waits for running builds to finish): open `http://<your-jenkins>:8080/safeRestart`
+
+---
+
+## Install Git and Docker for Jenkins
+
+Pipelines run commands **on the server** as the `jenkins` user, so the tools must be installed there.
+
+```bash
+# Git
+sudo apt install -y git
+git --version
+
+# Docker
+sudo apt install -y docker.io
+sudo systemctl enable --now docker
+
+# Allow the jenkins user to run docker commands
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+```
+
+Check it works as the `jenkins` user:
+
+```bash
+sudo -u jenkins docker ps
+```
+
+If you see an empty table (not "permission denied"), it works. ✅
+
+> ⚠️ Being in the `docker` group is almost the same as having **root** access.
+> It's fine for a learning server — read `03_jenkins_users.md` for why.
