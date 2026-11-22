@@ -209,3 +209,21 @@ Jenkins itself is small. Almost every feature comes from a **plugin**.
 Plugins are installed from **Manage Jenkins → Plugins** (see `02_jenkins_installation_ubuntu.md`).
 
 > ⚠️ Only install plugins you need, and **keep them updated** — old plugins are a common security risk.
+
+---
+
+## Jenkins vs GitHub Actions vs Others
+
+| Tool | Hosted by | Config file | Notes |
+|------|----------|-------------|-------|
+| **Jenkins** | **You** (your server) | `Jenkinsfile` | Free, very flexible, huge plugin library — you maintain the server |
+| **GitHub Actions** | GitHub | `.github/workflows/*.yml` | Easy if code is on GitHub (see `Phase_2/class4.md`) |
+| **GitLab CI/CD** | GitLab | `.gitlab-ci.yml` | Built into GitLab |
+| **Azure DevOps Pipelines** | Microsoft | `azure-pipelines.yml` | Popular in Microsoft companies |
+| **CircleCI** | CircleCI | `.circleci/config.yml` | Cloud CI service |
+
+**Why learn Jenkins if GitHub Actions exists?**
+- Thousands of companies (banks, telecoms, big enterprises) **still run Jenkins**
+- It runs **inside your own network** — needed when code can't leave the company
+- It works with **any** Git provider and any tool
+- It appears in a large number of **DevOps job descriptions**
