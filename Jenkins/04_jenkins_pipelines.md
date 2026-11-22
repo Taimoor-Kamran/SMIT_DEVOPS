@@ -511,3 +511,31 @@ options {
 ```
 
 > **`buildDiscarder` is important** — without it, old builds fill up the server disk (remember the "disk full" incident in `Phase_1/class_7.md`).
+
+---
+
+## triggers — Start Builds Automatically
+
+| Trigger | Syntax | Meaning |
+|---------|--------|---------|
+| **Schedule (cron)** | `cron('H 2 * * *')` | Build every night around 2 AM |
+| **Poll SCM** | `pollSCM('H/5 * * * *')` | Every ~5 min, check Git; build only if there are new commits |
+| **GitHub webhook** | Tick **GitHub hook trigger for GITScm polling** in the job | GitHub tells Jenkins instantly on push (see `05_jenkins_cicd_project.md`) |
+
+```groovy
+triggers {
+    pollSCM('H/5 * * * *')
+}
+```
+
+**What is `H`?** It means "a **hashed** (spread-out) value". `H/5` = every 5 minutes, but each job picks a different minute so 100 jobs don't all start at the same second.
+
+Cron format is the same one you learned in `Phase_3/class3.md`:
+
+```
+ MINUTE  HOUR  DAY-OF-MONTH  MONTH  DAY-OF-WEEK
+   H      2        *           *        *        → daily ~2 AM
+   H/15   *        *           *       1-5       → every 15 min, Mon–Fri
+```
+
+> **Webhooks are better than polling** — instant, and Jenkins doesn't keep asking GitHub "anything new?"
