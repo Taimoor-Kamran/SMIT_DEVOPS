@@ -497,3 +497,56 @@ docker image prune -a -f          # ⚠️ removes ALL unused images
 
 - **GitHub:** delete the webhook (or set it inactive) if you won't use it
 - **AWS:** remove the port 8080 / 5000 rules you opened, and **stop the EC2 instance** so you're not charged
+
+---
+
+## Quick Reference
+
+### Project Files
+
+| File | Purpose |
+|------|---------|
+| `app.py` | The Flask web app |
+| `requirements.txt` | Python packages |
+| `Dockerfile` | How to build the image |
+| `Jenkinsfile` | The CI/CD pipeline |
+
+### Pipeline Flow
+
+| Stage | Command |
+|-------|---------|
+| Build Image | `docker build -t smit-app:$BUILD_NUMBER .` |
+| Test Image | `docker run -d --name smit-app-test ...` + check `/health` |
+| Deploy | `docker rm -f smit-app` + `docker run -d --name smit-app -p 5000:5000 ...` |
+| Smoke Test | `curl -fsS http://localhost:5000/` |
+
+### Webhook Settings
+
+| Setting | Value |
+|---------|-------|
+| Payload URL | `http://<jenkins-ip>:8080/github-webhook/` |
+| Content type | `application/json` |
+| Events | Just the push event |
+| Jenkins job trigger | **GitHub hook trigger for GITScm polling** |
+
+### Rollback to an Older Version
+
+```bash
+docker rm -f smit-app
+docker run -d --name smit-app --restart unless-stopped -p 5000:5000 smit-app:<old-build-number>
+```
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| CI/CD pipeline | Automatic build → test → deploy on every change |
+| Webhook | GitHub calling Jenkins when code is pushed |
+| Payload URL | The Jenkins address GitHub sends the webhook to |
+| Health check | A URL (like `/health`) that shows the app is alive |
+| Smoke test | A quick check that the deployed app answers |
+| Image tag | A label on an image, e.g. `smit-app:7` |
+| Rollback | Going back to an older, working version |
+| Docker Hub | Public registry for Docker images |
+| Access token | A password-like secret for tools, can be revoked |
+| Elastic IP | A fixed public IP on AWS that doesn't change on restart |
