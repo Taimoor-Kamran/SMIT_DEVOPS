@@ -310,3 +310,39 @@ steps {
 ```
 
 > Triple quotes `'''` let you write a small bash script inside one `sh` step.
+
+---
+
+## environment — Variables
+
+```groovy
+pipeline {
+    agent any
+
+    environment {
+        APP_NAME  = 'smit-app'
+        APP_PORT  = '5000'
+        IMAGE_TAG = "${APP_NAME}:${BUILD_NUMBER}"
+    }
+
+    stages {
+        stage('Show Variables') {
+            environment {
+                STAGE_ONLY = 'only visible in this stage'
+            }
+            steps {
+                echo "App: ${APP_NAME}, port: ${APP_PORT}"
+                echo "Image: ${env.IMAGE_TAG}"
+                sh 'echo "From bash: $APP_NAME $STAGE_ONLY"'
+            }
+        }
+    }
+}
+```
+
+| Where | Scope |
+|-------|-------|
+| `environment` at top | All stages |
+| `environment` inside a stage | Only that stage |
+| `${NAME}` in Groovy `"double quotes"` | Groovy fills it in |
+| `$NAME` inside `sh '...'` | Bash reads it from the environment |
