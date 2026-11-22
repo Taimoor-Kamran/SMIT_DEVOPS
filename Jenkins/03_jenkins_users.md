@@ -334,3 +334,43 @@ Under **Jenkins' own user database** there's a checkbox:
 
 > **Matrix-based security** comes from the **Matrix Authorization Strategy** plugin (installed with suggested plugins).
 > **Role-Based Strategy** needs the **Role-based Authorization Strategy** plugin.
+
+---
+
+## Matrix-Based Security — Step by Step
+
+**Goal:**
+- `admin` → everything
+- `ali` (developer) → view jobs, build them, see logs
+- `sara` (viewer) → only view
+
+### Steps
+
+- **Manage Jenkins → Security**
+- **Authorization:** choose **Matrix-based security**
+- A table appears. Click **Add user** → type `admin` → OK. Repeat for `ali` and `sara`.
+- Tick the permissions:
+
+| Permission | admin | ali (developer) | sara (viewer) |
+|------------|:-----:|:---------------:|:-------------:|
+| Overall → **Administer** | ✅ | | |
+| Overall → **Read** | ✅ | ✅ | ✅ |
+| Job → **Read** | ✅ | ✅ | ✅ |
+| Job → **Build** | ✅ | ✅ | |
+| Job → **Cancel** | ✅ | ✅ | |
+| Job → **Workspace** | ✅ | ✅ | |
+| Job → **Configure** | ✅ | | |
+| Job → **Create / Delete** | ✅ | | |
+| View → **Read** | ✅ | ✅ | ✅ |
+
+- Click **Save**
+
+> ⚠️ **Don't lock yourself out!** Make sure your admin user has **Overall → Administer** ticked **before** you click Save.
+> Test with a second browser (or private window) logged in as `ali`.
+
+**Special entries in the table:**
+
+| Entry | Meaning |
+|-------|---------|
+| **Anonymous** | People who are **not** logged in — give them **nothing** |
+| **Authenticated Users** | Everyone who **is** logged in — a quick way to give everyone `Overall/Read` |
