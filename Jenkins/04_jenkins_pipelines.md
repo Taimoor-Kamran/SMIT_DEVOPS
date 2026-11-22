@@ -73,3 +73,30 @@ Finished: SUCCESS
 
 > Notice **`I am running as: jenkins`** — every command runs as the `jenkins` Linux user (`03_jenkins_users.md`).
 > Lines starting with `+` show the command Jenkins ran.
+
+---
+
+## Freestyle Job with Git
+
+Let's make Jenkins pull a GitHub repo and run commands on it.
+
+- **New Item** → `smit-notes-check` → **Freestyle project** → **OK**
+- **Source Code Management** → choose **Git**
+  - **Repository URL:** `https://github.com/Taimoor-Kamran/SMIT_DEVOPS.git`
+  - **Credentials:** none (public repo)
+  - **Branch Specifier:** `*/main`
+- **Build Steps → Execute shell:**
+
+```bash
+echo "Files in the repo:"
+ls -la
+echo "Number of markdown notes:"
+find . -name "*.md" | wc -l
+git log -3 --oneline
+```
+
+- **Save → Build Now → Console Output**
+
+> If you see `git: not found`, install Git on the server: `sudo apt install -y git`.
+
+**Freestyle is fine for small tasks**, but its settings live only inside Jenkins. For real CI/CD, use a **Pipeline**.
