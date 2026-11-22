@@ -160,3 +160,27 @@ Jenkins has two main parts: the **controller** and **agents**.
 
 > Jenkins decides pass/fail using **exit codes** — the same ones you learned in `Phase_3/class1.md`.
 > Exit code `0` = success, anything else = failure.
+
+---
+
+## Types of Jenkins Jobs
+
+| Type | How it's set up | Best for |
+|------|----------------|----------|
+| **Freestyle project** | Click through forms in the web UI | Simple tasks, learning, quick scripts |
+| **Pipeline** | Code — a `Jenkinsfile` (in the job or in Git) | ✅ Real CI/CD — the modern way |
+| **Multibranch Pipeline** | Jenkins finds every branch with a `Jenkinsfile` and creates a pipeline for each | Teams using feature branches and PRs |
+| **Folder** | Groups jobs together | Organising many jobs |
+
+**Freestyle vs Pipeline:**
+
+| | Freestyle | Pipeline |
+|---|---|---|
+| Configured with | Web forms (clicks) | Code (`Jenkinsfile`) |
+| Stored in Git | ❌ No | ✅ Yes — versioned, reviewed in PRs |
+| Multiple stages with visual view | Limited | ✅ Yes |
+| Survives Jenkins restart mid-build | ❌ | ✅ |
+| Easy to copy to another project | ❌ | ✅ Copy the file |
+
+> This is called **Pipeline as Code**. Your pipeline lives in Git next to your app, so any change to it
+> goes through a pull request — just like the PR workflow in `Phase_2/class3.md`.
