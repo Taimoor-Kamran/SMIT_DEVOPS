@@ -397,3 +397,40 @@ Add a typo in `app.py` (e.g. `retrun` instead of `return`) and push. Watch:
 - Fix the typo, push again → ✅ green
 
 This is exactly why pipelines have a **Test** stage before **Deploy**.
+
+---
+
+## Bonus: Push the Image to Docker Hub
+
+Share your image so other servers can pull it.
+
+1. Create a **Docker Hub** account → **Account settings → Personal access tokens → Generate new token**
+2. In Jenkins: **Manage Jenkins → Credentials → System → Global credentials → Add Credentials**
+   - **Kind:** Username with password
+   - **Username:** your Docker Hub username
+   - **Password:** the access token
+   - **ID:** `dockerhub-creds`
+3. Add this stage to the Jenkinsfile, **after Smoke Test**:
+
+```groovy
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds',
+                                                  usernameVariable: 'DOCKER_USER',
+                                                  passwordVariable: 'DOCKER_PASS')]) {
+                    sh '''
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                        docker tag "$IMAGE" "$DOCKER_USER/smit-app:$BUILD_NUMBER"
+                        docker tag "$IMAGE" "$DOCKER_USER/smit-app:latest"
+                        docker push "$DOCKER_USER/smit-app:$BUILD_NUMBER"
+                        docker push "$DOCKER_USER/smit-app:latest"
+                        docker logout
+                    '''
+                }
+            }
+        }
+```
+
+4. Push the Jenkinsfile change → the image appears on `hub.docker.com/r/<your-user>/smit-app`
+
+> The password shows as `****` in the logs — Jenkins masks credentials automatically.
