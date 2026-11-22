@@ -240,3 +240,39 @@ pipeline {
 ```
 
 > With a Docker agent, you don't need Python installed on the server — Jenkins pulls the image and runs the steps in it.
+
+---
+
+## stages, stage and steps
+
+```groovy
+stages {
+    stage('Build') {
+        steps {
+            sh 'echo building...'
+        }
+    }
+    stage('Test') {
+        steps {
+            sh 'echo testing...'
+        }
+    }
+}
+```
+
+### Run Stages at the Same Time (parallel)
+
+```groovy
+stage('Tests') {
+    parallel {
+        stage('Unit Tests') {
+            steps { sh 'echo running unit tests' }
+        }
+        stage('Lint') {
+            steps { sh 'echo running lint' }
+        }
+    }
+}
+```
+
+> Parallel stages finish faster — useful when tests take a long time.
