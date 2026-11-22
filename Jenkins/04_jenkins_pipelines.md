@@ -122,3 +122,44 @@ There are two styles:
 |-------|------------|-------|
 | **Declarative** | `pipeline { ... }` | ✅ Simple, structured, recommended — **we use this** |
 | **Scripted** | `node { ... }` | Full Groovy programming, more flexible, harder for beginners |
+
+---
+
+## Your First Pipeline — Step by Step
+
+- **New Item** → `hello-pipeline` → choose **Pipeline** → **OK**
+- Scroll to the **Pipeline** section
+- **Definition:** `Pipeline script`
+- In the **Script** box paste:
+
+```groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello from my first pipeline!'
+            }
+        }
+        stage('System Info') {
+            steps {
+                sh 'whoami'
+                sh 'uname -a'
+                sh 'df -h /'
+            }
+        }
+        stage('Goodbye') {
+            steps {
+                echo "Build #${env.BUILD_NUMBER} finished"
+            }
+        }
+    }
+}
+```
+
+- Click **Save** → **Build Now**
+
+On the job page you'll see each **stage** as a box with its time and status. Click a stage to see its logs, or open **Console Output** for the full log. 🎉
+
+> The Script box has a **"try sample Pipeline..."** dropdown — choose **Hello World** to get a starter.
