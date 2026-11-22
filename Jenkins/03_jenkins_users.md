@@ -461,3 +461,21 @@ sudo systemctl start jenkins
 - Log out and log in with the new password ✅
 
 > ⚠️ While security is off, **anyone** who can reach the page is admin. Do this quickly, and only with port 8080 limited to **your IP**.
+
+---
+
+## Best Practices
+
+| Practice | Why |
+|----------|-----|
+| Never run Jenkins as `root` | Limits damage from bad scripts or attacks |
+| Give the `jenkins` Linux user **only** the access builds need | Least privilege |
+| Use exact-command sudo rules, never `NOPASSWD: ALL` | Stops builds becoming root |
+| Never `chmod 777` to fix errors | Fix ownership/groups instead |
+| One Jenkins account **per person** | You can see who did what |
+| Keep **Allow users to sign up** off | Only admins create accounts |
+| Give **Anonymous** no permissions | Strangers can't see your jobs |
+| Use **Matrix** or **Role-based** authorization | Developers can build without being admin |
+| Use **API tokens**, not passwords, in scripts | Tokens can be revoked one by one |
+| Store secrets in **Jenkins Credentials** | Hidden in logs, managed in one place |
+| Limit port 8080 to trusted IPs | Fewer attackers can even reach the login page |
