@@ -196,3 +196,36 @@ sudo -u jenkins docker ps          # should work now
 > ⚠️ **Security note:** anyone in the `docker` group can start a container that mounts the whole disk —
 > so it's **almost root access**. This is OK for learning and small teams.
 > Big companies run builds on **separate agent machines** so the main Jenkins server stays safe.
+
+---
+
+## Limited sudo for Jenkins
+
+Sometimes a deploy step **must** use sudo, e.g. to restart nginx. Give `jenkins` sudo for **only those exact commands**.
+
+```bash
+sudo visudo -f /etc/sudoers.d/jenkins
+```
+
+Add **one line**:
+
+```
+jenkins ALL=(root) NOPASSWD: /usr/bin/systemctl restart nginx, /usr/bin/systemctl reload nginx
+```
+
+| Part | Meaning |
+|------|---------|
+| `jenkins` | Which user |
+| `ALL=(root)` | On this machine, run as root |
+| `NOPASSWD:` | Don't ask for a password (Jenkins can't type one) |
+| `/usr/bin/systemctl restart nginx, ...` | **Only** these exact commands are allowed |
+
+Save and test:
+
+```bash
+sudo -u jenkins sudo systemctl restart nginx     # ✅ allowed
+sudo -u jenkins sudo rm -rf /tmp/test            # ❌ asks for password → not allowed
+```
+
+> ⚠️ **Never** add `jenkins ALL=(ALL) NOPASSWD: ALL`. That means **every** build script and **every** Jenkins user becomes root.
+> Always use `visudo` — it checks the syntax so you don't break sudo for everyone.
