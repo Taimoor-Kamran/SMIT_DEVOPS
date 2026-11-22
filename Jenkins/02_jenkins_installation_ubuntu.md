@@ -595,3 +595,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 | UFW | Uncomplicated Firewall — Ubuntu's firewall tool |
 | Suggested plugins | The common plugin set installed during setup |
 | Elastic IP | A fixed public IP address in AWS |
+
+---
+
+*End of Jenkins Installation on Ubuntu — Jenkins*
