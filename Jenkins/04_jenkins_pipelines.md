@@ -100,3 +100,25 @@ git log -3 --oneline
 > If you see `git: not found`, install Git on the server: `sudo apt install -y git`.
 
 **Freestyle is fine for small tasks**, but its settings live only inside Jenkins. For real CI/CD, use a **Pipeline**.
+
+---
+
+## What is a Pipeline?
+
+A **Pipeline** is a job written as **code**. The code describes **stages** that run one after another.
+
+```
+ ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
+ │ Checkout │──►│  Build   │──►│   Test   │──►│  Deploy  │
+ └──────────┘   └──────────┘   └──────────┘   └──────────┘
+      ✅             ✅             ❌  ← pipeline stops here, Deploy never runs
+```
+
+If **any** stage fails, the pipeline **stops** — so broken code never reaches Deploy.
+
+There are two styles:
+
+| Style | Starts with | Notes |
+|-------|------------|-------|
+| **Declarative** | `pipeline { ... }` | ✅ Simple, structured, recommended — **we use this** |
+| **Scripted** | `node { ... }` | Full Groovy programming, more flexible, harder for beginners |
