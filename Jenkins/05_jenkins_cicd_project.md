@@ -247,3 +247,24 @@ pipeline {
 > If version 7 is broken, you can quickly run `smit-app:6` again — an easy **rollback**.
 
 > **`|| true`** means "if this command fails, don't fail the pipeline" — used when the container might not exist yet.
+
+---
+
+## Step 5: Push to GitHub
+
+```bash
+git add app.py requirements.txt Dockerfile Jenkinsfile
+git commit -m "Add Flask app, Dockerfile and Jenkinsfile"
+git push origin main
+```
+
+Your repo now looks like:
+
+```
+jenkins-smit-app/
+├── Dockerfile
+├── Jenkinsfile
+├── README.md
+├── app.py
+└── requirements.txt
+```
