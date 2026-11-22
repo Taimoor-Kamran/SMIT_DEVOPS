@@ -324,3 +324,15 @@ Fill in the **Create First Admin User** form:
 
 > ⚠️ Save this password in a password manager. This user can do **everything** in Jenkins.
 > From now on, the `initialAdminPassword` no longer works.
+
+---
+
+## Step 10: Set the Jenkins URL
+
+The **Instance Configuration** page shows **Jenkins URL**, e.g. `http://3.110.25.40:8080/`.
+
+- Keep it as it is (it's the address you used in the browser)
+- Click **Save and Finish** → **Start using Jenkins** 🎉
+
+> On EC2, the **public IP changes** every time you stop and start the instance.
+> Update it later in **Manage Jenkins → System → Jenkins URL**, or attach an **Elastic IP** to keep it fixed.
