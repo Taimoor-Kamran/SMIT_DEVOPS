@@ -288,3 +288,20 @@ Output (example):
 - Copy the password → paste it in the **Administrator password** box → click **Continue**
 
 > This one-time password makes sure **only the person with server access** can set up Jenkins.
+
+---
+
+## Step 8: Install Plugins
+
+The **Customize Jenkins** page gives two choices:
+
+| Option | What it does |
+|--------|-------------|
+| **Install suggested plugins** | Installs the most common plugins (Git, Pipeline, Credentials, GitHub Branch Source, Timestamper, Matrix Authorization...) |
+| **Select plugins to install** | You pick each plugin yourself |
+
+- Click **Install suggested plugins** ✅ (best for beginners)
+
+Wait a few minutes while each plugin shows a green tick ✅.
+
+> If some plugins fail (red ❌), click **Retry**. It's usually a slow internet connection.
