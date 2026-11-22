@@ -305,3 +305,22 @@ The **Customize Jenkins** page gives two choices:
 Wait a few minutes while each plugin shows a green tick ✅.
 
 > If some plugins fail (red ❌), click **Retry**. It's usually a slow internet connection.
+
+---
+
+## Step 9: Create the First Admin User
+
+Fill in the **Create First Admin User** form:
+
+| Field | Example |
+|-------|---------|
+| Username | `admin` (or your name, e.g. `taimoor`) |
+| Password | a **strong** password |
+| Confirm password | same password |
+| Full name | `Taimoor Kamran` |
+| E-mail address | your email |
+
+- Click **Save and Continue**
+
+> ⚠️ Save this password in a password manager. This user can do **everything** in Jenkins.
+> From now on, the `initialAdminPassword` no longer works.
