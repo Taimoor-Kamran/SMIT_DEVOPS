@@ -44,3 +44,22 @@ When people say "Jenkins user" they can mean **two different things**:
 
 > Even if **`ali`** starts the build, the commands on the server run as the **`jenkins`** Linux user.
 > That's why the Linux user's permissions matter so much.
+
+---
+
+## Part 1: The `jenkins` Linux User
+
+When you install Jenkins (`02_jenkins_installation_ubuntu.md`), the package creates a Linux user called **`jenkins`**.
+
+This is a **service user** — the same idea you learned in `Phase_1/class_4.md`:
+an account that exists to **run one program**, not for a human to log in with.
+
+**Why not just run Jenkins as root?**
+
+| Run as `root` | Run as `jenkins` |
+|---------------|-----------------|
+| A bad build script can delete **anything** on the server | A bad script can only damage what `jenkins` owns |
+| A hacked Jenkins = hacked server | Damage is limited |
+| ❌ Never do this | ✅ Correct |
+
+**Simple analogy:** the `jenkins` user is like a **contractor** with a key to **one workshop** in a building — not the master key to every room.
