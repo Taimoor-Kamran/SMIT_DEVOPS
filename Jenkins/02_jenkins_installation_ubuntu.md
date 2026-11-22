@@ -1,1 +1,28 @@
 # Jenkins: Installation and Setup on Ubuntu (Step by Step)
+
+---
+
+## Table of Contents
+1. [What We Will Do](#what-we-will-do)
+2. [Requirements](#requirements)
+3. [Option A: Create an Ubuntu Server on AWS EC2](#option-a-create-an-ubuntu-server-on-aws-ec2)
+4. [Option B: Use WSL or a Local Ubuntu VM](#option-b-use-wsl-or-a-local-ubuntu-vm)
+5. [Step 1: Update Ubuntu](#step-1-update-ubuntu)
+6. [Step 2: Install Java 21](#step-2-install-java-21)
+7. [Step 3: Add the Jenkins Repository](#step-3-add-the-jenkins-repository)
+8. [Step 4: Install Jenkins](#step-4-install-jenkins)
+9. [Step 5: Start and Enable the Jenkins Service](#step-5-start-and-enable-the-jenkins-service)
+10. [Step 6: Open Port 8080](#step-6-open-port-8080)
+11. [Step 7: Unlock Jenkins in the Browser](#step-7-unlock-jenkins-in-the-browser)
+12. [Step 8: Install Plugins](#step-8-install-plugins)
+13. [Step 9: Create the First Admin User](#step-9-create-the-first-admin-user)
+14. [Step 10: Set the Jenkins URL](#step-10-set-the-jenkins-url)
+15. [Tour of the Jenkins Dashboard](#tour-of-the-jenkins-dashboard)
+16. [Install Extra Plugins](#install-extra-plugins)
+17. [Install Git and Docker for Jenkins](#install-git-and-docker-for-jenkins)
+18. [Change the Jenkins Port](#change-the-jenkins-port)
+19. [Important Files and Folders](#important-files-and-folders)
+20. [Manage the Jenkins Service](#manage-the-jenkins-service)
+21. [Update, Back Up and Uninstall](#update-back-up-and-uninstall)
+22. [Troubleshooting](#troubleshooting)
+23. [Quick Reference](#quick-reference)
