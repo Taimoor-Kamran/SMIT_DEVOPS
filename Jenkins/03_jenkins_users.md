@@ -22,3 +22,25 @@
 17. [Reset a Forgotten Admin Password](#reset-a-forgotten-admin-password)
 18. [Best Practices](#best-practices)
 19. [Quick Reference](#quick-reference)
+
+---
+
+## Two Kinds of "Jenkins User"
+
+When people say "Jenkins user" they can mean **two different things**:
+
+| | 1. `jenkins` **Linux** user | 2. Jenkins **web** users |
+|---|---|---|
+| What it is | A **system account** on the Ubuntu server | People who **log in to the Jenkins website** |
+| Created by | The Jenkins package, automatically | You, in **Manage Jenkins → Users** |
+| Used for | **Running** Jenkins and every build command | Creating jobs, clicking **Build Now**, changing settings |
+| Example | `sh 'docker build .'` runs as `jenkins` | `ali` logs in to view build logs |
+| Managed with | `id`, `usermod`, `chown`, `sudo` | Jenkins web UI |
+
+```
+  ali (web user) ──clicks "Build Now"──►  Jenkins  ──runs commands as──►  jenkins (Linux user)
+  sara (web user) ─views logs──────────►  (web UI)                         on the Ubuntu server
+```
+
+> Even if **`ali`** starts the build, the commands on the server run as the **`jenkins`** Linux user.
+> That's why the Linux user's permissions matter so much.
