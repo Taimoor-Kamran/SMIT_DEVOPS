@@ -336,3 +336,43 @@ The **Instance Configuration** page shows **Jenkins URL**, e.g. `http://3.110.25
 
 > On EC2, the **public IP changes** every time you stop and start the instance.
 > Update it later in **Manage Jenkins → System → Jenkins URL**, or attach an **Elastic IP** to keep it fixed.
+
+---
+
+## Tour of the Jenkins Dashboard
+
+```
+ ┌───────────────────────────────────────────────────────────────┐
+ │ Jenkins                                    🔍  admin ▾  Log out│
+ ├──────────────────┬────────────────────────────────────────────┤
+ │ + New Item       │                                            │
+ │ Build History    │   Welcome to Jenkins!                      │
+ │ Manage Jenkins   │   (your jobs will be listed here)          │
+ │ My Views         │                                            │
+ │                  │                                            │
+ │ Build Queue      │                                            │
+ │ Build Executor   │                                            │
+ │  Status          │                                            │
+ └──────────────────┴────────────────────────────────────────────┘
+```
+
+| Menu | What it's for |
+|------|---------------|
+| **New Item** | Create a new job / pipeline |
+| **Build History** | All builds of all jobs |
+| **Manage Jenkins** | All settings (plugins, users, security, credentials, nodes) |
+| **Build Queue** | Builds waiting to run |
+| **Build Executor Status** | Which machines are running builds right now |
+
+### Inside Manage Jenkins
+
+| Section | What you do there |
+|---------|-------------------|
+| **System** | Jenkins URL, number of executors, global environment variables |
+| **Tools** | Configure Git, JDK, Maven, Node.js installations |
+| **Plugins** | Install, update and remove plugins |
+| **Nodes** | Add agent machines |
+| **Credentials** | Store passwords, tokens and SSH keys |
+| **Security** | Login and permission settings |
+| **Users** | Create and manage Jenkins users |
+| **System Log** | Jenkins' own error logs |
