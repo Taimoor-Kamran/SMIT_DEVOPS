@@ -346,3 +346,22 @@ pipeline {
 | `environment` inside a stage | Only that stage |
 | `${NAME}` in Groovy `"double quotes"` | Groovy fills it in |
 | `$NAME` inside `sh '...'` | Bash reads it from the environment |
+
+---
+
+## Built-in Jenkins Variables
+
+Jenkins gives every build these variables automatically:
+
+| Variable | Example value | Meaning |
+|----------|---------------|---------|
+| `BUILD_NUMBER` | `14` | Build number |
+| `JOB_NAME` | `smit-app-pipeline` | Job name |
+| `BUILD_URL` | `http://3.110.25.40:8080/job/smit-app-pipeline/14/` | Link to this build |
+| `WORKSPACE` | `/var/lib/jenkins/workspace/smit-app-pipeline` | Build folder |
+| `JENKINS_URL` | `http://3.110.25.40:8080/` | Jenkins address |
+| `BRANCH_NAME` | `main` | Branch (multibranch pipelines only) |
+| `GIT_COMMIT` | `a1b2c3d...` | Commit being built (after checkout from Git) |
+| `NODE_NAME` | `built-in` | Machine running the build |
+
+> See the full list on any pipeline job: **Pipeline Syntax → Global Variables Reference**.
