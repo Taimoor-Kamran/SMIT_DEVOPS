@@ -26,3 +26,50 @@
 21. [Reading Build Results](#reading-build-results)
 22. [Incident: Pipeline Fails on Docker Permission](#incident-pipeline-fails-on-docker-permission)
 23. [Quick Reference](#quick-reference)
+
+---
+
+## Your First Job: Freestyle Project
+
+A **Freestyle project** is set up by filling in forms. It's the easiest way to see Jenkins run something.
+
+### Steps
+
+- Dashboard → **New Item**
+- **Enter an item name:** `hello-freestyle`
+- Choose **Freestyle project** → **OK**
+- **Description:** `My first Jenkins job`
+- Scroll to **Build Steps** → **Add build step** → **Execute shell**
+- In **Command**, type:
+
+```bash
+echo "Hello from Jenkins!"
+echo "I am running as: $(whoami)"
+echo "Build number: $BUILD_NUMBER"
+echo "Workspace: $WORKSPACE"
+date
+uptime
+```
+
+- Click **Save**
+- Click **Build Now** (left menu)
+- Under **Build History**, click **#1** → **Console Output**
+
+Output:
+
+```
+Started by user admin
+Running as SYSTEM
+Building in workspace /var/lib/jenkins/workspace/hello-freestyle
++ echo Hello from Jenkins!
+Hello from Jenkins!
++ whoami
+I am running as: jenkins
++ echo Build number: 1
+Build number: 1
+...
+Finished: SUCCESS
+```
+
+> Notice **`I am running as: jenkins`** — every command runs as the `jenkins` Linux user (`03_jenkins_users.md`).
+> Lines starting with `+` show the command Jenkins ran.
