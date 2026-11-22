@@ -64,3 +64,20 @@ sudo -u jenkins docker ps
 ```
 
 All three should work without errors.
+
+---
+
+## Step 1: Create the App Repository
+
+- Go to **GitHub → New repository**
+- **Repository name:** `jenkins-smit-app`
+- **Public** (easier for the first project)
+- Tick **Add a README file**
+- Click **Create repository**
+
+Clone it on your **own computer** (or WSL):
+
+```bash
+git clone https://github.com/<your-user>/jenkins-smit-app.git
+cd jenkins-smit-app
+```
