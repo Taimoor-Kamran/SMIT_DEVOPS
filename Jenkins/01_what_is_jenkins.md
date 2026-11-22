@@ -248,3 +248,37 @@ Jenkins connects almost everything you've learned so far:
 | Bash scripting (`Phase_3`) | `sh` steps are bash commands |
 | Docker (`Phase_4`) | Builds and runs images |
 | AWS (`AWS/`) | Runs on EC2, deploys to AWS |
+
+---
+
+## Quick Reference
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| CI | Continuous Integration — auto build + test on every push |
+| CD | Continuous Delivery / Deployment — auto release |
+| Jenkins | Open-source automation server for CI/CD |
+| Controller | The main Jenkins server (UI, config, scheduling) |
+| Agent | A worker machine that runs builds |
+| Executor | A slot for running one build at a time |
+| Job | A configured task in Jenkins |
+| Build | One run of a job |
+| Pipeline | A job defined as code with stages |
+| Stage | A big step in a pipeline (Build, Test, Deploy) |
+| Step | One command inside a stage |
+| Jenkinsfile | The file that defines a pipeline |
+| Workspace | Folder where a build runs |
+| Plugin | Add-on that gives Jenkins new features |
+| Webhook | Message from GitHub to Jenkins when code changes |
+| Credentials | Secrets stored safely inside Jenkins |
+
+### What's Next in This Folder
+
+| File | Topic |
+|------|-------|
+| `02_jenkins_installation_ubuntu.md` | Install Jenkins on Ubuntu step by step |
+| `03_jenkins_users.md` | The `jenkins` Linux user and Jenkins web users & permissions |
+| `04_jenkins_pipelines.md` | Freestyle jobs, pipelines and the Jenkinsfile |
+| `05_jenkins_cicd_project.md` | Full project: GitHub → Jenkins → Docker with webhooks |
