@@ -181,3 +181,23 @@ echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
 > ⚠️ The key file name has a **year** in it (`2026`). Jenkins changes the key from time to time.
 > If `apt update` shows a **`NO_PUBKEY`** or **signature** error, check the latest key name on
 > `https://www.jenkins.io/doc/book/installing/linux/` and run Step 3.1 again.
+
+---
+
+## Step 4: Install Jenkins
+
+```bash
+sudo apt update
+sudo apt install -y jenkins
+```
+
+During install, the package automatically:
+- Creates a Linux user called **`jenkins`** (see `03_jenkins_users.md`)
+- Creates the Jenkins home folder **`/var/lib/jenkins`**
+- Creates a **systemd service** called `jenkins`
+
+Check the version:
+
+```bash
+jenkins --version
+```
