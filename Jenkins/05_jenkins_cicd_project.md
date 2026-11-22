@@ -359,3 +359,41 @@ GitHub's servers must be able to reach your Jenkins on port 8080.
 - Click the webhook → **Recent Deliveries** tab
 - You should see a delivery with a green ✅ and **Response 200**
 - A red ❌ means GitHub couldn't reach Jenkins — see the [incident below](#incident-webhook-not-triggering-builds)
+
+---
+
+## Step 9: Test the Full Flow
+
+Change the version in **`app.py`**:
+
+```python
+VERSION = "v2"
+```
+
+Push it:
+
+```bash
+git add app.py
+git commit -m "Bump app version to v2"
+git push origin main
+```
+
+**Without clicking anything**, watch Jenkins:
+- A new build starts within seconds (**Started by GitHub push by <your-user>**)
+- All stages go green
+- Refresh `http://<server-ip>:5000`:
+
+```
+Hello SMIT v2 - deployed by Jenkins!
+```
+
+✅ **That's CI/CD!** Code → push → automatic build, test and deploy.
+
+### Try Breaking It (Learn from Failure)
+
+Add a typo in `app.py` (e.g. `retrun` instead of `return`) and push. Watch:
+- **Test Image** fails ❌ — the app crashes on start
+- **Deploy** never runs, so **v2 stays live** — users never see the broken version
+- Fix the typo, push again → ✅ green
+
+This is exactly why pipelines have a **Test** stage before **Deploy**.
