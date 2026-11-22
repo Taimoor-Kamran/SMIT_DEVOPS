@@ -127,3 +127,36 @@ Jenkins has two main parts: the **controller** and **agents**.
 
 > **For learning**, one Ubuntu machine is enough. The controller has a **built-in node** that runs builds itself.
 > In real companies, builds run on **separate agents** so the controller stays fast and safe.
+
+---
+
+## Important Jenkins Words
+
+| Word | Meaning | Example |
+|------|---------|---------|
+| **Job / Project / Item** | A task you configure in Jenkins | "build-smit-app" |
+| **Build** | One **run** of a job, numbered #1, #2, #3... | Build #14 |
+| **Pipeline** | A job made of **stages** written as code | Build → Test → Deploy |
+| **Stage** | One big step of a pipeline | `stage('Test')` |
+| **Step** | One single command inside a stage | `sh 'npm test'` |
+| **Jenkinsfile** | A file in your Git repo that defines the pipeline | `Jenkinsfile` |
+| **Workspace** | The folder where Jenkins checks out code and runs the build | `/var/lib/jenkins/workspace/build-smit-app` |
+| **Console Output** | The full log of a build | Shows every command and its output |
+| **Artifact** | A file a build produces and keeps | `app.jar`, `report.html` |
+| **Trigger** | What starts a build | Git push, schedule, manual click |
+| **Webhook** | A message GitHub sends to Jenkins when code changes | `POST /github-webhook/` |
+| **Credentials** | Saved secrets (passwords, tokens, SSH keys) Jenkins uses safely | Docker Hub password |
+| **Plugin** | An add-on that gives Jenkins new features | Git plugin, Docker plugin |
+| **Node** | Any machine that can run builds (controller or agent) | `built-in`, `linux-agent-1` |
+
+### Build Status Colours
+
+| Icon | Status | Meaning |
+|------|--------|---------|
+| ✅ Green | **Success** | Everything passed |
+| ❌ Red | **Failure** | A step failed (e.g. a command exited with non-zero code) |
+| ⚠️ Yellow | **Unstable** | Build ran but some tests failed |
+| ⚪ Grey | **Aborted / Not built** | Stopped by a person, or never ran |
+
+> Jenkins decides pass/fail using **exit codes** — the same ones you learned in `Phase_3/class1.md`.
+> Exit code `0` = success, anything else = failure.
