@@ -539,3 +539,68 @@ Cron format is the same one you learned in `Phase_3/class3.md`:
 ```
 
 > **Webhooks are better than polling** — instant, and Jenkins doesn't keep asking GitHub "anything new?"
+
+---
+
+## Credentials — Use Secrets Safely
+
+**Never** write passwords or tokens in a Jenkinsfile — it's in Git, so everyone can read it.
+Store them in **Jenkins Credentials**, and refer to them by **ID**.
+
+### Step 1: Add a Credential
+
+- **Manage Jenkins → Credentials**
+- Click **System** → **Global credentials (unrestricted)** → **Add Credentials**
+- Choose the **Kind**:
+
+| Kind | Use for |
+|------|---------|
+| **Username with password** | Docker Hub, GitHub username + token |
+| **Secret text** | API tokens, Slack token |
+| **Secret file** | `kubeconfig`, `.env` files |
+| **SSH Username with private key** | SSH to servers, Git over SSH |
+
+- Example (Docker Hub):
+  - **Kind:** Username with password
+  - **Username:** your Docker Hub username
+  - **Password:** a Docker Hub **access token**
+  - **ID:** `dockerhub-creds` ← you'll use this name in the pipeline
+  - **Description:** `Docker Hub login`
+- Click **Create**
+
+### Step 2: Use it in a Pipeline
+
+**Option A — `withCredentials`:**
+
+```groovy
+stage('Push Image') {
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub-creds',
+                                          usernameVariable: 'DOCKER_USER',
+                                          passwordVariable: 'DOCKER_PASS')]) {
+            sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
+            sh 'docker push "$DOCKER_USER/smit-app:latest"'
+        }
+    }
+}
+```
+
+**Option B — `credentials()` in environment:**
+
+```groovy
+environment {
+    DOCKERHUB = credentials('dockerhub-creds')   // creates DOCKERHUB_USR and DOCKERHUB_PSW
+}
+```
+
+**Secret text example:**
+
+```groovy
+withCredentials([string(credentialsId: 'slack-token', variable: 'SLACK_TOKEN')]) {
+    sh 'curl -H "Authorization: Bearer $SLACK_TOKEN" ...'
+}
+```
+
+> Jenkins **masks** secrets in the console output — they show as `****`.
+> ⚠️ Use **single quotes** in `sh '...'` with secrets, so **bash** reads the variable, not Groovy.
+> Double quotes can leak the secret into logs, and Jenkins will show a warning.
