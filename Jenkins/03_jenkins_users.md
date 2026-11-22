@@ -134,3 +134,19 @@ sudo -u jenkins git ls-remote https://github.com/Taimoor-Kamran/SMIT_DEVOPS.git
 
 > **Debug tip:** if a command works for **you** but fails in Jenkins, run it with `sudo -u jenkins ...`.
 > If it fails there too, it's a **permission** problem, not a Jenkins problem.
+
+---
+
+## Why Builds Get "Permission Denied"
+
+Builds run as `jenkins`, so they fail when `jenkins` isn't allowed to touch something:
+
+| Build command | Error | Why |
+|---------------|-------|-----|
+| `docker build .` | `permission denied ... docker.sock` | `jenkins` isn't in the `docker` group |
+| `cp app.jar /opt/myapp/` | `Permission denied` | `/opt/myapp` is owned by root |
+| `systemctl restart nginx` | `Interactive authentication required` | Needs sudo |
+| `cat /home/ubuntu/config.yml` | `Permission denied` | Another user's home folder |
+| `git clone git@github.com:...` | `Permission denied (publickey)` | `jenkins` has no SSH key |
+
+Each one has a **safe fix** in the next sections.
