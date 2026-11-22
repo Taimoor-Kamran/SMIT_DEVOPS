@@ -425,3 +425,39 @@ curl -u ali:<API_TOKEN> http://<jenkins-ip>:8080/api/json
 ```
 
 > Revoke tokens you no longer use from the same page.
+
+---
+
+## Reset a Forgotten Admin Password
+
+If **no** admin can log in, you can temporarily turn security off **from the server**.
+
+```bash
+sudo systemctl stop jenkins
+sudo cp /var/lib/jenkins/config.xml /var/lib/jenkins/config.xml.bak     # backup first!
+sudo nano /var/lib/jenkins/config.xml
+```
+
+Find this line:
+
+```xml
+<useSecurity>true</useSecurity>
+```
+
+Change it to:
+
+```xml
+<useSecurity>false</useSecurity>
+```
+
+Save, then:
+
+```bash
+sudo systemctl start jenkins
+```
+
+- Open Jenkins (no login needed now!) → **Manage Jenkins → Security** → set **Jenkins' own user database** and your **Authorization** again → **Save**
+- **Manage Jenkins → Users** → your admin → set a **new password**
+- Log out and log in with the new password ✅
+
+> ⚠️ While security is off, **anyone** who can reach the page is admin. Do this quickly, and only with port 8080 limited to **your IP**.
