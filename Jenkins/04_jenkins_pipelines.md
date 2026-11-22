@@ -163,3 +163,50 @@ pipeline {
 On the job page you'll see each **stage** as a box with its time and status. Click a stage to see its logs, or open **Console Output** for the full log. 🎉
 
 > The Script box has a **"try sample Pipeline..."** dropdown — choose **Hello World** to get a starter.
+
+---
+
+## Declarative Pipeline Syntax Explained
+
+Here's the **full shape** of a declarative pipeline. You don't need every part — only `pipeline`, `agent` and `stages` are required.
+
+```groovy
+pipeline {                         // 1. everything goes inside this block
+    agent any                      // 2. WHERE to run
+
+    environment { }                // 3. variables for all stages
+    parameters { }                 // 4. inputs asked before the build
+    options { }                    // 5. timeout, log rotation, timestamps
+    triggers { }                   // 6. start automatically (schedule, polling)
+    tools { }                      // 7. auto-install tools (Maven, JDK, Node)
+
+    stages {                       // 8. the list of stages
+        stage('Build') {
+            when { }               //    (optional) run only if...
+            steps {                //    the commands
+                sh 'make build'
+            }
+        }
+    }
+
+    post { }                       // 9. what to do after: success, failure, always
+}
+```
+
+| Part | Required? | What it does |
+|------|-----------|-------------|
+| `pipeline` | ✅ | Wraps the whole declarative pipeline |
+| `agent` | ✅ | Which machine runs it |
+| `stages` | ✅ | Contains one or more `stage` blocks |
+| `stage('Name')` | ✅ (at least one) | A named step of the pipeline |
+| `steps` | ✅ (inside each stage) | The commands to run |
+| `environment` | Optional | Variables |
+| `parameters` | Optional | Build inputs |
+| `options` | Optional | Pipeline settings |
+| `triggers` | Optional | Automatic starts |
+| `tools` | Optional | Tools configured in **Manage Jenkins → Tools** |
+| `when` | Optional (in a stage) | Condition for a stage |
+| `post` | Optional | After-build actions |
+
+> **Groovy tips:** `//` starts a comment. Text in `'single quotes'` is used as-is.
+> Text in `"double quotes"` replaces `${variables}` with their values.
