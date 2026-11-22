@@ -180,3 +180,19 @@ sudo -u jenkins touch /opt/myapp/test.txt && echo "✅ jenkins can write"
 ```
 
 > ⚠️ **Never** do `chmod -R 777` to "fix" permission errors — it lets **every** user on the server change those files.
+
+---
+
+## Docker Access for Jenkins
+
+To let pipelines run `docker` commands:
+
+```bash
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+sudo -u jenkins docker ps          # should work now
+```
+
+> ⚠️ **Security note:** anyone in the `docker` group can start a container that mounts the whole disk —
+> so it's **almost root access**. This is OK for learning and small teams.
+> Big companies run builds on **separate agent machines** so the main Jenkins server stays safe.
