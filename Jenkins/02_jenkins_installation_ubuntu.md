@@ -458,3 +458,26 @@ Now open `http://<server-ip>:8081`. Remember to open the new port in the **secur
 
 > **Why `systemctl edit` and not edit the service file directly?** It creates an **override** file
 > (`/etc/systemd/system/jenkins.service.d/override.conf`) that survives Jenkins upgrades.
+
+---
+
+## Important Files and Folders
+
+| Path | What it is |
+|------|-----------|
+| `/var/lib/jenkins/` | **JENKINS_HOME** — everything Jenkins stores |
+| `/var/lib/jenkins/jobs/` | Job configs and build history |
+| `/var/lib/jenkins/workspace/` | Where builds check out code and run |
+| `/var/lib/jenkins/plugins/` | Installed plugins |
+| `/var/lib/jenkins/secrets/` | Secret keys — never share |
+| `/var/lib/jenkins/secrets/initialAdminPassword` | First-time unlock password |
+| `/var/lib/jenkins/config.xml` | Main Jenkins configuration |
+| `/usr/lib/systemd/system/jenkins.service` | The systemd service file |
+| `/etc/systemd/system/jenkins.service.d/override.conf` | Your custom service settings (port etc.) |
+
+**See Jenkins logs:**
+
+```bash
+sudo journalctl -u jenkins -f          # follow live logs (Ctrl + C to stop)
+sudo journalctl -u jenkins -n 100      # last 100 lines
+```
