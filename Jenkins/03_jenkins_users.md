@@ -229,3 +229,20 @@ sudo -u jenkins sudo rm -rf /tmp/test            # ❌ asks for password → not
 
 > ⚠️ **Never** add `jenkins ALL=(ALL) NOPASSWD: ALL`. That means **every** build script and **every** Jenkins user becomes root.
 > Always use `visudo` — it checks the syntax so you don't break sudo for everyone.
+
+---
+
+## SSH Keys for the `jenkins` User
+
+To pull private repos over SSH, or deploy to another server, `jenkins` needs its own SSH key.
+
+```bash
+sudo -u jenkins mkdir -p -m 700 /var/lib/jenkins/.ssh
+sudo -u jenkins ssh-keygen -t ed25519 -C "jenkins@jenkins-server" -f /var/lib/jenkins/.ssh/id_ed25519 -N ""
+sudo -u jenkins cat /var/lib/jenkins/.ssh/id_ed25519.pub
+```
+
+- Add the **public key** (`.pub`) to GitHub as a **Deploy key** (repo → **Settings → Deploy keys**), or to the target server's `~/.ssh/authorized_keys`
+
+> 💡 The cleaner way is to store keys in **Jenkins Credentials** (Kind: **SSH Username with private key**)
+> and use them in pipelines — see `04_jenkins_pipelines.md`. Then keys are managed in one place and hidden in logs.
