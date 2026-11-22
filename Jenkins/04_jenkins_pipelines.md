@@ -431,3 +431,22 @@ stage('Deploy to PROD') {
 | `environment name: 'DEPLOY', value: 'yes'` | A variable has a value |
 | `not { branch 'main' }` | NOT on `main` |
 | `allOf { ... }` / `anyOf { ... }` | All / any of several conditions |
+
+---
+
+## input — Wait for Approval
+
+Stop the pipeline and wait for a person to click **Proceed** — great before deploying to production.
+
+```groovy
+stage('Approve PROD') {
+    steps {
+        input message: 'Deploy to PRODUCTION?', ok: 'Yes, deploy'
+    }
+}
+```
+
+The build pauses and shows **Yes, deploy** / **Abort** buttons on the stage. This is how teams add a **manual approval gate** (Continuous **Delivery**).
+
+> Wrap it in a timeout so a forgotten build doesn't wait forever:
+> `timeout(time: 1, unit: 'HOURS') { input message: 'Deploy to PRODUCTION?' }`
