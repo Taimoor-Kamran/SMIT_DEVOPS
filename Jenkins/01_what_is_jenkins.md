@@ -184,3 +184,28 @@ Jenkins has two main parts: the **controller** and **agents**.
 
 > This is called **Pipeline as Code**. Your pipeline lives in Git next to your app, so any change to it
 > goes through a pull request — just like the PR workflow in `Phase_2/class3.md`.
+
+---
+
+## What are Plugins?
+
+Jenkins itself is small. Almost every feature comes from a **plugin**.
+
+**Simple analogy:** Jenkins is like a **smartphone** and plugins are **apps**. A new phone can make calls; you install apps for everything else.
+
+| Plugin | What it adds |
+|--------|-------------|
+| **Git** | Pull code from Git repositories |
+| **GitHub** | GitHub webhooks and integration |
+| **Pipeline** | `Jenkinsfile` pipelines |
+| **Credentials / Credentials Binding** | Store and use secrets safely |
+| **Docker Pipeline** | Docker commands inside pipelines |
+| **Matrix Authorization Strategy** | Fine-grained user permissions |
+| **Role-based Authorization Strategy** | Roles like admin / developer / viewer |
+| **Timestamper** | Time on every log line |
+| **Email Extension** | Email notifications |
+| **Blue Ocean / Pipeline Graph View** | Nicer visual view of pipeline stages |
+
+Plugins are installed from **Manage Jenkins → Plugins** (see `02_jenkins_installation_ubuntu.md`).
+
+> ⚠️ Only install plugins you need, and **keep them updated** — old plugins are a common security risk.
