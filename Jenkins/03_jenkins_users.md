@@ -246,3 +246,14 @@ sudo -u jenkins cat /var/lib/jenkins/.ssh/id_ed25519.pub
 
 > 💡 The cleaner way is to store keys in **Jenkins Credentials** (Kind: **SSH Username with private key**)
 > and use them in pipelines — see `04_jenkins_pipelines.md`. Then keys are managed in one place and hidden in logs.
+
+---
+
+## Part 2: Jenkins Web Users
+
+These are the people who **log in to the Jenkins website**.
+
+After setup you have **one** user — the admin you created in `02_jenkins_installation_ubuntu.md`.
+In a team, **everyone gets their own account**, so you can see **who** started, changed or deleted what.
+
+> Same rule as AWS IAM (`AWS/01_iam_users.md`): **one user per person**, never share the admin login.
