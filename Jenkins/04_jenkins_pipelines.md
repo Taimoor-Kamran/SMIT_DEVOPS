@@ -604,3 +604,31 @@ withCredentials([string(credentialsId: 'slack-token', variable: 'SLACK_TOKEN')])
 > Jenkins **masks** secrets in the console output — they show as `****`.
 > ⚠️ Use **single quotes** in `sh '...'` with secrets, so **bash** reads the variable, not Groovy.
 > Double quotes can leak the secret into logs, and Jenkins will show a warning.
+
+---
+
+## Pipeline Script from SCM (Jenkinsfile in Git)
+
+Typing the pipeline into the Jenkins web page is fine for practice. In real projects, the pipeline lives in a file called **`Jenkinsfile`** in the **root of your Git repo**.
+
+```
+my-app/
+├── app.py
+├── Dockerfile
+└── Jenkinsfile      ← pipeline code, reviewed in PRs like any other code
+```
+
+### Steps
+
+- **New Item** → `smit-app-pipeline` → **Pipeline** → **OK**
+- **Pipeline** section:
+  - **Definition:** `Pipeline script from SCM`
+  - **SCM:** `Git`
+  - **Repository URL:** `https://github.com/<your-user>/<your-repo>.git`
+  - **Credentials:** add one if the repo is **private** (Username = GitHub username, Password = GitHub **personal access token**)
+  - **Branch Specifier:** `*/main`
+  - **Script Path:** `Jenkinsfile`
+- **Save → Build Now**
+
+> When the pipeline comes from SCM, declarative pipelines **check out the code automatically** before the first stage —
+> you don't need a `git` step.
