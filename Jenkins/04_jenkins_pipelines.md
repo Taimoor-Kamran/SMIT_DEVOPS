@@ -693,3 +693,38 @@ Finished: FAILURE
 1. Find the **last `+` line** — the command that failed (`docker build`)
 2. Read the **error** just above `exit code` — `pip install` failed
 3. Fix it (e.g. a wrong package name in `requirements.txt`), push, and build again
+
+---
+
+## Incident: Pipeline Fails on Docker Permission
+
+**Symptom:** The Build stage fails:
+
+```
++ docker build -t smit-app:3 .
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock
+script returned exit code 1
+```
+
+**Investigate:**
+
+```bash
+whoami                         # ubuntu — docker works for me...
+docker ps                      # ✅ works
+sudo -u jenkins docker ps      # ❌ permission denied → it's the jenkins user!
+id jenkins                     # groups=113(jenkins) — no "docker" group
+```
+
+**Root cause:** Builds run as the **`jenkins`** Linux user, and it isn't in the `docker` group.
+
+**Fix:**
+
+```bash
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins      # the running Jenkins process must restart to get the new group
+sudo -u jenkins docker ps           # ✅ works
+```
+
+Click **Build Now** again → ✅ **SUCCESS**.
+
+**Lesson:** When a command works for you but fails in Jenkins, test it with `sudo -u jenkins <command>`.
