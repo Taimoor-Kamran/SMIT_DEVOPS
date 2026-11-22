@@ -428,3 +428,33 @@ If you see an empty table (not "permission denied"), it works. ✅
 
 > ⚠️ Being in the `docker` group is almost the same as having **root** access.
 > It's fine for a learning server — read `03_jenkins_users.md` for why.
+
+---
+
+## Change the Jenkins Port
+
+If port **8080** is already used by another app:
+
+```bash
+sudo systemctl edit jenkins
+```
+
+An editor opens. Add these lines in the empty area at the top:
+
+```ini
+[Service]
+Environment="JENKINS_PORT=8081"
+```
+
+Save and exit, then:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart jenkins
+sudo ss -tlnp | grep 8081
+```
+
+Now open `http://<server-ip>:8081`. Remember to open the new port in the **security group / UFW**.
+
+> **Why `systemctl edit` and not edit the service file directly?** It creates an **override** file
+> (`/etc/systemd/system/jenkins.service.d/override.conf`) that survives Jenkins upgrades.
