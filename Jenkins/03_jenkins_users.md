@@ -316,3 +316,21 @@ Under **Jenkins' own user database** there's a checkbox:
 - ☐ **Allow users to sign up** → keep it **OFF** ❌
 
 > If sign-up is on, **anyone** who can reach the page can create an account. Admins should create accounts.
+
+---
+
+## Authorization: What Users Can Do
+
+**Manage Jenkins → Security → Authorization:**
+
+| Strategy | What it means | Use for |
+|----------|--------------|---------|
+| **Anyone can do anything** | No login needed, everyone is admin | ❌ Never |
+| **Legacy mode** | Old behaviour, admin vs everyone | ❌ Old setups only |
+| **Logged-in users can do anything** | Every logged-in user is admin | Single-person learning server |
+| **Matrix-based security** | A table of exact permissions per user/group | ✅ Small teams |
+| **Project-based Matrix Authorization Strategy** | Matrix + extra permissions per job | Teams with different projects |
+| **Role-Based Strategy** *(plugin)* | Create **roles** (admin, developer, viewer) and assign users | ✅ Medium/large teams |
+
+> **Matrix-based security** comes from the **Matrix Authorization Strategy** plugin (installed with suggested plugins).
+> **Role-Based Strategy** needs the **Role-based Authorization Strategy** plugin.
