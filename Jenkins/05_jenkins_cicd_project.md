@@ -142,3 +142,108 @@ CMD ["python", "app.py"]
 ```
 
 > We put `requirements.txt` before `app.py` so Docker **reuses the cached layer** when only the code changes — faster builds.
+
+---
+
+## Step 4: Write the Jenkinsfile
+
+Create **`Jenkinsfile`** (no file extension):
+
+```groovy
+pipeline {
+    agent any
+
+    environment {
+        APP_NAME  = 'smit-app'
+        APP_PORT  = '5000'
+        IMAGE     = "smit-app:${BUILD_NUMBER}"
+    }
+
+    options {
+        timeout(time: 15, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        timestamps()
+        disableConcurrentBuilds()
+    }
+
+    triggers {
+        githubPush()        // build when GitHub sends a webhook
+    }
+
+    stages {
+        stage('Info') {
+            steps {
+                sh 'git log -1 --oneline'
+                sh 'docker --version'
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t "$IMAGE" .'
+            }
+        }
+
+        stage('Test Image') {
+            steps {
+                // Start a temporary container, check /health, then remove it
+                sh '''
+                    docker run -d --name "${APP_NAME}-test" "$IMAGE"
+                    sleep 3
+                    docker exec "${APP_NAME}-test" python -c "import urllib.request; print(urllib.request.urlopen('http://localhost:5000/health').read().decode())"
+                '''
+            }
+            post {
+                always {
+                    sh 'docker rm -f "${APP_NAME}-test" || true'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                    docker rm -f "$APP_NAME" || true
+                    docker run -d --name "$APP_NAME" --restart unless-stopped -p "$APP_PORT:5000" "$IMAGE"
+                '''
+            }
+        }
+
+        stage('Smoke Test') {
+            steps {
+                retry(5) {
+                    sleep 2
+                    sh 'curl -fsS "http://localhost:$APP_PORT/"'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Deployed ${IMAGE} — open http://<server-ip>:${APP_PORT}"
+        }
+        failure {
+            echo '❌ Pipeline failed — read the Console Output from the bottom up.'
+        }
+        always {
+            sh 'docker image prune -f || true'     // remove dangling images to save disk
+        }
+    }
+}
+```
+
+### What Each Stage Does
+
+| Stage | What happens | If it fails... |
+|-------|-------------|---------------|
+| **Info** | Prints the commit and Docker version | Git or Docker isn't installed |
+| **Build Image** | `docker build` makes an image tagged with the build number, e.g. `smit-app:7` | Bad Dockerfile or `requirements.txt` |
+| **Test Image** | Runs a **temporary** container and checks `/health` inside it | The app crashes on start — **old version stays live** ✅ |
+| **Deploy** | Removes the old container and runs the new one on port 5000 | Port problem or Docker issue |
+| **Smoke Test** | `curl` the live app (retries up to 5 times) | New version isn't answering |
+
+> **Why tag with `BUILD_NUMBER`?** Each build has its own image (`smit-app:6`, `smit-app:7`...).
+> If version 7 is broken, you can quickly run `smit-app:6` again — an easy **rollback**.
+
+> **`|| true`** means "if this command fails, don't fail the pipeline" — used when the container might not exist yet.
