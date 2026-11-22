@@ -657,3 +657,14 @@ A **Multibranch Pipeline** scans your repo and creates a pipeline for **every br
 - **Save** — Jenkins scans and builds each branch
 
 Now `when { branch 'main' }` works, so you can deploy **only from main** while every feature branch still gets built and tested — exactly the branching workflow from `Phase_2/class2.md`.
+
+---
+
+## Pipeline Syntax Helper (Snippet Generator)
+
+Don't remember the syntax? Jenkins writes it for you.
+
+- Open any **Pipeline** job → click **Pipeline Syntax** (left menu)
+- **Snippet Generator:** choose a step (e.g. `withCredentials`, `git`, `archiveArtifacts`) → fill the form → **Generate Pipeline Script** → copy the code
+- **Declarative Directive Generator:** builds `options`, `parameters`, `triggers`, `when` blocks
+- **Global Variables Reference:** every variable like `env`, `params`, `currentBuild`
