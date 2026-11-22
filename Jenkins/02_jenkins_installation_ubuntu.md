@@ -64,3 +64,37 @@ We will install the **LTS (Long-Term Support)** version — it's the stable vers
 > ⚠️ **Old Java versions (8, 11, 17) are NOT supported** by current Jenkins. Many old tutorials use Java 11 or 17 — they won't work now.
 >
 > In practice, Jenkins + a few builds needs **at least 2 GB RAM**. Builds with Docker need more.
+
+---
+
+## Option A: Create an Ubuntu Server on AWS EC2
+
+If you want Jenkins on the cloud (like a real company), create an EC2 instance first. (You learned EC2 basics in `Phase_1/class1.md`.)
+
+- **AWS Console → EC2 → Launch instance**
+- **Name:** `jenkins-server`
+- **AMI:** Ubuntu Server 24.04 LTS
+- **Instance type:** `t3.small` (2 GB RAM) or `t3.medium` (4 GB RAM)
+
+> ⚠️ `t2.micro` / `t3.micro` (1 GB, Free Tier) is **too small** — Jenkins becomes very slow or crashes.
+> `t3.small` costs a little money, so **stop the instance** after practice.
+
+- **Key pair:** create or choose one (e.g. `jenkins-key.pem`)
+- **Network settings → Edit → Security group rules:**
+
+| Type | Port | Source | Why |
+|------|------|--------|-----|
+| SSH | 22 | **My IP** | Connect to the server |
+| Custom TCP | **8080** | **My IP** | Open the Jenkins web page |
+
+- **Storage:** 20 GB or more
+- Click **Launch instance**
+
+**Connect:**
+
+```bash
+chmod 400 jenkins-key.pem
+ssh -i jenkins-key.pem ubuntu@<EC2-PUBLIC-IP>
+```
+
+> Using **My IP** instead of `0.0.0.0/0` (anywhere) means only **you** can reach Jenkins. Never leave Jenkins open to the whole internet.
