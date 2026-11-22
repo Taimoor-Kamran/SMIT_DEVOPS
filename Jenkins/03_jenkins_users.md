@@ -374,3 +374,36 @@ Under **Jenkins' own user database** there's a checkbox:
 |-------|---------|
 | **Anonymous** | People who are **not** logged in — give them **nothing** |
 | **Authenticated Users** | Everyone who **is** logged in — a quick way to give everyone `Overall/Read` |
+
+---
+
+## Role-Based Access — Step by Step
+
+Roles are easier than ticking boxes per user when you have many people.
+
+### Step 1: Install the plugin
+- **Manage Jenkins → Plugins → Available plugins** → search **Role-based Authorization Strategy** → **Install**
+
+### Step 2: Turn it on
+- **Manage Jenkins → Security → Authorization** → choose **Role-Based Strategy** → **Save**
+
+### Step 3: Create roles
+- **Manage Jenkins → Manage and Assign Roles → Manage Roles**
+- Under **Global roles**, add:
+
+| Role | Tick |
+|------|------|
+| `admin` | **Overall → Administer** |
+| `developer` | Overall Read, Job Read / Build / Cancel / Workspace, View Read |
+| `viewer` | Overall Read, Job Read, View Read |
+
+- Click **Save**
+
+### Step 4: Assign roles
+- **Manage and Assign Roles → Assign Roles**
+- **Add user** → `ali` → tick **developer**
+- **Add user** → `sara` → tick **viewer**
+- Make sure **your admin user** has **admin** ✅
+- **Save**
+
+> You can also create **Item roles** with a pattern like `smit-.*` so a team only sees jobs whose names start with `smit-`.
