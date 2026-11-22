@@ -117,3 +117,31 @@ You can also install Jenkins on:
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y wget
 ```
+
+---
+
+## Step 2: Install Java 21
+
+Jenkins is written in Java, so Java must be installed **before** Jenkins.
+
+```bash
+sudo apt update
+sudo apt install -y fontconfig openjdk-21-jre
+```
+
+Check it:
+
+```bash
+java -version
+```
+
+Output (similar):
+
+```
+openjdk version "21.0.x" 2025-xx-xx
+OpenJDK Runtime Environment (build 21.0.x+x-Ubuntu)
+OpenJDK 64-Bit Server VM (build 21.0.x+x-Ubuntu, mixed mode, sharing)
+```
+
+> **What is `fontconfig`?** Jenkins draws some graphs and images; `fontconfig` gives it the fonts to do that.
+> **JRE vs JDK:** the **JRE** (Java Runtime) is enough to **run** Jenkins. Install the **JDK** (`openjdk-21-jdk`) only if your builds compile Java code.
