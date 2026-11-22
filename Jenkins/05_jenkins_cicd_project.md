@@ -287,3 +287,34 @@ jenkins-smit-app/
 - Click **Save**
 
 > The **GitHub hook trigger** option comes from the **GitHub** plugin (installed with suggested plugins).
+
+---
+
+## Step 7: Run the First Build
+
+- Click **Build Now**
+- Watch the stages turn green one by one: **Info → Build Image → Test Image → Deploy → Smoke Test**
+- Open the build → **Console Output** to see every command
+
+When it's ✅ green, open in your browser:
+
+```
+http://<server-ip>:5000
+```
+
+You should see:
+
+```
+Hello SMIT v1 - deployed by Jenkins!
+```
+
+🎉 Your app was built and deployed by Jenkins!
+
+Check on the server:
+
+```bash
+docker ps
+docker images | grep smit-app
+```
+
+> **Why click Build Now the first time?** Jenkins learns about the `triggers { githubPush() }` setting from the Jenkinsfile only **after** the first run.
