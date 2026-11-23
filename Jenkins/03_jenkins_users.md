@@ -1,0 +1,527 @@
+# Jenkins: The Jenkins Linux User and Jenkins Web Users
+
+---
+
+## Table of Contents
+1. [Two Kinds of "Jenkins User"](#two-kinds-of-jenkins-user)
+2. [Part 1: The `jenkins` Linux User](#part-1-the-jenkins-linux-user)
+3. [Inspect the `jenkins` User](#inspect-the-jenkins-user)
+4. [Switch to the `jenkins` User](#switch-to-the-jenkins-user)
+5. [Why Builds Get "Permission Denied"](#why-builds-get-permission-denied)
+6. [Give the `jenkins` User Access — the Safe Way](#give-the-jenkins-user-access--the-safe-way)
+7. [Docker Access for Jenkins](#docker-access-for-jenkins)
+8. [Limited sudo for Jenkins](#limited-sudo-for-jenkins)
+9. [SSH Keys for the `jenkins` User](#ssh-keys-for-the-jenkins-user)
+10. [Part 2: Jenkins Web Users](#part-2-jenkins-web-users)
+11. [Create a Jenkins User — Step by Step](#create-a-jenkins-user--step-by-step)
+12. [Security Settings: Who Can Log In](#security-settings-who-can-log-in)
+13. [Authorization: What Users Can Do](#authorization-what-users-can-do)
+14. [Matrix-Based Security — Step by Step](#matrix-based-security--step-by-step)
+15. [Role-Based Access — Step by Step](#role-based-access--step-by-step)
+16. [API Tokens](#api-tokens)
+17. [Reset a Forgotten Admin Password](#reset-a-forgotten-admin-password)
+18. [Best Practices](#best-practices)
+19. [Quick Reference](#quick-reference)
+
+---
+
+## Two Kinds of "Jenkins User"
+
+When people say "Jenkins user" they can mean **two different things**:
+
+| | 1. `jenkins` **Linux** user | 2. Jenkins **web** users |
+|---|---|---|
+| What it is | A **system account** on the Ubuntu server | People who **log in to the Jenkins website** |
+| Created by | The Jenkins package, automatically | You, in **Manage Jenkins → Users** |
+| Used for | **Running** Jenkins and every build command | Creating jobs, clicking **Build Now**, changing settings |
+| Example | `sh 'docker build .'` runs as `jenkins` | `ali` logs in to view build logs |
+| Managed with | `id`, `usermod`, `chown`, `sudo` | Jenkins web UI |
+
+```
+  ali (web user) ──clicks "Build Now"──►  Jenkins  ──runs commands as──►  jenkins (Linux user)
+  sara (web user) ─views logs──────────►  (web UI)                         on the Ubuntu server
+```
+
+> Even if **`ali`** starts the build, the commands on the server run as the **`jenkins`** Linux user.
+> That's why the Linux user's permissions matter so much.
+
+---
+
+## Part 1: The `jenkins` Linux User
+
+When you install Jenkins (`02_jenkins_installation_ubuntu.md`), the package creates a Linux user called **`jenkins`**.
+
+This is a **service user** — the same idea you learned in `Phase_1/class_4.md`:
+an account that exists to **run one program**, not for a human to log in with.
+
+**Why not just run Jenkins as root?**
+
+| Run as `root` | Run as `jenkins` |
+|---------------|-----------------|
+| A bad build script can delete **anything** on the server | A bad script can only damage what `jenkins` owns |
+| A hacked Jenkins = hacked server | Damage is limited |
+| ❌ Never do this | ✅ Correct |
+
+**Simple analogy:** the `jenkins` user is like a **contractor** with a key to **one workshop** in a building — not the master key to every room.
+
+---
+
+## Inspect the `jenkins` User
+
+```bash
+id jenkins
+```
+
+Output:
+
+```
+uid=111(jenkins) gid=113(jenkins) groups=113(jenkins)
+```
+
+```bash
+getent passwd jenkins
+```
+
+Output:
+
+```
+jenkins:x:111:113:Jenkins,,,:/var/lib/jenkins:/bin/bash
+```
+
+| Field | Value | Meaning |
+|-------|-------|---------|
+| Username | `jenkins` | The account name |
+| UID / GID | `111` / `113` | User and group ID numbers (yours may differ) |
+| Home | `/var/lib/jenkins` | Its home folder = **JENKINS_HOME** |
+| Shell | `/bin/bash` | Shell used when you switch to it |
+
+**See what it owns:**
+
+```bash
+sudo ls -la /var/lib/jenkins
+```
+
+Everything there is owned by `jenkins:jenkins`.
+
+**See the Jenkins process running as this user:**
+
+```bash
+ps -u jenkins -f
+```
+
+> The `jenkins` user has **no password**, so nobody can log in to it over SSH. You can only switch to it with `sudo`.
+
+---
+
+## Switch to the `jenkins` User
+
+Useful for testing: "does this command work **as Jenkins**?"
+
+```bash
+sudo su - jenkins          # become jenkins (type exit to go back)
+whoami                     # jenkins
+pwd                        # /var/lib/jenkins
+exit
+```
+
+Or run a **single** command as `jenkins`:
+
+```bash
+sudo -u jenkins whoami
+sudo -u jenkins docker ps
+sudo -u jenkins git ls-remote https://github.com/Taimoor-Kamran/SMIT_DEVOPS.git
+```
+
+> **Debug tip:** if a command works for **you** but fails in Jenkins, run it with `sudo -u jenkins ...`.
+> If it fails there too, it's a **permission** problem, not a Jenkins problem.
+
+---
+
+## Why Builds Get "Permission Denied"
+
+Builds run as `jenkins`, so they fail when `jenkins` isn't allowed to touch something:
+
+| Build command | Error | Why |
+|---------------|-------|-----|
+| `docker build .` | `permission denied ... docker.sock` | `jenkins` isn't in the `docker` group |
+| `cp app.jar /opt/myapp/` | `Permission denied` | `/opt/myapp` is owned by root |
+| `systemctl restart nginx` | `Interactive authentication required` | Needs sudo |
+| `cat /home/ubuntu/config.yml` | `Permission denied` | Another user's home folder |
+| `git clone git@github.com:...` | `Permission denied (publickey)` | `jenkins` has no SSH key |
+
+Each one has a **safe fix** in the next sections.
+
+---
+
+## Give the `jenkins` User Access — the Safe Way
+
+Use the **Linux permission skills** from `Phase_1/class_3.md` and `class_4.md`.
+
+**Example:** Jenkins must deploy files into `/opt/myapp`.
+
+```bash
+# Option 1 — make a shared group
+sudo groupadd deployers
+sudo usermod -aG deployers jenkins
+sudo chown -R root:deployers /opt/myapp
+sudo chmod -R 775 /opt/myapp
+sudo systemctl restart jenkins     # group changes apply after restart
+```
+
+```bash
+# Option 2 — let jenkins own the deploy folder
+sudo chown -R jenkins:jenkins /opt/myapp
+```
+
+**Check:**
+
+```bash
+sudo -u jenkins touch /opt/myapp/test.txt && echo "✅ jenkins can write"
+```
+
+> ⚠️ **Never** do `chmod -R 777` to "fix" permission errors — it lets **every** user on the server change those files.
+
+---
+
+## Docker Access for Jenkins
+
+To let pipelines run `docker` commands:
+
+```bash
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+sudo -u jenkins docker ps          # should work now
+```
+
+> ⚠️ **Security note:** anyone in the `docker` group can start a container that mounts the whole disk —
+> so it's **almost root access**. This is OK for learning and small teams.
+> Big companies run builds on **separate agent machines** so the main Jenkins server stays safe.
+
+---
+
+## Limited sudo for Jenkins
+
+Sometimes a deploy step **must** use sudo, e.g. to restart nginx. Give `jenkins` sudo for **only those exact commands**.
+
+```bash
+sudo visudo -f /etc/sudoers.d/jenkins
+```
+
+Add **one line**:
+
+```
+jenkins ALL=(root) NOPASSWD: /usr/bin/systemctl restart nginx, /usr/bin/systemctl reload nginx
+```
+
+| Part | Meaning |
+|------|---------|
+| `jenkins` | Which user |
+| `ALL=(root)` | On this machine, run as root |
+| `NOPASSWD:` | Don't ask for a password (Jenkins can't type one) |
+| `/usr/bin/systemctl restart nginx, ...` | **Only** these exact commands are allowed |
+
+Save and test:
+
+```bash
+sudo -u jenkins sudo systemctl restart nginx     # ✅ allowed
+sudo -u jenkins sudo rm -rf /tmp/test            # ❌ asks for password → not allowed
+```
+
+> ⚠️ **Never** add `jenkins ALL=(ALL) NOPASSWD: ALL`. That means **every** build script and **every** Jenkins user becomes root.
+> Always use `visudo` — it checks the syntax so you don't break sudo for everyone.
+
+---
+
+## SSH Keys for the `jenkins` User
+
+To pull private repos over SSH, or deploy to another server, `jenkins` needs its own SSH key.
+
+```bash
+sudo -u jenkins mkdir -p -m 700 /var/lib/jenkins/.ssh
+sudo -u jenkins ssh-keygen -t ed25519 -C "jenkins@jenkins-server" -f /var/lib/jenkins/.ssh/id_ed25519 -N ""
+sudo -u jenkins cat /var/lib/jenkins/.ssh/id_ed25519.pub
+```
+
+- Add the **public key** (`.pub`) to GitHub as a **Deploy key** (repo → **Settings → Deploy keys**), or to the target server's `~/.ssh/authorized_keys`
+
+> 💡 The cleaner way is to store keys in **Jenkins Credentials** (Kind: **SSH Username with private key**)
+> and use them in pipelines — see `04_jenkins_pipelines.md`. Then keys are managed in one place and hidden in logs.
+
+---
+
+## Part 2: Jenkins Web Users
+
+These are the people who **log in to the Jenkins website**.
+
+After setup you have **one** user — the admin you created in `02_jenkins_installation_ubuntu.md`.
+In a team, **everyone gets their own account**, so you can see **who** started, changed or deleted what.
+
+> Same rule as AWS IAM (`AWS/01_iam_users.md`): **one user per person**, never share the admin login.
+
+---
+
+## Create a Jenkins User — Step by Step
+
+- Log in as **admin**
+- **Manage Jenkins → Users**
+- Click **Create User**
+- Fill in:
+
+| Field | Example |
+|-------|---------|
+| Username | `ali` |
+| Password | a strong password |
+| Confirm password | same |
+| Full name | `Ali Khan` |
+| E-mail address | `ali@example.com` |
+
+- Click **Create User** ✅
+
+`ali` now appears in the **Users** list. Give him the URL `http://<jenkins-ip>:8080` and his password.
+
+### Other User Actions
+
+| Task | How |
+|------|-----|
+| Change a user's password | **Manage Jenkins → Users** → click the user → **Security** (or ⚙️ Configure) → **Password** → Save |
+| Delete a user | **Manage Jenkins → Users** → click the user → **Delete** |
+| Change **your own** password | Click your name (top right) → **Security** / **Configure** → Password |
+
+> Button names can move slightly between Jenkins versions, but they're always under **Manage Jenkins → Users** or your own profile page.
+
+---
+
+## Security Settings: Who Can Log In
+
+**Manage Jenkins → Security** has two main parts:
+
+```
+ ┌────────────────────────────────────────────────────┐
+ │  Security Realm  = WHO are you?   (authentication) │
+ │  Authorization   = WHAT can you do? (permissions)  │
+ └────────────────────────────────────────────────────┘
+```
+
+**Security Realm** options:
+
+| Option | Meaning |
+|--------|---------|
+| **Jenkins' own user database** | Users are stored inside Jenkins ✅ (default, what we use) |
+| **LDAP** | Log in with company accounts (Active Directory) |
+| **Unix user/group database** | Log in with Linux server accounts |
+| Plugins (GitHub OAuth, SAML, Google...) | Log in with GitHub / Google / company SSO |
+
+Under **Jenkins' own user database** there's a checkbox:
+
+- ☐ **Allow users to sign up** → keep it **OFF** ❌
+
+> If sign-up is on, **anyone** who can reach the page can create an account. Admins should create accounts.
+
+---
+
+## Authorization: What Users Can Do
+
+**Manage Jenkins → Security → Authorization:**
+
+| Strategy | What it means | Use for |
+|----------|--------------|---------|
+| **Anyone can do anything** | No login needed, everyone is admin | ❌ Never |
+| **Legacy mode** | Old behaviour, admin vs everyone | ❌ Old setups only |
+| **Logged-in users can do anything** | Every logged-in user is admin | Single-person learning server |
+| **Matrix-based security** | A table of exact permissions per user/group | ✅ Small teams |
+| **Project-based Matrix Authorization Strategy** | Matrix + extra permissions per job | Teams with different projects |
+| **Role-Based Strategy** *(plugin)* | Create **roles** (admin, developer, viewer) and assign users | ✅ Medium/large teams |
+
+> **Matrix-based security** comes from the **Matrix Authorization Strategy** plugin (installed with suggested plugins).
+> **Role-Based Strategy** needs the **Role-based Authorization Strategy** plugin.
+
+---
+
+## Matrix-Based Security — Step by Step
+
+**Goal:**
+- `admin` → everything
+- `ali` (developer) → view jobs, build them, see logs
+- `sara` (viewer) → only view
+
+### Steps
+
+- **Manage Jenkins → Security**
+- **Authorization:** choose **Matrix-based security**
+- A table appears. Click **Add user** → type `admin` → OK. Repeat for `ali` and `sara`.
+- Tick the permissions:
+
+| Permission | admin | ali (developer) | sara (viewer) |
+|------------|:-----:|:---------------:|:-------------:|
+| Overall → **Administer** | ✅ | | |
+| Overall → **Read** | ✅ | ✅ | ✅ |
+| Job → **Read** | ✅ | ✅ | ✅ |
+| Job → **Build** | ✅ | ✅ | |
+| Job → **Cancel** | ✅ | ✅ | |
+| Job → **Workspace** | ✅ | ✅ | |
+| Job → **Configure** | ✅ | | |
+| Job → **Create / Delete** | ✅ | | |
+| View → **Read** | ✅ | ✅ | ✅ |
+
+- Click **Save**
+
+> ⚠️ **Don't lock yourself out!** Make sure your admin user has **Overall → Administer** ticked **before** you click Save.
+> Test with a second browser (or private window) logged in as `ali`.
+
+**Special entries in the table:**
+
+| Entry | Meaning |
+|-------|---------|
+| **Anonymous** | People who are **not** logged in — give them **nothing** |
+| **Authenticated Users** | Everyone who **is** logged in — a quick way to give everyone `Overall/Read` |
+
+---
+
+## Role-Based Access — Step by Step
+
+Roles are easier than ticking boxes per user when you have many people.
+
+### Step 1: Install the plugin
+- **Manage Jenkins → Plugins → Available plugins** → search **Role-based Authorization Strategy** → **Install**
+
+### Step 2: Turn it on
+- **Manage Jenkins → Security → Authorization** → choose **Role-Based Strategy** → **Save**
+
+### Step 3: Create roles
+- **Manage Jenkins → Manage and Assign Roles → Manage Roles**
+- Under **Global roles**, add:
+
+| Role | Tick |
+|------|------|
+| `admin` | **Overall → Administer** |
+| `developer` | Overall Read, Job Read / Build / Cancel / Workspace, View Read |
+| `viewer` | Overall Read, Job Read, View Read |
+
+- Click **Save**
+
+### Step 4: Assign roles
+- **Manage and Assign Roles → Assign Roles**
+- **Add user** → `ali` → tick **developer**
+- **Add user** → `sara` → tick **viewer**
+- Make sure **your admin user** has **admin** ✅
+- **Save**
+
+> You can also create **Item roles** with a pattern like `smit-.*` so a team only sees jobs whose names start with `smit-`.
+
+---
+
+## API Tokens
+
+Scripts and tools (like `curl` or a GitHub webhook relay) shouldn't use your password. Use an **API token**.
+
+- Click **your name** (top right) → **Security** (or **Configure**)
+- Under **API Token** → **Add new Token** → give it a name, e.g. `cli-laptop` → **Generate**
+- **Copy it now** — it's shown only once
+
+Use it:
+
+```bash
+curl -u ali:<API_TOKEN> http://<jenkins-ip>:8080/api/json
+```
+
+> Revoke tokens you no longer use from the same page.
+
+---
+
+## Reset a Forgotten Admin Password
+
+If **no** admin can log in, you can temporarily turn security off **from the server**.
+
+```bash
+sudo systemctl stop jenkins
+sudo cp /var/lib/jenkins/config.xml /var/lib/jenkins/config.xml.bak     # backup first!
+sudo nano /var/lib/jenkins/config.xml
+```
+
+Find this line:
+
+```xml
+<useSecurity>true</useSecurity>
+```
+
+Change it to:
+
+```xml
+<useSecurity>false</useSecurity>
+```
+
+Save, then:
+
+```bash
+sudo systemctl start jenkins
+```
+
+- Open Jenkins (no login needed now!) → **Manage Jenkins → Security** → set **Jenkins' own user database** and your **Authorization** again → **Save**
+- **Manage Jenkins → Users** → your admin → set a **new password**
+- Log out and log in with the new password ✅
+
+> ⚠️ While security is off, **anyone** who can reach the page is admin. Do this quickly, and only with port 8080 limited to **your IP**.
+
+---
+
+## Best Practices
+
+| Practice | Why |
+|----------|-----|
+| Never run Jenkins as `root` | Limits damage from bad scripts or attacks |
+| Give the `jenkins` Linux user **only** the access builds need | Least privilege |
+| Use exact-command sudo rules, never `NOPASSWD: ALL` | Stops builds becoming root |
+| Never `chmod 777` to fix errors | Fix ownership/groups instead |
+| One Jenkins account **per person** | You can see who did what |
+| Keep **Allow users to sign up** off | Only admins create accounts |
+| Give **Anonymous** no permissions | Strangers can't see your jobs |
+| Use **Matrix** or **Role-based** authorization | Developers can build without being admin |
+| Use **API tokens**, not passwords, in scripts | Tokens can be revoked one by one |
+| Store secrets in **Jenkins Credentials** | Hidden in logs, managed in one place |
+| Limit port 8080 to trusted IPs | Fewer attackers can even reach the login page |
+
+---
+
+## Quick Reference
+
+### Linux `jenkins` User Cheat Sheet
+
+| Command | What it does |
+|---------|-------------|
+| `id jenkins` | Show UID, GID and groups |
+| `getent passwd jenkins` | Show home folder and shell |
+| `sudo su - jenkins` | Switch to the jenkins user |
+| `sudo -u jenkins <command>` | Run one command as jenkins |
+| `sudo usermod -aG docker jenkins` | Allow docker commands |
+| `sudo visudo -f /etc/sudoers.d/jenkins` | Give limited sudo rules |
+| `sudo systemctl restart jenkins` | Apply group changes |
+
+### Jenkins Web Users Cheat Sheet
+
+| Task | Where |
+|------|-------|
+| Create user | Manage Jenkins → Users → Create User |
+| Login settings | Manage Jenkins → Security → Security Realm |
+| Permissions | Manage Jenkins → Security → Authorization |
+| Roles | Manage Jenkins → Manage and Assign Roles |
+| API token | Your name → Security / Configure → API Token |
+
+### Key Terms Glossary
+
+| Term | Meaning |
+|------|---------|
+| Service user | A Linux account that runs a program, not for human login |
+| `jenkins` user | The Linux account that runs Jenkins and all build commands |
+| JENKINS_HOME | `/var/lib/jenkins` — the jenkins user's home and Jenkins' data folder |
+| `sudo -u` | Run a command as another user |
+| sudoers | The file that controls who can use sudo |
+| Security Realm | How Jenkins checks **who** you are (login) |
+| Authorization | What a logged-in user is **allowed** to do |
+| Matrix-based security | Permissions table per user/group |
+| Role-based strategy | Permissions grouped into roles assigned to users |
+| Anonymous | Visitors who aren't logged in |
+| API token | A revocable secret for scripts instead of a password |
+
+---
+
+*End of Jenkins Users — Jenkins*
